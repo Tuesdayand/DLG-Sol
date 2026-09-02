@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "release_stage": "EVALUATION_RUNNER_PRE_RELEASE",
+  "release_stage": "V1_REPRODUCIBILITY_PACKAGE_DEVELOPMENT",
   "files": {
     ".gitattributes": {
       "bytes": 148,
@@ -11,16 +11,20 @@
       "sha256": "6c7dad98d1c751c25f846f5b7229f5cc324e9372d2edd5b003d81db6e0e47c34"
     },
     "CITATION.cff": {
-      "bytes": 499,
-      "sha256": "4e636ef2f0ff3349da2d8751757134bb9af6cf1ae755c0bd5ad8990f289b63e5"
+      "bytes": 512,
+      "sha256": "4edd1617b8142008b87354d716f1e6ab044e321bf9d337564170ca1fe37980a3"
+    },
+    "LICENSE": {
+      "bytes": 1086,
+      "sha256": "f0c3a7b69ebdc6dc675bb5763e57c0032dc2bae094ad9887503b0c38f21c1603"
     },
     "README.md": {
-      "bytes": 5716,
-      "sha256": "17b75a83a0c17569ddbd77c33abfe9b4a4d91c13d5be90dd710fcabffb125100"
+      "bytes": 6370,
+      "sha256": "db622e0f5f894e7225f25822d0c27d593956334f3390892b09332a9b8f3bbf0a"
     },
     "THIRD_PARTY_NOTICES.md": {
-      "bytes": 2563,
-      "sha256": "434d23c64a8e6276747149253f955806a029589ace9851fe75e77e796fc76d6a"
+      "bytes": 2717,
+      "sha256": "5a0044774cf0f10b6c199c0003539579891895be157f2aba882a1931556ca5c2"
     },
     "configs/aqsoldbc_candidate_grid.json": {
       "bytes": 10304,
@@ -95,16 +99,20 @@
       "sha256": "d10eb1d9c92004e038daf957c6bf4516c2abaca951039838dafd454213a6e881"
     },
     "docs/RELEASE_CHECKLIST.md": {
-      "bytes": 2259,
-      "sha256": "ceb3c348d3fa6d77874a2b9f33e8ef2604c75c59db9bc1927ea511351ddb293b"
+      "bytes": 2406,
+      "sha256": "df5adad6effc656faa4aa078e907d20eff9bda6b8c668bbe6b0036887481cec2"
     },
     "docs/REPRODUCIBILITY_SCOPE.md": {
-      "bytes": 4736,
-      "sha256": "a77c389af12ab485a088c702101bf905a1235b6a156a4d7f78e2090853b664eb"
+      "bytes": 5193,
+      "sha256": "1062a91eb651222393adc5e57cc435a0388a23382b1aa321afc1eb4bf1ceca33"
     },
     "docs/TRAINING_ORCHESTRATION_API.md": {
       "bytes": 1708,
       "sha256": "2fea90e55171ad00a1f75d812c011b4bcae5c5474b1e7c6bd1cfed30c4870e8a"
+    },
+    "docs/V1_RELEASE_PLAN.md": {
+      "bytes": 3397,
+      "sha256": "967793a63e416b5a3de2377bd67891a99a02fc3f15d050e37d448478d10fc173"
     },
     "environment/README.md": {
       "bytes": 2279,
@@ -239,8 +247,8 @@
       "sha256": "4ee3ead3ccd901ef7497e117bab5981c3e78016c1d235a34f368d65d4f2bb997"
     },
     "scripts/build_release_manifest.py": {
-      "bytes": 1336,
-      "sha256": "86b94afb1dd468e393c194e82528209a558ca7018bc9c486298cd7c12fbe5638"
+      "bytes": 1345,
+      "sha256": "214cc4325462a00956216bd67e26a91e29b0271baa173497622ebd0eaf82ef7b"
     },
     "scripts/build_table_2.py": {
       "bytes": 6029,
@@ -251,8 +259,8 @@
       "sha256": "efb8d2104d83b7c1413040dee7b4450c98bb1f968ce989d97a7d3c70ca72d6f2"
     },
     "scripts/validate_release.py": {
-      "bytes": 40590,
-      "sha256": "1d5a342989470f91eeb89fdb524b77f3e559925c3b1875bb941f92efb035f3e1"
+      "bytes": 41242,
+      "sha256": "d325b5e49dd4718177408f34c98a524b7b3fc1bc3e3243f1888ffd39532629b4"
     },
     "src/dlg_sol/__init__.py": {
       "bytes": 1633,

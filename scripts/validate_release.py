@@ -35,6 +35,7 @@ ADAPTER_CLEAN_SMOKE = ROOT / "results" / "verified_manifests" / "dataset_adapter
 DATA_ACQUISITION = ROOT / "configs" / "data_acquisition.json"
 EVALUATION_RUNNER_PARITY = ROOT / "results" / "verified_manifests" / "evaluation_runner_parity.json"
 EVALUATION_RUNNER_CLEAN_SMOKE = ROOT / "results" / "verified_manifests" / "evaluation_runner_clean_environment_smoke.json"
+LICENSE_FILE = ROOT / "LICENSE"
 
 TEXT_SUFFIXES = {".cff", ".csv", ".json", ".md", ".py", ".txt", ".yaml", ".yml"}
 TEXT_DOTFILES = {".gitattributes", ".gitignore"}
@@ -75,6 +76,8 @@ def sha256(path: Path) -> str:
 
 def validate_manifest(errors: list[str]) -> None:
     payload = json.loads(MANIFEST.read_text(encoding="utf-8"))
+    if payload.get("release_stage") != "V1_REPRODUCIBILITY_PACKAGE_DEVELOPMENT":
+        errors.append("release stage does not match the selected v1.0 reproducibility scope")
     for relative, expected in payload["files"].items():
         path = ROOT / relative
         if not path.is_file():
@@ -84,6 +87,14 @@ def validate_manifest(errors: list[str]) -> None:
             errors.append(f"byte-size mismatch: {relative}")
         if sha256(path) != expected["sha256"]:
             errors.append(f"sha256 mismatch: {relative}")
+
+
+def validate_release_policy(errors: list[str]) -> None:
+    text = LICENSE_FILE.read_text(encoding="utf-8") if LICENSE_FILE.is_file() else ""
+    if not text.startswith("MIT License\n"):
+        errors.append("MIT licence file is missing or malformed")
+    if "Copyright (c) 2026 Hyunmo Goo and Hyeongwoo Kong" not in text:
+        errors.append("MIT copyright attribution is missing")
 
 
 def validate_tables(errors: list[str]) -> None:
@@ -633,6 +644,7 @@ def scan_public_text(errors: list[str]) -> None:
 def main() -> int:
     errors: list[str] = []
     validate_manifest(errors)
+    validate_release_policy(errors)
     validate_tables(errors)
     validate_evaluation_registry(errors)
     validate_core_parity(errors)
@@ -650,7 +662,7 @@ def main() -> int:
             print(f"- {error}")
         return 1
     print("STAGING_VALIDATION=PASS")
-    print("PUBLIC_RELEASE_READY=NO (repository licence and full code release remain pending)")
+    print("PUBLIC_RELEASE_READY=NO (v1.0 end-to-end reproducibility workflow and archival release remain pending)")
     return 0
 
 

@@ -2,11 +2,15 @@
 
 Code and machine-readable results supporting **“DLG-Sol: Integrating descriptor, molecular-language, and three-dimensional representations for aqueous-solubility prediction.”**
 
-DLG-Sol combines a Mordred/XGBoost descriptor model with a neural model derived from ChemBERTa and a distance-aware three-dimensional message-passing representation. The final prediction uses one evaluation-level, molecule-independent blend coefficient.
+DLG-Sol combines a Mordred/XGBoost descriptor model with a neural model derived from ChemBERTa and a distance-aware three-dimensional message-passing representation. The final prediction uses one molecule-independent blend coefficient within each fitted fold, split, or evaluation model.
 
 ## Repository status
 
 This is a pre-release staging repository. The currently included files cover the verified machine-readable Supplementary summaries, release-integrity checks, the six-evaluation registry, label-firewall checks, fixed blending, article-level scoring metrics, the canonical Mordred/XGBoost descriptor branch, split-safe descriptor training orchestration, the ChemBERTa language-encoder contracts, the explicit-polar-hydrogen distance-aware three-dimensional graph branch, the canonical `aug2_head4` language–geometry branch, evaluation-specific adapter contracts, and a provenance-checked local-package evaluation runner. Row-level benchmark data, historical model checkpoints, automatic data acquisition, and third-party source code are not part of this staging snapshot.
+
+The target release is a **v1.0 reproducibility package**. It will provide a documented, executable path from lawfully obtained user-supplied benchmark data through DLG-Sol training, prediction, fixed blending, scoring, and regeneration of the reported public outputs. Raw third-party benchmark rows, third-party source trees, and model weights without clear redistribution permission will not be bundled. Their provenance, access conditions, and required local-package schemas will instead be documented.
+
+The remaining v1.0 work and release criteria are tracked in `docs/V1_RELEASE_PLAN.md`.
 
 ## Canonical core modules
 
@@ -89,4 +93,4 @@ Citation metadata are provided in `CITATION.cff`. The article DOI and archival r
 
 ## License
 
-A repository license has not yet been selected by the copyright holders. Until a license is added, this staging snapshot should not be treated as granting reuse or redistribution rights. Third-party materials remain governed by their respective terms; see `THIRD_PARTY_NOTICES.md`.
+Original DLG-Sol source code and documentation in this repository are released under the MIT License; see `LICENSE`. Third-party data, software, pretrained models, and other external materials remain governed by their respective terms and are not relicensed by this repository; see `THIRD_PARTY_NOTICES.md`.

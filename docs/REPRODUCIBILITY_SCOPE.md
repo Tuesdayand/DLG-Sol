@@ -4,19 +4,20 @@
 
 The current pre-release snapshot supports inspection and integrity verification of the machine-readable results reported with the article. It includes complete configuration-level representation grids, aggregate paired comparisons, the six-evaluation registry, split-role label guards, fixed convex blending, regression metrics, paired RMSE bootstrap scoring, the canonical Mordred/XGBoost descriptor branch, split-safe descriptor orchestration primitives, the ChemBERTa encoder contracts, the explicit-polar-hydrogen distance-aware 3D graph branch, the canonical `aug2_head4` language–geometry branch, six evaluation-specific adapter contracts, and a provenance-checked local-package evaluation runner. The public API now enforces disjoint fit, coefficient, reserved, and label-free scored roles for each recorded evaluation; fit-only descriptor filtering; validation-selected descriptor candidates; the recorded pooled-inner ranking rule; complete fold/head prediction aggregation; ChemBERTa configuration validation; canonical inference after randomized-SMILES training augmentation; masked-mean language embedding extraction; label-free conformer graph construction; label-free 3D prediction; fit-only fusion preprocessing; label-free training-mean geometry fallback; fixed-epoch residual-head training; exact four-head neural averaging; zero- versus one-based fold seed schedules; dataset-specific winsorization; OOF, five-model, or full-refit scored-prediction aggregation; evaluation-specific coefficient reconstruction; blend-before-record aggregation; and a separate scored-label phase. Automatic benchmark acquisition and complete raw-data-to-trained-model entry points remain pending.
 
-## Planned full release
+## Target v1.0 reproducibility package
 
-The full release is intended to provide:
+The v1.0 release will provide an executable workflow for users who lawfully obtain the required benchmark inputs. It will not redistribute raw third-party benchmark rows, third-party source trees, or pretrained and fine-tuned weights unless their terms clearly permit redistribution. The target workflow will provide:
 
-1. documented acquisition or reconstruction of each permitted benchmark dataset;
-2. split and canonicalization records;
-3. benchmark-specific descriptor orchestration and end-to-end XGBoost fitting;
-4. complete benchmark-specific ChemBERTa fold runners and permitted checkpoint distribution;
-5. dataset adapters and failure fallback for the released conformer and distance-aware 3D message-passing branch;
-6. dataset-specific orchestration of the released four-head neural model and fixed prediction-level blending;
-7. external-comparator adapters that are legally redistributable or independent;
-8. paired bootstrap scoring;
-9. regeneration of the main figures, Table 2, and machine-readable Supplementary tables.
+1. documented acquisition or reconstruction instructions for each benchmark where permitted;
+2. validated local-package schemas, split records, and canonicalization records;
+3. benchmark-specific end-to-end descriptor, ChemBERTa, 3D-MPNN, four-head fusion, and fixed-blend orchestration;
+4. dataset-specific failure handling and label-access boundaries;
+5. legally redistributable or independently implemented external-comparator adapters;
+6. RMSE, MAE, and paired-bootstrap scoring;
+7. regeneration of the main figures, Table 2, and machine-readable Supplementary tables;
+8. pinned environments, tests, release-integrity validation, and an archival release record.
+
+Fresh training under the recorded protocol is a protocol reproduction, not a promise of bitwise-identical historical weights. Users will not need redistributed historical checkpoints to execute the v1.0 workflow.
 
 ## Evidence boundaries
 

@@ -4,6 +4,7 @@ title: "DLG-Sol: descriptor, molecular-language, and three-dimensional represent
 type: software
 version: 0.1.0-pre-release
 date-released: 2026-09-01
+license: MIT
 authors:
   - family-names: Goo
     given-names: Hyunmo

@@ -1,6 +1,6 @@
 # Third-party sources and notices
 
-No third-party source tree, pretrained weight, or raw third-party dataset is bundled in this pre-release snapshot.
+No third-party source tree, pretrained weight, or raw third-party dataset is bundled in this pre-release snapshot. The repository's MIT License applies only to original DLG-Sol source code and documentation and does not relicense any third-party resource listed below.
 
 The study used or evaluated resources from the following upstream projects. Fixed revisions are recorded to identify the evaluated implementation; a revision is not a claim that all upstream data are redistributable.
 

@@ -6,7 +6,8 @@
 - [x] Unlicensed third-party repositories excluded
 - [x] Raw molecular data and row-level predictions excluded from the initial snapshot
 - [x] Integrity and public-text scan implemented
-- [ ] Repository code licence selected by the copyright holders
+- [x] Repository code licence selected by the copyright holders (MIT)
+- [x] v1.0 scope fixed as a user-supplied-data reproducibility package without unauthorized third-party redistribution
 - [x] Evaluation registry, label firewall, fixed blending, and scoring core exported
 - [x] Core synthetic tests and full-row parity summary completed
 - [x] ChemBERTa variant, augmentation, auxiliary-target, and embedding contracts exported
@@ -21,11 +22,12 @@
 - [x] Evaluation-specific coefficient reconstruction and blend-before-aggregation runner completed
 - [x] Separate label-access scoring phase and paired-bootstrap output completed
 - [x] Six-evaluation historical assembly, metric, and bootstrap parity completed
-- [ ] Automatic or reconstructive raw benchmark acquisition completed where permitted
+- [ ] Documented acquisition or reconstruction of raw benchmark inputs completed where permitted
 - [ ] External-adapter file provenance audited
 - [ ] Dataset-specific row-level redistribution decisions completed
 - [x] Clean-environment reproduction executed for the current summary-data, code, Figure 2, and Table 2 scope
 - [x] Chemical-subgroup figure regeneration executed from public inputs
 - [x] Table 2 regeneration executed from public inputs
-- [ ] Public repository URL and archival DOI assigned
-- [ ] Manuscript availability statement updated
+- [x] Public repository URL assigned
+- [ ] Archival DOI assigned
+- [x] Manuscript availability statement updated

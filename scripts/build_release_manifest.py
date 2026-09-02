@@ -37,7 +37,7 @@ def main() -> None:
         files[relative] = {"bytes": path.stat().st_size, "sha256": sha256(path)}
     payload = {
         "schema_version": 1,
-        "release_stage": "EVALUATION_RUNNER_PRE_RELEASE",
+        "release_stage": "V1_REPRODUCIBILITY_PACKAGE_DEVELOPMENT",
         "files": files,
     }
     OUTPUT.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
