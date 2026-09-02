@@ -1,0 +1,107 @@
+{
+  "schema_version": 1,
+  "raw_descriptor_calculation": {
+    "calculator": "Mordred 1.2.0",
+    "molecular_parser": "RDKit 2023.09.6",
+    "ignore_3d": true,
+    "invalid_or_uncomputable_values": "represented as missing values before partition-local filtering"
+  },
+  "shared_xgboost_settings": {
+    "objective": "reg:squarederror",
+    "tree_method": "hist",
+    "verbosity": 0
+  },
+  "protocols": {
+    "aqsoldbc": {
+      "evaluation_ids": ["R01"],
+      "selection_design": "nested inner validation within each outer fold",
+      "filtering": {
+        "variance_threshold": 1e-12,
+        "variance_ddof": 0,
+        "correlation_threshold": 0.95,
+        "correlation_comparison": "gt",
+        "correlated_pair_rule": "retain the earlier input column and remove the later input column"
+      },
+      "search": {
+        "generator": "aqsoldbc",
+        "base_seed": 260701,
+        "candidate_seed_offset": 11,
+        "candidate_count": 40,
+        "selection_metric": "pooled inner-validation RMSE",
+        "tie_break": ["mean fold RMSE", "trial index"],
+        "early_stopping_rounds": 120,
+        "search_tree_budget": 5000,
+        "final_tree_rule": "median(best_iteration + 1) across inner folds",
+        "final_ensemble_seeds": [260740, 260717, 260727, 260737, 260747],
+        "recorded_selected_trials_by_outer_fold": [4, 8, 4, 0, 0],
+        "recorded_final_tree_counts_by_outer_fold": [3456, 3332, 3064, 2601, 3198]
+      },
+      "expected_outer_feature_counts": [373, 353, 354, 352, 356]
+    },
+    "tdc": {
+      "evaluation_ids": ["R03", "R04"],
+      "selection_design": "per-outer-fold fit/selection partitions with official test untouched",
+      "filtering": {
+        "variance_threshold": 1e-12,
+        "variance_ddof": 1,
+        "correlation_threshold": 0.98,
+        "correlation_comparison": "ge",
+        "correlated_pair_rule": "retain the earlier input column and remove the later input column"
+      },
+      "search": {
+        "generator": "tdc",
+        "base_seed": 260722,
+        "candidate_count": 24,
+        "selection_metric": "validation RMSE",
+        "early_stopping_rounds": 120,
+        "search_tree_budget": 3500,
+        "model_seed_rule": "base_seed + fold * 100 + trial",
+        "recorded_selected_trials_by_outer_fold": [7, 19, 5, 0, 7],
+        "recorded_best_iterations_by_outer_fold": [230, 377, 650, 365, 955]
+      },
+      "expected_outer_feature_counts": [337, 341, 337, 340, 338]
+    },
+    "complat": {
+      "evaluation_ids": ["R02", "R09"],
+      "selection_design": "one supplied Train/Val search followed by frozen-parameter OOF fits and a full-Train supplied-test refit",
+      "filtering": {
+        "variance_threshold": 1e-12,
+        "variance_ddof": 1,
+        "correlation_threshold": null,
+        "correlation_comparison": null,
+        "correlated_pair_rule": "not applied in the recorded primary protocol"
+      },
+      "search": {
+        "generator": "complat",
+        "base_seed": 260722,
+        "candidate_count": 36,
+        "selection_metric": "supplied validation RMSE",
+        "selected_trial": 2,
+        "outer_model_seed_rule": "base_seed + fold",
+        "supplied_test_refit_seed_rule": "base_seed + 999"
+      },
+      "expected_outer_feature_counts": [646, 650, 654, 650, 650],
+      "expected_supplied_test_refit_feature_count": 650
+    },
+    "jchem": {
+      "evaluation_ids": ["R05"],
+      "selection_design": "five supplied Train/Val splits with one common Test set untouched",
+      "filtering": {
+        "variance_threshold": 1e-12,
+        "variance_ddof": 1,
+        "correlation_threshold": 0.98,
+        "correlation_comparison": "ge",
+        "correlated_pair_rule": "retain the earlier input column and remove the later input column"
+      },
+      "search": {
+        "generator": "jchem",
+        "base_seed": 260725,
+        "candidate_count": 16,
+        "selection_metric": "validation RMSE",
+        "model_seed_rule": "base_seed + fold * 100 + trial",
+        "recorded_selected_trials_by_split": [3, 15, 6, 6, 11]
+      },
+      "expected_split_feature_counts": [571, 575, 572, 574, 615]
+    }
+  }
+}

@@ -1,0 +1,4 @@
+-r descriptor-requirements.txt
+-r language-requirements.txt
+-r geometry-requirements.txt
+-r fusion-requirements.txt

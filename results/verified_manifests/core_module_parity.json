@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "verification_scope": "canonical regression metrics, paired RMSE bootstrap, and fixed-blend application against locked full-row evaluation artefacts",
+  "row_level_inputs_redistributed": false,
+  "bootstrap_replicates": 10000,
+  "bootstrap_seed": 260812,
+  "evaluations": [
+    {
+      "evaluation_id": "R01",
+      "rows": 8047,
+      "source_sha256": "31f11705602d7aff59f10678321fa6a3bdd3e3c5c403c508572dda6cf9b5b1ae",
+      "max_metric_absolute_difference": 0.0,
+      "max_bootstrap_absolute_difference": 0.0,
+      "blend_reconstruction": {
+        "mode": "fold_specific",
+        "alpha_by_fold": {
+          "0": 0.5,
+          "1": 0.5,
+          "2": 0.5,
+          "3": 0.5,
+          "4": 0.5
+        },
+        "max_absolute_difference": 1.7763568394002505e-15
+      }
+    },
+    {
+      "evaluation_id": "R02",
+      "rows": 17937,
+      "source_sha256": "5959efdf88715f497390b523c71b309afc4d06d2fa8622cd544e9b43f689dd29",
+      "max_metric_absolute_difference": 0.0,
+      "max_bootstrap_absolute_difference": 0.0,
+      "blend_reconstruction": {
+        "mode": "fold_specific",
+        "alpha_by_fold": {
+          "0": 0.35783701629836606,
+          "1": 0.34719288633809187,
+          "2": 0.3483525332542907,
+          "3": 0.35889311589834877,
+          "4": 0.34989160615768977
+        },
+        "max_absolute_difference": 3.552713678800501e-15
+      }
+    },
+    {
+      "evaluation_id": "R03",
+      "rows": 7985,
+      "source_sha256": "d19d21d14a1d8c506b199a0ba03b888ea07ed18bbf5ac69e25d1ffc11ecb176c",
+      "max_metric_absolute_difference": 0.0,
+      "max_bootstrap_absolute_difference": 0.0,
+      "blend_reconstruction": {
+        "mode": "fold_specific",
+        "alpha_by_fold": {
+          "0": 0.5107147095759091,
+          "1": 0.5309883523177864,
+          "2": 0.513853188782415,
+          "3": 0.4749956727808701,
+          "4": 0.5096218180594146
+        },
+        "max_absolute_difference": 3.552713678800501e-15
+      }
+    },
+    {
+      "evaluation_id": "R04",
+      "rows": 1997,
+      "source_sha256": "a3b3310f146f65a8ee220edcab2f0c5ba04f4c5e65caefd83dbe50203c1742e0",
+      "max_metric_absolute_difference": 0.0,
+      "max_bootstrap_absolute_difference": 0.0,
+      "blend_reconstruction": {
+        "mode": "single_coefficient",
+        "alpha": 0.5079547955184477,
+        "max_absolute_difference": 3.552713678800501e-15
+      }
+    },
+    {
+      "evaluation_id": "R05",
+      "rows": 980,
+      "source_sha256": "9e1f70feda8787499725b7900acbeb93c509acf138ded353e83afee039a3ac84",
+      "max_metric_absolute_difference": 0.0,
+      "max_bootstrap_absolute_difference": 0.0,
+      "blend_reconstruction": {
+        "mode": "not_applicable",
+        "reason": "the reported prediction is the mean of five separately blended split-model predictions"
+      }
+    },
+    {
+      "evaluation_id": "R09",
+      "rows": 1282,
+      "source_sha256": "e32ca168bcef23c45d2e4b64f8553037b44f661ef91570a8f281cde0c3f9bc2d",
+      "max_metric_absolute_difference": 0.0,
+      "max_bootstrap_absolute_difference": 0.0,
+      "blend_reconstruction": {
+        "mode": "single_coefficient",
+        "alpha": 0.3524569403390779,
+        "max_absolute_difference": 1.7166179677730042e-7,
+        "interpretation": "consistent with the recorded reconstruction tolerance exception for this evaluation"
+      }
+    }
+  ],
+  "max_metric_absolute_difference": 0.0,
+  "max_bootstrap_absolute_difference": 0.0,
+  "max_blend_reconstruction_absolute_difference": 1.7166179677730042e-7,
+  "status": "PASS"
+}

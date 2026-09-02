@@ -1,0 +1,31 @@
+# Release checklist
+
+- [x] Separate clean-export directory created
+- [x] Machine-readable summary tables copied from the verified Supplementary package
+- [x] Upstream repositories and evaluated revisions recorded
+- [x] Unlicensed third-party repositories excluded
+- [x] Raw molecular data and row-level predictions excluded from the initial snapshot
+- [x] Integrity and public-text scan implemented
+- [ ] Repository code licence selected by the copyright holders
+- [x] Evaluation registry, label firewall, fixed blending, and scoring core exported
+- [x] Core synthetic tests and full-row parity summary completed
+- [x] ChemBERTa variant, augmentation, auxiliary-target, and embedding contracts exported
+- [x] ChemBERTa historical configuration and archived-checkpoint parity summary completed
+- [x] Explicit-polar-hydrogen conformer graph and distance-aware 3D-MPNN code exported
+- [x] Geometry graph reconstruction, archived-checkpoint, and embedding parity summary completed
+- [x] Four-member language–geometry preprocessing, MLP training, fallback, and neural aggregation exported
+- [x] Fusion preprocessing and historical arithmetic-mean parity summary completed
+- [x] Six evaluation-specific partition, preprocessing, seed, and scored-prediction aggregation adapters exported
+- [x] Dataset-adapter role, preprocessing, schedule, and aggregation parity summary completed
+- [x] Pinned acquisition registry and local-package provenance contract completed
+- [x] Evaluation-specific coefficient reconstruction and blend-before-aggregation runner completed
+- [x] Separate label-access scoring phase and paired-bootstrap output completed
+- [x] Six-evaluation historical assembly, metric, and bootstrap parity completed
+- [ ] Automatic or reconstructive raw benchmark acquisition completed where permitted
+- [ ] External-adapter file provenance audited
+- [ ] Dataset-specific row-level redistribution decisions completed
+- [x] Clean-environment reproduction executed for the current summary-data, code, Figure 2, and Table 2 scope
+- [x] Chemical-subgroup figure regeneration executed from public inputs
+- [x] Table 2 regeneration executed from public inputs
+- [ ] Public repository URL and archival DOI assigned
+- [ ] Manuscript availability statement updated

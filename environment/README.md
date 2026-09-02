@@ -1,0 +1,23 @@
+# Environments
+
+The integrity validator uses only the Python standard library and supports Python 3.9 or newer.
+
+The canonical core tests use NumPy and pandas from `analysis-requirements.txt` and require Python 3.11 or newer.
+
+The descriptor branch uses `descriptor-requirements.txt`, which records the Python 3.9 modelling stack used for raw Mordred calculation and the original descriptor-model workflows. The repaired AqSolDBc nested calculation retained the same public filtering and candidate-generation contract but ran its cached descriptors with NumPy 2.4.4, pandas 3.0.2, scikit-learn 1.8.0, and XGBoost 3.2.0.
+
+The ChemBERTa language branch uses `language-requirements.txt`. Its pinned stack supports configuration validation, RDKit auxiliary targets and SMILES augmentation, PyTorch checkpoint loading, and Transformers embedding extraction. The pretrained repository revision used by the historical run was not recorded, so this environment pin does not by itself imply a bitwise-identical fresh pretrained download.
+
+The distance-aware 3D graph branch uses `geometry-requirements.txt`. It pins the recorded RDKit graph-construction stack with PyTorch 2.7.1 and PyTorch Geometric 2.6.1 for checkpoint loading, graph reconstruction, and label-free inference.
+
+The language–geometry fusion branch uses `fusion-requirements.txt`. It pins the NumPy, scikit-learn, and PyTorch versions used for preprocessing parity, MLP checkpoint compatibility, training, and inference. Language and geometry embedding generation retain their separate environment files.
+
+Use `release-test-requirements.txt` to run the complete cross-branch test suite without optional-dependency skips. It combines the descriptor, language, and geometry requirement files; it is a validation environment rather than a claim that every reported workflow was trained in one environment.
+
+The full modelling release will provide separate locked environments for:
+
+- dataset-specific DLG-Sol orchestration workflows;
+- TensorFlow/DeepChem Consensus-GNN adaptation;
+- analysis and figure/table regeneration.
+
+These environments are kept separate because the reported workflows used different framework and Python versions. A single unconstrained environment would not faithfully describe the computations.

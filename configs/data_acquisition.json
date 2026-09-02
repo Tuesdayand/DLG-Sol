@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "network_default": "deny",
+  "resources": [
+    {
+      "source_id": "aqsoldb",
+      "url": "https://github.com/mcsorkun/AqSolDB",
+      "revision": "8e02b548fd9a78778ff89a5aa9a460d1a289cc3a",
+      "licence_status": "upstream_data_marked_cc0_1_0",
+      "acquisition_mode": "manual_pinned_upstream_acquisition",
+      "automatic_download": false
+    },
+    {
+      "source_id": "aqsoldbc_derivative",
+      "url": "https://github.com/mcsorkun/AqSolDB",
+      "revision": "8e02b548fd9a78778ff89a5aa9a460d1a289cc3a",
+      "licence_status": "derivative_lineage_package_pending",
+      "acquisition_mode": "user_supplied_local_package",
+      "automatic_download": false
+    },
+    {
+      "source_id": "complat",
+      "url": "https://github.com/ComPlat/water-solubility-prediction",
+      "revision": "d4feda24b4bcb9efee9953605ba56af0e52dba4d",
+      "licence_status": "no_repository_licence_identified",
+      "acquisition_mode": "user_supplied_local_package",
+      "automatic_download": false
+    },
+    {
+      "source_id": "tdc_dataset",
+      "url": "https://tdcommons.ai/",
+      "revision": "c310c35f27e3f506411018ac43d97b8ba23ca652",
+      "licence_status": "software_mit_dataset_rights_separate",
+      "acquisition_mode": "user_supplied_local_package",
+      "automatic_download": false
+    },
+    {
+      "source_id": "jchem_dataset",
+      "url": "https://github.com/nadinulrich/log_Sw_prediction",
+      "revision": "3da09dc96acde6c5c51d784307559067864ca779",
+      "licence_status": "dataset_specific_review_pending",
+      "acquisition_mode": "user_supplied_local_package",
+      "automatic_download": false
+    },
+    {
+      "source_id": "chemberta_zinc_base_v1",
+      "url": "https://huggingface.co/seyonec/ChemBERTa-zinc-base-v1",
+      "revision": "761d6a18cf99db371e0b43baf3e2d21b3e865a20",
+      "licence_status": "no_explicit_licence_in_retrieved_metadata",
+      "acquisition_mode": "identifier_only_no_bundled_weights",
+      "automatic_download": false
+    }
+  ],
+  "evaluation_source_map": {
+    "R01": "aqsoldbc_derivative",
+    "R02": "complat",
+    "R03": "tdc_dataset",
+    "R04": "tdc_dataset",
+    "R05": "jchem_dataset",
+    "R09": "complat"
+  }
+}

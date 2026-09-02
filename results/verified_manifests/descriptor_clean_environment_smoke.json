@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "environment_creation": "new Python 3.9 virtual environment followed by installation from environment/descriptor-requirements.txt",
+  "python": "3.9.23",
+  "platform": "Linux-6.17.0-29-generic-x86_64-with-glibc2.39",
+  "packages": {
+    "numpy": "1.26.4",
+    "pandas": "2.2.3",
+    "scikit-learn": "1.6.1",
+    "xgboost": "2.1.1",
+    "rdkit": "2023.9.6",
+    "mordred": "1.2.0",
+    "scipy": "1.13.1",
+    "networkx": "2.8.8"
+  },
+  "tests_discovered": 16,
+  "failures": 0,
+  "errors": 0,
+  "mordred_descriptor_columns": 1613,
+  "aqsoldbc_candidate_grid_sha256": "a2b7feea0ebb0138ec7ea101f3318ad0f844eb3fa4997af60504b1eee9e64d49",
+  "synthetic_xgboost_constructor_max_absolute_prediction_difference": 0.0,
+  "status": "PASS"
+}

@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "status": "PASS",
+  "gate": "training_orchestration_o1",
+  "environment": {
+    "python": "3.9.23",
+    "numpy": "1.26.4",
+    "pandas": "2.2.3",
+    "scikit_learn": "1.6.1",
+    "xgboost": "2.1.1",
+    "rdkit": "2023.09.6",
+    "mordred": "1.2.0"
+  },
+  "requirements_file": "environment/descriptor-requirements.txt",
+  "tests_discovered": 28,
+  "failures": 0,
+  "errors": 0,
+  "partition_contract_tests": "PASS",
+  "historical_selection_parity": "PASS",
+  "scored_label_firewall_tests": "PASS",
+  "prediction_aggregation_tests": "PASS"
+}

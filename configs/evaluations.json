@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "common_label_firewall": {
+    "scored_labels_allowed_for": [
+      "scoring"
+    ],
+    "scored_labels_forbidden_for": [
+      "preprocessing",
+      "hyperparameter_selection",
+      "model_fitting",
+      "coefficient_fitting"
+    ],
+    "scope_note": "The firewall is split-specific and does not claim first-ever label access or complete nested reselection of all development decisions."
+  },
+  "evaluations": [
+    {
+      "evaluation_id": "R01",
+      "dataset_id": "aqsoldbc",
+      "display_name": "AqSolDBc development OOF",
+      "design": "out_of_fold",
+      "expected_rows": 8047,
+      "outer_folds": 5,
+      "prediction_aggregation": "one held-out prediction per outer fold",
+      "coefficient_policy": "prespecified 0.5 in every outer fold"
+    },
+    {
+      "evaluation_id": "R02",
+      "dataset_id": "complat",
+      "display_name": "ComPlat nested OOF",
+      "design": "out_of_fold",
+      "expected_rows": 17937,
+      "outer_folds": 5,
+      "prediction_aggregation": "one held-out prediction per outer fold",
+      "coefficient_policy": "fold-specific least squares from training-side OOF predictions"
+    },
+    {
+      "evaluation_id": "R03",
+      "dataset_id": "tdc",
+      "display_name": "TDC OOF",
+      "design": "out_of_fold",
+      "expected_rows": 7985,
+      "outer_folds": 5,
+      "prediction_aggregation": "one held-out prediction per outer fold",
+      "coefficient_policy": "fold-specific least squares from training-side OOF predictions"
+    },
+    {
+      "evaluation_id": "R04",
+      "dataset_id": "tdc",
+      "display_name": "TDC supplied test",
+      "design": "supplied_test",
+      "expected_rows": 1997,
+      "outer_folds": null,
+      "prediction_aggregation": "mean of five split-model predictions per supplied-test row",
+      "coefficient_policy": "one least-squares coefficient from training-side OOF predictions"
+    },
+    {
+      "evaluation_id": "R05",
+      "dataset_id": "jchem",
+      "display_name": "JCheM supplied test",
+      "design": "supplied_test",
+      "expected_rows": 980,
+      "outer_folds": null,
+      "prediction_aggregation": "mean of five split-model predictions per supplied-test row",
+      "coefficient_policy": "validation-only least-squares coefficient within each of five supplied splits"
+    },
+    {
+      "evaluation_id": "R09",
+      "dataset_id": "complat",
+      "display_name": "ComPlat supplied test",
+      "design": "supplied_test",
+      "expected_rows": 1282,
+      "outer_folds": null,
+      "prediction_aggregation": "one prediction per supplied-test row",
+      "coefficient_policy": "one least-squares coefficient from training-side OOF predictions"
+    }
+  ]
+}

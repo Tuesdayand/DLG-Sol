@@ -1,0 +1,151 @@
+{
+  "schema_version": 1,
+  "status": "PASS",
+  "gate": "training_orchestration_o1",
+  "row_level_inputs_redistributed": false,
+  "historical_source_hashes": {
+    "aqsoldbc_outer_fold_00_inner_trials": "7ea305f2bdea854ec470ae315671c70bf0e9a7c6bfb88666b680ed45d98f5e11",
+    "aqsoldbc_outer_fold_01_inner_trials": "d33dcc45a5d0d13d261e80ab7cd11a55137d3513748c32693a39a7ede262207e",
+    "aqsoldbc_outer_fold_02_inner_trials": "56845d46448cb29ac77978d1773fdc283a3cb065e4a1de587282954fdaaa1722",
+    "aqsoldbc_outer_fold_03_inner_trials": "5967574a13fa6b9be0160e739794088bfe699124ad315b10c136dea275c56357",
+    "aqsoldbc_outer_fold_04_inner_trials": "5dde0b088aa2ba48491505c601f2811d823a1c40e143569b0d4ff77623cfd269",
+    "tdc_fold_00_trials": "ab2a2f4aff16e595214f697b25bfef44a684dcf783927437262a5e9ba228ffb1",
+    "tdc_fold_01_trials": "e3fa687c3bb54e67157d67efc79e25a1358419a6c77a9529e84c9cd8606bb73d",
+    "tdc_fold_02_trials": "33224fcde63d48d04cb30d60c23461c584b6bafaeb7ed5c59dd9e4605674c43c",
+    "tdc_fold_03_trials": "5e816d53b5f0ef0a0b0dcb157b59066093e0552cc4b3ba528b061c3a6f067a98",
+    "tdc_fold_04_trials": "d760e925edc66e16c7c39aaa18eb7f605b535063f1b8ca54a80ce74bdc4c0db0",
+    "complat_validation_trials": "aabe77fae79e5f1439870e945836d5b1be3fdcd42cccf29670e1f07015d04e6f",
+    "jchem_split_summary": "fa84e283658ff1eaa62e9a2adadbcf00604668406bd0644aaf922985bea11909"
+  },
+  "observed": {
+    "aqsoldbc_selected_trials": [
+      4,
+      8,
+      4,
+      0,
+      0
+    ],
+    "aqsoldbc_final_tree_counts": [
+      3456,
+      3332,
+      3064,
+      2601,
+      3198
+    ],
+    "tdc_selected_trials": [
+      7,
+      19,
+      5,
+      0,
+      7
+    ],
+    "tdc_best_iterations": [
+      230,
+      377,
+      650,
+      365,
+      955
+    ],
+    "complat_selected_trial": 2,
+    "jchem_selected_trials": [
+      3,
+      15,
+      6,
+      6,
+      11
+    ]
+  },
+  "expected": {
+    "aqsoldbc_selected_trials": [
+      4,
+      8,
+      4,
+      0,
+      0
+    ],
+    "aqsoldbc_final_tree_counts": [
+      3456,
+      3332,
+      3064,
+      2601,
+      3198
+    ],
+    "tdc_selected_trials": [
+      7,
+      19,
+      5,
+      0,
+      7
+    ],
+    "tdc_best_iterations": [
+      230,
+      377,
+      650,
+      365,
+      955
+    ],
+    "complat_selected_trial": 2,
+    "jchem_selected_trials": [
+      3,
+      15,
+      6,
+      6,
+      11
+    ]
+  },
+  "aqsoldbc_detail": [
+    {
+      "outer_fold": 0,
+      "selected_trial": 4,
+      "final_tree_count": 3456
+    },
+    {
+      "outer_fold": 1,
+      "selected_trial": 8,
+      "final_tree_count": 3332
+    },
+    {
+      "outer_fold": 2,
+      "selected_trial": 4,
+      "final_tree_count": 3064
+    },
+    {
+      "outer_fold": 3,
+      "selected_trial": 0,
+      "final_tree_count": 2601
+    },
+    {
+      "outer_fold": 4,
+      "selected_trial": 0,
+      "final_tree_count": 3198
+    }
+  ],
+  "tdc_detail": [
+    {
+      "fold": 0,
+      "selected_trial": 7,
+      "best_iteration": 230
+    },
+    {
+      "fold": 1,
+      "selected_trial": 19,
+      "best_iteration": 377
+    },
+    {
+      "fold": 2,
+      "selected_trial": 5,
+      "best_iteration": 650
+    },
+    {
+      "fold": 3,
+      "selected_trial": 0,
+      "best_iteration": 365
+    },
+    {
+      "fold": 4,
+      "selected_trial": 7,
+      "best_iteration": 955
+    }
+  ],
+  "partition_and_aggregation_contracts": "synthetic_tests"
+}

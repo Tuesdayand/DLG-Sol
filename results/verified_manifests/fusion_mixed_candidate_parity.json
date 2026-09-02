@@ -1,0 +1,140 @@
+{
+  "schema_version": 2,
+  "gate": "language_geometry_fusion_f1",
+  "status": "PASS",
+  "row_level_inputs_redistributed": false,
+  "checkpoints_redistributed": false,
+  "embeddings_redistributed": false,
+  "predictions_redistributed": false,
+  "member_mapping": [
+    {
+      "member_index": 0,
+      "language_variant": "canonical_multitask",
+      "preprocessing": "raw_standardized_concat",
+      "regressor": "residual_mlp"
+    },
+    {
+      "member_index": 1,
+      "language_variant": "randomized_single_task",
+      "preprocessing": "raw_standardized_concat",
+      "regressor": "plain_mlp"
+    },
+    {
+      "member_index": 2,
+      "language_variant": "canonical_single_task",
+      "preprocessing": "raw_standardized_concat",
+      "regressor": "residual_mlp"
+    },
+    {
+      "member_index": 3,
+      "language_variant": "randomized_single_task",
+      "preprocessing": "separate_pca384_l2_concat",
+      "regressor": "plain_mlp"
+    }
+  ],
+  "historical_sources": {
+    "fusion_grid_implementation": {
+      "semantic_id": "fusion_grid_implementation",
+      "sha256": "1879eacaf3f9d5f2b5c200e8085fbeb69b3cca78771260856e5efb043c470a0c"
+    },
+    "aqsoldbc_four_member_runner": {
+      "semantic_id": "aqsoldbc_four_member_runner",
+      "sha256": "78b20f6847410a595e8235363f97d58a1854f680b464fbb55cd531748e0ad65b"
+    },
+    "tdc_four_member_runner": {
+      "semantic_id": "tdc_four_member_runner",
+      "sha256": "697e788cd806536fb1dd8a09317699b9828cf04b23137a2af619510faa992966"
+    },
+    "jchem_four_member_runner": {
+      "semantic_id": "jchem_four_member_runner",
+      "sha256": "f3e67a3f875439a4c38effd7a03c8cdb662bd4a1ec0de2a316693a304187d820"
+    },
+    "complat_winsorized_refit_runner": {
+      "semantic_id": "complat_winsorized_refit_runner",
+      "sha256": "0d1955961cc2dad8aae82b57938957c4b89325c3fab52d97310d2f92bf85cdeb"
+    },
+    "training_mean_fallback_policy": {
+      "semantic_id": "training_mean_fallback_policy",
+      "sha256": "8515dd59644dd1a0f0138c71d90fba7aa387307659cf46a3668418ef27d215cb"
+    }
+  },
+  "historical_prediction_aggregation": [
+    {
+      "source_group": "aqsoldbc_development",
+      "folds": 5,
+      "rows_across_fold_files": 40235,
+      "members_per_row": 4,
+      "maximum_float32_aggregation_difference": 0.0,
+      "member_mapping_consistent_across_folds": true,
+      "member_mapping_matches_historical_contract": true
+    },
+    {
+      "source_group": "tdc_native",
+      "folds": 5,
+      "rows_across_fold_files": 49910,
+      "members_per_row": 4,
+      "maximum_float32_aggregation_difference": 0.0,
+      "member_mapping_consistent_across_folds": true,
+      "member_mapping_matches_historical_contract": true
+    },
+    {
+      "source_group": "jchem_native",
+      "folds": 5,
+      "rows_across_fold_files": 48990,
+      "members_per_row": 4,
+      "maximum_float32_aggregation_difference": 0.0,
+      "member_mapping_consistent_across_folds": true,
+      "member_mapping_matches_historical_contract": true
+    },
+    {
+      "source_group": "complat_oof",
+      "folds": 5,
+      "rows_across_fold_files": 89685,
+      "members_per_row": 4,
+      "maximum_float32_aggregation_difference": 0.0,
+      "member_mapping_consistent_across_folds": true,
+      "member_mapping_matches_historical_contract": true
+    }
+  ],
+  "preprocessing_parity": [
+    {
+      "method": "raw_standardized_concat",
+      "rows": 8047,
+      "shape": [
+        8047,
+        1043
+      ],
+      "maximum_absolute_difference": 0.0
+    },
+    {
+      "method": "separate_pca384_l2_concat",
+      "rows": 8047,
+      "shape": [
+        8047,
+        768
+      ],
+      "maximum_absolute_difference": 1.1920928955078125e-07
+    }
+  ],
+  "preprocessing_absolute_tolerance": 2e-07,
+  "training_mean_fallback_maximum_absolute_difference": 0.0,
+  "adapter_winsorization_is_universal": false,
+  "adapter_boundary": "dataset_specific_adapter_selects_optional_train_only_winsorization",
+  "architecture_compatibility_probe": {
+    "checkpoint_semantic_id": "residual_fusion_head_architecture_probe",
+    "checkpoint_sha256": "e4537b0f8f3d97d932ad3c1ce6fb0aaabb4c447ce90a3267ed33798aeaa2cf6a",
+    "checkpoint_bytes": 3982967,
+    "input_dimension": 1043,
+    "hidden_dimension": 384,
+    "depth": 2,
+    "strict_load": true,
+    "final_mixed_member_checkpoint": false
+  },
+  "final_mixed_member_checkpoints_archived": false,
+  "final_mixed_member_checkpoint_parity_claimed": false,
+  "scored_inference_accepts_labels": false,
+  "verification_scope": "historical heterogeneous mixed-fusion development candidate; not the final DLG-Sol neural component",
+  "target_model_identity": "mixed_development_candidate",
+  "final_dlg_sol_evidence": false,
+  "superseded_for_final_model_identity_by": "fusion_branch_parity.json"
+}

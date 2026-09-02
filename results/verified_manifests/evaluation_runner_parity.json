@@ -1,0 +1,120 @@
+{
+  "schema_version": 1,
+  "gate": "acquisition_data_layout_evaluation_runner_e1",
+  "status": "PASS",
+  "model_identity": "aug2_head4",
+  "bootstrap_replicates": 10000,
+  "bootstrap_seed_descriptor": 260812,
+  "bootstrap_seed_neural": 260813,
+  "row_level_inputs_redistributed": false,
+  "predictions_redistributed": false,
+  "scored_labels_redistributed": false,
+  "evaluations": [
+    {
+      "evaluation_id": "R01",
+      "rows": 8047,
+      "coefficient_values": {
+        "0": 0.5,
+        "1": 0.5,
+        "2": 0.5,
+        "3": 0.5,
+        "4": 0.5
+      },
+      "maximum_descriptor_row_difference": 0.0,
+      "maximum_neural_row_difference": 0.0,
+      "maximum_dlg_sol_row_difference": 1.7763568394002505e-15,
+      "maximum_metric_absolute_difference": 0.0,
+      "maximum_bootstrap_absolute_difference": 0.0,
+      "source_sha256": "31f11705602d7aff59f10678321fa6a3bdd3e3c5c403c508572dda6cf9b5b1ae",
+      "package_assembly_scored_labels_content_accessed": false
+    },
+    {
+      "evaluation_id": "R02",
+      "rows": 17937,
+      "coefficient_values": {
+        "0": 0.35783701629836606,
+        "1": 0.34719288633809187,
+        "2": 0.3483525332542907,
+        "3": 0.35889311589834877,
+        "4": 0.34989160615768977
+      },
+      "maximum_descriptor_row_difference": 0.0,
+      "maximum_neural_row_difference": 0.0,
+      "maximum_dlg_sol_row_difference": 1.7763568394002505e-15,
+      "maximum_metric_absolute_difference": 0.0,
+      "maximum_bootstrap_absolute_difference": 0.0,
+      "source_sha256": "e24431331d92dccc1e9c8a2c32f4a1d9abd7dd261c743e75861318b6598f1842",
+      "package_assembly_scored_labels_content_accessed": false
+    },
+    {
+      "evaluation_id": "R03",
+      "rows": 7985,
+      "coefficient_values": {
+        "0": 0.5107147095759091,
+        "1": 0.5309883523177864,
+        "2": 0.513853188782415,
+        "3": 0.4749956727808701,
+        "4": 0.5096218180594146
+      },
+      "maximum_descriptor_row_difference": 0.0,
+      "maximum_neural_row_difference": 0.0,
+      "maximum_dlg_sol_row_difference": 1.7763568394002505e-15,
+      "maximum_metric_absolute_difference": 0.0,
+      "maximum_bootstrap_absolute_difference": 0.0,
+      "source_sha256": "250e2e6fa7e7f8eddbf7674024c64e8f91e0816388e674c861901665d18ff01a",
+      "package_assembly_scored_labels_content_accessed": false
+    },
+    {
+      "evaluation_id": "R04",
+      "rows": 1997,
+      "coefficient_values": {
+        "0": 0.5079547955184467
+      },
+      "maximum_descriptor_row_difference": 8.881784197001252e-16,
+      "maximum_neural_row_difference": 1.7763568394002505e-15,
+      "maximum_dlg_sol_row_difference": 2.6645352591003757e-15,
+      "maximum_metric_absolute_difference": 0.0,
+      "maximum_bootstrap_absolute_difference": 0.0,
+      "source_sha256": "5d33a5ee216369db22ed773bd1227ef93af2bc164bb954e956c27df4a291fd6f",
+      "package_assembly_scored_labels_content_accessed": false
+    },
+    {
+      "evaluation_id": "R05",
+      "rows": 980,
+      "coefficient_values": {
+        "1": 0.5042305832703751,
+        "2": 0.4575169080107138,
+        "3": 0.5181060446991516,
+        "4": 0.44616494504197796,
+        "5": 0.5754599425836471
+      },
+      "maximum_descriptor_row_difference": 1.7763568394002505e-15,
+      "maximum_neural_row_difference": 1.7763568394002505e-15,
+      "maximum_dlg_sol_row_difference": 1.7763568394002505e-15,
+      "maximum_metric_absolute_difference": 0.0,
+      "maximum_bootstrap_absolute_difference": 0.0,
+      "source_sha256": "1abd8dfb80a386e54da90fdf81f18e1e95fdf58ba5ea58796fb536d82bc511c4",
+      "package_assembly_scored_labels_content_accessed": false
+    },
+    {
+      "evaluation_id": "R09",
+      "rows": 1282,
+      "coefficient_values": {
+        "0": 0.3524569312559862
+      },
+      "maximum_descriptor_row_difference": 0.0,
+      "maximum_neural_row_difference": 0.0,
+      "maximum_dlg_sol_row_difference": 1.6723633855519893e-07,
+      "maximum_metric_absolute_difference": 0.0,
+      "maximum_bootstrap_absolute_difference": 0.0,
+      "source_sha256": "c75d12837d5ec4f018f0cba45a442021fa6700d696d75f3b8f50d43c9a010495",
+      "package_assembly_scored_labels_content_accessed": false
+    }
+  ],
+  "maximum_descriptor_row_difference": 1.7763568394002505e-15,
+  "maximum_neural_row_difference": 1.7763568394002505e-15,
+  "maximum_dlg_sol_row_difference": 1.6723633855519893e-07,
+  "maximum_metric_absolute_difference": 0.0,
+  "maximum_bootstrap_absolute_difference": 0.0,
+  "all_assembly_phases_avoided_scored_label_content": true
+}

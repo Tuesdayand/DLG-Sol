@@ -1,0 +1,13 @@
+cff-version: 1.2.0
+message: "If you use this software or its accompanying results, please cite the DLG-Sol article."
+title: "DLG-Sol: descriptor, molecular-language, and three-dimensional representations for aqueous-solubility prediction"
+type: software
+version: 0.1.0-pre-release
+date-released: 2026-09-01
+authors:
+  - family-names: Goo
+    given-names: Hyunmo
+  - family-names: Kong
+    given-names: Hyeongwoo
+    email: gho3283@hufs.ac.kr
+repository-code: "https://github.com/Tuesdayand/DLG-Sol"

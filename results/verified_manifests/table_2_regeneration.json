@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "table": "Article Table 2 absolute matched-row RMSE comparison",
+  "source": {
+    "path": "supplementary/machine_readable/table_s06_external_comparator_metrics_and_paired_ci_31_rows.csv",
+    "sha256": "567480164261b1b5935bce847bb03d92f4ea8eea743fc9c337d842a3f439e66e",
+    "rows": 31
+  },
+  "generator": {
+    "path": "scripts/build_table_2.py",
+    "sha256": "5f7d480ddf3b3413d863114104ef388e21b85f32505381742f24c2f438027d08"
+  },
+  "output": {
+    "path": "results/table_2_absolute_rmse.csv",
+    "sha256": "7a114ec5cd28f7370837886ea873c6850e26ca76879834a0e4bc5564ad75df45",
+    "rows": 36,
+    "columns": 16
+  },
+  "manuscript_artifact_comparison": {
+    "locked_internal_source_sha256": "c471c751f0323c587ef44d3acd68ceaa60efe62bccc8339b7f44d9e2c615bcd2",
+    "comparison": "The internal-only source_file column was removed; all remaining 16 columns and all 36 rows are equal with numeric tolerance 1e-14.",
+    "value_parity": true
+  },
+  "status": "PASS"
+}

@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "status": "PASS",
+  "gate": "chemberta_language_l1",
+  "environment_creation": "fresh_venv_from_release_test_requirements",
+  "python": "3.9.23",
+  "numpy": "1.26.4",
+  "pandas": "2.2.3",
+  "torch": "2.7.1+cu126",
+  "transformers": "4.50.3",
+  "rdkit": "2023.09.6",
+  "tests_discovered": 37,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0
+}

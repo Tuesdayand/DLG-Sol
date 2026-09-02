@@ -1,0 +1,29 @@
+{
+  "candidate_hashes": {
+    "aqsoldbc": "a2b7feea0ebb0138ec7ea101f3318ad0f844eb3fa4997af60504b1eee9e64d49",
+    "tdc_0": "ffa7e08a3e3cc8c0887c9df49063afa2c1e78ace09c44ef1777d181c3c6b8721",
+    "tdc_1": "5eb118d18ab89f49637eef544415ffca1f654c1e57f14423db59671cbb9a24a9",
+    "tdc_2": "291ff511f496cb6cd50e3dc7150d8f5ab0e1cd6f65096eec53d6d0a5e1bd4556",
+    "tdc_3": "dc0f2316d24dfef3526319f8dd4617c4659fddef364678fb36028230506f2af5",
+    "tdc_4": "39d544137f6fa8c8465603a52a6ce0c43acf43b53c8dab899ebea3ba49ee2932",
+    "complat": "80c366a9d746dd307e97a59acd66cf1981ff43b6fbd61963c4ff86e50986bee7",
+    "jchem_1": "6bf294e9aa4fcea586a42aeca4c7a2823794892e006791f634ed63c709f40061",
+    "jchem_2": "fd0387e1cc7823e4704de577538b1ce5d2f0fc110b3e3c14e06ecbb706d0e192",
+    "jchem_3": "76ce40da8fdea137f6c78a1c4ced47f34c226f9048bc7477be98fc2075ef5d33",
+    "jchem_4": "6a56ba960ba000335346c6e16ad99b8afbd90a7d52e699abcd5ba1f0c5dce718",
+    "jchem_5": "0b9ec371523a9e366d481513053594c6dbb3492204f9bf7fdff457adb1c054de"
+  },
+  "selected_trials": {
+    "aqsoldbc": [4, 8, 4, 0, 0],
+    "tdc": [7, 19, 5, 0, 7],
+    "complat": 2,
+    "jchem": [3, 15, 6, 6, 11]
+  },
+  "feature_counts": {
+    "aqsoldbc": [373, 353, 354, 352, 356],
+    "tdc": [337, 341, 337, 340, 338],
+    "complat_oof": [646, 650, 654, 650, 650],
+    "complat_supplied_test_refit": 650,
+    "jchem": [571, 575, 572, 574, 615]
+  }
+}

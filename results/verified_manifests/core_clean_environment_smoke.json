@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "scope": "canonical evaluation registry, label firewall, fixed blending, regression metrics, and paired RMSE bootstrap",
+  "environment": {
+    "python": "3.13.11",
+    "numpy": "2.4.4",
+    "pandas": "3.0.2",
+    "matplotlib": "3.10.9",
+    "python-pptx": "1.0.2"
+  },
+  "core_bundle_sha256": "5878249b8e49772eb658bd1c0c24d9b5434ef10f71db4147613ca8261e466def",
+  "tests_run": 9,
+  "tests_failed": 0,
+  "tests_errored": 0,
+  "integrity_validator": "PASS",
+  "status": "PASS"
+}

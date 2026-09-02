@@ -1,0 +1,1198 @@
+{
+  "schema_version": 1,
+  "gate": "dataset_specific_adapter_a1",
+  "status": "PASS",
+  "model_identity": "aug2_head4",
+  "verification_scope": "evaluation-specific partition roles, winsorization, fold seeds, and scored-prediction aggregation",
+  "row_level_inputs_redistributed": false,
+  "embeddings_redistributed": false,
+  "predictions_redistributed": false,
+  "historical_source_hashes": {
+    "canonical_aug2_head4_runner": "6f592ed30fa23e0799d589b4043043fe127ec14dbe497d568f0bdc5cf1b692b0",
+    "aqsoldbc_extension_runner": "e197a1bb1c28f72008deaaf29356f6f394790ae8d1d1372584aa684f9479265c",
+    "complat_supplied_test_refit_runner": "9ffcb54dc1f5d3fba696122160bb2f77b3094b76bdaed0f2e8346e95c29d0088"
+  },
+  "role_checks": [
+    {
+      "evaluation_id": "R01",
+      "fold_index": 0,
+      "rows": 8047,
+      "fit_rows": 5632,
+      "coefficient_rows": 0,
+      "scored_rows": 1610,
+      "reserved_rows": 805,
+      "role_mismatches": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "evaluation_id": "R01",
+      "fold_index": 1,
+      "rows": 8047,
+      "fit_rows": 5632,
+      "coefficient_rows": 0,
+      "scored_rows": 1610,
+      "reserved_rows": 805,
+      "role_mismatches": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "evaluation_id": "R01",
+      "fold_index": 2,
+      "rows": 8047,
+      "fit_rows": 5633,
+      "coefficient_rows": 0,
+      "scored_rows": 1609,
+      "reserved_rows": 805,
+      "role_mismatches": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "evaluation_id": "R01",
+      "fold_index": 3,
+      "rows": 8047,
+      "fit_rows": 5633,
+      "coefficient_rows": 0,
+      "scored_rows": 1609,
+      "reserved_rows": 805,
+      "role_mismatches": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "evaluation_id": "R01",
+      "fold_index": 4,
+      "rows": 8047,
+      "fit_rows": 5633,
+      "coefficient_rows": 0,
+      "scored_rows": 1609,
+      "reserved_rows": 805,
+      "role_mismatches": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "evaluation_id": "R02",
+      "fold_index": 0,
+      "rows": 17937,
+      "fit_rows": 14349,
+      "coefficient_rows": 0,
+      "scored_rows": 3588,
+      "reserved_rows": 0,
+      "role_mismatches": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "evaluation_id": "R02",
+      "fold_index": 1,
+      "rows": 17937,
+      "fit_rows": 14349,
+      "coefficient_rows": 0,
+      "scored_rows": 3588,
+      "reserved_rows": 0,
+      "role_mismatches": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "evaluation_id": "R02",
+      "fold_index": 2,
+      "rows": 17937,
+      "fit_rows": 14350,
+      "coefficient_rows": 0,
+      "scored_rows": 3587,
+      "reserved_rows": 0,
+      "role_mismatches": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "evaluation_id": "R02",
+      "fold_index": 3,
+      "rows": 17937,
+      "fit_rows": 14350,
+      "coefficient_rows": 0,
+      "scored_rows": 3587,
+      "reserved_rows": 0,
+      "role_mismatches": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "evaluation_id": "R02",
+      "fold_index": 4,
+      "rows": 17937,
+      "fit_rows": 14350,
+      "coefficient_rows": 0,
+      "scored_rows": 3587,
+      "reserved_rows": 0,
+      "role_mismatches": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "evaluation_id": "R03",
+      "fold_index": 0,
+      "rows": 9982,
+      "fit_rows": 5586,
+      "coefficient_rows": 0,
+      "scored_rows": 1600,
+      "reserved_rows": 2796,
+      "role_mismatches": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "evaluation_id": "R03",
+      "fold_index": 1,
+      "rows": 9982,
+      "fit_rows": 5586,
+      "coefficient_rows": 0,
+      "scored_rows": 1600,
+      "reserved_rows": 2796,
+      "role_mismatches": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "evaluation_id": "R03",
+      "fold_index": 2,
+      "rows": 9982,
+      "fit_rows": 5586,
+      "coefficient_rows": 0,
+      "scored_rows": 1600,
+      "reserved_rows": 2796,
+      "role_mismatches": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "evaluation_id": "R03",
+      "fold_index": 3,
+      "rows": 9982,
+      "fit_rows": 5591,
+      "coefficient_rows": 0,
+      "scored_rows": 1595,
+      "reserved_rows": 2796,
+      "role_mismatches": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "evaluation_id": "R03",
+      "fold_index": 4,
+      "rows": 9982,
+      "fit_rows": 5595,
+      "coefficient_rows": 0,
+      "scored_rows": 1590,
+      "reserved_rows": 2797,
+      "role_mismatches": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "evaluation_id": "R04",
+      "fold_index": 0,
+      "rows": 9982,
+      "fit_rows": 5586,
+      "coefficient_rows": 0,
+      "scored_rows": 1997,
+      "reserved_rows": 2399,
+      "role_mismatches": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "evaluation_id": "R04",
+      "fold_index": 1,
+      "rows": 9982,
+      "fit_rows": 5586,
+      "coefficient_rows": 0,
+      "scored_rows": 1997,
+      "reserved_rows": 2399,
+      "role_mismatches": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "evaluation_id": "R04",
+      "fold_index": 2,
+      "rows": 9982,
+      "fit_rows": 5586,
+      "coefficient_rows": 0,
+      "scored_rows": 1997,
+      "reserved_rows": 2399,
+      "role_mismatches": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "evaluation_id": "R04",
+      "fold_index": 3,
+      "rows": 9982,
+      "fit_rows": 5591,
+      "coefficient_rows": 0,
+      "scored_rows": 1997,
+      "reserved_rows": 2394,
+      "role_mismatches": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "evaluation_id": "R04",
+      "fold_index": 4,
+      "rows": 9982,
+      "fit_rows": 5595,
+      "coefficient_rows": 0,
+      "scored_rows": 1997,
+      "reserved_rows": 2390,
+      "role_mismatches": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "evaluation_id": "R05",
+      "fold_index": 1,
+      "rows": 9798,
+      "fit_rows": 6860,
+      "coefficient_rows": 1958,
+      "scored_rows": 980,
+      "reserved_rows": 0,
+      "role_mismatches": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "evaluation_id": "R05",
+      "fold_index": 2,
+      "rows": 9798,
+      "fit_rows": 6858,
+      "coefficient_rows": 1960,
+      "scored_rows": 980,
+      "reserved_rows": 0,
+      "role_mismatches": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "evaluation_id": "R05",
+      "fold_index": 3,
+      "rows": 9798,
+      "fit_rows": 6859,
+      "coefficient_rows": 1959,
+      "scored_rows": 980,
+      "reserved_rows": 0,
+      "role_mismatches": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "evaluation_id": "R05",
+      "fold_index": 4,
+      "rows": 9798,
+      "fit_rows": 6858,
+      "coefficient_rows": 1960,
+      "scored_rows": 980,
+      "reserved_rows": 0,
+      "role_mismatches": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "evaluation_id": "R05",
+      "fold_index": 5,
+      "rows": 9798,
+      "fit_rows": 6858,
+      "coefficient_rows": 1960,
+      "scored_rows": 980,
+      "reserved_rows": 0,
+      "role_mismatches": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "evaluation_id": "R09",
+      "fold_index": 0,
+      "rows": 19219,
+      "fit_rows": 17937,
+      "coefficient_rows": 0,
+      "scored_rows": 1282,
+      "reserved_rows": 0,
+      "role_mismatches": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "preprocessing_checks": [
+    {
+      "evaluation_id": "R01",
+      "folds_checked": 5,
+      "winsorization": true,
+      "maximum_absolute_difference": 0.0
+    },
+    {
+      "evaluation_id": "R02",
+      "folds_checked": 5,
+      "winsorization": true,
+      "maximum_absolute_difference": 0.0
+    },
+    {
+      "evaluation_id": "R03",
+      "folds_checked": 5,
+      "winsorization": true,
+      "maximum_absolute_difference": 0.0
+    },
+    {
+      "evaluation_id": "R04",
+      "folds_checked": 5,
+      "winsorization": true,
+      "maximum_absolute_difference": 0.0
+    },
+    {
+      "evaluation_id": "R05",
+      "folds_checked": 5,
+      "winsorization": false,
+      "maximum_absolute_difference": 0.0
+    },
+    {
+      "evaluation_id": "R09",
+      "folds_checked": 1,
+      "winsorization": true,
+      "maximum_absolute_difference": 0.0
+    }
+  ],
+  "schedule_checks": [
+    {
+      "evaluation_id": "R01",
+      "fold_index": 0,
+      "schedule": [
+        [
+          0,
+          260901,
+          29
+        ],
+        [
+          1,
+          260902,
+          82
+        ],
+        [
+          2,
+          260903,
+          40
+        ],
+        [
+          3,
+          260904,
+          21
+        ]
+      ],
+      "historical_schedule_equal": true
+    },
+    {
+      "evaluation_id": "R01",
+      "fold_index": 1,
+      "schedule": [
+        [
+          0,
+          360901,
+          29
+        ],
+        [
+          1,
+          360902,
+          82
+        ],
+        [
+          2,
+          360903,
+          40
+        ],
+        [
+          3,
+          360904,
+          21
+        ]
+      ],
+      "historical_schedule_equal": true
+    },
+    {
+      "evaluation_id": "R01",
+      "fold_index": 2,
+      "schedule": [
+        [
+          0,
+          460901,
+          29
+        ],
+        [
+          1,
+          460902,
+          82
+        ],
+        [
+          2,
+          460903,
+          40
+        ],
+        [
+          3,
+          460904,
+          21
+        ]
+      ],
+      "historical_schedule_equal": true
+    },
+    {
+      "evaluation_id": "R01",
+      "fold_index": 3,
+      "schedule": [
+        [
+          0,
+          560901,
+          29
+        ],
+        [
+          1,
+          560902,
+          82
+        ],
+        [
+          2,
+          560903,
+          40
+        ],
+        [
+          3,
+          560904,
+          21
+        ]
+      ],
+      "historical_schedule_equal": true
+    },
+    {
+      "evaluation_id": "R01",
+      "fold_index": 4,
+      "schedule": [
+        [
+          0,
+          660901,
+          29
+        ],
+        [
+          1,
+          660902,
+          82
+        ],
+        [
+          2,
+          660903,
+          40
+        ],
+        [
+          3,
+          660904,
+          21
+        ]
+      ],
+      "historical_schedule_equal": true
+    },
+    {
+      "evaluation_id": "R02",
+      "fold_index": 0,
+      "schedule": [
+        [
+          0,
+          260901,
+          29
+        ],
+        [
+          1,
+          260902,
+          82
+        ],
+        [
+          2,
+          260903,
+          40
+        ],
+        [
+          3,
+          260904,
+          21
+        ]
+      ],
+      "historical_schedule_equal": true
+    },
+    {
+      "evaluation_id": "R02",
+      "fold_index": 1,
+      "schedule": [
+        [
+          0,
+          360901,
+          29
+        ],
+        [
+          1,
+          360902,
+          82
+        ],
+        [
+          2,
+          360903,
+          40
+        ],
+        [
+          3,
+          360904,
+          21
+        ]
+      ],
+      "historical_schedule_equal": true
+    },
+    {
+      "evaluation_id": "R02",
+      "fold_index": 2,
+      "schedule": [
+        [
+          0,
+          460901,
+          29
+        ],
+        [
+          1,
+          460902,
+          82
+        ],
+        [
+          2,
+          460903,
+          40
+        ],
+        [
+          3,
+          460904,
+          21
+        ]
+      ],
+      "historical_schedule_equal": true
+    },
+    {
+      "evaluation_id": "R02",
+      "fold_index": 3,
+      "schedule": [
+        [
+          0,
+          560901,
+          29
+        ],
+        [
+          1,
+          560902,
+          82
+        ],
+        [
+          2,
+          560903,
+          40
+        ],
+        [
+          3,
+          560904,
+          21
+        ]
+      ],
+      "historical_schedule_equal": true
+    },
+    {
+      "evaluation_id": "R02",
+      "fold_index": 4,
+      "schedule": [
+        [
+          0,
+          660901,
+          29
+        ],
+        [
+          1,
+          660902,
+          82
+        ],
+        [
+          2,
+          660903,
+          40
+        ],
+        [
+          3,
+          660904,
+          21
+        ]
+      ],
+      "historical_schedule_equal": true
+    },
+    {
+      "evaluation_id": "R03",
+      "fold_index": 0,
+      "schedule": [
+        [
+          0,
+          260901,
+          29
+        ],
+        [
+          1,
+          260902,
+          82
+        ],
+        [
+          2,
+          260903,
+          40
+        ],
+        [
+          3,
+          260904,
+          21
+        ]
+      ],
+      "historical_schedule_equal": true
+    },
+    {
+      "evaluation_id": "R03",
+      "fold_index": 1,
+      "schedule": [
+        [
+          0,
+          360901,
+          29
+        ],
+        [
+          1,
+          360902,
+          82
+        ],
+        [
+          2,
+          360903,
+          40
+        ],
+        [
+          3,
+          360904,
+          21
+        ]
+      ],
+      "historical_schedule_equal": true
+    },
+    {
+      "evaluation_id": "R03",
+      "fold_index": 2,
+      "schedule": [
+        [
+          0,
+          460901,
+          29
+        ],
+        [
+          1,
+          460902,
+          82
+        ],
+        [
+          2,
+          460903,
+          40
+        ],
+        [
+          3,
+          460904,
+          21
+        ]
+      ],
+      "historical_schedule_equal": true
+    },
+    {
+      "evaluation_id": "R03",
+      "fold_index": 3,
+      "schedule": [
+        [
+          0,
+          560901,
+          29
+        ],
+        [
+          1,
+          560902,
+          82
+        ],
+        [
+          2,
+          560903,
+          40
+        ],
+        [
+          3,
+          560904,
+          21
+        ]
+      ],
+      "historical_schedule_equal": true
+    },
+    {
+      "evaluation_id": "R03",
+      "fold_index": 4,
+      "schedule": [
+        [
+          0,
+          660901,
+          29
+        ],
+        [
+          1,
+          660902,
+          82
+        ],
+        [
+          2,
+          660903,
+          40
+        ],
+        [
+          3,
+          660904,
+          21
+        ]
+      ],
+      "historical_schedule_equal": true
+    },
+    {
+      "evaluation_id": "R04",
+      "fold_index": 0,
+      "schedule": [
+        [
+          0,
+          260901,
+          29
+        ],
+        [
+          1,
+          260902,
+          82
+        ],
+        [
+          2,
+          260903,
+          40
+        ],
+        [
+          3,
+          260904,
+          21
+        ]
+      ],
+      "historical_schedule_equal": true
+    },
+    {
+      "evaluation_id": "R04",
+      "fold_index": 1,
+      "schedule": [
+        [
+          0,
+          360901,
+          29
+        ],
+        [
+          1,
+          360902,
+          82
+        ],
+        [
+          2,
+          360903,
+          40
+        ],
+        [
+          3,
+          360904,
+          21
+        ]
+      ],
+      "historical_schedule_equal": true
+    },
+    {
+      "evaluation_id": "R04",
+      "fold_index": 2,
+      "schedule": [
+        [
+          0,
+          460901,
+          29
+        ],
+        [
+          1,
+          460902,
+          82
+        ],
+        [
+          2,
+          460903,
+          40
+        ],
+        [
+          3,
+          460904,
+          21
+        ]
+      ],
+      "historical_schedule_equal": true
+    },
+    {
+      "evaluation_id": "R04",
+      "fold_index": 3,
+      "schedule": [
+        [
+          0,
+          560901,
+          29
+        ],
+        [
+          1,
+          560902,
+          82
+        ],
+        [
+          2,
+          560903,
+          40
+        ],
+        [
+          3,
+          560904,
+          21
+        ]
+      ],
+      "historical_schedule_equal": true
+    },
+    {
+      "evaluation_id": "R04",
+      "fold_index": 4,
+      "schedule": [
+        [
+          0,
+          660901,
+          29
+        ],
+        [
+          1,
+          660902,
+          82
+        ],
+        [
+          2,
+          660903,
+          40
+        ],
+        [
+          3,
+          660904,
+          21
+        ]
+      ],
+      "historical_schedule_equal": true
+    },
+    {
+      "evaluation_id": "R05",
+      "fold_index": 1,
+      "schedule": [
+        [
+          0,
+          360901,
+          29
+        ],
+        [
+          1,
+          360902,
+          82
+        ],
+        [
+          2,
+          360903,
+          40
+        ],
+        [
+          3,
+          360904,
+          21
+        ]
+      ],
+      "historical_schedule_equal": true
+    },
+    {
+      "evaluation_id": "R05",
+      "fold_index": 2,
+      "schedule": [
+        [
+          0,
+          460901,
+          29
+        ],
+        [
+          1,
+          460902,
+          82
+        ],
+        [
+          2,
+          460903,
+          40
+        ],
+        [
+          3,
+          460904,
+          21
+        ]
+      ],
+      "historical_schedule_equal": true
+    },
+    {
+      "evaluation_id": "R05",
+      "fold_index": 3,
+      "schedule": [
+        [
+          0,
+          560901,
+          29
+        ],
+        [
+          1,
+          560902,
+          82
+        ],
+        [
+          2,
+          560903,
+          40
+        ],
+        [
+          3,
+          560904,
+          21
+        ]
+      ],
+      "historical_schedule_equal": true
+    },
+    {
+      "evaluation_id": "R05",
+      "fold_index": 4,
+      "schedule": [
+        [
+          0,
+          660901,
+          29
+        ],
+        [
+          1,
+          660902,
+          82
+        ],
+        [
+          2,
+          660903,
+          40
+        ],
+        [
+          3,
+          660904,
+          21
+        ]
+      ],
+      "historical_schedule_equal": true
+    },
+    {
+      "evaluation_id": "R05",
+      "fold_index": 5,
+      "schedule": [
+        [
+          0,
+          760901,
+          29
+        ],
+        [
+          1,
+          760902,
+          82
+        ],
+        [
+          2,
+          760903,
+          40
+        ],
+        [
+          3,
+          760904,
+          21
+        ]
+      ],
+      "historical_schedule_equal": true
+    },
+    {
+      "evaluation_id": "R09",
+      "fold_index": 0,
+      "schedule": [
+        [
+          0,
+          260901,
+          29
+        ],
+        [
+          1,
+          260902,
+          82
+        ],
+        [
+          2,
+          260903,
+          40
+        ],
+        [
+          3,
+          260904,
+          21
+        ]
+      ],
+      "historical_schedule_equal": true
+    }
+  ],
+  "aggregation_checks": [
+    {
+      "evaluation_id": "R01",
+      "raw_prediction_rows": 8047,
+      "aggregated_rows": 8047,
+      "expected_rows": 8047,
+      "maximum_absolute_difference": 0.0
+    },
+    {
+      "evaluation_id": "R02",
+      "raw_prediction_rows": 17937,
+      "aggregated_rows": 17937,
+      "expected_rows": 17937,
+      "maximum_absolute_difference": 0.0
+    },
+    {
+      "evaluation_id": "R03",
+      "raw_prediction_rows": 7985,
+      "aggregated_rows": 7985,
+      "expected_rows": 7985,
+      "maximum_absolute_difference": 0.0
+    },
+    {
+      "evaluation_id": "R04",
+      "raw_prediction_rows": 9985,
+      "aggregated_rows": 1997,
+      "expected_rows": 1997,
+      "maximum_absolute_difference": 1.7763568394002505e-15
+    },
+    {
+      "evaluation_id": "R05",
+      "raw_prediction_rows": 4900,
+      "aggregated_rows": 980,
+      "expected_rows": 980,
+      "maximum_absolute_difference": 1.7763568394002505e-15
+    },
+    {
+      "evaluation_id": "R09",
+      "raw_prediction_rows": 1282,
+      "aggregated_rows": 1282,
+      "expected_rows": 1282,
+      "maximum_absolute_difference": 0.0
+    }
+  ],
+  "maximum_role_mismatches": 0,
+  "maximum_preprocessing_absolute_difference": 0.0,
+  "maximum_aggregation_absolute_difference": 1.7763568394002505e-15,
+  "scored_metadata_accepts_labels": false,
+  "all_primary_evaluations_covered": true
+}

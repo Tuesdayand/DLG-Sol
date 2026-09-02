@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "graph_construction": {
+    "fragment_policy": "largest_organic_fragment",
+    "conformer_method": "ETKDGv3",
+    "conformers_attempted": 5,
+    "conformers_retained": 3,
+    "conformer_prune_rms_threshold": 0.5,
+    "optimization": ["MMFF", "UFF_fallback"],
+    "optimization_max_iterations": 200,
+    "base_seed": 260705,
+    "explicit_hydrogen_policy": "hydrogens_bonded_to_nitrogen_or_oxygen",
+    "proximity_cutoff_angstrom": 4.5,
+    "distance_scale_angstrom": 5.0,
+    "rbf_centers_angstrom": {
+      "start": 0.0,
+      "stop": 5.0,
+      "count": 16,
+      "denominator": 0.25
+    },
+    "node_dimension": 42,
+    "edge_dimension": 24,
+    "auxiliary_dimension": 19
+  },
+  "model": {
+    "architecture": "distance_aware_scalar_3d_mpnn",
+    "aggregation": "add",
+    "activation": "SiLU",
+    "node_update": "residual_with_layer_normalization",
+    "graph_pooling": "global_mean",
+    "conformer_aggregation": "arithmetic_mean",
+    "coordinate_updates": false,
+    "hidden_dimensions": [96, 128, 192, 256],
+    "message_passing_layers": [2, 3, 4],
+    "dropout_values": [0.05, 0.1, 0.15, 0.25, 0.35],
+    "batch_sizes": [64, 96, 128],
+    "learning_rate_range": [0.0002, 0.003],
+    "weight_decay_range": [1e-07, 0.0005],
+    "representation_options": ["graph_embedding", "graph_embedding_plus_19_auxiliary_features"],
+    "maximum_epochs": 160,
+    "patience": 24,
+    "gradient_clip_norm": 5.0,
+    "checkpoint_selection": "selection_rmse"
+  },
+  "development_reference": {
+    "selected_trial": 2,
+    "hidden_dimension": 256,
+    "message_passing_layers": 4,
+    "dropout": 0.05,
+    "batch_size": 64,
+    "learning_rate": 0.0004369919050718778,
+    "weight_decay": 3.0088421993504876e-06,
+    "representation": "graph_embedding_plus_19_auxiliary_features"
+  }
+}

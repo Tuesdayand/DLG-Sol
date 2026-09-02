@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "gate": "geometry_branch_g1",
+  "status": "PASS",
+  "python": "3.9.25",
+  "numpy": "1.26.4",
+  "pandas": "2.2.3",
+  "rdkit": "2023.09.6",
+  "torch": "2.7.1+cu126",
+  "torch_geometric": "2.6.1",
+  "tests_discovered": 44,
+  "geometry_tests": 7,
+  "validator_counterexamples": 2,
+  "coordinate_update_misstatement_rejected": true,
+  "embedding_parity_mismatch_rejected": true,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "device": "cpu"
+}

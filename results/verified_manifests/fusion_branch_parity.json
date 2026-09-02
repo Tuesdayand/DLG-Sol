@@ -1,0 +1,169 @@
+{
+  "schema_version": 2,
+  "gate": "canonical_aug2_head4_identity_f2",
+  "status": "PASS",
+  "model_identity": "aug2_head4",
+  "verification_scope": "six-evaluation row-level identity between locked neural predictions and their canonical aug2_head4 sources",
+  "row_level_inputs_redistributed": false,
+  "checkpoints_redistributed": false,
+  "embeddings_redistributed": false,
+  "predictions_redistributed": false,
+  "members": [
+    {
+      "member_index": 0,
+      "language_variant": "randomized_single_task",
+      "preprocessing": "raw_standardized_concat",
+      "regressor": "residual_mlp",
+      "base_seed": 260901,
+      "fixed_epochs": 29
+    },
+    {
+      "member_index": 1,
+      "language_variant": "randomized_single_task",
+      "preprocessing": "raw_standardized_concat",
+      "regressor": "residual_mlp",
+      "base_seed": 260902,
+      "fixed_epochs": 82
+    },
+    {
+      "member_index": 2,
+      "language_variant": "randomized_single_task",
+      "preprocessing": "raw_standardized_concat",
+      "regressor": "residual_mlp",
+      "base_seed": 260903,
+      "fixed_epochs": 40
+    },
+    {
+      "member_index": 3,
+      "language_variant": "randomized_single_task",
+      "preprocessing": "raw_standardized_concat",
+      "regressor": "residual_mlp",
+      "base_seed": 260904,
+      "fixed_epochs": 21
+    }
+  ],
+  "shared_input_representation": true,
+  "head_architecture": {
+    "hidden": 384,
+    "depth": 2,
+    "dropout": 0.45,
+    "output_dimension": 1
+  },
+  "training": {
+    "optimizer": "AdamW",
+    "loss": "mean_squared_error",
+    "learning_rate": 0.0005,
+    "weight_decay": 0.0005,
+    "batch_size": 128,
+    "gradient_clip_norm": 5.0
+  },
+  "preprocessing": {
+    "fit_partition_only": true,
+    "method": "modality_wise_standardization_then_raw_concatenation",
+    "pca_used_by_final_model": false,
+    "l2_normalization_used_by_final_model": false,
+    "adapter_winsor_quantile": 0.001,
+    "adapter_winsorization": {
+      "aqsoldbc": true,
+      "complat": true,
+      "tdc": true,
+      "jchem": false
+    },
+    "failed_geometry_fallback_uses_labels": false
+  },
+  "head_schedule_provenance": "per-seed median best epoch from AqSolDBc five-fold development",
+  "fold_seed_rule": "base_seed_plus_100000_times_fold_index",
+  "neural_aggregation": "unweighted_float32_arithmetic_mean",
+  "evaluations": [
+    {
+      "evaluation_id": "R01",
+      "evaluation_name": "AqSolDBc OOF",
+      "rows": 8047,
+      "locked_source_sha256": "31f11705602d7aff59f10678321fa6a3bdd3e3c5c403c508572dda6cf9b5b1ae",
+      "canonical_source_sha256": "25e4e8be4c9d1b25982b0e3142dee57062b490e42b1a23329df2869190d61688",
+      "locked_prediction_column": "polar",
+      "canonical_prediction_column": "aug2_head4",
+      "record_id_unique_in_both_sources": true,
+      "record_id_coverage_complete": true,
+      "maximum_absolute_prediction_difference": 0.0,
+      "neural_rmse": 0.8566814080835747,
+      "four_head_mean_maximum_absolute_difference": 0.0
+    },
+    {
+      "evaluation_id": "R02",
+      "evaluation_name": "ComPlat OOF",
+      "rows": 17937,
+      "locked_source_sha256": "5959efdf88715f497390b523c71b309afc4d06d2fa8622cd544e9b43f689dd29",
+      "canonical_source_sha256": "e24431331d92dccc1e9c8a2c32f4a1d9abd7dd261c743e75861318b6598f1842",
+      "locked_prediction_column": "polar",
+      "canonical_prediction_column": "aug2_head4",
+      "record_id_unique_in_both_sources": true,
+      "record_id_coverage_complete": true,
+      "maximum_absolute_prediction_difference": 0.0,
+      "neural_rmse": 0.9532230604261456,
+      "four_head_mean_maximum_absolute_difference": 0.0
+    },
+    {
+      "evaluation_id": "R03",
+      "evaluation_name": "TDC OOF",
+      "rows": 7985,
+      "locked_source_sha256": "d19d21d14a1d8c506b199a0ba03b888ea07ed18bbf5ac69e25d1ffc11ecb176c",
+      "canonical_source_sha256": "250e2e6fa7e7f8eddbf7674024c64e8f91e0816388e674c861901665d18ff01a",
+      "locked_prediction_column": "polar",
+      "canonical_prediction_column": "aug2_head4",
+      "record_id_unique_in_both_sources": true,
+      "record_id_coverage_complete": true,
+      "maximum_absolute_prediction_difference": 0.0,
+      "neural_rmse": 1.0606741542735565,
+      "four_head_mean_maximum_absolute_difference": 0.0
+    },
+    {
+      "evaluation_id": "R04",
+      "evaluation_name": "TDC supplied Test",
+      "rows": 1997,
+      "locked_source_sha256": "a3b3310f146f65a8ee220edcab2f0c5ba04f4c5e65caefd83dbe50203c1742e0",
+      "canonical_source_sha256": "5d33a5ee216369db22ed773bd1227ef93af2bc164bb954e956c27df4a291fd6f",
+      "locked_prediction_column": "polar",
+      "canonical_prediction_column": "polarh",
+      "record_id_unique_in_both_sources": true,
+      "record_id_coverage_complete": true,
+      "maximum_absolute_prediction_difference": 0.0,
+      "neural_rmse": 1.004857203743041,
+      "four_head_mean_maximum_absolute_difference": null,
+      "four_head_columns_available_in_source": false
+    },
+    {
+      "evaluation_id": "R05",
+      "evaluation_name": "JCheM supplied Test",
+      "rows": 980,
+      "locked_source_sha256": "9e1f70feda8787499725b7900acbeb93c509acf138ded353e83afee039a3ac84",
+      "canonical_source_sha256": "1abd8dfb80a386e54da90fdf81f18e1e95fdf58ba5ea58796fb536d82bc511c4",
+      "locked_prediction_column": "polar",
+      "canonical_prediction_column": "polar",
+      "record_id_unique_in_both_sources": true,
+      "record_id_coverage_complete": true,
+      "maximum_absolute_prediction_difference": 0.0,
+      "neural_rmse": 0.6246505208165751,
+      "four_head_mean_maximum_absolute_difference": null,
+      "four_head_columns_available_in_source": false
+    },
+    {
+      "evaluation_id": "R09",
+      "evaluation_name": "ComPlat supplied Test",
+      "rows": 1282,
+      "locked_source_sha256": "e32ca168bcef23c45d2e4b64f8553037b44f661ef91570a8f281cde0c3f9bc2d",
+      "canonical_source_sha256": "c75d12837d5ec4f018f0cba45a442021fa6700d696d75f3b8f50d43c9a010495",
+      "locked_prediction_column": "polar",
+      "canonical_prediction_column": "polarh_aug2_head4",
+      "record_id_unique_in_both_sources": true,
+      "record_id_coverage_complete": true,
+      "maximum_absolute_prediction_difference": 0.0,
+      "neural_rmse": 0.6722804499371939,
+      "four_head_mean_maximum_absolute_difference": 0.0
+    }
+  ],
+  "maximum_absolute_prediction_difference": 0.0,
+  "all_six_evaluations_match": true,
+  "scored_inference_accepts_labels": false,
+  "supersedes_final_model_interpretation_of": "fusion_mixed_candidate_parity.json"
+}

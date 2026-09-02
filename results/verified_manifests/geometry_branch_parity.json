@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "gate": "geometry_branch_g1",
+  "status": "PASS",
+  "row_level_inputs_redistributed": false,
+  "conformer_caches_redistributed": false,
+  "coordinates_redistributed": false,
+  "checkpoints_redistributed": false,
+  "embeddings_redistributed": false,
+  "historical_evidence_sha256": {
+    "base_graph_builder": "e2a0283eb45acf4c91fd5d96afe14e142c26022328c618bd1c87b9f285536256",
+    "distance_aware_model_trainer": "df137d9d048a195cc1ec35f93853e3df39c6b4448c0a3e41a7986021e5a9782f",
+    "explicit_polar_h_graph_builder": "d371826d08a1bb0733430d0718ae046daa1e0ae02fa17ce05114bdecc0d03484",
+    "development_conformer_cache": "ee941a4cb8079f2057f9c9de4e8963279612bd101d7037f372e31bc107f440b4",
+    "development_graph_embeddings": "dc38721f2e309af138d71f8d3f73e1fe67d994cb5eafb42767faa90e24b55526",
+    "development_embeddings_plus_auxiliary": "4854f70ea31175984b2306f45bd148b32c5ec1b8ba556414cd1a9493db526597",
+    "development_embedding_metadata": "840a7d03d71f95f98872698d37053cfaf5d0a0f35464da2583f4b170822c0b0e",
+    "development_predictions": "cb00c0816d89ef5e3a7baf02ab0c4f6c4e4157830b58e9166bf39d7c0637e92f"
+  },
+  "development_cache": {
+    "records": 10298,
+    "graphs": 24457,
+    "conformers_attempted": 5,
+    "conformers_retained": 3,
+    "proximity_cutoff_angstrom": 4.5,
+    "mean_explicit_polar_hydrogens": 1.2412118858030685
+  },
+  "graph_reconstruction_probe": {
+    "rows": 16,
+    "graphs": 36,
+    "record_graph_counts_equal": true,
+    "edge_indices_equal": true,
+    "maximum_absolute_difference": {
+      "node_features": 0.0,
+      "coordinates": 0.0,
+      "edge_features": 0.0,
+      "auxiliary_features": 0.0
+    }
+  },
+  "checkpoint_strict_loads": [
+    {
+      "evidence": "development_selected_model",
+      "sha256": "9ad621bb0a2f09f8d1ed7434e9941c1868b5e34d969ba12e5f6d496603ddb9c2",
+      "strict_load": true,
+      "parameters_embedded": true
+    },
+    {
+      "evidence": "development_fold_model",
+      "sha256": "9ce54ed38380ee1d9b8151d9dc4a574d59d323b90018de8b983b0ff71f26795d",
+      "strict_load": true,
+      "parameters_embedded": true
+    },
+    {
+      "evidence": "tdc_fold_00_selected_model",
+      "sha256": "94fa4ea95ed5977509be1432c8597fedb27e962ea199450b88e1ba824cfffe7d",
+      "strict_load": true,
+      "parameters_embedded": true
+    },
+    {
+      "evidence": "jchem_fold_01_model",
+      "sha256": "2e479370e6e54dc80778f5e427f4a3a316f19ab1fe0e601d9f72ed2916b824d4",
+      "strict_load": true,
+      "parameters_embedded": true
+    },
+    {
+      "evidence": "complat_fixed_model",
+      "sha256": "17f3eb4906428415895a7383714adfc2c89579366466e7bd82300021543bc5b2",
+      "strict_load": true,
+      "parameters_embedded": false,
+      "parameters_supplied_from_recorded_training_configuration": true
+    }
+  ],
+  "embedding_extraction_probe": {
+    "checkpoint_evidence": "development_selected_model",
+    "rows": 16,
+    "archived_embedding_shape": [10298, 256],
+    "maximum_absolute_difference": 2.384185791015625e-07,
+    "embedding_plus_auxiliary_maximum_absolute_difference": 2.384185791015625e-07,
+    "absolute_tolerance": 3e-06,
+    "finite": true
+  },
+  "prediction_probe": {
+    "rows": 16,
+    "maximum_absolute_difference": 9.5367431640625e-07,
+    "absolute_tolerance": 3e-06,
+    "finite": true
+  },
+  "feature_dimensions": {
+    "node": 42,
+    "edge": 24,
+    "auxiliary": 19
+  },
+  "coordinate_updates": false,
+  "scored_inference_accepts_labels": false
+}

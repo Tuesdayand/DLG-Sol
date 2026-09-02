@@ -1,0 +1,80 @@
+{
+  "schema_version": 2,
+  "model_identity": "aug2_head4",
+  "members": [
+    {
+      "member_index": 0,
+      "language_variant": "randomized_single_task",
+      "preprocessing": "raw_standardized_concat",
+      "regressor": "residual_mlp",
+      "base_seed": 260901,
+      "fixed_epochs": 29
+    },
+    {
+      "member_index": 1,
+      "language_variant": "randomized_single_task",
+      "preprocessing": "raw_standardized_concat",
+      "regressor": "residual_mlp",
+      "base_seed": 260902,
+      "fixed_epochs": 82
+    },
+    {
+      "member_index": 2,
+      "language_variant": "randomized_single_task",
+      "preprocessing": "raw_standardized_concat",
+      "regressor": "residual_mlp",
+      "base_seed": 260903,
+      "fixed_epochs": 40
+    },
+    {
+      "member_index": 3,
+      "language_variant": "randomized_single_task",
+      "preprocessing": "raw_standardized_concat",
+      "regressor": "residual_mlp",
+      "base_seed": 260904,
+      "fixed_epochs": 21
+    }
+  ],
+  "shared_geometry_representation": "benchmark_specific_graph_embedding_plus_19_auxiliary_features",
+  "preprocessing": {
+    "fit_partition_only": true,
+    "method": "modality_wise_standardization_then_raw_concatenation",
+    "pca_used_by_final_model": false,
+    "l2_normalization_used_by_final_model": false,
+    "adapter_winsor_quantile": 0.001,
+    "adapter_winsorization": {
+      "aqsoldbc": true,
+      "complat": true,
+      "tdc": true,
+      "jchem": false
+    },
+    "failed_geometry_fallback": "training_success_mean_embedding",
+    "failed_geometry_fallback_uses_labels": false
+  },
+  "head_architecture": {
+    "hidden": 384,
+    "depth": 2,
+    "dropout": 0.45,
+    "output_dimension": 1
+  },
+  "training": {
+    "loss": "mean_squared_error",
+    "optimizer": "AdamW",
+    "learning_rate": 0.0005,
+    "weight_decay": 0.0005,
+    "batch_size": 128,
+    "gradient_clip_norm": 5.0,
+    "epoch_policy": "fixed_per_head",
+    "fold_seed_rule": "base_seed_plus_100000_times_fold_index",
+    "schedule_provenance": "per-seed median best epoch from AqSolDBc five-fold development"
+  },
+  "neural_prediction": {
+    "aggregation": "arithmetic_mean",
+    "expected_members": 4,
+    "shared_input_representation": true,
+    "input_dependent_weights": false
+  },
+  "historical_candidate_scope": {
+    "mixed_language_variants_plain_mlp_and_pca_l2": "development_candidate_not_final_dlg_sol"
+  }
+}

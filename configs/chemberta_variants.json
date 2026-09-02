@@ -1,0 +1,60 @@
+{
+  "schema_version": 2,
+  "final_model_profile": "randomized_single_task",
+  "variant_scope": {
+    "randomized_single_task": "final_dlg_sol_language_encoder",
+    "canonical_multitask": "development_candidate_not_final_dlg_sol",
+    "canonical_single_task": "development_candidate_not_final_dlg_sol"
+  },
+  "pretrained_model": {
+    "identifier": "seyonec/ChemBERTa-zinc-base-v1",
+    "revision": null,
+    "revision_status": "not_recorded_in_historical_run"
+  },
+  "shared": {
+    "pooling": "masked_mean",
+    "embedding_dimension": 768,
+    "max_length": 256,
+    "dropout": 0.1,
+    "freeze_layers": 0,
+    "weight_decay": 0.01,
+    "batch_size": 32,
+    "evaluation_batch_size": 64,
+    "maximum_epochs": 20,
+    "patience": 4,
+    "warmup_ratio": 0.06,
+    "gradient_clip_norm": 1.0,
+    "seed": 260701,
+    "checkpoint_selection": "selection_logS_rmse",
+    "inference_smiles": "canonical"
+  },
+  "variants": {
+    "canonical_multitask": {
+      "learning_rate": 5e-05,
+      "training_randomized_smiles_per_molecule": 0,
+      "task": "logS_plus_auxiliary",
+      "auxiliary_weight": 0.15,
+      "auxiliary_targets": [
+        "logp",
+        "tpsa",
+        "molwt",
+        "hbd",
+        "hba"
+      ]
+    },
+    "randomized_single_task": {
+      "learning_rate": 2e-05,
+      "training_randomized_smiles_per_molecule": 2,
+      "task": "logS",
+      "auxiliary_weight": 0.0,
+      "auxiliary_targets": []
+    },
+    "canonical_single_task": {
+      "learning_rate": 5e-05,
+      "training_randomized_smiles_per_molecule": 0,
+      "task": "logS",
+      "auxiliary_weight": 0.0,
+      "auxiliary_targets": []
+    }
+  }
+}

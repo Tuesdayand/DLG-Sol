@@ -1,0 +1,38 @@
+{
+  "record_id": [
+    "synthetic_001",
+    "synthetic_002",
+    "synthetic_003",
+    "synthetic_004"
+  ],
+  "observed": [
+    0.2,
+    0.4,
+    0.6,
+    0.8
+  ],
+  "descriptor": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "neural": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+  ],
+  "expected": {
+    "alpha": 0.5,
+    "blend": [
+      0.5,
+      0.5,
+      0.5,
+      0.5
+    ],
+    "blend_rmse": 0.22360679774997896,
+    "blend_mae": 0.2,
+    "blend_bias": 0.0
+  }
+}

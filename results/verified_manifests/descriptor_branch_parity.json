@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "verification_scope": "canonical Mordred schema filtering, candidate grids, and XGBoost construction against retained full-row source artefacts and original executable functions",
+  "row_level_inputs_redistributed": false,
+  "source_sha256": {
+    "aqsoldbc_rows": "25e4e8be4c9d1b25982b0e3142dee57062b490e42b1a23329df2869190d61688",
+    "aqsoldbc_mordred": "dade07fc7fd1d9c6cbc5429edf856212b500945f55f5b96d88d84b0d48f4c0e2",
+    "tdc_mordred_train": "799b477047e4f633c1e61f54d4b9b9c34b3af30a35cc6349662259002dd72b14",
+    "tdc_mordred_test": "b9d7a16a05ad5bd07e28db3b3f8e0935e0ca858ef0ac8e5acfb7fcc2b021090f",
+    "complat_mordred": "0a07f3e628b4c1036f4af6058399019834cfc8e1d26fba6f472fc0ee8c0fef58",
+    "complat_oof_metadata": "213933a3efd545a63e2b49e67ea314cc6521318d6183991f6cc7ebf6781e9a33",
+    "jchem_mordred": "29a7a0b889811080728eb932a74e04eeadea94d8bd7593d82466c3ec1436feb8",
+    "jchem_split_rows": "4f2873f24ffbfa7f8f99fde94666eac437d8cad61d5ba127d82ff3e62581ffc3"
+  },
+  "protocols": {
+    "aqsoldbc": {
+      "source_rows": 8047,
+      "input_descriptor_columns": 1613,
+      "retained_feature_counts": [373, 353, 354, 352, 356],
+      "retained_column_sequence_sha256": [
+        "82377d0f3c14eb7d26b60e329138860ceb4ac207fae35055849fa8cd9de8dfb2",
+        "f69517686c44642437d69269b9c5604c134fb409b81c1ea2b032d3662091aa8f",
+        "78155b91a310b42ecd8a3c952fe9b7fe06109fdb7adb8ecea3638efd23a9cc64",
+        "3b12b11a320a2657d5a47449a41b6078ba930589a4dbc542c708a341096a2064",
+        "e7f0e207293f49c9d3c438a4beda7ce344d5fb2e5feabc6f56a5c48662a18688"
+      ],
+      "candidate_count": 40,
+      "candidate_grid_sha256": "a2b7feea0ebb0138ec7ea101f3318ad0f844eb3fa4997af60504b1eee9e64d49",
+      "recorded_selected_trials": [4, 8, 4, 0, 0],
+      "feature_schema_parity": true,
+      "candidate_parity": true
+    },
+    "tdc": {
+      "source_rows": 9982,
+      "input_descriptor_columns": 342,
+      "retained_feature_counts": [337, 341, 337, 340, 338],
+      "retained_column_sequence_sha256": [
+        "7970000c542bdee7faeaa0e9f31ab1948bae00940899b748f91329e14d14d5df",
+        "73d356c65fffa100cd4ff32389220cda386d0748dbe0107ef372a7722aa5e161",
+        "c3f78c3ba817ff455d3f3be88c5b831a9c1cf49f2e6da91036d273c3487f8f49",
+        "d013ec3cd4364fe888371eda989fbaf1866980ad76f6e3dcec535fb2c96dd98e",
+        "fda71fdf5e8dc70d027a43f8485c5e5018d59aa9f4c153f354f0a6ce0420ddc9"
+      ],
+      "candidate_count_per_fold": 24,
+      "candidate_grid_sha256": [
+        "ffa7e08a3e3cc8c0887c9df49063afa2c1e78ace09c44ef1777d181c3c6b8721",
+        "5eb118d18ab89f49637eef544415ffca1f654c1e57f14423db59671cbb9a24a9",
+        "291ff511f496cb6cd50e3dc7150d8f5ab0e1cd6f65096eec53d6d0a5e1bd4556",
+        "dc0f2316d24dfef3526319f8dd4617c4659fddef364678fb36028230506f2af5",
+        "39d544137f6fa8c8465603a52a6ce0c43acf43b53c8dab899ebea3ba49ee2932"
+      ],
+      "recorded_selected_trials": [7, 19, 5, 0, 7],
+      "feature_schema_parity": true,
+      "candidate_parity": true
+    },
+    "complat": {
+      "source_rows": 19219,
+      "input_descriptor_columns": 1613,
+      "retained_feature_counts": [646, 650, 654, 650, 650],
+      "supplied_test_refit_feature_count": 650,
+      "retained_column_sequence_sha256": [
+        "066574b2221f1e27a2ad0417504cf1c43181de7246239a73a6f1ca44fe3c3423",
+        "af6691bf3b0723313bfe1314d05d8b23e60b4f307a27269f00ed805ccbe9b4da",
+        "26dcd81ca453bd7c1df2ded212c0ade19f893b42b267e31f48b911418ec060cf",
+        "af6691bf3b0723313bfe1314d05d8b23e60b4f307a27269f00ed805ccbe9b4da",
+        "af6691bf3b0723313bfe1314d05d8b23e60b4f307a27269f00ed805ccbe9b4da"
+      ],
+      "candidate_count": 36,
+      "candidate_grid_sha256": "80c366a9d746dd307e97a59acd66cf1981ff43b6fbd61963c4ff86e50986bee7",
+      "recorded_selected_trial": 2,
+      "feature_schema_parity": true,
+      "candidate_parity": true
+    },
+    "jchem": {
+      "source_rows": 9798,
+      "input_descriptor_columns": 1613,
+      "retained_feature_counts": [571, 575, 572, 574, 615],
+      "retained_column_sequence_sha256": [
+        "c8148c4e4e0afb6d8045b9d663aadfa0a5a4a10870405ff1b52eda2362f9d4de",
+        "a2fdc6e554201433bc6aa116b9097f4e7302ab487b50a5056b6f7f83041334a5",
+        "421b0ab632ce74911efab3626e19e0c1c7f53e5a0affdb3ac6dafe6608eb614a",
+        "32df4c480ffc1bdc8b57c9d81d2b87538d02fdaa25b711a43ca63fefebc61449",
+        "57cf83ed00e96fbd6e5ff95b960d6504075f5c69a0d914788472f51649def739"
+      ],
+      "candidate_count_per_split": 16,
+      "candidate_grid_sha256": [
+        "6bf294e9aa4fcea586a42aeca4c7a2823794892e006791f634ed63c709f40061",
+        "fd0387e1cc7823e4704de577538b1ce5d2f0fc110b3e3c14e06ecbb706d0e192",
+        "76ce40da8fdea137f6c78a1c4ced47f34c226f9048bc7477be98fc2075ef5d33",
+        "6a56ba960ba000335346c6e16ad99b8afbd90a7d52e699abcd5ba1f0c5dce718",
+        "0b9ec371523a9e366d481513053594c6dbb3492204f9bf7fdff457adb1c054de"
+      ],
+      "recorded_selected_trials": [3, 15, 6, 6, 11],
+      "feature_schema_parity": true,
+      "candidate_parity": true
+    }
+  },
+  "synthetic_xgboost_constructor_max_absolute_prediction_difference": 0.0,
+  "unit_tests": {
+    "python_3_13_stack": {"tests": 16, "failures": 0},
+    "python_3_9_clean_recorded_stack": {"tests": 16, "failures": 0}
+  },
+  "status": "PASS"
+}

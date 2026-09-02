@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "figure": "DLG-Sol gain across prespecified chemical subgroups",
+  "source_table": {
+    "path": "supplementary/machine_readable/table_s13_chemical_subgroup_delta_rmse_all_96_rows.csv",
+    "sha256": "5394d18b187d1e1a8361ac8de95b5ca05368338fdabb959a6ee36daac6ddd170",
+    "rows": 96
+  },
+  "generator": {
+    "path": "scripts/render_chemical_subgroup_figure.py",
+    "sha256": "efb8d2104d83b7c1413040dee7b4450c98bb1f968ce989d97a7d3c70ca72d6f2"
+  },
+  "outputs": {
+    "pdf": {
+      "path": "figures/generated/figure_2_chemical_subgroup_gain.pdf",
+      "sha256": "2c1ece0a053c2d996c0b5170771606d8499fb630f44baf20e2063fc70b8516fb"
+    },
+    "png": {
+      "path": "figures/generated/figure_2_chemical_subgroup_gain.png",
+      "sha256": "e73e52ad06cb9accad8170239752a4ed05cd770a7679c7384fc0e2e2d3cb9c4a"
+    },
+    "editable_pptx": {
+      "path": "figures/generated/figure_2_chemical_subgroup_gain_editable.pptx",
+      "sha256": "4f4d643d785ef85008ceb72a651e5bda4f37a09e80c0f8f93ea1830dac380f8b"
+    }
+  },
+  "manuscript_artifact_comparison": {
+    "locked_pdf_sha256": "2c1ece0a053c2d996c0b5170771606d8499fb630f44baf20e2063fc70b8516fb",
+    "locked_preview_png_sha256": "e73e52ad06cb9accad8170239752a4ed05cd770a7679c7384fc0e2e2d3cb9c4a",
+    "generated_png_byte_identical_to_locked_preview": true,
+    "generated_and_locked_pdf_render_sha256_at_150_dpi": "bf0bbe4117e283a53c9f1b239f30dbc58bbfcfd6808114a9cd1ee14d6e86f26f",
+    "generated_and_locked_pdf_render_pixel_identical": true,
+    "note": "The current manuscript and public PDFs came from the same render. Future regenerations may differ in timestamp metadata; rasterized page content is the parity criterion."
+  },
+  "status": "PASS"
+}

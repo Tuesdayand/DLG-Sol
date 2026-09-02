@@ -1,0 +1,130 @@
+{
+  "schema_version": 1,
+  "status": "PASS",
+  "gate": "chemberta_language_l1",
+  "row_level_inputs_redistributed": false,
+  "checkpoints_redistributed": false,
+  "embeddings_redistributed": false,
+  "pretrained_model_identifier": "seyonec/ChemBERTa-zinc-base-v1",
+  "pretrained_revision_recorded": false,
+  "configuration_parity": true,
+  "auxiliary_absolute_tolerance": 1e-12,
+  "embedding_absolute_tolerance": 3e-06,
+  "auxiliary_target_parity": {
+    "rows": 10298,
+    "columns": [
+      "logp",
+      "tpsa",
+      "molwt",
+      "hbd",
+      "hba"
+    ],
+    "archived_missing_values": 0,
+    "recomputed_missing_values": 0,
+    "maximum_absolute_difference": 4.547473508864641e-13
+  },
+  "embedding_extraction_parity": [
+    {
+      "variant": "canonical_multitask",
+      "sample_rows": 16,
+      "archived_embedding_shape": [
+        10298,
+        768
+      ],
+      "observed_embedding_shape": [
+        16,
+        768
+      ],
+      "maximum_absolute_difference": 2.1457672119140625e-06,
+      "mean_absolute_difference": 2.2223814018692187e-07,
+      "finite": true,
+      "checkpoint_layout": {
+        "parameter_tensors": 107,
+        "word_embedding_shape": [
+          767,
+          768
+        ],
+        "logS_head_shape": [
+          1,
+          768
+        ],
+        "auxiliary_head_shape": [
+          5,
+          768
+        ]
+      }
+    },
+    {
+      "variant": "randomized_single_task",
+      "sample_rows": 16,
+      "archived_embedding_shape": [
+        10298,
+        768
+      ],
+      "observed_embedding_shape": [
+        16,
+        768
+      ],
+      "maximum_absolute_difference": 2.384185791015625e-06,
+      "mean_absolute_difference": 2.645972143611175e-07,
+      "finite": true,
+      "checkpoint_layout": {
+        "parameter_tensors": 105,
+        "word_embedding_shape": [
+          767,
+          768
+        ],
+        "logS_head_shape": [
+          1,
+          768
+        ],
+        "auxiliary_head_shape": null
+      }
+    },
+    {
+      "variant": "canonical_single_task",
+      "sample_rows": 16,
+      "archived_embedding_shape": [
+        10298,
+        768
+      ],
+      "observed_embedding_shape": [
+        16,
+        768
+      ],
+      "maximum_absolute_difference": 2.0265579223632812e-06,
+      "mean_absolute_difference": 2.2248870005607083e-07,
+      "finite": true,
+      "checkpoint_layout": {
+        "parameter_tensors": 105,
+        "word_embedding_shape": [
+          767,
+          768
+        ],
+        "logS_head_shape": [
+          1,
+          768
+        ],
+        "auxiliary_head_shape": null
+      }
+    }
+  ],
+  "historical_source_hashes": {
+    "single_task_training_source": "2b504f5ebf09b559b2e7e7862d3b4269477dcf73f3e61bb47ed70d9923c8a05b",
+    "multitask_training_source": "af48c5dfe6c7bd36e7bb78b047116a66b439afe263bf239d9e1a1735fa28fee5",
+    "canonical_single_task_config": "c9cee1be37e6f805758d34d48c23cbf57439530cfb7b34ec52600681d3b76bb2",
+    "randomized_single_task_config": "94f92792b0977da247ae6e99cdcbfec5551da2d1efbd4000537ce12acfb762bd",
+    "canonical_multitask_config": "181f9627bc8c6217614a532bef58572ad030d59e51c74da692d29a247494ea6c",
+    "canonical_multitask_auxiliary_cache": "9db6a35e1c609586eeb01d0d6d05e3303db98666a45d56a1523a8d574d417640"
+  },
+  "historical_checkpoint_hashes": {
+    "canonical_multitask": "ea3ac79b179eb39d1c9077e4e38e69f0a8ab56c33ec8dfd948709c550a64d127",
+    "randomized_single_task": "64872671e461467f920e3226627ed2932a8c38b1cc4c2841d43cf495c37ae0b8",
+    "canonical_single_task": "557b87354ea2ad90c5229ac7ea27a902a96b9c935e34b758f05e41d89bcbb0a7"
+  },
+  "historical_embedding_hashes": {
+    "canonical_multitask": "68ea37e42e4c9f07417e0700a815b3e7385534b50e06e779e2bf00f59d1614db",
+    "randomized_single_task": "0315980f47f0d3f1ab08e471f2b4c4f22da492d7120f59afb2509914436d6af3",
+    "canonical_single_task": "dce8d5ed12ce59debcfd9a71971103c5a4fa6e16ee02ee7a977511cc573f5542"
+  }
+}
