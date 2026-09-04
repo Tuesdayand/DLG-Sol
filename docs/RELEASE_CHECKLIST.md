@@ -38,5 +38,5 @@
 - [x] Chemical-subgroup figure regeneration executed from public inputs
 - [x] Table 2 regeneration executed from public inputs
 - [x] Public repository URL assigned
-- [ ] Archival DOI assigned
+- [x] GitHub-only v1.0 release policy selected; a separate archival DOI is not required
 - [x] Manuscript availability statement updated

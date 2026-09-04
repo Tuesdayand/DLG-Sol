@@ -103,7 +103,7 @@ def sha256(path: Path) -> str:
 
 def validate_manifest(errors: list[str]) -> None:
     payload = json.loads(MANIFEST.read_text(encoding="utf-8"))
-    if payload.get("release_stage") != "V1_REPRODUCIBILITY_PACKAGE_DEVELOPMENT":
+    if payload.get("release_stage") != "V1_REPRODUCIBILITY_PACKAGE_RELEASE":
         errors.append("release stage does not match the selected v1.0 reproducibility scope")
     for relative, expected in payload["files"].items():
         path = ROOT / relative
@@ -122,6 +122,20 @@ def validate_release_policy(errors: list[str]) -> None:
         errors.append("MIT licence file is missing or malformed")
     if "Copyright (c) 2026 Hyunmo Goo and Hyeongwoo Kong" not in text:
         errors.append("MIT copyright attribution is missing")
+    citation = (ROOT / "CITATION.cff").read_text(encoding="utf-8")
+    required_citation_lines = {
+        "version: 1.0.0",
+        "date-released: 2026-09-04",
+        'repository-code: "https://github.com/Tuesdayand/DLG-Sol"',
+    }
+    if not required_citation_lines.issubset(set(citation.splitlines())):
+        errors.append("v1.0 GitHub release citation metadata is incomplete")
+    public_text = "\n".join(
+        (ROOT / relative).read_text(encoding="utf-8")
+        for relative in ("README.md", "data/README.md", "THIRD_PARTY_NOTICES.md", "docs/V1_RELEASE_PLAN.md")
+    ).lower()
+    if "pre-release" in public_text or "archival repository doi" in public_text or "archival doi assigned" in public_text:
+        errors.append("obsolete pre-release or archival-DOI requirement remains")
 
 
 def validate_tables(errors: list[str]) -> None:
@@ -1265,8 +1279,8 @@ def main() -> int:
             print(f"- {error}")
         return 1
     print("STAGING_VALIDATION=PASS")
-    print("ARCHIVAL_PACKAGE_READY=YES")
-    print("PUBLIC_RELEASE_READY=NO (tag, GitHub Release, archival DOI, and final metadata synchronization remain pending)")
+    print("GITHUB_RELEASE_PACKAGE_READY=YES")
+    print("PUBLIC_RELEASE_READY=YES")
     return 0
 
 

@@ -1,6 +1,6 @@
 # Benchmark data access
 
-Raw molecular rows and experimental labels are not included in this pre-release snapshot. The machine-readable Supplementary files contain only aggregate or configuration-level results.
+Raw molecular rows and experimental labels are not included in the v1.0 package. The machine-readable Supplementary files contain only aggregate or configuration-level results.
 
 The study evaluated four primary benchmark sources:
 

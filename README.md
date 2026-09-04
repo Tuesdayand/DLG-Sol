@@ -6,11 +6,11 @@ DLG-Sol combines a Mordred/XGBoost descriptor model with a neural model derived 
 
 ## Repository status
 
-This is a pre-release staging repository. The currently included files cover the verified machine-readable Supplementary summaries, release-integrity checks, the six-evaluation registry, label-firewall checks, fixed blending, article-level scoring metrics, the canonical Mordred/XGBoost descriptor branch, the ChemBERTa language encoder, the explicit-polar-hydrogen distance-aware three-dimensional graph branch, the canonical `aug2_head4` language–geometry branch, evaluation-specific adapter contracts, a validated benchmark-input package schema, a provenance-checked local-package evaluation runner, a historical training-role audit, a label-safe stage materializer, audited unit-level execution recipes, and branch-level training commands. Row-level benchmark data, historical model checkpoints, automatic data acquisition, and third-party source code are not part of this staging snapshot.
+This repository contains the **v1.0 reproducibility package**. It includes verified machine-readable Supplementary summaries, release-integrity checks, the six-evaluation registry, label-firewall checks, fixed blending, article-level scoring metrics, the canonical Mordred/XGBoost descriptor branch, the ChemBERTa language encoder, the explicit-polar-hydrogen distance-aware three-dimensional graph branch, the canonical `aug2_head4` language–geometry branch, evaluation-specific adapter contracts, a validated benchmark-input package schema, a provenance-checked local-package evaluation runner, a historical training-role audit, a label-safe stage materializer, audited unit-level execution recipes, and branch-level training commands. Row-level benchmark data, historical model checkpoints, automatic data acquisition, and third-party source code are not included.
 
-The target release is a **v1.0 reproducibility package**. It will provide a documented, executable path from lawfully obtained user-supplied benchmark data through DLG-Sol training, prediction, fixed blending, scoring, and regeneration of the reported public outputs. Raw third-party benchmark rows, third-party source trees, and model weights without clear redistribution permission will not be bundled. Their provenance, access conditions, and required local-package schemas will instead be documented.
+The package provides a documented, executable path from lawfully obtained user-supplied benchmark data through DLG-Sol training, prediction, fixed blending, scoring, and regeneration of the reported public outputs. Raw third-party benchmark rows, third-party source trees, and model weights without clear redistribution permission are not bundled. Their provenance, access conditions, and required local-package schemas are documented instead.
 
-The technical package has completed its input, training-workflow, result-regeneration, and provenance gates. Tagging, the GitHub Release, archival deposition, DOI assignment, and final citation synchronization remain. These criteria are tracked in `docs/V1_RELEASE_PLAN.md`.
+The technical package has completed its input, training-workflow, result-regeneration, provenance, and release-metadata gates. Versioned source releases are provided through GitHub. The project does not require a separate archival DOI for v1.0. The release criteria are documented in `docs/V1_RELEASE_PLAN.md`.
 
 ## Canonical core modules
 
@@ -87,15 +87,15 @@ The command creates `results/table_2_absolute_rmse.csv` from the public 31-row e
 
 ## Data access
 
-Raw benchmark data are not redistributed in this pre-release snapshot. See `data/README.md`, `docs/DATA_AND_ASSET_PROVENANCE.md`, and `configs/redistribution_decisions.json` for source locations, rights findings, and project bundling decisions. File-level provenance and interpretation boundaries for the external comparators are documented in `docs/EXTERNAL_COMPARATOR_PROVENANCE.md`.
+Raw benchmark data are not redistributed in this package. See `data/README.md`, `docs/DATA_AND_ASSET_PROVENANCE.md`, and `configs/redistribution_decisions.json` for source locations, rights findings, and project bundling decisions. File-level provenance and interpretation boundaries for the external comparators are documented in `docs/EXTERNAL_COMPARATOR_PROVENANCE.md`.
 
 ## Reproducibility scope
 
-See `docs/REPRODUCIBILITY_SCOPE.md` for the distinction between the current summary-data snapshot and the planned full training/inference release.
+See `docs/REPRODUCIBILITY_SCOPE.md` for the exact reproducibility claims and the boundary between public aggregate results and user-supplied row-level inputs.
 
 ## Citation
 
-Citation metadata are provided in `CITATION.cff`. The article DOI and archival repository DOI will be added when available.
+Citation metadata for version 1.0.0 are provided in `CITATION.cff`. The article DOI may be added after journal publication.
 
 ## License
 
