@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "gate": "redistribution_decision_p1",
+  "status": "PASS",
+  "audit_date": "2026-09-04",
+  "source_decisions": 8,
+  "sources_without_decision": 0,
+  "row_level_dataset_sources_bundled": 0,
+  "excluded_sensitive_derived_asset_classes": 5,
+  "included_public_asset_classes": 2,
+  "licence_finding_and_bundling_decision_separated": true,
+  "machine_readable_supplementary_results_retained": true,
+  "independent_row_level_metric_recalculation_without_upstream_inputs_possible": false,
+  "private_paths_recorded": false
+}

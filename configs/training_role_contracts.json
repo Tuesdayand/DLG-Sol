@@ -1,0 +1,3706 @@
+{
+  "schema_version": 1,
+  "model_identity": "aug2_head4",
+  "status": "AUDITED_MATERIALIZER_AVAILABLE",
+  "stage_definitions": {
+    "parameter_fit": "rows used to update the deployed model when no post-selection refit followed",
+    "selection_fit": "rows used to fit candidates or determine a fixed training schedule",
+    "selection_score": "rows whose labels selected a candidate, checkpoint, or epoch",
+    "final_refit": "rows used to fit the deployed model after selection was frozen",
+    "coefficient_fit": "rows whose component predictions and labels fixed alpha",
+    "scored_prediction": "rows receiving the reported deployed prediction; labels must be absent from training views"
+  },
+  "overlap_policy": {
+    "default": "A scored row for a deployed unit must not occur in any training or coefficient stage for that unit.",
+    "r02_historical_exception": "R02 global preselection used the same 17,937-row population later scored out of fold. This is disclosed as non-nested and is not represented as a zero-overlap firewall.",
+    "legitimate_reuse": "Rows may move from selection_score to final_refit after selection when they are not scored by that deployed unit. R05 validation rows may also serve selection and coefficient fitting."
+  },
+  "role_resolution_inputs": {
+    "R01": "evaluation package plus configs/aqsoldbc_partition_recipe.json",
+    "R02": "evaluation package plus reproducible ComPlatSplit1 grouping recipe recorded here",
+    "R03": "evaluation package plus configs/tdc_partition_recipe.json",
+    "R04": "evaluation package plus configs/tdc_partition_recipe.json and R03 OOF dependency",
+    "R05": "evaluation package; coefficient role is also the branch-selection role where specified",
+    "R09": "evaluation package plus R02 global-selection and complete-OOF dependencies"
+  },
+  "complat_global_selection_recipe": {
+    "population": "released ComPlat Train rows only",
+    "group_key": "RDKit InChIKey computed from original SMILES",
+    "group_target": "mean logS",
+    "stratification": "pandas qcut up to 20 bins with minimum group count 5",
+    "splitter": "sklearn StratifiedShuffleSplit",
+    "validation_fraction": 0.2,
+    "random_state": 260525,
+    "historical_split_name": "ComPlatSplit1",
+    "expected_counts": {
+      "selection_fit": 14351,
+      "selection_score": 3586
+    }
+  },
+  "evaluations": {
+    "R01": {
+      "selection_scope": "The descriptor branch uses four-way inner cross-validation inside each outer development set. Language and geometry use that outer unit's reserved validation rows. Four-head epochs were frozen from development-only validation summaries.",
+      "coefficient_dependency": "prespecified_alpha_0.5_no_label_rows",
+      "branches": {
+        "descriptor": {
+          "role_resolution": "nested_inner_cv_then_outer_development_refit",
+          "scored_label_permission": "scoring_only",
+          "expected_units": [
+            {
+              "fold_index": 0,
+              "stages": {
+                "final_refit": {
+                  "rows": 6437,
+                  "record_id_sha256": "5268e0f72a288031c005ead0e5c78f63597d50863c6a8e1a83dd2675b2bb4a7e"
+                },
+                "scored_prediction": {
+                  "rows": 1610,
+                  "record_id_sha256": "cf7e0b3d1743fd5122c04f73c753c9da459756b02bc66ac90290aaf857df5d1d"
+                },
+                "selection_fit": {
+                  "rows": 6437,
+                  "record_id_sha256": "5268e0f72a288031c005ead0e5c78f63597d50863c6a8e1a83dd2675b2bb4a7e"
+                },
+                "selection_score": {
+                  "rows": 6437,
+                  "record_id_sha256": "5268e0f72a288031c005ead0e5c78f63597d50863c6a8e1a83dd2675b2bb4a7e"
+                }
+              },
+              "stage_assignment_sha256": "37640e4988b747779b79a22a408a8ef919b89ad291653a437505a8f52d4663a4",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              },
+              "nested_selection_units": [
+                {
+                  "inner_fold": 1,
+                  "stages": {
+                    "selection_fit": {
+                      "rows": 4827,
+                      "record_id_sha256": "c3d133dcdda34785c55696017ca03c92b6d0f6da1de3d123c67102fa846f5f75"
+                    },
+                    "selection_score": {
+                      "rows": 1610,
+                      "record_id_sha256": "b5214be3a408f2c86ff6b22112f4c784e1666b81db5abcca65197b347a32fdb9"
+                    }
+                  },
+                  "stage_assignment_sha256": "b3e7e106e3475f1429e61e374b42ce8c93476548895dd0eb864f0eae4bd3ac10"
+                },
+                {
+                  "inner_fold": 2,
+                  "stages": {
+                    "selection_fit": {
+                      "rows": 4828,
+                      "record_id_sha256": "771b059c14deafa364c4cacb2ae93e7c1db5d5f2751c0b47a4a7d578756c327b"
+                    },
+                    "selection_score": {
+                      "rows": 1609,
+                      "record_id_sha256": "9cadc7d89d2c461195a48ac4ad7275f2545971f849b08dc9f03864d59665befb"
+                    }
+                  },
+                  "stage_assignment_sha256": "104028fbfa6d8a2b61e82159af94d084641a6377f3cf43e8ff221544be87a067"
+                },
+                {
+                  "inner_fold": 3,
+                  "stages": {
+                    "selection_fit": {
+                      "rows": 4828,
+                      "record_id_sha256": "3e771ce3baa907cb45f8504a894e163de14134f241e004e47b338e5071d5c716"
+                    },
+                    "selection_score": {
+                      "rows": 1609,
+                      "record_id_sha256": "408b73d5034fa3742c6d05ba435ee923098f4675eb1a50944edb3f2c466a02b2"
+                    }
+                  },
+                  "stage_assignment_sha256": "1037b245035f8aec66f2ae7b6f68306ccf678b1ea149b8e4a302ea5e5757d746"
+                },
+                {
+                  "inner_fold": 4,
+                  "stages": {
+                    "selection_fit": {
+                      "rows": 4828,
+                      "record_id_sha256": "935bcad6c20e05e6b42934248a08ca062ad895a94da58c342900b2819d1d6ee3"
+                    },
+                    "selection_score": {
+                      "rows": 1609,
+                      "record_id_sha256": "f3955a04b72be4725213d66900afaa27394780c53bd060fab94046ce3d56eefc"
+                    }
+                  },
+                  "stage_assignment_sha256": "e0000fbdcb63b9717e92bae56c8e5c470888ccfaf3716b5c530a57fb11a94575"
+                }
+              ]
+            },
+            {
+              "fold_index": 1,
+              "stages": {
+                "final_refit": {
+                  "rows": 6437,
+                  "record_id_sha256": "0c6bf83c3a19aefab56b6e7f0d3c1c9579b151e98d2ca8350149ea480e855151"
+                },
+                "scored_prediction": {
+                  "rows": 1610,
+                  "record_id_sha256": "b5214be3a408f2c86ff6b22112f4c784e1666b81db5abcca65197b347a32fdb9"
+                },
+                "selection_fit": {
+                  "rows": 6437,
+                  "record_id_sha256": "0c6bf83c3a19aefab56b6e7f0d3c1c9579b151e98d2ca8350149ea480e855151"
+                },
+                "selection_score": {
+                  "rows": 6437,
+                  "record_id_sha256": "0c6bf83c3a19aefab56b6e7f0d3c1c9579b151e98d2ca8350149ea480e855151"
+                }
+              },
+              "stage_assignment_sha256": "75d35222cf43b309b26dc39a009cbef3f44eca9a00fe8a636526f8d11db0bf40",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              },
+              "nested_selection_units": [
+                {
+                  "inner_fold": 0,
+                  "stages": {
+                    "selection_fit": {
+                      "rows": 4827,
+                      "record_id_sha256": "c3d133dcdda34785c55696017ca03c92b6d0f6da1de3d123c67102fa846f5f75"
+                    },
+                    "selection_score": {
+                      "rows": 1610,
+                      "record_id_sha256": "cf7e0b3d1743fd5122c04f73c753c9da459756b02bc66ac90290aaf857df5d1d"
+                    }
+                  },
+                  "stage_assignment_sha256": "7e4f3d15a41a6de51064ead005c194477ca70572a1e0011fb588d5d9f4d785e9"
+                },
+                {
+                  "inner_fold": 2,
+                  "stages": {
+                    "selection_fit": {
+                      "rows": 4828,
+                      "record_id_sha256": "41a602b012a24630efb1cfd41db1e168cf346c540bfda9341bfdd507517cb633"
+                    },
+                    "selection_score": {
+                      "rows": 1609,
+                      "record_id_sha256": "9cadc7d89d2c461195a48ac4ad7275f2545971f849b08dc9f03864d59665befb"
+                    }
+                  },
+                  "stage_assignment_sha256": "b3b6a078222bfe417873b193a56d070bef8411a691492e300af14aefdefa1fb0"
+                },
+                {
+                  "inner_fold": 3,
+                  "stages": {
+                    "selection_fit": {
+                      "rows": 4828,
+                      "record_id_sha256": "f4d4c052cf44a99f4126fce7c4227372d947fa306a49d7bfefbbc7beaccf5333"
+                    },
+                    "selection_score": {
+                      "rows": 1609,
+                      "record_id_sha256": "408b73d5034fa3742c6d05ba435ee923098f4675eb1a50944edb3f2c466a02b2"
+                    }
+                  },
+                  "stage_assignment_sha256": "3ef645a688667ae58f4ef4ad63907ce4435a846ef91bbcb2f9806b2a737800d2"
+                },
+                {
+                  "inner_fold": 4,
+                  "stages": {
+                    "selection_fit": {
+                      "rows": 4828,
+                      "record_id_sha256": "edba3dcc783af7b6f92bddc180780c519e7e70754489e17da1976706b15d37bd"
+                    },
+                    "selection_score": {
+                      "rows": 1609,
+                      "record_id_sha256": "f3955a04b72be4725213d66900afaa27394780c53bd060fab94046ce3d56eefc"
+                    }
+                  },
+                  "stage_assignment_sha256": "81a8dc056a19069a657afa2163219072a58aa3c5cdb1bddc263dcab87851b9b2"
+                }
+              ]
+            },
+            {
+              "fold_index": 2,
+              "stages": {
+                "final_refit": {
+                  "rows": 6438,
+                  "record_id_sha256": "e8cc97d7f75e2227aaa940689797e76c984d8cf97531e3b5c4497965c4d5a153"
+                },
+                "scored_prediction": {
+                  "rows": 1609,
+                  "record_id_sha256": "9cadc7d89d2c461195a48ac4ad7275f2545971f849b08dc9f03864d59665befb"
+                },
+                "selection_fit": {
+                  "rows": 6438,
+                  "record_id_sha256": "e8cc97d7f75e2227aaa940689797e76c984d8cf97531e3b5c4497965c4d5a153"
+                },
+                "selection_score": {
+                  "rows": 6438,
+                  "record_id_sha256": "e8cc97d7f75e2227aaa940689797e76c984d8cf97531e3b5c4497965c4d5a153"
+                }
+              },
+              "stage_assignment_sha256": "dc4155dfb53ee4760944c81a0e01e58cf62e143209609473f52ef986a68b2d18",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              },
+              "nested_selection_units": [
+                {
+                  "inner_fold": 0,
+                  "stages": {
+                    "selection_fit": {
+                      "rows": 4828,
+                      "record_id_sha256": "771b059c14deafa364c4cacb2ae93e7c1db5d5f2751c0b47a4a7d578756c327b"
+                    },
+                    "selection_score": {
+                      "rows": 1610,
+                      "record_id_sha256": "cf7e0b3d1743fd5122c04f73c753c9da459756b02bc66ac90290aaf857df5d1d"
+                    }
+                  },
+                  "stage_assignment_sha256": "f063addb8e99f1c6f96925c62934d96da5d707b500f14e82fbcef1f088ae5c39"
+                },
+                {
+                  "inner_fold": 1,
+                  "stages": {
+                    "selection_fit": {
+                      "rows": 4828,
+                      "record_id_sha256": "41a602b012a24630efb1cfd41db1e168cf346c540bfda9341bfdd507517cb633"
+                    },
+                    "selection_score": {
+                      "rows": 1610,
+                      "record_id_sha256": "b5214be3a408f2c86ff6b22112f4c784e1666b81db5abcca65197b347a32fdb9"
+                    }
+                  },
+                  "stage_assignment_sha256": "e4cc78c8ddbb1d86b99ab011005b1490d176598a6e46154d407d333a6f481b2a"
+                },
+                {
+                  "inner_fold": 3,
+                  "stages": {
+                    "selection_fit": {
+                      "rows": 4829,
+                      "record_id_sha256": "30fac8a1d48f2fd823a7aecc4b353f8362b3b5f9d77af29e52db4731957b9e17"
+                    },
+                    "selection_score": {
+                      "rows": 1609,
+                      "record_id_sha256": "408b73d5034fa3742c6d05ba435ee923098f4675eb1a50944edb3f2c466a02b2"
+                    }
+                  },
+                  "stage_assignment_sha256": "feb9d8e77128c2d09596a9d592ddccf43668ef58e645199cbd582c9f56612d33"
+                },
+                {
+                  "inner_fold": 4,
+                  "stages": {
+                    "selection_fit": {
+                      "rows": 4829,
+                      "record_id_sha256": "0856ee45154e26925f28d0c04ed3516e103e27f155308d51486e452526ffb8b7"
+                    },
+                    "selection_score": {
+                      "rows": 1609,
+                      "record_id_sha256": "f3955a04b72be4725213d66900afaa27394780c53bd060fab94046ce3d56eefc"
+                    }
+                  },
+                  "stage_assignment_sha256": "e37d04beee4428a7c9869968ea72eed4bd7d0e6e5c3b2eebb196c97fc7d885e6"
+                }
+              ]
+            },
+            {
+              "fold_index": 3,
+              "stages": {
+                "final_refit": {
+                  "rows": 6438,
+                  "record_id_sha256": "eb1ad38f96b3373b9d77621a0891286099c266ce0f8c0ba3c04cf5f757f4d375"
+                },
+                "scored_prediction": {
+                  "rows": 1609,
+                  "record_id_sha256": "408b73d5034fa3742c6d05ba435ee923098f4675eb1a50944edb3f2c466a02b2"
+                },
+                "selection_fit": {
+                  "rows": 6438,
+                  "record_id_sha256": "eb1ad38f96b3373b9d77621a0891286099c266ce0f8c0ba3c04cf5f757f4d375"
+                },
+                "selection_score": {
+                  "rows": 6438,
+                  "record_id_sha256": "eb1ad38f96b3373b9d77621a0891286099c266ce0f8c0ba3c04cf5f757f4d375"
+                }
+              },
+              "stage_assignment_sha256": "6eb34cacf04e44b965c53ad0843c4a33daed7209a7879c8c55b1c82c8f02760f",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              },
+              "nested_selection_units": [
+                {
+                  "inner_fold": 0,
+                  "stages": {
+                    "selection_fit": {
+                      "rows": 4828,
+                      "record_id_sha256": "3e771ce3baa907cb45f8504a894e163de14134f241e004e47b338e5071d5c716"
+                    },
+                    "selection_score": {
+                      "rows": 1610,
+                      "record_id_sha256": "cf7e0b3d1743fd5122c04f73c753c9da459756b02bc66ac90290aaf857df5d1d"
+                    }
+                  },
+                  "stage_assignment_sha256": "0f5cd570c49aef3ac41037586bc6297b65a18ef7ef78594bed5ba51db671895f"
+                },
+                {
+                  "inner_fold": 1,
+                  "stages": {
+                    "selection_fit": {
+                      "rows": 4828,
+                      "record_id_sha256": "f4d4c052cf44a99f4126fce7c4227372d947fa306a49d7bfefbbc7beaccf5333"
+                    },
+                    "selection_score": {
+                      "rows": 1610,
+                      "record_id_sha256": "b5214be3a408f2c86ff6b22112f4c784e1666b81db5abcca65197b347a32fdb9"
+                    }
+                  },
+                  "stage_assignment_sha256": "03e0eecaf3e51dddab33ca71685a530ee651dea6842893f9c1b7ede87c87ba07"
+                },
+                {
+                  "inner_fold": 2,
+                  "stages": {
+                    "selection_fit": {
+                      "rows": 4829,
+                      "record_id_sha256": "30fac8a1d48f2fd823a7aecc4b353f8362b3b5f9d77af29e52db4731957b9e17"
+                    },
+                    "selection_score": {
+                      "rows": 1609,
+                      "record_id_sha256": "9cadc7d89d2c461195a48ac4ad7275f2545971f849b08dc9f03864d59665befb"
+                    }
+                  },
+                  "stage_assignment_sha256": "b9ca103fc6349e502e7af8214c06fd59c2867355cb2b8c898ad0528a4c1022a1"
+                },
+                {
+                  "inner_fold": 4,
+                  "stages": {
+                    "selection_fit": {
+                      "rows": 4829,
+                      "record_id_sha256": "4dc6e2fdff3554a6c84597a8b77fc21b46a541522366f3efe4f3ffc680d15a5b"
+                    },
+                    "selection_score": {
+                      "rows": 1609,
+                      "record_id_sha256": "f3955a04b72be4725213d66900afaa27394780c53bd060fab94046ce3d56eefc"
+                    }
+                  },
+                  "stage_assignment_sha256": "124995054a42cea8557296a4617392814977ea44293069c86ec44e245fbca9c6"
+                }
+              ]
+            },
+            {
+              "fold_index": 4,
+              "stages": {
+                "final_refit": {
+                  "rows": 6438,
+                  "record_id_sha256": "5e110a716afc8e9d27625092011e9ffa52059c0b0207f7ab35901ddb4bdd50b1"
+                },
+                "scored_prediction": {
+                  "rows": 1609,
+                  "record_id_sha256": "f3955a04b72be4725213d66900afaa27394780c53bd060fab94046ce3d56eefc"
+                },
+                "selection_fit": {
+                  "rows": 6438,
+                  "record_id_sha256": "5e110a716afc8e9d27625092011e9ffa52059c0b0207f7ab35901ddb4bdd50b1"
+                },
+                "selection_score": {
+                  "rows": 6438,
+                  "record_id_sha256": "5e110a716afc8e9d27625092011e9ffa52059c0b0207f7ab35901ddb4bdd50b1"
+                }
+              },
+              "stage_assignment_sha256": "89188d0ac8bc0a8ec82d3cef920537cf8b16b16e2ebc3ddda0dde9e0b409d636",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              },
+              "nested_selection_units": [
+                {
+                  "inner_fold": 0,
+                  "stages": {
+                    "selection_fit": {
+                      "rows": 4828,
+                      "record_id_sha256": "935bcad6c20e05e6b42934248a08ca062ad895a94da58c342900b2819d1d6ee3"
+                    },
+                    "selection_score": {
+                      "rows": 1610,
+                      "record_id_sha256": "cf7e0b3d1743fd5122c04f73c753c9da459756b02bc66ac90290aaf857df5d1d"
+                    }
+                  },
+                  "stage_assignment_sha256": "ad1ded9689f3407785a9e27e32848dbddfd78b83d2d7c506dfbcf19e9fca34ee"
+                },
+                {
+                  "inner_fold": 1,
+                  "stages": {
+                    "selection_fit": {
+                      "rows": 4828,
+                      "record_id_sha256": "edba3dcc783af7b6f92bddc180780c519e7e70754489e17da1976706b15d37bd"
+                    },
+                    "selection_score": {
+                      "rows": 1610,
+                      "record_id_sha256": "b5214be3a408f2c86ff6b22112f4c784e1666b81db5abcca65197b347a32fdb9"
+                    }
+                  },
+                  "stage_assignment_sha256": "f6bbd397956b73e21e035b50c61da2eabdc310a6c2ce64d5d125047569a63579"
+                },
+                {
+                  "inner_fold": 2,
+                  "stages": {
+                    "selection_fit": {
+                      "rows": 4829,
+                      "record_id_sha256": "0856ee45154e26925f28d0c04ed3516e103e27f155308d51486e452526ffb8b7"
+                    },
+                    "selection_score": {
+                      "rows": 1609,
+                      "record_id_sha256": "9cadc7d89d2c461195a48ac4ad7275f2545971f849b08dc9f03864d59665befb"
+                    }
+                  },
+                  "stage_assignment_sha256": "db466b47dae8a08798271bba09312c33c7f761a0de2c4e24e7197734ea7999d7"
+                },
+                {
+                  "inner_fold": 3,
+                  "stages": {
+                    "selection_fit": {
+                      "rows": 4829,
+                      "record_id_sha256": "4dc6e2fdff3554a6c84597a8b77fc21b46a541522366f3efe4f3ffc680d15a5b"
+                    },
+                    "selection_score": {
+                      "rows": 1609,
+                      "record_id_sha256": "408b73d5034fa3742c6d05ba435ee923098f4675eb1a50944edb3f2c466a02b2"
+                    }
+                  },
+                  "stage_assignment_sha256": "430933488b275225ce5d73a22a6d7e98a0f4bbd5d51db8fd759d58664a1a11fc"
+                }
+              ]
+            }
+          ]
+        },
+        "language": {
+          "role_resolution": "outer_fit_with_reserved_validation_selection",
+          "scored_label_permission": "scoring_only",
+          "expected_units": [
+            {
+              "fold_index": 0,
+              "stages": {
+                "parameter_fit": {
+                  "rows": 5632,
+                  "record_id_sha256": "9d7ec7e06086dc631084e457528316df9bae52ec869cedc95af0471faf7265d8"
+                },
+                "scored_prediction": {
+                  "rows": 1610,
+                  "record_id_sha256": "cf7e0b3d1743fd5122c04f73c753c9da459756b02bc66ac90290aaf857df5d1d"
+                },
+                "selection_score": {
+                  "rows": 805,
+                  "record_id_sha256": "3e0ac00c671251d21185eb56b85eeba28ef46dd86300df3c4a8242d22aa1c605"
+                }
+              },
+              "stage_assignment_sha256": "a3fa876d8a7a283d80f895b180a368ed0df60b03449b1b51aa166012c8f0714f",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 1,
+              "stages": {
+                "parameter_fit": {
+                  "rows": 5632,
+                  "record_id_sha256": "20a59e7b4dbcdf6bd90352b251f259f49355f4db77cdf62ffd5270056cf00707"
+                },
+                "scored_prediction": {
+                  "rows": 1610,
+                  "record_id_sha256": "b5214be3a408f2c86ff6b22112f4c784e1666b81db5abcca65197b347a32fdb9"
+                },
+                "selection_score": {
+                  "rows": 805,
+                  "record_id_sha256": "1ac802cd3d138f3efc51db37570b3acdd0ee7df7ba64d9fead524af459b39293"
+                }
+              },
+              "stage_assignment_sha256": "e08ec88f22fa5fe576b82508e2852619b02d33044be6a3c53216ad51a70e786f",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 2,
+              "stages": {
+                "parameter_fit": {
+                  "rows": 5633,
+                  "record_id_sha256": "23fd3418460a59ad7fcde8e7554dda0fe14cf6afe48308a930bf251fe0984ede"
+                },
+                "scored_prediction": {
+                  "rows": 1609,
+                  "record_id_sha256": "9cadc7d89d2c461195a48ac4ad7275f2545971f849b08dc9f03864d59665befb"
+                },
+                "selection_score": {
+                  "rows": 805,
+                  "record_id_sha256": "888210484fd914ee99669b599ebc4b22c43d8623445e1398742a194287db9422"
+                }
+              },
+              "stage_assignment_sha256": "029bca18a6dc8572980ab4145d0f9010556d963b8c7fb83caf366f28aae5f6b7",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 3,
+              "stages": {
+                "parameter_fit": {
+                  "rows": 5633,
+                  "record_id_sha256": "0f84d8d969f74f8ffe2b2fc2ceb4f3ee45e33d965787b571861c1b71ff20cc90"
+                },
+                "scored_prediction": {
+                  "rows": 1609,
+                  "record_id_sha256": "408b73d5034fa3742c6d05ba435ee923098f4675eb1a50944edb3f2c466a02b2"
+                },
+                "selection_score": {
+                  "rows": 805,
+                  "record_id_sha256": "012c0d4443dabcdd3ba511e446913bdf318be569249893ff11b20fd1a5a42f5a"
+                }
+              },
+              "stage_assignment_sha256": "53bcc1704b3e259fc24505fcbd19d8b90c6c5de12eee2dd7886552d4c054e5d7",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 4,
+              "stages": {
+                "parameter_fit": {
+                  "rows": 5633,
+                  "record_id_sha256": "7f555a496fbefca61ab98e929a4a39e7671d7f5999e6609318c9aee1031d4fb1"
+                },
+                "scored_prediction": {
+                  "rows": 1609,
+                  "record_id_sha256": "f3955a04b72be4725213d66900afaa27394780c53bd060fab94046ce3d56eefc"
+                },
+                "selection_score": {
+                  "rows": 805,
+                  "record_id_sha256": "71d431b5376a70f3f2d0536e1e65a54689498caa84df84a856c66206d5a52066"
+                }
+              },
+              "stage_assignment_sha256": "ff5ee8e2b69da347d5e5a4c21efecdc9a4aa073a0cca36f3dbd6730a2c36fa12",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            }
+          ]
+        },
+        "geometry": {
+          "role_resolution": "outer_fit_with_reserved_validation_selection",
+          "scored_label_permission": "scoring_only",
+          "expected_units": [
+            {
+              "fold_index": 0,
+              "stages": {
+                "parameter_fit": {
+                  "rows": 5632,
+                  "record_id_sha256": "9d7ec7e06086dc631084e457528316df9bae52ec869cedc95af0471faf7265d8"
+                },
+                "scored_prediction": {
+                  "rows": 1610,
+                  "record_id_sha256": "cf7e0b3d1743fd5122c04f73c753c9da459756b02bc66ac90290aaf857df5d1d"
+                },
+                "selection_score": {
+                  "rows": 805,
+                  "record_id_sha256": "3e0ac00c671251d21185eb56b85eeba28ef46dd86300df3c4a8242d22aa1c605"
+                }
+              },
+              "stage_assignment_sha256": "a3fa876d8a7a283d80f895b180a368ed0df60b03449b1b51aa166012c8f0714f",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 1,
+              "stages": {
+                "parameter_fit": {
+                  "rows": 5632,
+                  "record_id_sha256": "20a59e7b4dbcdf6bd90352b251f259f49355f4db77cdf62ffd5270056cf00707"
+                },
+                "scored_prediction": {
+                  "rows": 1610,
+                  "record_id_sha256": "b5214be3a408f2c86ff6b22112f4c784e1666b81db5abcca65197b347a32fdb9"
+                },
+                "selection_score": {
+                  "rows": 805,
+                  "record_id_sha256": "1ac802cd3d138f3efc51db37570b3acdd0ee7df7ba64d9fead524af459b39293"
+                }
+              },
+              "stage_assignment_sha256": "e08ec88f22fa5fe576b82508e2852619b02d33044be6a3c53216ad51a70e786f",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 2,
+              "stages": {
+                "parameter_fit": {
+                  "rows": 5633,
+                  "record_id_sha256": "23fd3418460a59ad7fcde8e7554dda0fe14cf6afe48308a930bf251fe0984ede"
+                },
+                "scored_prediction": {
+                  "rows": 1609,
+                  "record_id_sha256": "9cadc7d89d2c461195a48ac4ad7275f2545971f849b08dc9f03864d59665befb"
+                },
+                "selection_score": {
+                  "rows": 805,
+                  "record_id_sha256": "888210484fd914ee99669b599ebc4b22c43d8623445e1398742a194287db9422"
+                }
+              },
+              "stage_assignment_sha256": "029bca18a6dc8572980ab4145d0f9010556d963b8c7fb83caf366f28aae5f6b7",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 3,
+              "stages": {
+                "parameter_fit": {
+                  "rows": 5633,
+                  "record_id_sha256": "0f84d8d969f74f8ffe2b2fc2ceb4f3ee45e33d965787b571861c1b71ff20cc90"
+                },
+                "scored_prediction": {
+                  "rows": 1609,
+                  "record_id_sha256": "408b73d5034fa3742c6d05ba435ee923098f4675eb1a50944edb3f2c466a02b2"
+                },
+                "selection_score": {
+                  "rows": 805,
+                  "record_id_sha256": "012c0d4443dabcdd3ba511e446913bdf318be569249893ff11b20fd1a5a42f5a"
+                }
+              },
+              "stage_assignment_sha256": "53bcc1704b3e259fc24505fcbd19d8b90c6c5de12eee2dd7886552d4c054e5d7",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 4,
+              "stages": {
+                "parameter_fit": {
+                  "rows": 5633,
+                  "record_id_sha256": "7f555a496fbefca61ab98e929a4a39e7671d7f5999e6609318c9aee1031d4fb1"
+                },
+                "scored_prediction": {
+                  "rows": 1609,
+                  "record_id_sha256": "f3955a04b72be4725213d66900afaa27394780c53bd060fab94046ce3d56eefc"
+                },
+                "selection_score": {
+                  "rows": 805,
+                  "record_id_sha256": "71d431b5376a70f3f2d0536e1e65a54689498caa84df84a856c66206d5a52066"
+                }
+              },
+              "stage_assignment_sha256": "ff5ee8e2b69da347d5e5a4c21efecdc9a4aa073a0cca36f3dbd6730a2c36fa12",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            }
+          ]
+        },
+        "fusion_head": {
+          "role_resolution": "outer_fit_only_with_frozen_four_head_schedule",
+          "scored_label_permission": "scoring_only",
+          "expected_units": [
+            {
+              "fold_index": 0,
+              "stages": {
+                "parameter_fit": {
+                  "rows": 5632,
+                  "record_id_sha256": "9d7ec7e06086dc631084e457528316df9bae52ec869cedc95af0471faf7265d8"
+                },
+                "scored_prediction": {
+                  "rows": 1610,
+                  "record_id_sha256": "cf7e0b3d1743fd5122c04f73c753c9da459756b02bc66ac90290aaf857df5d1d"
+                }
+              },
+              "stage_assignment_sha256": "ff45429b0edf286b81ec80e6b82bc7fe9d1169837606c7321e8e4c0c094d7a41",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 1,
+              "stages": {
+                "parameter_fit": {
+                  "rows": 5632,
+                  "record_id_sha256": "20a59e7b4dbcdf6bd90352b251f259f49355f4db77cdf62ffd5270056cf00707"
+                },
+                "scored_prediction": {
+                  "rows": 1610,
+                  "record_id_sha256": "b5214be3a408f2c86ff6b22112f4c784e1666b81db5abcca65197b347a32fdb9"
+                }
+              },
+              "stage_assignment_sha256": "3cc5e5cd6f2ebe3470cfd71bfe38df36843a14957ec3c450b84f2dea4db6cbe6",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 2,
+              "stages": {
+                "parameter_fit": {
+                  "rows": 5633,
+                  "record_id_sha256": "23fd3418460a59ad7fcde8e7554dda0fe14cf6afe48308a930bf251fe0984ede"
+                },
+                "scored_prediction": {
+                  "rows": 1609,
+                  "record_id_sha256": "9cadc7d89d2c461195a48ac4ad7275f2545971f849b08dc9f03864d59665befb"
+                }
+              },
+              "stage_assignment_sha256": "9001f5a07159c83c9955df45d1d044d3af13672844fb994b7801b15800908cfd",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 3,
+              "stages": {
+                "parameter_fit": {
+                  "rows": 5633,
+                  "record_id_sha256": "0f84d8d969f74f8ffe2b2fc2ceb4f3ee45e33d965787b571861c1b71ff20cc90"
+                },
+                "scored_prediction": {
+                  "rows": 1609,
+                  "record_id_sha256": "408b73d5034fa3742c6d05ba435ee923098f4675eb1a50944edb3f2c466a02b2"
+                }
+              },
+              "stage_assignment_sha256": "9c2b966cd332408fcd9fea061ccf2c9a3f5d8a10c9fdd9126968cebd816f00a5",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 4,
+              "stages": {
+                "parameter_fit": {
+                  "rows": 5633,
+                  "record_id_sha256": "7f555a496fbefca61ab98e929a4a39e7671d7f5999e6609318c9aee1031d4fb1"
+                },
+                "scored_prediction": {
+                  "rows": 1609,
+                  "record_id_sha256": "f3955a04b72be4725213d66900afaa27394780c53bd060fab94046ce3d56eefc"
+                }
+              },
+              "stage_assignment_sha256": "d19ff97c9dc8ffe2f6c2e3ce7cbf6fa7660feadb4a128b8d0b4f7a8aa5c3e78a",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            }
+          ]
+        },
+        "blend_coefficient": {
+          "role_resolution": "prespecified_without_label_fit",
+          "scored_label_permission": "scoring_only",
+          "expected_units": [
+            {
+              "fold_index": 0,
+              "stages": {
+                "scored_prediction": {
+                  "rows": 1610,
+                  "record_id_sha256": "cf7e0b3d1743fd5122c04f73c753c9da459756b02bc66ac90290aaf857df5d1d"
+                }
+              },
+              "stage_assignment_sha256": "7c54be0023957e23c1d9fa7f51f96f6d845441480bb3ae59e580de4ff1d1ba5f",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 1,
+              "stages": {
+                "scored_prediction": {
+                  "rows": 1610,
+                  "record_id_sha256": "b5214be3a408f2c86ff6b22112f4c784e1666b81db5abcca65197b347a32fdb9"
+                }
+              },
+              "stage_assignment_sha256": "44dc2b675b84aaee352613f4f9ce38553f9a19b8bd5960734020592e86a1411a",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 2,
+              "stages": {
+                "scored_prediction": {
+                  "rows": 1609,
+                  "record_id_sha256": "9cadc7d89d2c461195a48ac4ad7275f2545971f849b08dc9f03864d59665befb"
+                }
+              },
+              "stage_assignment_sha256": "c09610e361f2720480610b6ac3df7cc0edde8e8152f053a824e9c4228420250b",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 3,
+              "stages": {
+                "scored_prediction": {
+                  "rows": 1609,
+                  "record_id_sha256": "408b73d5034fa3742c6d05ba435ee923098f4675eb1a50944edb3f2c466a02b2"
+                }
+              },
+              "stage_assignment_sha256": "850220c1d11f7f9fc3bcbcb8b8edc5e1548038e995e218c21c2c399cb737916d",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 4,
+              "stages": {
+                "scored_prediction": {
+                  "rows": 1609,
+                  "record_id_sha256": "f3955a04b72be4725213d66900afaa27394780c53bd060fab94046ce3d56eefc"
+                }
+              },
+              "stage_assignment_sha256": "92ecede72e1e44029d150983ac7c271746f48c4611f384b78b77d55835ef3602",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            }
+          ]
+        }
+      }
+    },
+    "R02": {
+      "selection_scope": "The recorded R02 component settings were selected once on a global 14,351/3,586 Train/Val split of the same 17,937-row population later used for OOF scoring. Outer-fold final fitting and fold-specific coefficient fitting excluded each held fold, but representation and descriptor selection were not nested.",
+      "coefficient_dependency": "other_four_r02_oof_folds_for_each_held_fold",
+      "historical_exception": "non_nested_global_preselection",
+      "sensitivity_status": "fold_local_reselection_sensitivity_retained_the_primary_conclusion",
+      "branches": {
+        "descriptor": {
+          "role_resolution": "global_train_val_preselection_then_outer_refit",
+          "scored_label_permission": "scoring_only",
+          "expected_units": [
+            {
+              "fold_index": 0,
+              "stages": {
+                "final_refit": {
+                  "rows": 14349,
+                  "record_id_sha256": "0c71f49e79a05facea2e3ebee949fa0e9bd880de390e8c64e6518d9328fedc2e"
+                },
+                "scored_prediction": {
+                  "rows": 3588,
+                  "record_id_sha256": "4433bd37275203a86dd7f3a7e1f629e0acd3b0d691444248250fd94520845be6"
+                },
+                "selection_fit": {
+                  "rows": 14351,
+                  "record_id_sha256": "3bac17bf2fbe92b263fe9ddad8d8cbd865ec8077a3ae3d8a79575b68217a37e3"
+                },
+                "selection_score": {
+                  "rows": 3586,
+                  "record_id_sha256": "6f63362f7cd7433dbd1cbb79993a4ec6ab8b06c581493515ffa645eaf5c89f3d"
+                }
+              },
+              "stage_assignment_sha256": "3bb4b21557f6a4460f7eb300286a725968e18dfeb2ca480b65dd303748fdd831",
+              "scored_overlap_policy": "documented_non_nested_global_preselection",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 2880,
+                "selection_score": 708,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 1,
+              "stages": {
+                "final_refit": {
+                  "rows": 14349,
+                  "record_id_sha256": "3601cf1718a6c8fdd0f72ab51b0009beee8bb993f9a7a55cda339d167e2c506f"
+                },
+                "scored_prediction": {
+                  "rows": 3588,
+                  "record_id_sha256": "5fd5c53b05aff347e15453fd744973957a8582f8aabd30e6bbdd5073b198850b"
+                },
+                "selection_fit": {
+                  "rows": 14351,
+                  "record_id_sha256": "3bac17bf2fbe92b263fe9ddad8d8cbd865ec8077a3ae3d8a79575b68217a37e3"
+                },
+                "selection_score": {
+                  "rows": 3586,
+                  "record_id_sha256": "6f63362f7cd7433dbd1cbb79993a4ec6ab8b06c581493515ffa645eaf5c89f3d"
+                }
+              },
+              "stage_assignment_sha256": "c928720ce3efe5df8ebc424023cac0befc6bcdda04470e11bcb7614b6728e58a",
+              "scored_overlap_policy": "documented_non_nested_global_preselection",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 2856,
+                "selection_score": 732,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 2,
+              "stages": {
+                "final_refit": {
+                  "rows": 14350,
+                  "record_id_sha256": "ffdd0c97e2643fe41c4f2590205a173b5d8eba08dbe02148523d6beaf7707b9d"
+                },
+                "scored_prediction": {
+                  "rows": 3587,
+                  "record_id_sha256": "b102cedae38e595ca013f9ad4df77fbe1017d5221a15983f20f44c108f0f640d"
+                },
+                "selection_fit": {
+                  "rows": 14351,
+                  "record_id_sha256": "3bac17bf2fbe92b263fe9ddad8d8cbd865ec8077a3ae3d8a79575b68217a37e3"
+                },
+                "selection_score": {
+                  "rows": 3586,
+                  "record_id_sha256": "6f63362f7cd7433dbd1cbb79993a4ec6ab8b06c581493515ffa645eaf5c89f3d"
+                }
+              },
+              "stage_assignment_sha256": "a0b5732c8dbe146698485665922b3ee782c84bf1822483badcb51e8815a93e2a",
+              "scored_overlap_policy": "documented_non_nested_global_preselection",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 2867,
+                "selection_score": 720,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 3,
+              "stages": {
+                "final_refit": {
+                  "rows": 14350,
+                  "record_id_sha256": "df6a06c7f96f0e883650dcd530be37733b07f27eff78e5ac20d02b89f4ca3f81"
+                },
+                "scored_prediction": {
+                  "rows": 3587,
+                  "record_id_sha256": "219999062b57d8ecbaf48de7c752dca9318fd7b10dd0b65a701049571386cb2d"
+                },
+                "selection_fit": {
+                  "rows": 14351,
+                  "record_id_sha256": "3bac17bf2fbe92b263fe9ddad8d8cbd865ec8077a3ae3d8a79575b68217a37e3"
+                },
+                "selection_score": {
+                  "rows": 3586,
+                  "record_id_sha256": "6f63362f7cd7433dbd1cbb79993a4ec6ab8b06c581493515ffa645eaf5c89f3d"
+                }
+              },
+              "stage_assignment_sha256": "93c319fd28e03d15a31862f3b24ea2407ad8d9e37d79e69cae3fccb17423bd2c",
+              "scored_overlap_policy": "documented_non_nested_global_preselection",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 2878,
+                "selection_score": 709,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 4,
+              "stages": {
+                "final_refit": {
+                  "rows": 14350,
+                  "record_id_sha256": "f2ee3ae7319b54d7cc26b5456af31b13ea1e2d3c7172d93de67477d0906a46d8"
+                },
+                "scored_prediction": {
+                  "rows": 3587,
+                  "record_id_sha256": "df019b1e496fc053f16c3034434aa87c278cc1dac4db18c5145ec823e371b2f5"
+                },
+                "selection_fit": {
+                  "rows": 14351,
+                  "record_id_sha256": "3bac17bf2fbe92b263fe9ddad8d8cbd865ec8077a3ae3d8a79575b68217a37e3"
+                },
+                "selection_score": {
+                  "rows": 3586,
+                  "record_id_sha256": "6f63362f7cd7433dbd1cbb79993a4ec6ab8b06c581493515ffa645eaf5c89f3d"
+                }
+              },
+              "stage_assignment_sha256": "3f98fc1d14e514ba36403857013e44d793504ec70d8dd5383d137391b7ee6123",
+              "scored_overlap_policy": "documented_non_nested_global_preselection",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 2870,
+                "selection_score": 717,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            }
+          ]
+        },
+        "language": {
+          "role_resolution": "global_train_val_epoch_selection_then_outer_refit",
+          "scored_label_permission": "scoring_only",
+          "expected_units": [
+            {
+              "fold_index": 0,
+              "stages": {
+                "final_refit": {
+                  "rows": 14349,
+                  "record_id_sha256": "0c71f49e79a05facea2e3ebee949fa0e9bd880de390e8c64e6518d9328fedc2e"
+                },
+                "scored_prediction": {
+                  "rows": 3588,
+                  "record_id_sha256": "4433bd37275203a86dd7f3a7e1f629e0acd3b0d691444248250fd94520845be6"
+                },
+                "selection_fit": {
+                  "rows": 14351,
+                  "record_id_sha256": "3bac17bf2fbe92b263fe9ddad8d8cbd865ec8077a3ae3d8a79575b68217a37e3"
+                },
+                "selection_score": {
+                  "rows": 3586,
+                  "record_id_sha256": "6f63362f7cd7433dbd1cbb79993a4ec6ab8b06c581493515ffa645eaf5c89f3d"
+                }
+              },
+              "stage_assignment_sha256": "3bb4b21557f6a4460f7eb300286a725968e18dfeb2ca480b65dd303748fdd831",
+              "scored_overlap_policy": "documented_non_nested_global_preselection",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 2880,
+                "selection_score": 708,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 1,
+              "stages": {
+                "final_refit": {
+                  "rows": 14349,
+                  "record_id_sha256": "3601cf1718a6c8fdd0f72ab51b0009beee8bb993f9a7a55cda339d167e2c506f"
+                },
+                "scored_prediction": {
+                  "rows": 3588,
+                  "record_id_sha256": "5fd5c53b05aff347e15453fd744973957a8582f8aabd30e6bbdd5073b198850b"
+                },
+                "selection_fit": {
+                  "rows": 14351,
+                  "record_id_sha256": "3bac17bf2fbe92b263fe9ddad8d8cbd865ec8077a3ae3d8a79575b68217a37e3"
+                },
+                "selection_score": {
+                  "rows": 3586,
+                  "record_id_sha256": "6f63362f7cd7433dbd1cbb79993a4ec6ab8b06c581493515ffa645eaf5c89f3d"
+                }
+              },
+              "stage_assignment_sha256": "c928720ce3efe5df8ebc424023cac0befc6bcdda04470e11bcb7614b6728e58a",
+              "scored_overlap_policy": "documented_non_nested_global_preselection",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 2856,
+                "selection_score": 732,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 2,
+              "stages": {
+                "final_refit": {
+                  "rows": 14350,
+                  "record_id_sha256": "ffdd0c97e2643fe41c4f2590205a173b5d8eba08dbe02148523d6beaf7707b9d"
+                },
+                "scored_prediction": {
+                  "rows": 3587,
+                  "record_id_sha256": "b102cedae38e595ca013f9ad4df77fbe1017d5221a15983f20f44c108f0f640d"
+                },
+                "selection_fit": {
+                  "rows": 14351,
+                  "record_id_sha256": "3bac17bf2fbe92b263fe9ddad8d8cbd865ec8077a3ae3d8a79575b68217a37e3"
+                },
+                "selection_score": {
+                  "rows": 3586,
+                  "record_id_sha256": "6f63362f7cd7433dbd1cbb79993a4ec6ab8b06c581493515ffa645eaf5c89f3d"
+                }
+              },
+              "stage_assignment_sha256": "a0b5732c8dbe146698485665922b3ee782c84bf1822483badcb51e8815a93e2a",
+              "scored_overlap_policy": "documented_non_nested_global_preselection",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 2867,
+                "selection_score": 720,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 3,
+              "stages": {
+                "final_refit": {
+                  "rows": 14350,
+                  "record_id_sha256": "df6a06c7f96f0e883650dcd530be37733b07f27eff78e5ac20d02b89f4ca3f81"
+                },
+                "scored_prediction": {
+                  "rows": 3587,
+                  "record_id_sha256": "219999062b57d8ecbaf48de7c752dca9318fd7b10dd0b65a701049571386cb2d"
+                },
+                "selection_fit": {
+                  "rows": 14351,
+                  "record_id_sha256": "3bac17bf2fbe92b263fe9ddad8d8cbd865ec8077a3ae3d8a79575b68217a37e3"
+                },
+                "selection_score": {
+                  "rows": 3586,
+                  "record_id_sha256": "6f63362f7cd7433dbd1cbb79993a4ec6ab8b06c581493515ffa645eaf5c89f3d"
+                }
+              },
+              "stage_assignment_sha256": "93c319fd28e03d15a31862f3b24ea2407ad8d9e37d79e69cae3fccb17423bd2c",
+              "scored_overlap_policy": "documented_non_nested_global_preselection",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 2878,
+                "selection_score": 709,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 4,
+              "stages": {
+                "final_refit": {
+                  "rows": 14350,
+                  "record_id_sha256": "f2ee3ae7319b54d7cc26b5456af31b13ea1e2d3c7172d93de67477d0906a46d8"
+                },
+                "scored_prediction": {
+                  "rows": 3587,
+                  "record_id_sha256": "df019b1e496fc053f16c3034434aa87c278cc1dac4db18c5145ec823e371b2f5"
+                },
+                "selection_fit": {
+                  "rows": 14351,
+                  "record_id_sha256": "3bac17bf2fbe92b263fe9ddad8d8cbd865ec8077a3ae3d8a79575b68217a37e3"
+                },
+                "selection_score": {
+                  "rows": 3586,
+                  "record_id_sha256": "6f63362f7cd7433dbd1cbb79993a4ec6ab8b06c581493515ffa645eaf5c89f3d"
+                }
+              },
+              "stage_assignment_sha256": "3f98fc1d14e514ba36403857013e44d793504ec70d8dd5383d137391b7ee6123",
+              "scored_overlap_policy": "documented_non_nested_global_preselection",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 2870,
+                "selection_score": 717,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            }
+          ]
+        },
+        "geometry": {
+          "role_resolution": "global_train_val_epoch_selection_then_outer_refit",
+          "scored_label_permission": "scoring_only",
+          "expected_units": [
+            {
+              "fold_index": 0,
+              "stages": {
+                "final_refit": {
+                  "rows": 14349,
+                  "record_id_sha256": "0c71f49e79a05facea2e3ebee949fa0e9bd880de390e8c64e6518d9328fedc2e"
+                },
+                "scored_prediction": {
+                  "rows": 3588,
+                  "record_id_sha256": "4433bd37275203a86dd7f3a7e1f629e0acd3b0d691444248250fd94520845be6"
+                },
+                "selection_fit": {
+                  "rows": 14351,
+                  "record_id_sha256": "3bac17bf2fbe92b263fe9ddad8d8cbd865ec8077a3ae3d8a79575b68217a37e3"
+                },
+                "selection_score": {
+                  "rows": 3586,
+                  "record_id_sha256": "6f63362f7cd7433dbd1cbb79993a4ec6ab8b06c581493515ffa645eaf5c89f3d"
+                }
+              },
+              "stage_assignment_sha256": "3bb4b21557f6a4460f7eb300286a725968e18dfeb2ca480b65dd303748fdd831",
+              "scored_overlap_policy": "documented_non_nested_global_preselection",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 2880,
+                "selection_score": 708,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 1,
+              "stages": {
+                "final_refit": {
+                  "rows": 14349,
+                  "record_id_sha256": "3601cf1718a6c8fdd0f72ab51b0009beee8bb993f9a7a55cda339d167e2c506f"
+                },
+                "scored_prediction": {
+                  "rows": 3588,
+                  "record_id_sha256": "5fd5c53b05aff347e15453fd744973957a8582f8aabd30e6bbdd5073b198850b"
+                },
+                "selection_fit": {
+                  "rows": 14351,
+                  "record_id_sha256": "3bac17bf2fbe92b263fe9ddad8d8cbd865ec8077a3ae3d8a79575b68217a37e3"
+                },
+                "selection_score": {
+                  "rows": 3586,
+                  "record_id_sha256": "6f63362f7cd7433dbd1cbb79993a4ec6ab8b06c581493515ffa645eaf5c89f3d"
+                }
+              },
+              "stage_assignment_sha256": "c928720ce3efe5df8ebc424023cac0befc6bcdda04470e11bcb7614b6728e58a",
+              "scored_overlap_policy": "documented_non_nested_global_preselection",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 2856,
+                "selection_score": 732,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 2,
+              "stages": {
+                "final_refit": {
+                  "rows": 14350,
+                  "record_id_sha256": "ffdd0c97e2643fe41c4f2590205a173b5d8eba08dbe02148523d6beaf7707b9d"
+                },
+                "scored_prediction": {
+                  "rows": 3587,
+                  "record_id_sha256": "b102cedae38e595ca013f9ad4df77fbe1017d5221a15983f20f44c108f0f640d"
+                },
+                "selection_fit": {
+                  "rows": 14351,
+                  "record_id_sha256": "3bac17bf2fbe92b263fe9ddad8d8cbd865ec8077a3ae3d8a79575b68217a37e3"
+                },
+                "selection_score": {
+                  "rows": 3586,
+                  "record_id_sha256": "6f63362f7cd7433dbd1cbb79993a4ec6ab8b06c581493515ffa645eaf5c89f3d"
+                }
+              },
+              "stage_assignment_sha256": "a0b5732c8dbe146698485665922b3ee782c84bf1822483badcb51e8815a93e2a",
+              "scored_overlap_policy": "documented_non_nested_global_preselection",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 2867,
+                "selection_score": 720,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 3,
+              "stages": {
+                "final_refit": {
+                  "rows": 14350,
+                  "record_id_sha256": "df6a06c7f96f0e883650dcd530be37733b07f27eff78e5ac20d02b89f4ca3f81"
+                },
+                "scored_prediction": {
+                  "rows": 3587,
+                  "record_id_sha256": "219999062b57d8ecbaf48de7c752dca9318fd7b10dd0b65a701049571386cb2d"
+                },
+                "selection_fit": {
+                  "rows": 14351,
+                  "record_id_sha256": "3bac17bf2fbe92b263fe9ddad8d8cbd865ec8077a3ae3d8a79575b68217a37e3"
+                },
+                "selection_score": {
+                  "rows": 3586,
+                  "record_id_sha256": "6f63362f7cd7433dbd1cbb79993a4ec6ab8b06c581493515ffa645eaf5c89f3d"
+                }
+              },
+              "stage_assignment_sha256": "93c319fd28e03d15a31862f3b24ea2407ad8d9e37d79e69cae3fccb17423bd2c",
+              "scored_overlap_policy": "documented_non_nested_global_preselection",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 2878,
+                "selection_score": 709,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 4,
+              "stages": {
+                "final_refit": {
+                  "rows": 14350,
+                  "record_id_sha256": "f2ee3ae7319b54d7cc26b5456af31b13ea1e2d3c7172d93de67477d0906a46d8"
+                },
+                "scored_prediction": {
+                  "rows": 3587,
+                  "record_id_sha256": "df019b1e496fc053f16c3034434aa87c278cc1dac4db18c5145ec823e371b2f5"
+                },
+                "selection_fit": {
+                  "rows": 14351,
+                  "record_id_sha256": "3bac17bf2fbe92b263fe9ddad8d8cbd865ec8077a3ae3d8a79575b68217a37e3"
+                },
+                "selection_score": {
+                  "rows": 3586,
+                  "record_id_sha256": "6f63362f7cd7433dbd1cbb79993a4ec6ab8b06c581493515ffa645eaf5c89f3d"
+                }
+              },
+              "stage_assignment_sha256": "3f98fc1d14e514ba36403857013e44d793504ec70d8dd5383d137391b7ee6123",
+              "scored_overlap_policy": "documented_non_nested_global_preselection",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 2870,
+                "selection_score": 717,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            }
+          ]
+        },
+        "fusion_head": {
+          "role_resolution": "outer_fit_only_with_frozen_four_head_schedule",
+          "scored_label_permission": "scoring_only",
+          "expected_units": [
+            {
+              "fold_index": 0,
+              "stages": {
+                "parameter_fit": {
+                  "rows": 14349,
+                  "record_id_sha256": "0c71f49e79a05facea2e3ebee949fa0e9bd880de390e8c64e6518d9328fedc2e"
+                },
+                "scored_prediction": {
+                  "rows": 3588,
+                  "record_id_sha256": "4433bd37275203a86dd7f3a7e1f629e0acd3b0d691444248250fd94520845be6"
+                }
+              },
+              "stage_assignment_sha256": "3c528b9c84eb3670727ec84f862ed828628b931567b5f7e6da4895829a1526bb",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 1,
+              "stages": {
+                "parameter_fit": {
+                  "rows": 14349,
+                  "record_id_sha256": "3601cf1718a6c8fdd0f72ab51b0009beee8bb993f9a7a55cda339d167e2c506f"
+                },
+                "scored_prediction": {
+                  "rows": 3588,
+                  "record_id_sha256": "5fd5c53b05aff347e15453fd744973957a8582f8aabd30e6bbdd5073b198850b"
+                }
+              },
+              "stage_assignment_sha256": "4790346a40ae9e474d2adb96b074dcfd9f40a6d544db1049ee8638a66a31d64d",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 2,
+              "stages": {
+                "parameter_fit": {
+                  "rows": 14350,
+                  "record_id_sha256": "ffdd0c97e2643fe41c4f2590205a173b5d8eba08dbe02148523d6beaf7707b9d"
+                },
+                "scored_prediction": {
+                  "rows": 3587,
+                  "record_id_sha256": "b102cedae38e595ca013f9ad4df77fbe1017d5221a15983f20f44c108f0f640d"
+                }
+              },
+              "stage_assignment_sha256": "04ac6a62b4e4125c911fcde7c4fe3298ea1f44ae00f85ae34c710c9cb3cbd5cb",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 3,
+              "stages": {
+                "parameter_fit": {
+                  "rows": 14350,
+                  "record_id_sha256": "df6a06c7f96f0e883650dcd530be37733b07f27eff78e5ac20d02b89f4ca3f81"
+                },
+                "scored_prediction": {
+                  "rows": 3587,
+                  "record_id_sha256": "219999062b57d8ecbaf48de7c752dca9318fd7b10dd0b65a701049571386cb2d"
+                }
+              },
+              "stage_assignment_sha256": "50cb53a69ce38e23950c13409dbdbd24515b2964ca1062aee0236df2afb0fa54",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 4,
+              "stages": {
+                "parameter_fit": {
+                  "rows": 14350,
+                  "record_id_sha256": "f2ee3ae7319b54d7cc26b5456af31b13ea1e2d3c7172d93de67477d0906a46d8"
+                },
+                "scored_prediction": {
+                  "rows": 3587,
+                  "record_id_sha256": "df019b1e496fc053f16c3034434aa87c278cc1dac4db18c5145ec823e371b2f5"
+                }
+              },
+              "stage_assignment_sha256": "e29a253c4f25d53dd582d21a39b71cbefa78dc5cf818325878aa4cce4e3eebee",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            }
+          ]
+        },
+        "blend_coefficient": {
+          "role_resolution": "cross_fitted_from_other_outer_folds",
+          "scored_label_permission": "scoring_only",
+          "expected_units": [
+            {
+              "fold_index": 0,
+              "stages": {
+                "coefficient_fit": {
+                  "rows": 14349,
+                  "record_id_sha256": "0c71f49e79a05facea2e3ebee949fa0e9bd880de390e8c64e6518d9328fedc2e"
+                },
+                "scored_prediction": {
+                  "rows": 3588,
+                  "record_id_sha256": "4433bd37275203a86dd7f3a7e1f629e0acd3b0d691444248250fd94520845be6"
+                }
+              },
+              "stage_assignment_sha256": "cda508f7ca502dfc6c1169adda50373c12c66b407aa7d40ecc02134edd56afde",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 1,
+              "stages": {
+                "coefficient_fit": {
+                  "rows": 14349,
+                  "record_id_sha256": "3601cf1718a6c8fdd0f72ab51b0009beee8bb993f9a7a55cda339d167e2c506f"
+                },
+                "scored_prediction": {
+                  "rows": 3588,
+                  "record_id_sha256": "5fd5c53b05aff347e15453fd744973957a8582f8aabd30e6bbdd5073b198850b"
+                }
+              },
+              "stage_assignment_sha256": "0712ef72cc51f903339e0f708533ac292e9b02503f1d66acbae781baa4f111a9",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 2,
+              "stages": {
+                "coefficient_fit": {
+                  "rows": 14350,
+                  "record_id_sha256": "ffdd0c97e2643fe41c4f2590205a173b5d8eba08dbe02148523d6beaf7707b9d"
+                },
+                "scored_prediction": {
+                  "rows": 3587,
+                  "record_id_sha256": "b102cedae38e595ca013f9ad4df77fbe1017d5221a15983f20f44c108f0f640d"
+                }
+              },
+              "stage_assignment_sha256": "2d8e99b615327044500047885137ea49637b60aad1821ae6972fcaecd38702b7",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 3,
+              "stages": {
+                "coefficient_fit": {
+                  "rows": 14350,
+                  "record_id_sha256": "df6a06c7f96f0e883650dcd530be37733b07f27eff78e5ac20d02b89f4ca3f81"
+                },
+                "scored_prediction": {
+                  "rows": 3587,
+                  "record_id_sha256": "219999062b57d8ecbaf48de7c752dca9318fd7b10dd0b65a701049571386cb2d"
+                }
+              },
+              "stage_assignment_sha256": "1d8b15b552912034ccdbb2fcfe2a75810fb512040b1300364073ec4a22adb90b",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 4,
+              "stages": {
+                "coefficient_fit": {
+                  "rows": 14350,
+                  "record_id_sha256": "f2ee3ae7319b54d7cc26b5456af31b13ea1e2d3c7172d93de67477d0906a46d8"
+                },
+                "scored_prediction": {
+                  "rows": 3587,
+                  "record_id_sha256": "df019b1e496fc053f16c3034434aa87c278cc1dac4db18c5145ec823e371b2f5"
+                }
+              },
+              "stage_assignment_sha256": "231aaa64dcc9aff22ceba2e33029d0b0b09911765b67c31145ccd852119b9f5f",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            }
+          ]
+        }
+      }
+    },
+    "R03": {
+      "selection_scope": "Each model uses the native train-only selection subset of its outer training partition.",
+      "coefficient_dependency": "other_four_r03_oof_folds_for_each_held_fold",
+      "branches": {
+        "descriptor": {
+          "role_resolution": "outer_fit_with_train_only_selection",
+          "scored_label_permission": "scoring_only",
+          "expected_units": [
+            {
+              "fold_index": 0,
+              "stages": {
+                "parameter_fit": {
+                  "rows": 5586,
+                  "record_id_sha256": "341c0b14c29c181ba41d093c7d0d73011c5cb252529fc93bca8ee7ab2c3f6c04"
+                },
+                "scored_prediction": {
+                  "rows": 1600,
+                  "record_id_sha256": "5fe78f0038b405117ca6a614a8540948c5c915611053283b88c9b29488940bf0"
+                },
+                "selection_score": {
+                  "rows": 799,
+                  "record_id_sha256": "e6e7586fbf758924012a280dea15d5d1ec209114df2e56bce6385bf2fd5521ad"
+                }
+              },
+              "stage_assignment_sha256": "17ecab69b95790eac690376206bfb7293c71555b67aa609023b8f12090c6749a",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 1,
+              "stages": {
+                "parameter_fit": {
+                  "rows": 5586,
+                  "record_id_sha256": "ad18cd4070081b11d4dd87ab9caad3914f6cf07e4ee115df94a173ddcc62ebe0"
+                },
+                "scored_prediction": {
+                  "rows": 1600,
+                  "record_id_sha256": "a3cf9010b9e2038334def79a29f4ef4b055b4986f11ecc03ab6adb68d91fd980"
+                },
+                "selection_score": {
+                  "rows": 799,
+                  "record_id_sha256": "7dae47030e70cd9b144e8da3c311ddac404d861cda8d8f2442381ef4dccfb89b"
+                }
+              },
+              "stage_assignment_sha256": "b843849e8b75eaf48062a43b3cf33bf31d03bf166a2689cfee35bad922b6e1b5",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 2,
+              "stages": {
+                "parameter_fit": {
+                  "rows": 5586,
+                  "record_id_sha256": "8075f8d1a6730db367b95a425677ec49837f616a70acbfde2d9c118c22c655a4"
+                },
+                "scored_prediction": {
+                  "rows": 1600,
+                  "record_id_sha256": "c2e5b24f11e26f2e653c4963e3ae63526adfa7335bd92584c37dd931a1fcb838"
+                },
+                "selection_score": {
+                  "rows": 799,
+                  "record_id_sha256": "6c485b82ccb38d9b6c46674dbd21345684cf7b383cb874f94d2c01822f5a2def"
+                }
+              },
+              "stage_assignment_sha256": "cd62e28ed57d5eec85860656200e8c68ffce624b28fb5c727b60e2d4f884c89b",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 3,
+              "stages": {
+                "parameter_fit": {
+                  "rows": 5591,
+                  "record_id_sha256": "18c0a6458b6ed846d0e5cad74de71c62f731d5aaf98f42938c8b229f150413fa"
+                },
+                "scored_prediction": {
+                  "rows": 1595,
+                  "record_id_sha256": "3003a5eb2b711d486c083a5c9d63261bf2185d39099bf452d326cc4bf1709c9e"
+                },
+                "selection_score": {
+                  "rows": 799,
+                  "record_id_sha256": "fdbb0a2dc215974d06a44b190743571ae7ca2121f7b4f31e6f947be8c10c7fee"
+                }
+              },
+              "stage_assignment_sha256": "630a38e661be93e69da962e527e2520efed23a9df9ef4585bc3fd7f677055a67",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 4,
+              "stages": {
+                "parameter_fit": {
+                  "rows": 5595,
+                  "record_id_sha256": "678ac96dc71ba6580de2d961e3d15a966604b875a6e305b53d4f9740a3d979be"
+                },
+                "scored_prediction": {
+                  "rows": 1590,
+                  "record_id_sha256": "0a3a72c99ac671bf10a287be88115d04fa78a93e9cb763cf7d00b33f60baec33"
+                },
+                "selection_score": {
+                  "rows": 800,
+                  "record_id_sha256": "ffeb8cad2a825502421fe21384e44c3ea5d0843fb2fa8de6b18b043da534f8b4"
+                }
+              },
+              "stage_assignment_sha256": "a255561c4d790c5786f1681a3bbc63f9d7032b278aa77992eef1ee67c0764e8c",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            }
+          ]
+        },
+        "language": {
+          "role_resolution": "outer_fit_with_train_only_selection",
+          "scored_label_permission": "scoring_only",
+          "expected_units": [
+            {
+              "fold_index": 0,
+              "stages": {
+                "parameter_fit": {
+                  "rows": 5586,
+                  "record_id_sha256": "341c0b14c29c181ba41d093c7d0d73011c5cb252529fc93bca8ee7ab2c3f6c04"
+                },
+                "scored_prediction": {
+                  "rows": 1600,
+                  "record_id_sha256": "5fe78f0038b405117ca6a614a8540948c5c915611053283b88c9b29488940bf0"
+                },
+                "selection_score": {
+                  "rows": 799,
+                  "record_id_sha256": "e6e7586fbf758924012a280dea15d5d1ec209114df2e56bce6385bf2fd5521ad"
+                }
+              },
+              "stage_assignment_sha256": "17ecab69b95790eac690376206bfb7293c71555b67aa609023b8f12090c6749a",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 1,
+              "stages": {
+                "parameter_fit": {
+                  "rows": 5586,
+                  "record_id_sha256": "ad18cd4070081b11d4dd87ab9caad3914f6cf07e4ee115df94a173ddcc62ebe0"
+                },
+                "scored_prediction": {
+                  "rows": 1600,
+                  "record_id_sha256": "a3cf9010b9e2038334def79a29f4ef4b055b4986f11ecc03ab6adb68d91fd980"
+                },
+                "selection_score": {
+                  "rows": 799,
+                  "record_id_sha256": "7dae47030e70cd9b144e8da3c311ddac404d861cda8d8f2442381ef4dccfb89b"
+                }
+              },
+              "stage_assignment_sha256": "b843849e8b75eaf48062a43b3cf33bf31d03bf166a2689cfee35bad922b6e1b5",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 2,
+              "stages": {
+                "parameter_fit": {
+                  "rows": 5586,
+                  "record_id_sha256": "8075f8d1a6730db367b95a425677ec49837f616a70acbfde2d9c118c22c655a4"
+                },
+                "scored_prediction": {
+                  "rows": 1600,
+                  "record_id_sha256": "c2e5b24f11e26f2e653c4963e3ae63526adfa7335bd92584c37dd931a1fcb838"
+                },
+                "selection_score": {
+                  "rows": 799,
+                  "record_id_sha256": "6c485b82ccb38d9b6c46674dbd21345684cf7b383cb874f94d2c01822f5a2def"
+                }
+              },
+              "stage_assignment_sha256": "cd62e28ed57d5eec85860656200e8c68ffce624b28fb5c727b60e2d4f884c89b",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 3,
+              "stages": {
+                "parameter_fit": {
+                  "rows": 5591,
+                  "record_id_sha256": "18c0a6458b6ed846d0e5cad74de71c62f731d5aaf98f42938c8b229f150413fa"
+                },
+                "scored_prediction": {
+                  "rows": 1595,
+                  "record_id_sha256": "3003a5eb2b711d486c083a5c9d63261bf2185d39099bf452d326cc4bf1709c9e"
+                },
+                "selection_score": {
+                  "rows": 799,
+                  "record_id_sha256": "fdbb0a2dc215974d06a44b190743571ae7ca2121f7b4f31e6f947be8c10c7fee"
+                }
+              },
+              "stage_assignment_sha256": "630a38e661be93e69da962e527e2520efed23a9df9ef4585bc3fd7f677055a67",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 4,
+              "stages": {
+                "parameter_fit": {
+                  "rows": 5595,
+                  "record_id_sha256": "678ac96dc71ba6580de2d961e3d15a966604b875a6e305b53d4f9740a3d979be"
+                },
+                "scored_prediction": {
+                  "rows": 1590,
+                  "record_id_sha256": "0a3a72c99ac671bf10a287be88115d04fa78a93e9cb763cf7d00b33f60baec33"
+                },
+                "selection_score": {
+                  "rows": 800,
+                  "record_id_sha256": "ffeb8cad2a825502421fe21384e44c3ea5d0843fb2fa8de6b18b043da534f8b4"
+                }
+              },
+              "stage_assignment_sha256": "a255561c4d790c5786f1681a3bbc63f9d7032b278aa77992eef1ee67c0764e8c",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            }
+          ]
+        },
+        "geometry": {
+          "role_resolution": "outer_fit_with_train_only_selection",
+          "scored_label_permission": "scoring_only",
+          "expected_units": [
+            {
+              "fold_index": 0,
+              "stages": {
+                "parameter_fit": {
+                  "rows": 5586,
+                  "record_id_sha256": "341c0b14c29c181ba41d093c7d0d73011c5cb252529fc93bca8ee7ab2c3f6c04"
+                },
+                "scored_prediction": {
+                  "rows": 1600,
+                  "record_id_sha256": "5fe78f0038b405117ca6a614a8540948c5c915611053283b88c9b29488940bf0"
+                },
+                "selection_score": {
+                  "rows": 799,
+                  "record_id_sha256": "e6e7586fbf758924012a280dea15d5d1ec209114df2e56bce6385bf2fd5521ad"
+                }
+              },
+              "stage_assignment_sha256": "17ecab69b95790eac690376206bfb7293c71555b67aa609023b8f12090c6749a",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 1,
+              "stages": {
+                "parameter_fit": {
+                  "rows": 5586,
+                  "record_id_sha256": "ad18cd4070081b11d4dd87ab9caad3914f6cf07e4ee115df94a173ddcc62ebe0"
+                },
+                "scored_prediction": {
+                  "rows": 1600,
+                  "record_id_sha256": "a3cf9010b9e2038334def79a29f4ef4b055b4986f11ecc03ab6adb68d91fd980"
+                },
+                "selection_score": {
+                  "rows": 799,
+                  "record_id_sha256": "7dae47030e70cd9b144e8da3c311ddac404d861cda8d8f2442381ef4dccfb89b"
+                }
+              },
+              "stage_assignment_sha256": "b843849e8b75eaf48062a43b3cf33bf31d03bf166a2689cfee35bad922b6e1b5",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 2,
+              "stages": {
+                "parameter_fit": {
+                  "rows": 5586,
+                  "record_id_sha256": "8075f8d1a6730db367b95a425677ec49837f616a70acbfde2d9c118c22c655a4"
+                },
+                "scored_prediction": {
+                  "rows": 1600,
+                  "record_id_sha256": "c2e5b24f11e26f2e653c4963e3ae63526adfa7335bd92584c37dd931a1fcb838"
+                },
+                "selection_score": {
+                  "rows": 799,
+                  "record_id_sha256": "6c485b82ccb38d9b6c46674dbd21345684cf7b383cb874f94d2c01822f5a2def"
+                }
+              },
+              "stage_assignment_sha256": "cd62e28ed57d5eec85860656200e8c68ffce624b28fb5c727b60e2d4f884c89b",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 3,
+              "stages": {
+                "parameter_fit": {
+                  "rows": 5591,
+                  "record_id_sha256": "18c0a6458b6ed846d0e5cad74de71c62f731d5aaf98f42938c8b229f150413fa"
+                },
+                "scored_prediction": {
+                  "rows": 1595,
+                  "record_id_sha256": "3003a5eb2b711d486c083a5c9d63261bf2185d39099bf452d326cc4bf1709c9e"
+                },
+                "selection_score": {
+                  "rows": 799,
+                  "record_id_sha256": "fdbb0a2dc215974d06a44b190743571ae7ca2121f7b4f31e6f947be8c10c7fee"
+                }
+              },
+              "stage_assignment_sha256": "630a38e661be93e69da962e527e2520efed23a9df9ef4585bc3fd7f677055a67",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 4,
+              "stages": {
+                "parameter_fit": {
+                  "rows": 5595,
+                  "record_id_sha256": "678ac96dc71ba6580de2d961e3d15a966604b875a6e305b53d4f9740a3d979be"
+                },
+                "scored_prediction": {
+                  "rows": 1590,
+                  "record_id_sha256": "0a3a72c99ac671bf10a287be88115d04fa78a93e9cb763cf7d00b33f60baec33"
+                },
+                "selection_score": {
+                  "rows": 800,
+                  "record_id_sha256": "ffeb8cad2a825502421fe21384e44c3ea5d0843fb2fa8de6b18b043da534f8b4"
+                }
+              },
+              "stage_assignment_sha256": "a255561c4d790c5786f1681a3bbc63f9d7032b278aa77992eef1ee67c0764e8c",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            }
+          ]
+        },
+        "fusion_head": {
+          "role_resolution": "outer_fit_only_with_frozen_four_head_schedule",
+          "scored_label_permission": "scoring_only",
+          "expected_units": [
+            {
+              "fold_index": 0,
+              "stages": {
+                "parameter_fit": {
+                  "rows": 5586,
+                  "record_id_sha256": "341c0b14c29c181ba41d093c7d0d73011c5cb252529fc93bca8ee7ab2c3f6c04"
+                },
+                "scored_prediction": {
+                  "rows": 1600,
+                  "record_id_sha256": "5fe78f0038b405117ca6a614a8540948c5c915611053283b88c9b29488940bf0"
+                }
+              },
+              "stage_assignment_sha256": "62264f1c5bf1aff357b5faf36e3a76b0e386f263bd3e0de31868fee40ecfc2a1",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 1,
+              "stages": {
+                "parameter_fit": {
+                  "rows": 5586,
+                  "record_id_sha256": "ad18cd4070081b11d4dd87ab9caad3914f6cf07e4ee115df94a173ddcc62ebe0"
+                },
+                "scored_prediction": {
+                  "rows": 1600,
+                  "record_id_sha256": "a3cf9010b9e2038334def79a29f4ef4b055b4986f11ecc03ab6adb68d91fd980"
+                }
+              },
+              "stage_assignment_sha256": "d1a1a0f7643e43500549507af88323786b6472db77cf7b44b8995d94f3844fdb",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 2,
+              "stages": {
+                "parameter_fit": {
+                  "rows": 5586,
+                  "record_id_sha256": "8075f8d1a6730db367b95a425677ec49837f616a70acbfde2d9c118c22c655a4"
+                },
+                "scored_prediction": {
+                  "rows": 1600,
+                  "record_id_sha256": "c2e5b24f11e26f2e653c4963e3ae63526adfa7335bd92584c37dd931a1fcb838"
+                }
+              },
+              "stage_assignment_sha256": "62179838c46441145eab13bba0b91826189a3d301cace49ce925068f679a4daa",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 3,
+              "stages": {
+                "parameter_fit": {
+                  "rows": 5591,
+                  "record_id_sha256": "18c0a6458b6ed846d0e5cad74de71c62f731d5aaf98f42938c8b229f150413fa"
+                },
+                "scored_prediction": {
+                  "rows": 1595,
+                  "record_id_sha256": "3003a5eb2b711d486c083a5c9d63261bf2185d39099bf452d326cc4bf1709c9e"
+                }
+              },
+              "stage_assignment_sha256": "a143133909cf463634d5fa65b66506c731817e0f67f9b4b422f0b3cb88738d8b",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 4,
+              "stages": {
+                "parameter_fit": {
+                  "rows": 5595,
+                  "record_id_sha256": "678ac96dc71ba6580de2d961e3d15a966604b875a6e305b53d4f9740a3d979be"
+                },
+                "scored_prediction": {
+                  "rows": 1590,
+                  "record_id_sha256": "0a3a72c99ac671bf10a287be88115d04fa78a93e9cb763cf7d00b33f60baec33"
+                }
+              },
+              "stage_assignment_sha256": "dbad329da2493c428ef269c496d74010e10afabf964a5ccbfc0e2b4bc220e800",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            }
+          ]
+        },
+        "blend_coefficient": {
+          "role_resolution": "cross_fitted_from_other_outer_folds",
+          "scored_label_permission": "scoring_only",
+          "expected_units": [
+            {
+              "fold_index": 0,
+              "stages": {
+                "coefficient_fit": {
+                  "rows": 6385,
+                  "record_id_sha256": "28795b90dc6e1be4eb924ddee7c55143862602e189b7d23b2469c8c0f8c2c4e6"
+                },
+                "scored_prediction": {
+                  "rows": 1600,
+                  "record_id_sha256": "5fe78f0038b405117ca6a614a8540948c5c915611053283b88c9b29488940bf0"
+                }
+              },
+              "stage_assignment_sha256": "297d517ab74547bea5b08a8656b6e4df2bdb635bcbcdc5d1d9026dc7d1075f26",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 1,
+              "stages": {
+                "coefficient_fit": {
+                  "rows": 6385,
+                  "record_id_sha256": "71e68fac92cb21b716f76bc3b1ac2d007b844c5d075eb0e5c2c704b97daea8d2"
+                },
+                "scored_prediction": {
+                  "rows": 1600,
+                  "record_id_sha256": "a3cf9010b9e2038334def79a29f4ef4b055b4986f11ecc03ab6adb68d91fd980"
+                }
+              },
+              "stage_assignment_sha256": "50f6446c093ef97b34870c152d8bfef02084aa7156d31d1434dab3a542c23ad2",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 2,
+              "stages": {
+                "coefficient_fit": {
+                  "rows": 6385,
+                  "record_id_sha256": "79d8d900b7e697ffcbded769f6390c463808abb01c7c7815d6d376bec8fc0a13"
+                },
+                "scored_prediction": {
+                  "rows": 1600,
+                  "record_id_sha256": "c2e5b24f11e26f2e653c4963e3ae63526adfa7335bd92584c37dd931a1fcb838"
+                }
+              },
+              "stage_assignment_sha256": "5e07cdd893aa9e9004e523129b82b6e88a5b172d50eee454a9d3be7b719c8cd4",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 3,
+              "stages": {
+                "coefficient_fit": {
+                  "rows": 6390,
+                  "record_id_sha256": "b2bf71cee4cfd6c0450e4e01782d4b6e137d6df588c75f1bf1dccbae35a802f5"
+                },
+                "scored_prediction": {
+                  "rows": 1595,
+                  "record_id_sha256": "3003a5eb2b711d486c083a5c9d63261bf2185d39099bf452d326cc4bf1709c9e"
+                }
+              },
+              "stage_assignment_sha256": "a3deb242fd0403f6f02b246532d267fac29d6c370733bef43b7d2f230a3d1cf0",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 4,
+              "stages": {
+                "coefficient_fit": {
+                  "rows": 6395,
+                  "record_id_sha256": "725fe82e77e1d8c9ec0723aaecf6a4392254283bcaad32b0a2ef659ffee09142"
+                },
+                "scored_prediction": {
+                  "rows": 1590,
+                  "record_id_sha256": "0a3a72c99ac671bf10a287be88115d04fa78a93e9cb763cf7d00b33f60baec33"
+                }
+              },
+              "stage_assignment_sha256": "986855cb4a29a4f21da2cc6f5e62bef6745d1f4379a293548b50e33abddf9d77",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            }
+          ]
+        }
+      }
+    },
+    "R04": {
+      "selection_scope": "The five R03 split models are reused to predict the supplied test. The outer OOF holdout is not a selection subset.",
+      "coefficient_dependency": "complete_r03_oof_predictions",
+      "branches": {
+        "descriptor": {
+          "role_resolution": "reuse_r03_split_models_for_supplied_test",
+          "scored_label_permission": "scoring_only",
+          "expected_units": [
+            {
+              "fold_index": 0,
+              "stages": {
+                "parameter_fit": {
+                  "rows": 5586,
+                  "record_id_sha256": "341c0b14c29c181ba41d093c7d0d73011c5cb252529fc93bca8ee7ab2c3f6c04"
+                },
+                "scored_prediction": {
+                  "rows": 1997,
+                  "record_id_sha256": "0a7225e6294c758945457f83613c316b5fe67d77be3f6fe690a4b82630b209dc"
+                },
+                "selection_score": {
+                  "rows": 799,
+                  "record_id_sha256": "e6e7586fbf758924012a280dea15d5d1ec209114df2e56bce6385bf2fd5521ad"
+                }
+              },
+              "stage_assignment_sha256": "4d31ee7e35209f87cd65cfe9a3be2d07cf0f3dd33c17b0acf745ee624a04b78c",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 1,
+              "stages": {
+                "parameter_fit": {
+                  "rows": 5586,
+                  "record_id_sha256": "ad18cd4070081b11d4dd87ab9caad3914f6cf07e4ee115df94a173ddcc62ebe0"
+                },
+                "scored_prediction": {
+                  "rows": 1997,
+                  "record_id_sha256": "0a7225e6294c758945457f83613c316b5fe67d77be3f6fe690a4b82630b209dc"
+                },
+                "selection_score": {
+                  "rows": 799,
+                  "record_id_sha256": "7dae47030e70cd9b144e8da3c311ddac404d861cda8d8f2442381ef4dccfb89b"
+                }
+              },
+              "stage_assignment_sha256": "a57ef598dd12b598e3fa41be42496b2cf7c15b2ee4ca92c3da76ced5beb4b895",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 2,
+              "stages": {
+                "parameter_fit": {
+                  "rows": 5586,
+                  "record_id_sha256": "8075f8d1a6730db367b95a425677ec49837f616a70acbfde2d9c118c22c655a4"
+                },
+                "scored_prediction": {
+                  "rows": 1997,
+                  "record_id_sha256": "0a7225e6294c758945457f83613c316b5fe67d77be3f6fe690a4b82630b209dc"
+                },
+                "selection_score": {
+                  "rows": 799,
+                  "record_id_sha256": "6c485b82ccb38d9b6c46674dbd21345684cf7b383cb874f94d2c01822f5a2def"
+                }
+              },
+              "stage_assignment_sha256": "01b48e15609267cb7e310c3aa4b60e6d222880149523ce93090671385b2903a6",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 3,
+              "stages": {
+                "parameter_fit": {
+                  "rows": 5591,
+                  "record_id_sha256": "18c0a6458b6ed846d0e5cad74de71c62f731d5aaf98f42938c8b229f150413fa"
+                },
+                "scored_prediction": {
+                  "rows": 1997,
+                  "record_id_sha256": "0a7225e6294c758945457f83613c316b5fe67d77be3f6fe690a4b82630b209dc"
+                },
+                "selection_score": {
+                  "rows": 799,
+                  "record_id_sha256": "fdbb0a2dc215974d06a44b190743571ae7ca2121f7b4f31e6f947be8c10c7fee"
+                }
+              },
+              "stage_assignment_sha256": "4597a9f12f7b8267644d74b8c55da8c38e3923782bd52cb663f7920f97162e6c",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 4,
+              "stages": {
+                "parameter_fit": {
+                  "rows": 5595,
+                  "record_id_sha256": "678ac96dc71ba6580de2d961e3d15a966604b875a6e305b53d4f9740a3d979be"
+                },
+                "scored_prediction": {
+                  "rows": 1997,
+                  "record_id_sha256": "0a7225e6294c758945457f83613c316b5fe67d77be3f6fe690a4b82630b209dc"
+                },
+                "selection_score": {
+                  "rows": 800,
+                  "record_id_sha256": "ffeb8cad2a825502421fe21384e44c3ea5d0843fb2fa8de6b18b043da534f8b4"
+                }
+              },
+              "stage_assignment_sha256": "4c89a6f32401b3537a1db8d9ca834da993aeae61d84e4b77947a09f3ed2b2805",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            }
+          ]
+        },
+        "language": {
+          "role_resolution": "reuse_r03_split_models_for_supplied_test",
+          "scored_label_permission": "scoring_only",
+          "expected_units": [
+            {
+              "fold_index": 0,
+              "stages": {
+                "parameter_fit": {
+                  "rows": 5586,
+                  "record_id_sha256": "341c0b14c29c181ba41d093c7d0d73011c5cb252529fc93bca8ee7ab2c3f6c04"
+                },
+                "scored_prediction": {
+                  "rows": 1997,
+                  "record_id_sha256": "0a7225e6294c758945457f83613c316b5fe67d77be3f6fe690a4b82630b209dc"
+                },
+                "selection_score": {
+                  "rows": 799,
+                  "record_id_sha256": "e6e7586fbf758924012a280dea15d5d1ec209114df2e56bce6385bf2fd5521ad"
+                }
+              },
+              "stage_assignment_sha256": "4d31ee7e35209f87cd65cfe9a3be2d07cf0f3dd33c17b0acf745ee624a04b78c",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 1,
+              "stages": {
+                "parameter_fit": {
+                  "rows": 5586,
+                  "record_id_sha256": "ad18cd4070081b11d4dd87ab9caad3914f6cf07e4ee115df94a173ddcc62ebe0"
+                },
+                "scored_prediction": {
+                  "rows": 1997,
+                  "record_id_sha256": "0a7225e6294c758945457f83613c316b5fe67d77be3f6fe690a4b82630b209dc"
+                },
+                "selection_score": {
+                  "rows": 799,
+                  "record_id_sha256": "7dae47030e70cd9b144e8da3c311ddac404d861cda8d8f2442381ef4dccfb89b"
+                }
+              },
+              "stage_assignment_sha256": "a57ef598dd12b598e3fa41be42496b2cf7c15b2ee4ca92c3da76ced5beb4b895",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 2,
+              "stages": {
+                "parameter_fit": {
+                  "rows": 5586,
+                  "record_id_sha256": "8075f8d1a6730db367b95a425677ec49837f616a70acbfde2d9c118c22c655a4"
+                },
+                "scored_prediction": {
+                  "rows": 1997,
+                  "record_id_sha256": "0a7225e6294c758945457f83613c316b5fe67d77be3f6fe690a4b82630b209dc"
+                },
+                "selection_score": {
+                  "rows": 799,
+                  "record_id_sha256": "6c485b82ccb38d9b6c46674dbd21345684cf7b383cb874f94d2c01822f5a2def"
+                }
+              },
+              "stage_assignment_sha256": "01b48e15609267cb7e310c3aa4b60e6d222880149523ce93090671385b2903a6",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 3,
+              "stages": {
+                "parameter_fit": {
+                  "rows": 5591,
+                  "record_id_sha256": "18c0a6458b6ed846d0e5cad74de71c62f731d5aaf98f42938c8b229f150413fa"
+                },
+                "scored_prediction": {
+                  "rows": 1997,
+                  "record_id_sha256": "0a7225e6294c758945457f83613c316b5fe67d77be3f6fe690a4b82630b209dc"
+                },
+                "selection_score": {
+                  "rows": 799,
+                  "record_id_sha256": "fdbb0a2dc215974d06a44b190743571ae7ca2121f7b4f31e6f947be8c10c7fee"
+                }
+              },
+              "stage_assignment_sha256": "4597a9f12f7b8267644d74b8c55da8c38e3923782bd52cb663f7920f97162e6c",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 4,
+              "stages": {
+                "parameter_fit": {
+                  "rows": 5595,
+                  "record_id_sha256": "678ac96dc71ba6580de2d961e3d15a966604b875a6e305b53d4f9740a3d979be"
+                },
+                "scored_prediction": {
+                  "rows": 1997,
+                  "record_id_sha256": "0a7225e6294c758945457f83613c316b5fe67d77be3f6fe690a4b82630b209dc"
+                },
+                "selection_score": {
+                  "rows": 800,
+                  "record_id_sha256": "ffeb8cad2a825502421fe21384e44c3ea5d0843fb2fa8de6b18b043da534f8b4"
+                }
+              },
+              "stage_assignment_sha256": "4c89a6f32401b3537a1db8d9ca834da993aeae61d84e4b77947a09f3ed2b2805",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            }
+          ]
+        },
+        "geometry": {
+          "role_resolution": "reuse_r03_split_models_for_supplied_test",
+          "scored_label_permission": "scoring_only",
+          "expected_units": [
+            {
+              "fold_index": 0,
+              "stages": {
+                "parameter_fit": {
+                  "rows": 5586,
+                  "record_id_sha256": "341c0b14c29c181ba41d093c7d0d73011c5cb252529fc93bca8ee7ab2c3f6c04"
+                },
+                "scored_prediction": {
+                  "rows": 1997,
+                  "record_id_sha256": "0a7225e6294c758945457f83613c316b5fe67d77be3f6fe690a4b82630b209dc"
+                },
+                "selection_score": {
+                  "rows": 799,
+                  "record_id_sha256": "e6e7586fbf758924012a280dea15d5d1ec209114df2e56bce6385bf2fd5521ad"
+                }
+              },
+              "stage_assignment_sha256": "4d31ee7e35209f87cd65cfe9a3be2d07cf0f3dd33c17b0acf745ee624a04b78c",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 1,
+              "stages": {
+                "parameter_fit": {
+                  "rows": 5586,
+                  "record_id_sha256": "ad18cd4070081b11d4dd87ab9caad3914f6cf07e4ee115df94a173ddcc62ebe0"
+                },
+                "scored_prediction": {
+                  "rows": 1997,
+                  "record_id_sha256": "0a7225e6294c758945457f83613c316b5fe67d77be3f6fe690a4b82630b209dc"
+                },
+                "selection_score": {
+                  "rows": 799,
+                  "record_id_sha256": "7dae47030e70cd9b144e8da3c311ddac404d861cda8d8f2442381ef4dccfb89b"
+                }
+              },
+              "stage_assignment_sha256": "a57ef598dd12b598e3fa41be42496b2cf7c15b2ee4ca92c3da76ced5beb4b895",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 2,
+              "stages": {
+                "parameter_fit": {
+                  "rows": 5586,
+                  "record_id_sha256": "8075f8d1a6730db367b95a425677ec49837f616a70acbfde2d9c118c22c655a4"
+                },
+                "scored_prediction": {
+                  "rows": 1997,
+                  "record_id_sha256": "0a7225e6294c758945457f83613c316b5fe67d77be3f6fe690a4b82630b209dc"
+                },
+                "selection_score": {
+                  "rows": 799,
+                  "record_id_sha256": "6c485b82ccb38d9b6c46674dbd21345684cf7b383cb874f94d2c01822f5a2def"
+                }
+              },
+              "stage_assignment_sha256": "01b48e15609267cb7e310c3aa4b60e6d222880149523ce93090671385b2903a6",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 3,
+              "stages": {
+                "parameter_fit": {
+                  "rows": 5591,
+                  "record_id_sha256": "18c0a6458b6ed846d0e5cad74de71c62f731d5aaf98f42938c8b229f150413fa"
+                },
+                "scored_prediction": {
+                  "rows": 1997,
+                  "record_id_sha256": "0a7225e6294c758945457f83613c316b5fe67d77be3f6fe690a4b82630b209dc"
+                },
+                "selection_score": {
+                  "rows": 799,
+                  "record_id_sha256": "fdbb0a2dc215974d06a44b190743571ae7ca2121f7b4f31e6f947be8c10c7fee"
+                }
+              },
+              "stage_assignment_sha256": "4597a9f12f7b8267644d74b8c55da8c38e3923782bd52cb663f7920f97162e6c",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 4,
+              "stages": {
+                "parameter_fit": {
+                  "rows": 5595,
+                  "record_id_sha256": "678ac96dc71ba6580de2d961e3d15a966604b875a6e305b53d4f9740a3d979be"
+                },
+                "scored_prediction": {
+                  "rows": 1997,
+                  "record_id_sha256": "0a7225e6294c758945457f83613c316b5fe67d77be3f6fe690a4b82630b209dc"
+                },
+                "selection_score": {
+                  "rows": 800,
+                  "record_id_sha256": "ffeb8cad2a825502421fe21384e44c3ea5d0843fb2fa8de6b18b043da534f8b4"
+                }
+              },
+              "stage_assignment_sha256": "4c89a6f32401b3537a1db8d9ca834da993aeae61d84e4b77947a09f3ed2b2805",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            }
+          ]
+        },
+        "fusion_head": {
+          "role_resolution": "reuse_r03_split_models_for_supplied_test",
+          "scored_label_permission": "scoring_only",
+          "expected_units": [
+            {
+              "fold_index": 0,
+              "stages": {
+                "parameter_fit": {
+                  "rows": 5586,
+                  "record_id_sha256": "341c0b14c29c181ba41d093c7d0d73011c5cb252529fc93bca8ee7ab2c3f6c04"
+                },
+                "scored_prediction": {
+                  "rows": 1997,
+                  "record_id_sha256": "0a7225e6294c758945457f83613c316b5fe67d77be3f6fe690a4b82630b209dc"
+                }
+              },
+              "stage_assignment_sha256": "ab27e039edaf27d3eef1eb605b7787d3c74c3fee4f42924e5e22af13d270a7d4",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 1,
+              "stages": {
+                "parameter_fit": {
+                  "rows": 5586,
+                  "record_id_sha256": "ad18cd4070081b11d4dd87ab9caad3914f6cf07e4ee115df94a173ddcc62ebe0"
+                },
+                "scored_prediction": {
+                  "rows": 1997,
+                  "record_id_sha256": "0a7225e6294c758945457f83613c316b5fe67d77be3f6fe690a4b82630b209dc"
+                }
+              },
+              "stage_assignment_sha256": "c5a3af17678e7ee0acc26041f34014e92db46597267ead8dc8f502e557a0ac61",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 2,
+              "stages": {
+                "parameter_fit": {
+                  "rows": 5586,
+                  "record_id_sha256": "8075f8d1a6730db367b95a425677ec49837f616a70acbfde2d9c118c22c655a4"
+                },
+                "scored_prediction": {
+                  "rows": 1997,
+                  "record_id_sha256": "0a7225e6294c758945457f83613c316b5fe67d77be3f6fe690a4b82630b209dc"
+                }
+              },
+              "stage_assignment_sha256": "d3b31a57b42d256fd7135ee2bcbc29c4dd2f32ee85b32b4e769218bb35fcb9b7",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 3,
+              "stages": {
+                "parameter_fit": {
+                  "rows": 5591,
+                  "record_id_sha256": "18c0a6458b6ed846d0e5cad74de71c62f731d5aaf98f42938c8b229f150413fa"
+                },
+                "scored_prediction": {
+                  "rows": 1997,
+                  "record_id_sha256": "0a7225e6294c758945457f83613c316b5fe67d77be3f6fe690a4b82630b209dc"
+                }
+              },
+              "stage_assignment_sha256": "1f1abe8effa9db39d75bdd4c098aa871993f171dca7f54b9dfd0518a5e5c976b",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 4,
+              "stages": {
+                "parameter_fit": {
+                  "rows": 5595,
+                  "record_id_sha256": "678ac96dc71ba6580de2d961e3d15a966604b875a6e305b53d4f9740a3d979be"
+                },
+                "scored_prediction": {
+                  "rows": 1997,
+                  "record_id_sha256": "0a7225e6294c758945457f83613c316b5fe67d77be3f6fe690a4b82630b209dc"
+                }
+              },
+              "stage_assignment_sha256": "bad3dabc9eb91150ae8e4b6e229b6ed74a2f9b98d8f9a9765325875d1be7e131",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            }
+          ]
+        },
+        "blend_coefficient": {
+          "role_resolution": "fit_once_from_complete_r03_oof",
+          "scored_label_permission": "scoring_only",
+          "expected_units": [
+            {
+              "fold_index": 0,
+              "stages": {
+                "coefficient_fit": {
+                  "rows": 7985,
+                  "record_id_sha256": "d8524a57b3b192312d92eeb6c62e30e06b4772069a9c318b188a8f82656373c8"
+                },
+                "scored_prediction": {
+                  "rows": 1997,
+                  "record_id_sha256": "0a7225e6294c758945457f83613c316b5fe67d77be3f6fe690a4b82630b209dc"
+                }
+              },
+              "stage_assignment_sha256": "232428104b32b7a7f7c534f5a21f24e5a9c3e07fa0523960ac8bd1fe4d0a1b60",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            }
+          ]
+        }
+      }
+    },
+    "R05": {
+      "selection_scope": "The same reported validation rows select descriptor, language, and geometry models and separately fit the split-specific blend coefficient. Primary four-head fitting uses Train rows only.",
+      "coefficient_dependency": "same_split_validation_predictions",
+      "branches": {
+        "descriptor": {
+          "role_resolution": "train_fit_with_reported_validation_selection",
+          "scored_label_permission": "scoring_only",
+          "expected_units": [
+            {
+              "fold_index": 1,
+              "stages": {
+                "parameter_fit": {
+                  "rows": 6860,
+                  "record_id_sha256": "b2fdf01c17ab8b175db3fc6ad08aa824e162a7f6922356a65870ed2b63ed6392"
+                },
+                "scored_prediction": {
+                  "rows": 980,
+                  "record_id_sha256": "d01d89f6ac2ab5773f412598b69945e1017165bb4bf79d1c1fe727ba9d82b550"
+                },
+                "selection_score": {
+                  "rows": 1958,
+                  "record_id_sha256": "aa4c01f4d7c486f3595272cdc99a5436c2b956052b5dff52b466e5c14f868541"
+                }
+              },
+              "stage_assignment_sha256": "a92ee9046d00219adb0f06d739a94d9a195cf8c15cbe4f0b5f1ae450801545b7",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 2,
+              "stages": {
+                "parameter_fit": {
+                  "rows": 6858,
+                  "record_id_sha256": "9c9ac960f2ade2d08415b8288875405f97f517157c25ff3ddf5d2da76d2acab0"
+                },
+                "scored_prediction": {
+                  "rows": 980,
+                  "record_id_sha256": "d01d89f6ac2ab5773f412598b69945e1017165bb4bf79d1c1fe727ba9d82b550"
+                },
+                "selection_score": {
+                  "rows": 1960,
+                  "record_id_sha256": "62f7e092eaff2d6a406d89237675ec0219d248d3ce037af466548b6c54eb910e"
+                }
+              },
+              "stage_assignment_sha256": "bcad5b61290c68233357ddadfba7d4d5be30d98e0e8caf3642fb6ba3404bd339",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 3,
+              "stages": {
+                "parameter_fit": {
+                  "rows": 6859,
+                  "record_id_sha256": "6e82c62d2be51d2643b0aeaa98aa4d570df13a9745ea9ace9233f7e8d9eb8c25"
+                },
+                "scored_prediction": {
+                  "rows": 980,
+                  "record_id_sha256": "d01d89f6ac2ab5773f412598b69945e1017165bb4bf79d1c1fe727ba9d82b550"
+                },
+                "selection_score": {
+                  "rows": 1959,
+                  "record_id_sha256": "f2b629833511d19de1af40a245c35926d7fb02a73523861c4386919f849d3b9a"
+                }
+              },
+              "stage_assignment_sha256": "514ed92f6b63a2bcc9c4cff772eded96a0a39c0545deac42f91b05ea7b8604e5",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 4,
+              "stages": {
+                "parameter_fit": {
+                  "rows": 6858,
+                  "record_id_sha256": "da109b90282993f2dd33f00746a22f3edfb90cc17e0075598cdc15485061c181"
+                },
+                "scored_prediction": {
+                  "rows": 980,
+                  "record_id_sha256": "d01d89f6ac2ab5773f412598b69945e1017165bb4bf79d1c1fe727ba9d82b550"
+                },
+                "selection_score": {
+                  "rows": 1960,
+                  "record_id_sha256": "b55f4f4fe51e08c10d66e714f866738ac5b0d69c7069f7051a81f4c727875fa3"
+                }
+              },
+              "stage_assignment_sha256": "bd2253ae37a5915139c4b9482d4e60c96d4653f09c087063a60082fa8172eb57",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 5,
+              "stages": {
+                "parameter_fit": {
+                  "rows": 6858,
+                  "record_id_sha256": "74d9477d0f615f197fac67ebe407780804db8cfe63b5659a2a7cfe8e21bc0c5b"
+                },
+                "scored_prediction": {
+                  "rows": 980,
+                  "record_id_sha256": "d01d89f6ac2ab5773f412598b69945e1017165bb4bf79d1c1fe727ba9d82b550"
+                },
+                "selection_score": {
+                  "rows": 1960,
+                  "record_id_sha256": "b7b965cc948838417f535168c3e1b28db682d28780d209b7d926901b8f4d9874"
+                }
+              },
+              "stage_assignment_sha256": "8292ef33b6bafd00e85dccce3bc49b536e3bf2c187163932ad0aabd1fb1638f6",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            }
+          ]
+        },
+        "language": {
+          "role_resolution": "train_fit_with_reported_validation_selection",
+          "scored_label_permission": "scoring_only",
+          "expected_units": [
+            {
+              "fold_index": 1,
+              "stages": {
+                "parameter_fit": {
+                  "rows": 6860,
+                  "record_id_sha256": "b2fdf01c17ab8b175db3fc6ad08aa824e162a7f6922356a65870ed2b63ed6392"
+                },
+                "scored_prediction": {
+                  "rows": 980,
+                  "record_id_sha256": "d01d89f6ac2ab5773f412598b69945e1017165bb4bf79d1c1fe727ba9d82b550"
+                },
+                "selection_score": {
+                  "rows": 1958,
+                  "record_id_sha256": "aa4c01f4d7c486f3595272cdc99a5436c2b956052b5dff52b466e5c14f868541"
+                }
+              },
+              "stage_assignment_sha256": "a92ee9046d00219adb0f06d739a94d9a195cf8c15cbe4f0b5f1ae450801545b7",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 2,
+              "stages": {
+                "parameter_fit": {
+                  "rows": 6858,
+                  "record_id_sha256": "9c9ac960f2ade2d08415b8288875405f97f517157c25ff3ddf5d2da76d2acab0"
+                },
+                "scored_prediction": {
+                  "rows": 980,
+                  "record_id_sha256": "d01d89f6ac2ab5773f412598b69945e1017165bb4bf79d1c1fe727ba9d82b550"
+                },
+                "selection_score": {
+                  "rows": 1960,
+                  "record_id_sha256": "62f7e092eaff2d6a406d89237675ec0219d248d3ce037af466548b6c54eb910e"
+                }
+              },
+              "stage_assignment_sha256": "bcad5b61290c68233357ddadfba7d4d5be30d98e0e8caf3642fb6ba3404bd339",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 3,
+              "stages": {
+                "parameter_fit": {
+                  "rows": 6859,
+                  "record_id_sha256": "6e82c62d2be51d2643b0aeaa98aa4d570df13a9745ea9ace9233f7e8d9eb8c25"
+                },
+                "scored_prediction": {
+                  "rows": 980,
+                  "record_id_sha256": "d01d89f6ac2ab5773f412598b69945e1017165bb4bf79d1c1fe727ba9d82b550"
+                },
+                "selection_score": {
+                  "rows": 1959,
+                  "record_id_sha256": "f2b629833511d19de1af40a245c35926d7fb02a73523861c4386919f849d3b9a"
+                }
+              },
+              "stage_assignment_sha256": "514ed92f6b63a2bcc9c4cff772eded96a0a39c0545deac42f91b05ea7b8604e5",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 4,
+              "stages": {
+                "parameter_fit": {
+                  "rows": 6858,
+                  "record_id_sha256": "da109b90282993f2dd33f00746a22f3edfb90cc17e0075598cdc15485061c181"
+                },
+                "scored_prediction": {
+                  "rows": 980,
+                  "record_id_sha256": "d01d89f6ac2ab5773f412598b69945e1017165bb4bf79d1c1fe727ba9d82b550"
+                },
+                "selection_score": {
+                  "rows": 1960,
+                  "record_id_sha256": "b55f4f4fe51e08c10d66e714f866738ac5b0d69c7069f7051a81f4c727875fa3"
+                }
+              },
+              "stage_assignment_sha256": "bd2253ae37a5915139c4b9482d4e60c96d4653f09c087063a60082fa8172eb57",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 5,
+              "stages": {
+                "parameter_fit": {
+                  "rows": 6858,
+                  "record_id_sha256": "74d9477d0f615f197fac67ebe407780804db8cfe63b5659a2a7cfe8e21bc0c5b"
+                },
+                "scored_prediction": {
+                  "rows": 980,
+                  "record_id_sha256": "d01d89f6ac2ab5773f412598b69945e1017165bb4bf79d1c1fe727ba9d82b550"
+                },
+                "selection_score": {
+                  "rows": 1960,
+                  "record_id_sha256": "b7b965cc948838417f535168c3e1b28db682d28780d209b7d926901b8f4d9874"
+                }
+              },
+              "stage_assignment_sha256": "8292ef33b6bafd00e85dccce3bc49b536e3bf2c187163932ad0aabd1fb1638f6",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            }
+          ]
+        },
+        "geometry": {
+          "role_resolution": "train_fit_with_reported_validation_selection",
+          "scored_label_permission": "scoring_only",
+          "expected_units": [
+            {
+              "fold_index": 1,
+              "stages": {
+                "parameter_fit": {
+                  "rows": 6860,
+                  "record_id_sha256": "b2fdf01c17ab8b175db3fc6ad08aa824e162a7f6922356a65870ed2b63ed6392"
+                },
+                "scored_prediction": {
+                  "rows": 980,
+                  "record_id_sha256": "d01d89f6ac2ab5773f412598b69945e1017165bb4bf79d1c1fe727ba9d82b550"
+                },
+                "selection_score": {
+                  "rows": 1958,
+                  "record_id_sha256": "aa4c01f4d7c486f3595272cdc99a5436c2b956052b5dff52b466e5c14f868541"
+                }
+              },
+              "stage_assignment_sha256": "a92ee9046d00219adb0f06d739a94d9a195cf8c15cbe4f0b5f1ae450801545b7",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 2,
+              "stages": {
+                "parameter_fit": {
+                  "rows": 6858,
+                  "record_id_sha256": "9c9ac960f2ade2d08415b8288875405f97f517157c25ff3ddf5d2da76d2acab0"
+                },
+                "scored_prediction": {
+                  "rows": 980,
+                  "record_id_sha256": "d01d89f6ac2ab5773f412598b69945e1017165bb4bf79d1c1fe727ba9d82b550"
+                },
+                "selection_score": {
+                  "rows": 1960,
+                  "record_id_sha256": "62f7e092eaff2d6a406d89237675ec0219d248d3ce037af466548b6c54eb910e"
+                }
+              },
+              "stage_assignment_sha256": "bcad5b61290c68233357ddadfba7d4d5be30d98e0e8caf3642fb6ba3404bd339",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 3,
+              "stages": {
+                "parameter_fit": {
+                  "rows": 6859,
+                  "record_id_sha256": "6e82c62d2be51d2643b0aeaa98aa4d570df13a9745ea9ace9233f7e8d9eb8c25"
+                },
+                "scored_prediction": {
+                  "rows": 980,
+                  "record_id_sha256": "d01d89f6ac2ab5773f412598b69945e1017165bb4bf79d1c1fe727ba9d82b550"
+                },
+                "selection_score": {
+                  "rows": 1959,
+                  "record_id_sha256": "f2b629833511d19de1af40a245c35926d7fb02a73523861c4386919f849d3b9a"
+                }
+              },
+              "stage_assignment_sha256": "514ed92f6b63a2bcc9c4cff772eded96a0a39c0545deac42f91b05ea7b8604e5",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 4,
+              "stages": {
+                "parameter_fit": {
+                  "rows": 6858,
+                  "record_id_sha256": "da109b90282993f2dd33f00746a22f3edfb90cc17e0075598cdc15485061c181"
+                },
+                "scored_prediction": {
+                  "rows": 980,
+                  "record_id_sha256": "d01d89f6ac2ab5773f412598b69945e1017165bb4bf79d1c1fe727ba9d82b550"
+                },
+                "selection_score": {
+                  "rows": 1960,
+                  "record_id_sha256": "b55f4f4fe51e08c10d66e714f866738ac5b0d69c7069f7051a81f4c727875fa3"
+                }
+              },
+              "stage_assignment_sha256": "bd2253ae37a5915139c4b9482d4e60c96d4653f09c087063a60082fa8172eb57",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 5,
+              "stages": {
+                "parameter_fit": {
+                  "rows": 6858,
+                  "record_id_sha256": "74d9477d0f615f197fac67ebe407780804db8cfe63b5659a2a7cfe8e21bc0c5b"
+                },
+                "scored_prediction": {
+                  "rows": 980,
+                  "record_id_sha256": "d01d89f6ac2ab5773f412598b69945e1017165bb4bf79d1c1fe727ba9d82b550"
+                },
+                "selection_score": {
+                  "rows": 1960,
+                  "record_id_sha256": "b7b965cc948838417f535168c3e1b28db682d28780d209b7d926901b8f4d9874"
+                }
+              },
+              "stage_assignment_sha256": "8292ef33b6bafd00e85dccce3bc49b536e3bf2c187163932ad0aabd1fb1638f6",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            }
+          ]
+        },
+        "fusion_head": {
+          "role_resolution": "train_fit_only_with_frozen_four_head_schedule",
+          "scored_label_permission": "scoring_only",
+          "expected_units": [
+            {
+              "fold_index": 1,
+              "stages": {
+                "parameter_fit": {
+                  "rows": 6860,
+                  "record_id_sha256": "b2fdf01c17ab8b175db3fc6ad08aa824e162a7f6922356a65870ed2b63ed6392"
+                },
+                "scored_prediction": {
+                  "rows": 980,
+                  "record_id_sha256": "d01d89f6ac2ab5773f412598b69945e1017165bb4bf79d1c1fe727ba9d82b550"
+                }
+              },
+              "stage_assignment_sha256": "43c7be203a7f5681485970492b429056a6033a9e1fb184f402ef1b376d7491f6",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 2,
+              "stages": {
+                "parameter_fit": {
+                  "rows": 6858,
+                  "record_id_sha256": "9c9ac960f2ade2d08415b8288875405f97f517157c25ff3ddf5d2da76d2acab0"
+                },
+                "scored_prediction": {
+                  "rows": 980,
+                  "record_id_sha256": "d01d89f6ac2ab5773f412598b69945e1017165bb4bf79d1c1fe727ba9d82b550"
+                }
+              },
+              "stage_assignment_sha256": "a8b0e3bb7846b161e640e6fa29c136aeb454d0d10b92d20976290d89cd210ff5",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 3,
+              "stages": {
+                "parameter_fit": {
+                  "rows": 6859,
+                  "record_id_sha256": "6e82c62d2be51d2643b0aeaa98aa4d570df13a9745ea9ace9233f7e8d9eb8c25"
+                },
+                "scored_prediction": {
+                  "rows": 980,
+                  "record_id_sha256": "d01d89f6ac2ab5773f412598b69945e1017165bb4bf79d1c1fe727ba9d82b550"
+                }
+              },
+              "stage_assignment_sha256": "cbc17d40c2a533397017ab712f489e66839cf61a7545c0e5b94d1844419114f9",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 4,
+              "stages": {
+                "parameter_fit": {
+                  "rows": 6858,
+                  "record_id_sha256": "da109b90282993f2dd33f00746a22f3edfb90cc17e0075598cdc15485061c181"
+                },
+                "scored_prediction": {
+                  "rows": 980,
+                  "record_id_sha256": "d01d89f6ac2ab5773f412598b69945e1017165bb4bf79d1c1fe727ba9d82b550"
+                }
+              },
+              "stage_assignment_sha256": "fe9d7365269de748a63abbd21cb5318dcf91dc6eba2010313dd8161eb40de974",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 5,
+              "stages": {
+                "parameter_fit": {
+                  "rows": 6858,
+                  "record_id_sha256": "74d9477d0f615f197fac67ebe407780804db8cfe63b5659a2a7cfe8e21bc0c5b"
+                },
+                "scored_prediction": {
+                  "rows": 980,
+                  "record_id_sha256": "d01d89f6ac2ab5773f412598b69945e1017165bb4bf79d1c1fe727ba9d82b550"
+                }
+              },
+              "stage_assignment_sha256": "3ceb19848935c34932632e7c57779ca7ae63884378dc2b4a9790251898180f2a",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            }
+          ]
+        },
+        "blend_coefficient": {
+          "role_resolution": "fit_from_same_split_validation",
+          "scored_label_permission": "scoring_only",
+          "expected_units": [
+            {
+              "fold_index": 1,
+              "stages": {
+                "coefficient_fit": {
+                  "rows": 1958,
+                  "record_id_sha256": "aa4c01f4d7c486f3595272cdc99a5436c2b956052b5dff52b466e5c14f868541"
+                },
+                "scored_prediction": {
+                  "rows": 980,
+                  "record_id_sha256": "d01d89f6ac2ab5773f412598b69945e1017165bb4bf79d1c1fe727ba9d82b550"
+                }
+              },
+              "stage_assignment_sha256": "ba24838c58b5a1fdfe952065a8bef989857595210e4e7a80e7e97c8ac65f3927",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 2,
+              "stages": {
+                "coefficient_fit": {
+                  "rows": 1960,
+                  "record_id_sha256": "62f7e092eaff2d6a406d89237675ec0219d248d3ce037af466548b6c54eb910e"
+                },
+                "scored_prediction": {
+                  "rows": 980,
+                  "record_id_sha256": "d01d89f6ac2ab5773f412598b69945e1017165bb4bf79d1c1fe727ba9d82b550"
+                }
+              },
+              "stage_assignment_sha256": "5cbaefbf521864ec00183d73f488d869a2fa65e9f9ed16e78785fbe369782eb2",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 3,
+              "stages": {
+                "coefficient_fit": {
+                  "rows": 1959,
+                  "record_id_sha256": "f2b629833511d19de1af40a245c35926d7fb02a73523861c4386919f849d3b9a"
+                },
+                "scored_prediction": {
+                  "rows": 980,
+                  "record_id_sha256": "d01d89f6ac2ab5773f412598b69945e1017165bb4bf79d1c1fe727ba9d82b550"
+                }
+              },
+              "stage_assignment_sha256": "b6c66ffe7265519895626fabd4b189fb80b82b780e2db503151934e70b112b9f",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 4,
+              "stages": {
+                "coefficient_fit": {
+                  "rows": 1960,
+                  "record_id_sha256": "b55f4f4fe51e08c10d66e714f866738ac5b0d69c7069f7051a81f4c727875fa3"
+                },
+                "scored_prediction": {
+                  "rows": 980,
+                  "record_id_sha256": "d01d89f6ac2ab5773f412598b69945e1017165bb4bf79d1c1fe727ba9d82b550"
+                }
+              },
+              "stage_assignment_sha256": "6f0bbe736a8b3f54d38fea4ca6c6cacf43397ed5469acc3c3ea7d493dc184274",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            },
+            {
+              "fold_index": 5,
+              "stages": {
+                "coefficient_fit": {
+                  "rows": 1960,
+                  "record_id_sha256": "b7b965cc948838417f535168c3e1b28db682d28780d209b7d926901b8f4d9874"
+                },
+                "scored_prediction": {
+                  "rows": 980,
+                  "record_id_sha256": "d01d89f6ac2ab5773f412598b69945e1017165bb4bf79d1c1fe727ba9d82b550"
+                }
+              },
+              "stage_assignment_sha256": "658b1760fa734ba3411faf075f5beb2385f3beefb33f912e0e8fdcb171a59b37",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            }
+          ]
+        }
+      }
+    },
+    "R09": {
+      "selection_scope": "Descriptor, language, and geometry settings come from the R02 global Train/Val preselection. Final component and fusion models are refit on all 17,937 released Train rows.",
+      "coefficient_dependency": "complete_r02_oof_predictions",
+      "branches": {
+        "descriptor": {
+          "role_resolution": "r02_global_preselection_then_full_train_refit",
+          "scored_label_permission": "scoring_only",
+          "expected_units": [
+            {
+              "fold_index": 0,
+              "stages": {
+                "final_refit": {
+                  "rows": 17937,
+                  "record_id_sha256": "009d05816903fe5e28de1776e0cd9429183204a5efa8626574920b6b127b34cf"
+                },
+                "scored_prediction": {
+                  "rows": 1282,
+                  "record_id_sha256": "c77adec26f109d6bb2b6301f9a65be7c7239fdc9d8c8d5692d0ebc784ff41b4e"
+                },
+                "selection_fit": {
+                  "rows": 14351,
+                  "record_id_sha256": "3bac17bf2fbe92b263fe9ddad8d8cbd865ec8077a3ae3d8a79575b68217a37e3"
+                },
+                "selection_score": {
+                  "rows": 3586,
+                  "record_id_sha256": "6f63362f7cd7433dbd1cbb79993a4ec6ab8b06c581493515ffa645eaf5c89f3d"
+                }
+              },
+              "stage_assignment_sha256": "61066970c217dc41019ef07a252e8f304daee5484b8f2527bac5f412a83c0a43",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            }
+          ]
+        },
+        "language": {
+          "role_resolution": "r02_global_preselection_then_full_train_refit",
+          "scored_label_permission": "scoring_only",
+          "expected_units": [
+            {
+              "fold_index": 0,
+              "stages": {
+                "final_refit": {
+                  "rows": 17937,
+                  "record_id_sha256": "009d05816903fe5e28de1776e0cd9429183204a5efa8626574920b6b127b34cf"
+                },
+                "scored_prediction": {
+                  "rows": 1282,
+                  "record_id_sha256": "c77adec26f109d6bb2b6301f9a65be7c7239fdc9d8c8d5692d0ebc784ff41b4e"
+                },
+                "selection_fit": {
+                  "rows": 14351,
+                  "record_id_sha256": "3bac17bf2fbe92b263fe9ddad8d8cbd865ec8077a3ae3d8a79575b68217a37e3"
+                },
+                "selection_score": {
+                  "rows": 3586,
+                  "record_id_sha256": "6f63362f7cd7433dbd1cbb79993a4ec6ab8b06c581493515ffa645eaf5c89f3d"
+                }
+              },
+              "stage_assignment_sha256": "61066970c217dc41019ef07a252e8f304daee5484b8f2527bac5f412a83c0a43",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            }
+          ]
+        },
+        "geometry": {
+          "role_resolution": "r02_global_preselection_then_full_train_refit",
+          "scored_label_permission": "scoring_only",
+          "expected_units": [
+            {
+              "fold_index": 0,
+              "stages": {
+                "final_refit": {
+                  "rows": 17937,
+                  "record_id_sha256": "009d05816903fe5e28de1776e0cd9429183204a5efa8626574920b6b127b34cf"
+                },
+                "scored_prediction": {
+                  "rows": 1282,
+                  "record_id_sha256": "c77adec26f109d6bb2b6301f9a65be7c7239fdc9d8c8d5692d0ebc784ff41b4e"
+                },
+                "selection_fit": {
+                  "rows": 14351,
+                  "record_id_sha256": "3bac17bf2fbe92b263fe9ddad8d8cbd865ec8077a3ae3d8a79575b68217a37e3"
+                },
+                "selection_score": {
+                  "rows": 3586,
+                  "record_id_sha256": "6f63362f7cd7433dbd1cbb79993a4ec6ab8b06c581493515ffa645eaf5c89f3d"
+                }
+              },
+              "stage_assignment_sha256": "61066970c217dc41019ef07a252e8f304daee5484b8f2527bac5f412a83c0a43",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            }
+          ]
+        },
+        "fusion_head": {
+          "role_resolution": "full_train_refit_with_frozen_four_head_schedule",
+          "scored_label_permission": "scoring_only",
+          "expected_units": [
+            {
+              "fold_index": 0,
+              "stages": {
+                "final_refit": {
+                  "rows": 17937,
+                  "record_id_sha256": "009d05816903fe5e28de1776e0cd9429183204a5efa8626574920b6b127b34cf"
+                },
+                "scored_prediction": {
+                  "rows": 1282,
+                  "record_id_sha256": "c77adec26f109d6bb2b6301f9a65be7c7239fdc9d8c8d5692d0ebc784ff41b4e"
+                }
+              },
+              "stage_assignment_sha256": "fa4d4a0c129406598e6160025c5705993e2b4e26d897159840c145550e7e970d",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            }
+          ]
+        },
+        "blend_coefficient": {
+          "role_resolution": "fit_once_from_complete_r02_oof",
+          "scored_label_permission": "scoring_only",
+          "expected_units": [
+            {
+              "fold_index": 0,
+              "stages": {
+                "coefficient_fit": {
+                  "rows": 17937,
+                  "record_id_sha256": "009d05816903fe5e28de1776e0cd9429183204a5efa8626574920b6b127b34cf"
+                },
+                "scored_prediction": {
+                  "rows": 1282,
+                  "record_id_sha256": "c77adec26f109d6bb2b6301f9a65be7c7239fdc9d8c8d5692d0ebc784ff41b4e"
+                }
+              },
+              "stage_assignment_sha256": "45de9b4d069418af93f21640f25bdb4ed21833a3b73ccf52c3260511cdddd8d0",
+              "scored_overlap_policy": "zero_for_all_training_stages",
+              "scored_label_overlap_rows": {
+                "parameter_fit": 0,
+                "selection_fit": 0,
+                "selection_score": 0,
+                "final_refit": 0,
+                "coefficient_fit": 0
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}

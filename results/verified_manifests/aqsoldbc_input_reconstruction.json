@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "evaluation_id": "R01",
+  "status": "PASS",
+  "source": {
+    "persistent_file_id": "https://doi.org/10.57745/G4SSF0",
+    "dataverse_file_id": 569036,
+    "revision": "2.0",
+    "rows": 8047,
+    "bytes": 2333803,
+    "sha256": "d41e512b43d66d838c8d3644df6ea99d37e0b60ee7705f0f1631da4d37011fc1"
+  },
+  "recipe_sha256": "78e2dd21bcb96e633a1a4ce98606a2438a464649d0a8adb41b4592188a0690a9",
+  "generated_files": {
+    "molecules.csv": {
+      "rows": 8047,
+      "sha256": "4d03d61ccfacb1c596b189a3f55e3de77c04b6a8a6c5c0af72fac07bfcfbd12d"
+    },
+    "labels.csv": {
+      "rows": 8047,
+      "sha256": "4fdd3c2041e1283a6fa941e757eb1f856ca466e58e90e80c65c94171018ab7ea"
+    },
+    "partitions.csv": {
+      "rows": 40235,
+      "sha256": "9ab293b51dbcc6ffb1f5467d881f0dce7ed2744fc84f44e8b1556f1bae2393ac"
+    }
+  },
+  "historical_identity_check": {
+    "record_id_order_exact": true,
+    "curated_smiles_exact": true,
+    "maximum_absolute_target_difference": 0.0,
+    "outer_fold_mismatches": 0,
+    "role_assignment_mismatches_by_fold": {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0
+    },
+    "total_role_assignments_checked": 40235
+  },
+  "environment_checks": [
+    {
+      "python": "3.13.11",
+      "numpy": "2.4.4",
+      "partition_test": "PASS"
+    },
+    {
+      "python": "3.10.19",
+      "numpy": "2.2.6",
+      "partition_test": "PASS"
+    },
+    {
+      "python": "3.11.8",
+      "numpy": "1.26.4",
+      "partition_test": "PASS"
+    },
+    {
+      "python": "3.9.13",
+      "numpy": "1.22.4",
+      "partition_test": "PASS"
+    }
+  ],
+  "label_boundary_note": "The V1-A package records all labels locally for schema validation. V1-B must materialize fold-role-specific label views before fitting or selection."
+}

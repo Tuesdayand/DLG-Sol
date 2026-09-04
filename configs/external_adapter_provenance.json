@@ -1,0 +1,268 @@
+{
+  "schema_version": 1,
+  "audit_date": "2026-09-04",
+  "policy": "Source files are identified by revision, logical path, byte size, and SHA-256. Third-party source, study-local adaptation wrappers, row-level predictions, and contracts are not bundled.",
+  "families": [
+    {
+      "family_id": "pnnl_gnn",
+      "source_id": "pnnl_solubility_prediction",
+      "repository": "https://github.com/pnnl/solubility-prediction-paper",
+      "revision": "8e22d552cd29d054df6dfcde76a2e52f39b455df",
+      "licence_finding": "permissive Battelle terms; retain notice, conditions, and disclaimer",
+      "bundled": false,
+      "model_records": [
+        {
+          "model_id": "pnnl_gnn",
+          "variant": "none",
+          "evaluations": ["R01", "R02", "R03", "R04", "R05", "R09"],
+          "evidence_class": "independently retrained adaptation",
+          "permitted_interpretation": "split-matched architecture comparison; original study population not identifiable"
+        }
+      ],
+      "execution_environment": {
+        "python": "3.9.23",
+        "rdkit": "2023.09.6",
+        "torch": "2.7.1+cu126",
+        "torch_geometric": "2.6.1"
+      },
+      "file_evidence": [
+        {
+          "file_id": "pnnl_architecture",
+          "role": "upstream architecture source",
+          "logical_path": "gnn/gnn_model.py",
+          "bytes": 4193,
+          "sha256": "e1783dfd130122990932c49d5c1f2c77dc2a6d84083f0a15b2c63e1aa272fdec",
+          "bundled": false
+        },
+        {
+          "file_id": "pnnl_atom_features",
+          "role": "upstream atom-feature source",
+          "logical_path": "gnn/gnn_utils.py",
+          "bytes": 13221,
+          "sha256": "141d430559382c47ecd96938d856765ef2eb3ebc7ae5979ed5932331a1fcf206",
+          "bundled": false
+        },
+        {
+          "file_id": "pnnl_adaptation_wrapper",
+          "role": "historical study adaptation wrapper",
+          "logical_path": "run_pnnl_gnn_clean_fold_20260812.py",
+          "bytes": 10745,
+          "sha256": "ba21cb6d48ba951acf3d91b3f949238d450121cba3009d80b68a28ad7ae8b878",
+          "bundled": false
+        },
+        {
+          "file_id": "pnnl_execution_contract",
+          "role": "historical execution contract",
+          "logical_path": "pnnl_gnn_clean_retraining_contract.json",
+          "bytes": 3891,
+          "sha256": "f128d4f4a2aefe082164ace3bd325899edc2535d11c574e94520114c9ee30d63",
+          "bundled": false
+        }
+      ]
+    },
+    {
+      "family_id": "ali_xgb125",
+      "source_id": "ali_complat_xgb125d",
+      "repository": "https://github.com/ComPlat/water-solubility-prediction",
+      "revision": "d4feda24b4bcb9efee9953605ba56af0e52dba4d",
+      "licence_finding": "README declares MIT; no LICENSE file at the pinned revision and upstream dataset rights are not established",
+      "bundled": false,
+      "model_records": [
+        {
+          "model_id": "ali_xgb125",
+          "variant": "none",
+          "evaluations": ["R01", "R02", "R03", "R04", "R05", "R09"],
+          "evidence_class": "split-adapted schema/settings; ComPlat same-split reproduction",
+          "permitted_interpretation": "schema-and-setting adaptation on R01, R03, R04, and R05; same-split reproduction on R02 and R09"
+        }
+      ],
+      "execution_environment": {
+        "python": "3.9.23",
+        "deepchem": "2.6.1",
+        "rdkit": "2023.09.6",
+        "xgboost": "2.1.1"
+      },
+      "file_evidence": [
+        {
+          "file_id": "ali_feature_source",
+          "role": "upstream 125-descriptor implementation",
+          "logical_path": "Notebook/utilities.py",
+          "bytes": 58208,
+          "sha256": "985190d5dd962cd43a0897090659b5541d65d2ddd2ee6de21ad32301c765dc50",
+          "bundled": false
+        },
+        {
+          "file_id": "ali_training_notebook",
+          "role": "upstream model-settings source",
+          "logical_path": "Notebook/model_traning.ipynb",
+          "bytes": 177185,
+          "sha256": "6e16d3f9ee33e209137116933d8b2284221cf68d529b2c66af5ea257ed391735",
+          "bundled": false
+        },
+        {
+          "file_id": "ali_adaptation_wrapper",
+          "role": "historical study adaptation wrapper",
+          "logical_path": "run_ali_xgb125_phase1_unit_v2_20260823.py",
+          "bytes": 11151,
+          "sha256": "c04dcfae02be5d5c83be9c6d2739e4753541976e76e2ac56fedb5fad43d09142",
+          "bundled": false
+        },
+        {
+          "file_id": "ali_execution_contract",
+          "role": "historical execution contract",
+          "logical_path": "ali_xgb125_clean_retraining_contract.json",
+          "bytes": 1731,
+          "sha256": "2235c56a4448940c966e59fe0a26bdbe5c1cd9a8578b564d6f4d7d6e566870ee",
+          "bundled": false
+        }
+      ]
+    },
+    {
+      "family_id": "bhattacharya_roy",
+      "source_id": "bhattacharya_roy_mlp_gnn",
+      "repository": "https://github.com/spriti523/MLP-GNN-for-Modeling-Aqueous-Solubility",
+      "revision": "8c656265083fc5d9bc40beb118e73909deaa000d",
+      "licence_finding": "no repository licence identified",
+      "bundled": false,
+      "model_records": [
+        {
+          "model_id": "bhattacharya_roy",
+          "variant": "interaction",
+          "evaluations": ["R01", "R02", "R03", "R04", "R05", "R09"],
+          "evidence_class": "independently retrained adaptation",
+          "permitted_interpretation": "primary split-matched architecture adaptation; source-domain performance not reproduced"
+        },
+        {
+          "model_id": "bhattacharya_roy",
+          "variant": "no_interaction",
+          "evaluations": ["R01", "R02", "R03", "R04", "R05", "R09"],
+          "evidence_class": "prespecified architecture control",
+          "permitted_interpretation": "control only; source-domain performance not reproduced"
+        }
+      ],
+      "execution_environment": {
+        "python": "3.9.23",
+        "rdkit": "2023.09.6",
+        "torch": "2.7.1+cu126"
+      },
+      "file_evidence": [
+        {
+          "file_id": "bhattacharya_roy_interaction_source",
+          "role": "upstream interaction architecture source",
+          "logical_path": "MPNN_MLP_interaction/MPNN_MLP_tau.py",
+          "bytes": 13266,
+          "sha256": "e1a335add8989a42f1d9acdb35f6425209c45da8fb2129a8486f96e4764a670a",
+          "bundled": false
+        },
+        {
+          "file_id": "bhattacharya_roy_no_interaction_source",
+          "role": "upstream no-interaction architecture source",
+          "logical_path": "MPNN_MLP_no_interaction/MPNN_MLP_tau_0.py",
+          "bytes": 15329,
+          "sha256": "567a764fa7f57af92e4fdc6a60525e7c5e596ec83460d366957b0e41d04679c9",
+          "bundled": false
+        },
+        {
+          "file_id": "bhattacharya_roy_adaptation_wrapper",
+          "role": "historical study adaptation wrapper",
+          "logical_path": "run_bhattacharya_roy_phase1_unit_20260822.py",
+          "bytes": 15576,
+          "sha256": "b94c46c3522846bc4247ee7e95c2a6c60a57c7ba2c07a0c01ae20534d2a4bdfd",
+          "bundled": false
+        },
+        {
+          "file_id": "bhattacharya_roy_execution_contract",
+          "role": "historical execution contract",
+          "logical_path": "FULL_RUN_CONTRACT.json",
+          "bytes": 1842,
+          "sha256": "555a0e36cb106cfbb85c5624afe5da93bf7d339527b07b509ea7d99de3267a09",
+          "bundled": false
+        }
+      ]
+    },
+    {
+      "family_id": "consensus_gnn",
+      "source_id": "consensus_gnn",
+      "repository": "https://github.com/nadinulrich/log_Sw_prediction",
+      "revision": "3da09dc96acde6c5c51d784307559067864ca779",
+      "licence_finding": "repository MIT; included dataset has no separate data notice",
+      "bundled": false,
+      "model_records": [
+        {
+          "model_id": "ulrich_consensus_adaptation",
+          "variant": "retrained",
+          "evaluations": ["R01", "R02", "R03", "R04", "R05", "R09"],
+          "evidence_class": "independently retrained official-code adaptation",
+          "permitted_interpretation": "split-matched adaptation; not the authors' released checkpoints"
+        },
+        {
+          "model_id": "ulrich_consensus",
+          "variant": "released",
+          "evaluations": ["R05"],
+          "evidence_class": "authors' released predictions",
+          "permitted_interpretation": "direct paired released-prediction comparison on the shared 980-row test"
+        }
+      ],
+      "execution_environment": {
+        "python": "3.11.8",
+        "tensorflow": "2.15.0",
+        "keras": "2.15.0",
+        "deepchem_distribution": "2.7.2.dev20240326195015",
+        "deepchem_import": "2.7.2.dev",
+        "rdkit": "2023.09.6",
+        "openbabel_conda_package": "3.1.1",
+        "openbabel_binary": "3.1.0"
+      },
+      "file_evidence": [
+        {
+          "file_id": "consensus_model_source",
+          "role": "upstream official model source",
+          "logical_path": "mygraphconvmodel.py",
+          "bytes": 1577,
+          "sha256": "984dce7a30a7c6aa0da4fe163b01a0ef35d4df3880180c0831f0aee0e2888870",
+          "bundled": false
+        },
+        {
+          "file_id": "consensus_training_source",
+          "role": "upstream training and augmentation source",
+          "logical_path": "main.py",
+          "bytes": 4246,
+          "sha256": "afa5a5c979d0416ba339cbe164d6e86e724b752663604253351927ec89faf2c0",
+          "bundled": false
+        },
+        {
+          "file_id": "consensus_released_workbook",
+          "role": "upstream dataset and released-prediction source",
+          "logical_path": "dataset.xlsx",
+          "bytes": 3132459,
+          "sha256": "416375f45fb58806a67b7124f5ab40b54faa50f329669338244c579fad6f4af1",
+          "bundled": false
+        },
+        {
+          "file_id": "consensus_adaptation_wrapper",
+          "role": "historical study adaptation wrapper",
+          "logical_path": "run_consensus_gnn_fit.py",
+          "bytes": 12963,
+          "sha256": "12de6d6bdd2af0884c71520fce921042e384b2982f061cac0c7fdeed9ac67bd5",
+          "bundled": false
+        },
+        {
+          "file_id": "consensus_released_prediction_derivative",
+          "role": "historical extracted released-prediction source",
+          "logical_path": "jchem2025_author_consensus_internal_test.csv",
+          "bytes": 92740,
+          "sha256": "e5d14607cbd445e464dd5d0f6d196efb75ee1805ded86b821432a4d336ee8c65",
+          "bundled": false
+        },
+        {
+          "file_id": "consensus_record_alignment",
+          "role": "historical same-row alignment source",
+          "logical_path": "jchem2025_internal_test_author_matched.csv",
+          "bytes": 75645,
+          "sha256": "7dd84be98d9dfc4853f285b157cd09cde575df8cd5df7a615539fe68fe631245",
+          "bundled": false
+        }
+      ]
+    }
+  ]
+}

@@ -54,13 +54,13 @@ class EvaluationPackage:
 
 EXPECTED_SOURCES = {
     "aqsoldb": ("https://github.com/mcsorkun/AqSolDB", "8e02b548fd9a78778ff89a5aa9a460d1a289cc3a", "upstream_data_marked_cc0_1_0", "manual_pinned_upstream_acquisition", False),
-    "aqsoldbc_derivative": ("https://github.com/mcsorkun/AqSolDB", "8e02b548fd9a78778ff89a5aa9a460d1a289cc3a", "derivative_lineage_package_pending", "user_supplied_local_package", False),
-    "complat": ("https://github.com/ComPlat/water-solubility-prediction", "d4feda24b4bcb9efee9953605ba56af0e52dba4d", "no_repository_licence_identified", "user_supplied_local_package", False),
+    "llompart_aqsoldbc_dataset": ("https://doi.org/10.57745/CZVZIA", "2.0", "etalab_2_0", "user_supplied_local_package", False),
+    "complat": ("https://github.com/ComPlat/water-solubility-prediction", "d4feda24b4bcb9efee9953605ba56af0e52dba4d", "readme_declares_mit_no_license_file_dataset_rights_not_established", "user_supplied_local_package", False),
     "tdc_dataset": ("https://tdcommons.ai/", "c310c35f27e3f506411018ac43d97b8ba23ca652", "software_mit_dataset_rights_separate", "user_supplied_local_package", False),
-    "jchem_dataset": ("https://github.com/nadinulrich/log_Sw_prediction", "3da09dc96acde6c5c51d784307559067864ca779", "dataset_specific_review_pending", "user_supplied_local_package", False),
+    "jchem_dataset": ("https://github.com/nadinulrich/log_Sw_prediction", "3da09dc96acde6c5c51d784307559067864ca779", "repository_mit_dataset_included_no_separate_data_notice", "user_supplied_local_package", False),
     "chemberta_zinc_base_v1": ("https://huggingface.co/seyonec/ChemBERTa-zinc-base-v1", "761d6a18cf99db371e0b43baf3e2d21b3e865a20", "no_explicit_licence_in_retrieved_metadata", "identifier_only_no_bundled_weights", False),
 }
-EXPECTED_EVALUATION_SOURCES = {"R01": "aqsoldbc_derivative", "R02": "complat", "R03": "tdc_dataset", "R04": "tdc_dataset", "R05": "jchem_dataset", "R09": "complat"}
+EXPECTED_EVALUATION_SOURCES = {"R01": "llompart_aqsoldbc_dataset", "R02": "complat", "R03": "tdc_dataset", "R04": "tdc_dataset", "R05": "jchem_dataset", "R09": "complat"}
 EXPECTED_FILE_NAMES = {
     "scored_component_predictions": "scored_component_predictions.csv",
     "coefficient_component_predictions": "coefficient_component_predictions.csv",

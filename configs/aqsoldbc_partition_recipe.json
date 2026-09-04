@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "evaluation_id": "R01",
+  "dataset_id": "aqsoldbc",
+  "source": {
+    "persistent_file_id": "https://doi.org/10.57745/G4SSF0",
+    "dataverse_file_id": 569036,
+    "revision": "2.0",
+    "original_filename": "AqSolDBc.csv",
+    "bytes": 2333803,
+    "sha256": "d41e512b43d66d838c8d3644df6ea99d37e0b60ee7705f0f1631da4d37011fc1",
+    "rows": 8047,
+    "columns": {
+      "record_id": "ID",
+      "smiles": "SmilesCurated",
+      "target": "ExperimentalLogS"
+    }
+  },
+  "partition": {
+    "row_order": "original_author_csv_order",
+    "outer": {
+      "algorithm": "legacy_numpy_kfold_shuffle",
+      "n_splits": 5,
+      "random_state": 260720
+    },
+    "inner_reserved": {
+      "algorithm": "legacy_numpy_shuffle_split",
+      "test_fraction": 0.125,
+      "random_state_rule": "260720 + fold_index",
+      "rounding": "ceil",
+      "input_order": "ascending_source_row_index_excluding_outer_scored_rows"
+    },
+    "roles": {
+      "outer_test": "scored",
+      "inner_validation": "reserved",
+      "remaining": "fit"
+    }
+  },
+  "expected_role_counts": {
+    "0": {"fit": 5632, "reserved": 805, "scored": 1610},
+    "1": {"fit": 5632, "reserved": 805, "scored": 1610},
+    "2": {"fit": 5633, "reserved": 805, "scored": 1609},
+    "3": {"fit": 5633, "reserved": 805, "scored": 1609},
+    "4": {"fit": 5633, "reserved": 805, "scored": 1609}
+  },
+  "expected_output": {
+    "assignment_index_sha256": "67b633509dc88975d57cdd0a785e5893b0379db0f2b480f379a4910cfd6b7a5d",
+    "molecules_sha256": "4d03d61ccfacb1c596b189a3f55e3de77c04b6a8a6c5c0af72fac07bfcfbd12d",
+    "labels_sha256": "4fdd3c2041e1283a6fa941e757eb1f856ca466e58e90e80c65c94171018ab7ea",
+    "partitions_sha256": "9ab293b51dbcc6ffb1f5467d881f0dce7ed2744fc84f44e8b1556f1bae2393ac"
+  }
+}

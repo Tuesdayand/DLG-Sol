@@ -19,14 +19,14 @@
       "id": "consensus_gnn",
       "url": "https://github.com/nadinulrich/log_Sw_prediction",
       "revision": "3da09dc96acde6c5c51d784307559067864ca779",
-      "licence_finding": "MIT",
+      "licence_finding": "repository MIT; included dataset has no separate data notice",
       "bundled": false
     },
     {
       "id": "ali_complat_xgb125d",
       "url": "https://github.com/ComPlat/water-solubility-prediction",
       "revision": "d4feda24b4bcb9efee9953605ba56af0e52dba4d",
-      "licence_finding": "no repository licence identified",
+      "licence_finding": "README declares MIT; no LICENSE file at the pinned revision and upstream dataset rights are not established",
       "bundled": false
     },
     {
@@ -34,6 +34,13 @@
       "url": "https://github.com/mcsorkun/AqSolDB",
       "revision": "8e02b548fd9a78778ff89a5aa9a460d1a289cc3a",
       "licence_finding": "code MIT; repository data directory CC0-1.0",
+      "bundled": false
+    },
+    {
+      "id": "llompart_aqsoldbc_dataset",
+      "url": "https://doi.org/10.57745/CZVZIA",
+      "revision": "2.0",
+      "licence_finding": "Etalab Open Licence 2.0; AqSolDBc original download identified as Dataverse file 569036",
       "bundled": false
     },
     {
@@ -46,8 +53,17 @@
     {
       "id": "chemberta_zinc_base_v1",
       "url": "https://huggingface.co/seyonec/ChemBERTa-zinc-base-v1",
-      "revision": "761d6a18cf99db371e0b43baf3e2d21b3e865a20",
+      "revision_observed_at_audit": "761d6a18cf99db371e0b43baf3e2d21b3e865a20",
+      "revision_used_in_historical_run": null,
+      "revision_status": "immutable revision was not recorded in the historical run",
       "licence_finding": "no explicit licence in retrieved model metadata",
+      "bundled": false
+    },
+    {
+      "id": "biogen_clnd",
+      "url": "https://doi.org/10.1021/acs.jcim.3c00160",
+      "revision": "published article and associated public ADME data as used in the supplementary analysis",
+      "licence_finding": "no standalone row-level redistribution grant recorded for the study dataset",
       "bundled": false
     },
     {

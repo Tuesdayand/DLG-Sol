@@ -22,9 +22,18 @@
 - [x] Evaluation-specific coefficient reconstruction and blend-before-aggregation runner completed
 - [x] Separate label-access scoring phase and paired-bootstrap output completed
 - [x] Six-evaluation historical assembly, metric, and bootstrap parity completed
-- [ ] Documented acquisition or reconstruction of raw benchmark inputs completed where permitted
-- [ ] External-adapter file provenance audited
-- [ ] Dataset-specific row-level redistribution decisions completed
+- [x] User-supplied molecule, label, fold-role, source-hash, and derivation package schema implemented for all six primary evaluations
+- [x] Exact author-file identity and all 40,235 fold-role assignments reconstructed for R01 AqSolDBc
+- [x] Exact source identities and fold-role assignments reconstructed for ComPlat R02/R09, TDC R03/R04, and JCheM R05
+- [x] Documented local reconstruction of all six primary benchmark input packages completed
+- [x] Historical descriptor, language, geometry, four-head, and coefficient row-use contracts audited across 126 units
+- [x] R02 global-preselection exception distinguished from fold-local fitting and coefficient boundaries
+- [x] Stage-specific label-safe training-role materializer implemented and checked across all 126 audited units
+- [x] Unit-level training-execution recipes mapped to all 126 audited units
+- [x] ComPlat global-preselection recipe regenerated from the pinned source with exact membership parity
+- [x] Branch-level training command-line entry points and required descriptor integration run completed
+- [x] External-adapter file provenance audited
+- [x] Dataset-specific row-level redistribution decisions completed
 - [x] Clean-environment reproduction executed for the current summary-data, code, Figure 2, and Table 2 scope
 - [x] Chemical-subgroup figure regeneration executed from public inputs
 - [x] Table 2 regeneration executed from public inputs

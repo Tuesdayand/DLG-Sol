@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "source": {
+    "source_id": "complat",
+    "revision": "d4feda24b4bcb9efee9953605ba56af0e52dba4d",
+    "train": {
+      "locator": "data/final_data/final_unique_train.csv",
+      "bytes": 2814578,
+      "sha256": "8f57b8e7ecf640f861f35bb17ff61b7b9c0592aa675ef8a186a429a4b6fab00f",
+      "rows": 17937
+    },
+    "test": {
+      "locator": "data/final_data/final_unique_test.csv",
+      "bytes": 138236,
+      "sha256": "5a34e2ab090fbabd48cea483f8d554e2cde33767b5a0acba9eb1c4f45395134a",
+      "rows": 1282
+    },
+    "columns": {
+      "record_id": "C_ID",
+      "smiles": "smiles_canon",
+      "target": "LogS"
+    }
+  },
+  "evaluations": {
+    "R02": {
+      "source_rows": "train",
+      "n_splits": 5,
+      "stratification_quantiles": 20,
+      "shuffle": true,
+      "random_state": 260722,
+      "expected_role_counts": {
+        "0": {"fit": 14349, "scored": 3588},
+        "1": {"fit": 14349, "scored": 3588},
+        "2": {"fit": 14350, "scored": 3587},
+        "3": {"fit": 14350, "scored": 3587},
+        "4": {"fit": 14350, "scored": 3587}
+      },
+      "assignment_sha256": "d23a985c40d38417fabaddbdf434dee7ba92ad8893d5239b25a4961f4e4ec366",
+      "output_sha256": {
+        "molecules": "24ce7d64d4a23f89ed6bc2d15efa29e9f732cc719930db53d60ba713b725647c",
+        "labels": "972357373e1f4aafa771425e6cc8a7b5f243825c3d771f4526e4295cf15a95d2",
+        "partitions": "917de99078e419268d2a6547c6bf9187b37f747e76ea6e177bc0896d743442c7"
+      }
+    },
+    "R09": {
+      "source_rows": "train_plus_test",
+      "fold_index": 0,
+      "expected_role_counts": {"0": {"fit": 17937, "scored": 1282}},
+      "assignment_sha256": "20b4db45ee259fa341ba5e2187f6f32ae18dccedf67f883bea0a91b4d76d1516",
+      "output_sha256": {
+        "molecules": "29bb40b676bdaa26aabbe98389244ea9d3fa273073936f1194903fd03364f1a3",
+        "labels": "ec385c069594c7fa5ba0aa0960e08db1141358062ae86e647bf9adbdaf67bb3c",
+        "partitions": "b086f406e015f4f2029caeb454ab83b523cabb1b77dcb6157340daa5f3ea7ceb"
+      }
+    }
+  }
+}

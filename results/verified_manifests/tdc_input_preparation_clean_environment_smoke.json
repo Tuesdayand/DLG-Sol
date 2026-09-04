@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "gate": "tdc_input_preparation_v1a4",
+  "status": "PASS",
+  "environment": {
+    "numpy": "1.26.4",
+    "pandas": "2.2.3",
+    "scikit_learn": "1.6.1",
+    "rdkit": "2023.09.6"
+  },
+  "tests_discovered": 3,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "pinned_source_execution": {
+    "R03": "PASS",
+    "R04": "PASS"
+  },
+  "generated_output_hashes_match_recipe": true,
+  "validated_packages": {
+    "R03": "PASS",
+    "R04": "PASS"
+  }
+}

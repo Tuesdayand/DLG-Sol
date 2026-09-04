@@ -6,11 +6,11 @@ DLG-Sol combines a Mordred/XGBoost descriptor model with a neural model derived 
 
 ## Repository status
 
-This is a pre-release staging repository. The currently included files cover the verified machine-readable Supplementary summaries, release-integrity checks, the six-evaluation registry, label-firewall checks, fixed blending, article-level scoring metrics, the canonical Mordred/XGBoost descriptor branch, split-safe descriptor training orchestration, the ChemBERTa language-encoder contracts, the explicit-polar-hydrogen distance-aware three-dimensional graph branch, the canonical `aug2_head4` language–geometry branch, evaluation-specific adapter contracts, and a provenance-checked local-package evaluation runner. Row-level benchmark data, historical model checkpoints, automatic data acquisition, and third-party source code are not part of this staging snapshot.
+This is a pre-release staging repository. The currently included files cover the verified machine-readable Supplementary summaries, release-integrity checks, the six-evaluation registry, label-firewall checks, fixed blending, article-level scoring metrics, the canonical Mordred/XGBoost descriptor branch, the ChemBERTa language encoder, the explicit-polar-hydrogen distance-aware three-dimensional graph branch, the canonical `aug2_head4` language–geometry branch, evaluation-specific adapter contracts, a validated benchmark-input package schema, a provenance-checked local-package evaluation runner, a historical training-role audit, a label-safe stage materializer, audited unit-level execution recipes, and branch-level training commands. Row-level benchmark data, historical model checkpoints, automatic data acquisition, and third-party source code are not part of this staging snapshot.
 
 The target release is a **v1.0 reproducibility package**. It will provide a documented, executable path from lawfully obtained user-supplied benchmark data through DLG-Sol training, prediction, fixed blending, scoring, and regeneration of the reported public outputs. Raw third-party benchmark rows, third-party source trees, and model weights without clear redistribution permission will not be bundled. Their provenance, access conditions, and required local-package schemas will instead be documented.
 
-The remaining v1.0 work and release criteria are tracked in `docs/V1_RELEASE_PLAN.md`.
+The technical package has completed its input, training-workflow, result-regeneration, and provenance gates. Tagging, the GitHub Release, archival deposition, DOI assignment, and final citation synchronization remain. These criteria are tracked in `docs/V1_RELEASE_PLAN.md`.
 
 ## Canonical core modules
 
@@ -26,6 +26,8 @@ The descriptor API and its protocol-specific filtering differences are documente
 
 The explicit fit/selection/scored partition contract, candidate selection, nested-trial ranking, and prediction aggregation APIs are documented in `docs/TRAINING_ORCHESTRATION_API.md`.
 
+The evaluation-by-branch historical row-use audit and its disclosed R02 global-preselection exception are documented in `docs/TRAINING_ROLE_CONTRACT.md`. `docs/TRAINING_ROLE_MATERIALIZER_API.md` describes how validated local packages are converted into stage-specific labelled development views and physically label-free scored views. `docs/TRAINING_EXECUTION_WORKFLOW.md` maps those views to the audited recipes and the descriptor, language, geometry, and fusion command-line entry points.
+
 The final randomized-SMILES single-task ChemBERTa encoder and the two non-final development variants are documented in `docs/LANGUAGE_API.md`. Their modelling implementation requires `environment/language-requirements.txt`. Historical fine-tuned checkpoints and row-level embeddings are not redistributed.
 
 The explicit-polar-hydrogen conformer construction and distance-aware three-dimensional message-passing network are documented in `docs/GEOMETRY_API.md`. Install `environment/geometry-requirements.txt` for this branch. Historical conformer caches, coordinates, checkpoints, and row-level embeddings are not redistributed.
@@ -35,6 +37,10 @@ The single language–geometry representation, four independently initialized re
 The six evaluation-specific partition, fold-numbering, preprocessing, seed, coefficient-boundary, and scored-row aggregation contracts are documented in `docs/DATASET_ADAPTER_API.md`.
 
 The acquisition registry, local-package format, coefficient reconstruction, blend-before-aggregation rule, label firewall, and final scoring commands are documented in `docs/EVALUATION_RUNNER_API.md`. The registry deliberately disables automatic downloads.
+
+The user-supplied structure, label, fold-role, source-object, and transformation-history contract is documented in `docs/BENCHMARK_INPUT_API.md`. This validator checks all six primary evaluation layouts without copying or downloading benchmark rows.
+
+The R01 AqSolDBc input package can be generated locally from the exact author-released CSV with `scripts/prepare_aqsoldbc_input.py`. ComPlat R02/R09, TDC R03/R04, and JCheM R05 packages can likewise be reconstructed from hash-pinned inputs with `scripts/prepare_complat_input.py`, `scripts/prepare_tdc_input.py`, and `scripts/prepare_jchem_input.py`. The recipes reproduce the historical record and fold-role identities while keeping source datasets outside this repository.
 
 ## Included data
 
@@ -81,7 +87,7 @@ The command creates `results/table_2_absolute_rmse.csv` from the public 31-row e
 
 ## Data access
 
-Raw benchmark data are not redistributed in this pre-release snapshot. See `data/README.md` and `configs/external_sources.json` for source locations, fixed revisions, and redistribution decisions.
+Raw benchmark data are not redistributed in this pre-release snapshot. See `data/README.md`, `docs/DATA_AND_ASSET_PROVENANCE.md`, and `configs/redistribution_decisions.json` for source locations, rights findings, and project bundling decisions. File-level provenance and interpretation boundaries for the external comparators are documented in `docs/EXTERNAL_COMPARATOR_PROVENANCE.md`.
 
 ## Reproducibility scope
 

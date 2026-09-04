@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "source": {
+    "source_id": "tdc_dataset",
+    "revision": "c310c35f27e3f506411018ac43d97b8ba23ca652",
+    "export_contract": "historical runtime export used by R03 and R04",
+    "train_val": {
+      "locator": "TDC_AqSol_benchmark_train_val.csv",
+      "bytes": 334137,
+      "sha256": "6a93ef8265f03950a29e916a8e8a4878f9c3f6324bfe4e02cbf50493b0843d39",
+      "rows": 7985
+    },
+    "test": {
+      "locator": "TDC_AqSol_benchmark_test.csv",
+      "bytes": 98645,
+      "sha256": "f04dc12b97a5f3ee219e008f0eeadecf92beae88d429ff88e78faa3e47186b72",
+      "rows": 1997
+    },
+    "columns": {
+      "smiles": "SMILES",
+      "target": "Solubility"
+    }
+  },
+  "partition": {
+    "seed": 260722,
+    "outer_folds": 5,
+    "target_quantiles": 10,
+    "outer_assignment": "shuffle each target quantile with numpy default_rng, then assign round-robin modulo five",
+    "selection_fraction_of_outer_training": 0.125,
+    "selection_seed_policy": "seed plus outer-fold index",
+    "selection_stratification": "same ten-quantile target bins"
+  },
+  "evaluations": {
+    "R03": {
+      "native_role_map": {
+        "fit": "fit",
+        "selection": "reserved",
+        "oof_holdout": "scored",
+        "official_test": "reserved"
+      },
+      "expected_role_counts": {
+        "0": {"fit": 5586, "scored": 1600, "reserved": 2796},
+        "1": {"fit": 5586, "scored": 1600, "reserved": 2796},
+        "2": {"fit": 5586, "scored": 1600, "reserved": 2796},
+        "3": {"fit": 5591, "scored": 1595, "reserved": 2796},
+        "4": {"fit": 5595, "scored": 1590, "reserved": 2797}
+      },
+      "assignment_sha256": "6581c279b26de5e17987eab3afb1d2c0af8f2cc352269d76e6202b9b8a423db0",
+      "output_sha256": {
+        "molecules": "b5b2dad6637d8e89193ce537f9d55fa2c3c84a3fd81e3a037d8bcbd0b6949eef",
+        "labels": "0ec176e131b46b3fbfea9a0c29e868b13112325f55d3fefc8c7a15e2c4ceeaca",
+        "partitions": "007788b7be1ea4dde5556ab62b893bd2926cbe0edcb094885062c54d369b3339"
+      }
+    },
+    "R04": {
+      "native_role_map": {
+        "fit": "fit",
+        "selection": "reserved",
+        "oof_holdout": "reserved",
+        "official_test": "scored"
+      },
+      "expected_role_counts": {
+        "0": {"fit": 5586, "reserved": 2399, "scored": 1997},
+        "1": {"fit": 5586, "reserved": 2399, "scored": 1997},
+        "2": {"fit": 5586, "reserved": 2399, "scored": 1997},
+        "3": {"fit": 5591, "reserved": 2394, "scored": 1997},
+        "4": {"fit": 5595, "reserved": 2390, "scored": 1997}
+      },
+      "assignment_sha256": "8d4d92359f06a586796b91424b9a66186c64f2921f8048e3b342104f56ebe4cf",
+      "output_sha256": {
+        "molecules": "b5b2dad6637d8e89193ce537f9d55fa2c3c84a3fd81e3a037d8bcbd0b6949eef",
+        "labels": "0ec176e131b46b3fbfea9a0c29e868b13112325f55d3fefc8c7a15e2c4ceeaca",
+        "partitions": "b8bae932254bc50e03a2b991ac54f8f0ced5cbd00664befbe29e9aafc18c1cea"
+      }
+    }
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "gate": "complat_input_reconstruction_v1a3",
+  "status": "PASS",
+  "row_level_inputs_redistributed": false,
+  "source": {
+    "revision": "d4feda24b4bcb9efee9953605ba56af0e52dba4d",
+    "train": {
+      "rows": 17937,
+      "bytes": 2814578,
+      "sha256": "8f57b8e7ecf640f861f35bb17ff61b7b9c0592aa675ef8a186a429a4b6fab00f"
+    },
+    "test": {
+      "rows": 1282,
+      "bytes": 138236,
+      "sha256": "5a34e2ab090fbabd48cea483f8d554e2cde33767b5a0acba9eb1c4f45395134a"
+    }
+  },
+  "recipe_sha256": "8178c562efaf70d3e47d344024da6b02f539763540bd528d92fa874ef84f4651",
+  "evaluations": {
+    "R02": {
+      "molecule_rows": 17937,
+      "partition_rows": 89685,
+      "generated_sha256": {
+        "molecules.csv": "24ce7d64d4a23f89ed6bc2d15efa29e9f732cc719930db53d60ba713b725647c",
+        "labels.csv": "972357373e1f4aafa771425e6cc8a7b5f243825c3d771f4526e4295cf15a95d2",
+        "partitions.csv": "917de99078e419268d2a6547c6bf9187b37f747e76ea6e177bc0896d743442c7"
+      },
+      "historical_identity": {
+        "record_id_order_exact": true,
+        "canonical_smiles_exact": true,
+        "maximum_absolute_target_difference": 4.440892098500626e-16,
+        "fold_assignment_mismatches": 0,
+        "role_assignments_checked": 89685
+      }
+    },
+    "R09": {
+      "molecule_rows": 19219,
+      "partition_rows": 19219,
+      "generated_sha256": {
+        "molecules.csv": "29bb40b676bdaa26aabbe98389244ea9d3fa273073936f1194903fd03364f1a3",
+        "labels.csv": "ec385c069594c7fa5ba0aa0960e08db1141358062ae86e647bf9adbdaf67bb3c",
+        "partitions.csv": "b086f406e015f4f2029caeb454ab83b523cabb1b77dcb6157340daa5f3ea7ceb"
+      },
+      "historical_identity": {
+        "test_record_id_order_exact": true,
+        "maximum_absolute_test_target_difference": 0.0,
+        "fit_rows": 17937,
+        "scored_rows": 1282
+      }
+    }
+  }
+}

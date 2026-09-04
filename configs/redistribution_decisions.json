@@ -1,0 +1,117 @@
+{
+  "schema_version": 1,
+  "decision_date": "2026-09-04",
+  "release": "v1.0 reproducibility package",
+  "policy": "No molecular row-level third-party dataset is bundled in v1.0. Licence findings and the project's conservative bundling decision are recorded separately.",
+  "sources": [
+    {
+      "source_id": "llompart_aqsoldbc_dataset",
+      "study_roles": ["R01 primary development OOF"],
+      "upstream": "https://doi.org/10.57745/CZVZIA",
+      "licence_finding": "Etalab Open Licence 2.0",
+      "row_level_bundled": false,
+      "access_mode": "user obtains version 2.0 from the DOI and runs the hash-pinned preparer",
+      "decision_reason": "uniform v1.0 user-supplied-data policy; this is not a finding that the licence is restrictive"
+    },
+    {
+      "source_id": "complat",
+      "study_roles": ["R02 primary OOF", "R09 primary supplied test"],
+      "upstream": "https://github.com/ComPlat/water-solubility-prediction",
+      "licence_finding": "README declares MIT; no LICENSE file at the pinned revision and upstream dataset rights are not established",
+      "row_level_bundled": false,
+      "access_mode": "user supplies the two pinned repository CSV files",
+      "decision_reason": "dataset redistribution rights are not established"
+    },
+    {
+      "source_id": "tdc_dataset",
+      "study_roles": ["R03 primary OOF", "R04 primary supplied test"],
+      "upstream": "https://tdcommons.ai/",
+      "licence_finding": "TDC software is MIT; dataset-specific rights require separate review",
+      "row_level_bundled": false,
+      "access_mode": "user supplies the two hash-pinned historical runtime exports",
+      "decision_reason": "a software licence does not establish dataset redistribution rights"
+    },
+    {
+      "source_id": "jchem_dataset",
+      "study_roles": ["R05 primary supplied test", "authors' released Consensus GNN comparison"],
+      "upstream": "https://github.com/nadinulrich/log_Sw_prediction",
+      "licence_finding": "repository MIT; included dataset has no separate data notice",
+      "row_level_bundled": false,
+      "access_mode": "user supplies the pinned workbook from the upstream repository",
+      "decision_reason": "the repository licence and dataset rights are not assumed to be identical"
+    },
+    {
+      "source_id": "aqsoldb",
+      "study_roles": ["source-lineage and supplementary context"],
+      "upstream": "https://github.com/mcsorkun/AqSolDB",
+      "licence_finding": "repository data directory marked CC0-1.0",
+      "row_level_bundled": false,
+      "access_mode": "user obtains data from upstream where needed",
+      "decision_reason": "uniform v1.0 user-supplied-data policy; this is not a finding that CC0-1.0 is restrictive"
+    },
+    {
+      "source_id": "biogen_clnd",
+      "study_roles": ["supplementary endpoint-shift panel"],
+      "upstream": "https://doi.org/10.1021/acs.jcim.3c00160",
+      "licence_finding": "no standalone row-level redistribution grant recorded for the study dataset",
+      "row_level_bundled": false,
+      "access_mode": "aggregate Supplementary results only",
+      "decision_reason": "source-linked molecular rows and labels are excluded"
+    },
+    {
+      "source_id": "ghanavati_aqueous_solubility_prediction",
+      "study_roles": ["supplementary retrospective five-panel reconstruction"],
+      "upstream": "https://github.com/amingh1995/Aqueous-Solubility-Prediction",
+      "licence_finding": "no repository licence identified",
+      "row_level_bundled": false,
+      "access_mode": "aggregate Supplementary results only",
+      "decision_reason": "absence of a licence is not permission to redistribute source rows"
+    },
+    {
+      "source_id": "chemberta_zinc_base_v1",
+      "study_roles": ["pretrained language-model initialization"],
+      "upstream": "https://huggingface.co/seyonec/ChemBERTa-zinc-base-v1",
+      "licence_finding": "no explicit licence in retrieved model metadata",
+      "row_level_bundled": false,
+      "access_mode": "identifier and audit-observed revision only; weights are not bundled or automatically downloaded",
+      "decision_reason": "historical revision was not recorded and weight redistribution permission is not established"
+    }
+  ],
+  "derived_asset_classes": [
+    {
+      "asset_class": "molecular_rows_and_experimental_labels",
+      "bundled": false,
+      "reason": "third-party dataset terms differ and row-level sources are reconstructed locally"
+    },
+    {
+      "asset_class": "source_linked_component_and_final_predictions",
+      "bundled": false,
+      "reason": "predictions retain direct record-level linkage to excluded source datasets"
+    },
+    {
+      "asset_class": "language_and_geometry_embeddings",
+      "bundled": false,
+      "reason": "embeddings retain direct record-level linkage to excluded source datasets"
+    },
+    {
+      "asset_class": "conformer_coordinates_and_graph_caches",
+      "bundled": false,
+      "reason": "geometry artefacts retain direct structure-level linkage to excluded source datasets"
+    },
+    {
+      "asset_class": "historical_checkpoints",
+      "bundled": false,
+      "reason": "source-data linkage and third-party pretrained-resource terms are not uniformly resolved"
+    },
+    {
+      "asset_class": "aggregate_and_configuration_level_results",
+      "bundled": true,
+      "reason": "machine-readable Supplementary summaries contain no molecular structures or row-level labels"
+    },
+    {
+      "asset_class": "original_dlg_sol_code_and_documentation",
+      "bundled": true,
+      "reason": "released by the copyright holders under the repository MIT licence"
+    }
+  ]
+}

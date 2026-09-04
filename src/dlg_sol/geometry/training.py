@@ -136,6 +136,28 @@ def fit_geometry_model(fit_graphs, fit_labels, selection_graphs, selection_label
     return GeometryFitResult(model, best_epoch, best_rmse, tuple(history))
 
 
+def fit_geometry_fixed_epochs(graphs, labels, parameters, epochs, gradient_clip_norm, seed, device):
+    training = _attach_labels(graphs, labels)
+    if int(epochs) <= 0:
+        raise ValueError("geometry fixed-epoch refit requires positive epochs")
+    _set_seed(seed)
+    first = training[0]
+    model = DistanceAware3DMPNN(first.x.shape[1], first.edge_attr.shape[1], first.aux.shape[1], parameters["hidden_dim"], parameters["num_layers"], parameters["dropout"], parameters["pool"]).to(device)
+    optimizer = torch.optim.AdamW(model.parameters(), lr=parameters["lr"], weight_decay=parameters["weight_decay"])
+    criterion = nn.MSELoss()
+    loader = DataLoader(training, batch_size=parameters["batch_size"], shuffle=True, num_workers=0)
+    for _ in range(int(epochs)):
+        model.train()
+        for batch in loader:
+            batch = batch.to(device)
+            optimizer.zero_grad()
+            loss = criterion(model(batch), batch.y.view(-1))
+            loss.backward()
+            nn.utils.clip_grad_norm_(model.parameters(), float(gradient_clip_norm))
+            optimizer.step()
+    return model
+
+
 def predict_geometry(model, graphs, batch_size, device):
     values = tuple(graphs)
     if not values:

@@ -1,0 +1,2454 @@
+{
+  "schema_version": 1,
+  "gate": "training_role_materializer_b1",
+  "status": "PASS",
+  "model_identity": "aug2_head4",
+  "verification_scope": "all historical evaluation-by-branch units materialized from validated local benchmark packages",
+  "row_level_inputs_redistributed": false,
+  "contract_sha256": "363745bc78ffbaf6f61c8e388106176e3dd49166ece6109f1622206947d61798",
+  "implementation_sha256": {
+    "src/dlg_sol/workflow/materialization.py": "613e4ec69818a520210695a642c50c152bf2dc6ad3e828274d3b15525de37a89",
+    "scripts/materialize_training_unit.py": "485f6e37ae64ae1d44d288118fde74f895dacd3ca46606d290b9fdc44727b21f",
+    "tests/test_training_role_materialization.py": "129cd6f43c16f6c1d3cb9d8c555e830cd7e2e92a3f368c992b2d3d82f370b359"
+  },
+  "package_input_sha256": {
+    "R01": {
+      "molecules": "4d03d61ccfacb1c596b189a3f55e3de77c04b6a8a6c5c0af72fac07bfcfbd12d",
+      "labels": "4fdd3c2041e1283a6fa941e757eb1f856ca466e58e90e80c65c94171018ab7ea",
+      "partitions": "9ab293b51dbcc6ffb1f5467d881f0dce7ed2744fc84f44e8b1556f1bae2393ac"
+    },
+    "R02": {
+      "molecules": "24ce7d64d4a23f89ed6bc2d15efa29e9f732cc719930db53d60ba713b725647c",
+      "labels": "972357373e1f4aafa771425e6cc8a7b5f243825c3d771f4526e4295cf15a95d2",
+      "partitions": "917de99078e419268d2a6547c6bf9187b37f747e76ea6e177bc0896d743442c7"
+    },
+    "R03": {
+      "molecules": "b5b2dad6637d8e89193ce537f9d55fa2c3c84a3fd81e3a037d8bcbd0b6949eef",
+      "labels": "0ec176e131b46b3fbfea9a0c29e868b13112325f55d3fefc8c7a15e2c4ceeaca",
+      "partitions": "007788b7be1ea4dde5556ab62b893bd2926cbe0edcb094885062c54d369b3339"
+    },
+    "R04": {
+      "molecules": "b5b2dad6637d8e89193ce537f9d55fa2c3c84a3fd81e3a037d8bcbd0b6949eef",
+      "labels": "0ec176e131b46b3fbfea9a0c29e868b13112325f55d3fefc8c7a15e2c4ceeaca",
+      "partitions": "b8bae932254bc50e03a2b991ac54f8f0ced5cbd00664befbe29e9aafc18c1cea"
+    },
+    "R05": {
+      "molecules": "a516f75ec67b18a5fd0dcc165e512a4435bd5fd888ef72980731f94922942d06",
+      "labels": "b409a952df03ca40eb52da60512a9bcb5d999a2466cc8476ff017cbabecde23c",
+      "partitions": "fb24b2913aa8df83fb12fbe7e4775661e83e258392c995cc83487dcea5633d41"
+    },
+    "R09": {
+      "molecules": "29bb40b676bdaa26aabbe98389244ea9d3fa273073936f1194903fd03364f1a3",
+      "labels": "ec385c069594c7fa5ba0aa0960e08db1141358062ae86e647bf9adbdaf67bb3c",
+      "partitions": "b086f406e015f4f2029caeb454ab83b523cabb1b77dcb6157340daa5f3ea7ceb"
+    }
+  },
+  "complat_training_role_source_sha256": "8f57b8e7ecf640f861f35bb17ff61b7b9c0592aa675ef8a186a429a4b6fab00f",
+  "materialized_units": 126,
+  "nested_selection_units": 20,
+  "materialized_stage_rows_including_repeated_views": 1666899,
+  "scored_view_rows_including_branch_and_fold_repetitions": 242692,
+  "r02_documented_exception_units": 15,
+  "all_stage_counts_and_record_id_hashes_match_contract": true,
+  "all_scored_views_label_free": true,
+  "cross_evaluation_dependencies_verified": {
+    "R04_coefficient_source": "complete_R03_OOF",
+    "R09_coefficient_source": "complete_R02_OOF"
+  },
+  "units": [
+    {
+      "evaluation_id": "R01",
+      "branch_id": "descriptor",
+      "fold_index": 0,
+      "stage_row_counts": {
+        "parameter_fit": 0,
+        "selection_fit": 6437,
+        "selection_score": 6437,
+        "final_refit": 6437,
+        "coefficient_fit": 0,
+        "scored_prediction": 1610
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 4,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R01",
+      "branch_id": "descriptor",
+      "fold_index": 1,
+      "stage_row_counts": {
+        "parameter_fit": 0,
+        "selection_fit": 6437,
+        "selection_score": 6437,
+        "final_refit": 6437,
+        "coefficient_fit": 0,
+        "scored_prediction": 1610
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 4,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R01",
+      "branch_id": "descriptor",
+      "fold_index": 2,
+      "stage_row_counts": {
+        "parameter_fit": 0,
+        "selection_fit": 6438,
+        "selection_score": 6438,
+        "final_refit": 6438,
+        "coefficient_fit": 0,
+        "scored_prediction": 1609
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 4,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R01",
+      "branch_id": "descriptor",
+      "fold_index": 3,
+      "stage_row_counts": {
+        "parameter_fit": 0,
+        "selection_fit": 6438,
+        "selection_score": 6438,
+        "final_refit": 6438,
+        "coefficient_fit": 0,
+        "scored_prediction": 1609
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 4,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R01",
+      "branch_id": "descriptor",
+      "fold_index": 4,
+      "stage_row_counts": {
+        "parameter_fit": 0,
+        "selection_fit": 6438,
+        "selection_score": 6438,
+        "final_refit": 6438,
+        "coefficient_fit": 0,
+        "scored_prediction": 1609
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 4,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R01",
+      "branch_id": "language",
+      "fold_index": 0,
+      "stage_row_counts": {
+        "parameter_fit": 5632,
+        "selection_fit": 0,
+        "selection_score": 805,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 1610
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R01",
+      "branch_id": "language",
+      "fold_index": 1,
+      "stage_row_counts": {
+        "parameter_fit": 5632,
+        "selection_fit": 0,
+        "selection_score": 805,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 1610
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R01",
+      "branch_id": "language",
+      "fold_index": 2,
+      "stage_row_counts": {
+        "parameter_fit": 5633,
+        "selection_fit": 0,
+        "selection_score": 805,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 1609
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R01",
+      "branch_id": "language",
+      "fold_index": 3,
+      "stage_row_counts": {
+        "parameter_fit": 5633,
+        "selection_fit": 0,
+        "selection_score": 805,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 1609
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R01",
+      "branch_id": "language",
+      "fold_index": 4,
+      "stage_row_counts": {
+        "parameter_fit": 5633,
+        "selection_fit": 0,
+        "selection_score": 805,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 1609
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R01",
+      "branch_id": "geometry",
+      "fold_index": 0,
+      "stage_row_counts": {
+        "parameter_fit": 5632,
+        "selection_fit": 0,
+        "selection_score": 805,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 1610
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R01",
+      "branch_id": "geometry",
+      "fold_index": 1,
+      "stage_row_counts": {
+        "parameter_fit": 5632,
+        "selection_fit": 0,
+        "selection_score": 805,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 1610
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R01",
+      "branch_id": "geometry",
+      "fold_index": 2,
+      "stage_row_counts": {
+        "parameter_fit": 5633,
+        "selection_fit": 0,
+        "selection_score": 805,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 1609
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R01",
+      "branch_id": "geometry",
+      "fold_index": 3,
+      "stage_row_counts": {
+        "parameter_fit": 5633,
+        "selection_fit": 0,
+        "selection_score": 805,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 1609
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R01",
+      "branch_id": "geometry",
+      "fold_index": 4,
+      "stage_row_counts": {
+        "parameter_fit": 5633,
+        "selection_fit": 0,
+        "selection_score": 805,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 1609
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R01",
+      "branch_id": "fusion_head",
+      "fold_index": 0,
+      "stage_row_counts": {
+        "parameter_fit": 5632,
+        "selection_fit": 0,
+        "selection_score": 0,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 1610
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R01",
+      "branch_id": "fusion_head",
+      "fold_index": 1,
+      "stage_row_counts": {
+        "parameter_fit": 5632,
+        "selection_fit": 0,
+        "selection_score": 0,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 1610
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R01",
+      "branch_id": "fusion_head",
+      "fold_index": 2,
+      "stage_row_counts": {
+        "parameter_fit": 5633,
+        "selection_fit": 0,
+        "selection_score": 0,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 1609
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R01",
+      "branch_id": "fusion_head",
+      "fold_index": 3,
+      "stage_row_counts": {
+        "parameter_fit": 5633,
+        "selection_fit": 0,
+        "selection_score": 0,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 1609
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R01",
+      "branch_id": "fusion_head",
+      "fold_index": 4,
+      "stage_row_counts": {
+        "parameter_fit": 5633,
+        "selection_fit": 0,
+        "selection_score": 0,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 1609
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R01",
+      "branch_id": "blend_coefficient",
+      "fold_index": 0,
+      "stage_row_counts": {
+        "parameter_fit": 0,
+        "selection_fit": 0,
+        "selection_score": 0,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 1610
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R01",
+      "branch_id": "blend_coefficient",
+      "fold_index": 1,
+      "stage_row_counts": {
+        "parameter_fit": 0,
+        "selection_fit": 0,
+        "selection_score": 0,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 1610
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R01",
+      "branch_id": "blend_coefficient",
+      "fold_index": 2,
+      "stage_row_counts": {
+        "parameter_fit": 0,
+        "selection_fit": 0,
+        "selection_score": 0,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 1609
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R01",
+      "branch_id": "blend_coefficient",
+      "fold_index": 3,
+      "stage_row_counts": {
+        "parameter_fit": 0,
+        "selection_fit": 0,
+        "selection_score": 0,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 1609
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R01",
+      "branch_id": "blend_coefficient",
+      "fold_index": 4,
+      "stage_row_counts": {
+        "parameter_fit": 0,
+        "selection_fit": 0,
+        "selection_score": 0,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 1609
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R02",
+      "branch_id": "descriptor",
+      "fold_index": 0,
+      "stage_row_counts": {
+        "parameter_fit": 0,
+        "selection_fit": 14351,
+        "selection_score": 3586,
+        "final_refit": 14349,
+        "coefficient_fit": 0,
+        "scored_prediction": 3588
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "documented_non_nested_global_preselection"
+    },
+    {
+      "evaluation_id": "R02",
+      "branch_id": "descriptor",
+      "fold_index": 1,
+      "stage_row_counts": {
+        "parameter_fit": 0,
+        "selection_fit": 14351,
+        "selection_score": 3586,
+        "final_refit": 14349,
+        "coefficient_fit": 0,
+        "scored_prediction": 3588
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "documented_non_nested_global_preselection"
+    },
+    {
+      "evaluation_id": "R02",
+      "branch_id": "descriptor",
+      "fold_index": 2,
+      "stage_row_counts": {
+        "parameter_fit": 0,
+        "selection_fit": 14351,
+        "selection_score": 3586,
+        "final_refit": 14350,
+        "coefficient_fit": 0,
+        "scored_prediction": 3587
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "documented_non_nested_global_preselection"
+    },
+    {
+      "evaluation_id": "R02",
+      "branch_id": "descriptor",
+      "fold_index": 3,
+      "stage_row_counts": {
+        "parameter_fit": 0,
+        "selection_fit": 14351,
+        "selection_score": 3586,
+        "final_refit": 14350,
+        "coefficient_fit": 0,
+        "scored_prediction": 3587
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "documented_non_nested_global_preselection"
+    },
+    {
+      "evaluation_id": "R02",
+      "branch_id": "descriptor",
+      "fold_index": 4,
+      "stage_row_counts": {
+        "parameter_fit": 0,
+        "selection_fit": 14351,
+        "selection_score": 3586,
+        "final_refit": 14350,
+        "coefficient_fit": 0,
+        "scored_prediction": 3587
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "documented_non_nested_global_preselection"
+    },
+    {
+      "evaluation_id": "R02",
+      "branch_id": "language",
+      "fold_index": 0,
+      "stage_row_counts": {
+        "parameter_fit": 0,
+        "selection_fit": 14351,
+        "selection_score": 3586,
+        "final_refit": 14349,
+        "coefficient_fit": 0,
+        "scored_prediction": 3588
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "documented_non_nested_global_preselection"
+    },
+    {
+      "evaluation_id": "R02",
+      "branch_id": "language",
+      "fold_index": 1,
+      "stage_row_counts": {
+        "parameter_fit": 0,
+        "selection_fit": 14351,
+        "selection_score": 3586,
+        "final_refit": 14349,
+        "coefficient_fit": 0,
+        "scored_prediction": 3588
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "documented_non_nested_global_preselection"
+    },
+    {
+      "evaluation_id": "R02",
+      "branch_id": "language",
+      "fold_index": 2,
+      "stage_row_counts": {
+        "parameter_fit": 0,
+        "selection_fit": 14351,
+        "selection_score": 3586,
+        "final_refit": 14350,
+        "coefficient_fit": 0,
+        "scored_prediction": 3587
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "documented_non_nested_global_preselection"
+    },
+    {
+      "evaluation_id": "R02",
+      "branch_id": "language",
+      "fold_index": 3,
+      "stage_row_counts": {
+        "parameter_fit": 0,
+        "selection_fit": 14351,
+        "selection_score": 3586,
+        "final_refit": 14350,
+        "coefficient_fit": 0,
+        "scored_prediction": 3587
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "documented_non_nested_global_preselection"
+    },
+    {
+      "evaluation_id": "R02",
+      "branch_id": "language",
+      "fold_index": 4,
+      "stage_row_counts": {
+        "parameter_fit": 0,
+        "selection_fit": 14351,
+        "selection_score": 3586,
+        "final_refit": 14350,
+        "coefficient_fit": 0,
+        "scored_prediction": 3587
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "documented_non_nested_global_preselection"
+    },
+    {
+      "evaluation_id": "R02",
+      "branch_id": "geometry",
+      "fold_index": 0,
+      "stage_row_counts": {
+        "parameter_fit": 0,
+        "selection_fit": 14351,
+        "selection_score": 3586,
+        "final_refit": 14349,
+        "coefficient_fit": 0,
+        "scored_prediction": 3588
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "documented_non_nested_global_preselection"
+    },
+    {
+      "evaluation_id": "R02",
+      "branch_id": "geometry",
+      "fold_index": 1,
+      "stage_row_counts": {
+        "parameter_fit": 0,
+        "selection_fit": 14351,
+        "selection_score": 3586,
+        "final_refit": 14349,
+        "coefficient_fit": 0,
+        "scored_prediction": 3588
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "documented_non_nested_global_preselection"
+    },
+    {
+      "evaluation_id": "R02",
+      "branch_id": "geometry",
+      "fold_index": 2,
+      "stage_row_counts": {
+        "parameter_fit": 0,
+        "selection_fit": 14351,
+        "selection_score": 3586,
+        "final_refit": 14350,
+        "coefficient_fit": 0,
+        "scored_prediction": 3587
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "documented_non_nested_global_preselection"
+    },
+    {
+      "evaluation_id": "R02",
+      "branch_id": "geometry",
+      "fold_index": 3,
+      "stage_row_counts": {
+        "parameter_fit": 0,
+        "selection_fit": 14351,
+        "selection_score": 3586,
+        "final_refit": 14350,
+        "coefficient_fit": 0,
+        "scored_prediction": 3587
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "documented_non_nested_global_preselection"
+    },
+    {
+      "evaluation_id": "R02",
+      "branch_id": "geometry",
+      "fold_index": 4,
+      "stage_row_counts": {
+        "parameter_fit": 0,
+        "selection_fit": 14351,
+        "selection_score": 3586,
+        "final_refit": 14350,
+        "coefficient_fit": 0,
+        "scored_prediction": 3587
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "documented_non_nested_global_preselection"
+    },
+    {
+      "evaluation_id": "R02",
+      "branch_id": "fusion_head",
+      "fold_index": 0,
+      "stage_row_counts": {
+        "parameter_fit": 14349,
+        "selection_fit": 0,
+        "selection_score": 0,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 3588
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R02",
+      "branch_id": "fusion_head",
+      "fold_index": 1,
+      "stage_row_counts": {
+        "parameter_fit": 14349,
+        "selection_fit": 0,
+        "selection_score": 0,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 3588
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R02",
+      "branch_id": "fusion_head",
+      "fold_index": 2,
+      "stage_row_counts": {
+        "parameter_fit": 14350,
+        "selection_fit": 0,
+        "selection_score": 0,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 3587
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R02",
+      "branch_id": "fusion_head",
+      "fold_index": 3,
+      "stage_row_counts": {
+        "parameter_fit": 14350,
+        "selection_fit": 0,
+        "selection_score": 0,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 3587
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R02",
+      "branch_id": "fusion_head",
+      "fold_index": 4,
+      "stage_row_counts": {
+        "parameter_fit": 14350,
+        "selection_fit": 0,
+        "selection_score": 0,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 3587
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R02",
+      "branch_id": "blend_coefficient",
+      "fold_index": 0,
+      "stage_row_counts": {
+        "parameter_fit": 0,
+        "selection_fit": 0,
+        "selection_score": 0,
+        "final_refit": 0,
+        "coefficient_fit": 14349,
+        "scored_prediction": 3588
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R02",
+      "branch_id": "blend_coefficient",
+      "fold_index": 1,
+      "stage_row_counts": {
+        "parameter_fit": 0,
+        "selection_fit": 0,
+        "selection_score": 0,
+        "final_refit": 0,
+        "coefficient_fit": 14349,
+        "scored_prediction": 3588
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R02",
+      "branch_id": "blend_coefficient",
+      "fold_index": 2,
+      "stage_row_counts": {
+        "parameter_fit": 0,
+        "selection_fit": 0,
+        "selection_score": 0,
+        "final_refit": 0,
+        "coefficient_fit": 14350,
+        "scored_prediction": 3587
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R02",
+      "branch_id": "blend_coefficient",
+      "fold_index": 3,
+      "stage_row_counts": {
+        "parameter_fit": 0,
+        "selection_fit": 0,
+        "selection_score": 0,
+        "final_refit": 0,
+        "coefficient_fit": 14350,
+        "scored_prediction": 3587
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R02",
+      "branch_id": "blend_coefficient",
+      "fold_index": 4,
+      "stage_row_counts": {
+        "parameter_fit": 0,
+        "selection_fit": 0,
+        "selection_score": 0,
+        "final_refit": 0,
+        "coefficient_fit": 14350,
+        "scored_prediction": 3587
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R03",
+      "branch_id": "descriptor",
+      "fold_index": 0,
+      "stage_row_counts": {
+        "parameter_fit": 5586,
+        "selection_fit": 0,
+        "selection_score": 799,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 1600
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R03",
+      "branch_id": "descriptor",
+      "fold_index": 1,
+      "stage_row_counts": {
+        "parameter_fit": 5586,
+        "selection_fit": 0,
+        "selection_score": 799,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 1600
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R03",
+      "branch_id": "descriptor",
+      "fold_index": 2,
+      "stage_row_counts": {
+        "parameter_fit": 5586,
+        "selection_fit": 0,
+        "selection_score": 799,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 1600
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R03",
+      "branch_id": "descriptor",
+      "fold_index": 3,
+      "stage_row_counts": {
+        "parameter_fit": 5591,
+        "selection_fit": 0,
+        "selection_score": 799,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 1595
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R03",
+      "branch_id": "descriptor",
+      "fold_index": 4,
+      "stage_row_counts": {
+        "parameter_fit": 5595,
+        "selection_fit": 0,
+        "selection_score": 800,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 1590
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R03",
+      "branch_id": "language",
+      "fold_index": 0,
+      "stage_row_counts": {
+        "parameter_fit": 5586,
+        "selection_fit": 0,
+        "selection_score": 799,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 1600
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R03",
+      "branch_id": "language",
+      "fold_index": 1,
+      "stage_row_counts": {
+        "parameter_fit": 5586,
+        "selection_fit": 0,
+        "selection_score": 799,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 1600
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R03",
+      "branch_id": "language",
+      "fold_index": 2,
+      "stage_row_counts": {
+        "parameter_fit": 5586,
+        "selection_fit": 0,
+        "selection_score": 799,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 1600
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R03",
+      "branch_id": "language",
+      "fold_index": 3,
+      "stage_row_counts": {
+        "parameter_fit": 5591,
+        "selection_fit": 0,
+        "selection_score": 799,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 1595
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R03",
+      "branch_id": "language",
+      "fold_index": 4,
+      "stage_row_counts": {
+        "parameter_fit": 5595,
+        "selection_fit": 0,
+        "selection_score": 800,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 1590
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R03",
+      "branch_id": "geometry",
+      "fold_index": 0,
+      "stage_row_counts": {
+        "parameter_fit": 5586,
+        "selection_fit": 0,
+        "selection_score": 799,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 1600
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R03",
+      "branch_id": "geometry",
+      "fold_index": 1,
+      "stage_row_counts": {
+        "parameter_fit": 5586,
+        "selection_fit": 0,
+        "selection_score": 799,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 1600
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R03",
+      "branch_id": "geometry",
+      "fold_index": 2,
+      "stage_row_counts": {
+        "parameter_fit": 5586,
+        "selection_fit": 0,
+        "selection_score": 799,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 1600
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R03",
+      "branch_id": "geometry",
+      "fold_index": 3,
+      "stage_row_counts": {
+        "parameter_fit": 5591,
+        "selection_fit": 0,
+        "selection_score": 799,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 1595
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R03",
+      "branch_id": "geometry",
+      "fold_index": 4,
+      "stage_row_counts": {
+        "parameter_fit": 5595,
+        "selection_fit": 0,
+        "selection_score": 800,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 1590
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R03",
+      "branch_id": "fusion_head",
+      "fold_index": 0,
+      "stage_row_counts": {
+        "parameter_fit": 5586,
+        "selection_fit": 0,
+        "selection_score": 0,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 1600
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R03",
+      "branch_id": "fusion_head",
+      "fold_index": 1,
+      "stage_row_counts": {
+        "parameter_fit": 5586,
+        "selection_fit": 0,
+        "selection_score": 0,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 1600
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R03",
+      "branch_id": "fusion_head",
+      "fold_index": 2,
+      "stage_row_counts": {
+        "parameter_fit": 5586,
+        "selection_fit": 0,
+        "selection_score": 0,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 1600
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R03",
+      "branch_id": "fusion_head",
+      "fold_index": 3,
+      "stage_row_counts": {
+        "parameter_fit": 5591,
+        "selection_fit": 0,
+        "selection_score": 0,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 1595
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R03",
+      "branch_id": "fusion_head",
+      "fold_index": 4,
+      "stage_row_counts": {
+        "parameter_fit": 5595,
+        "selection_fit": 0,
+        "selection_score": 0,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 1590
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R03",
+      "branch_id": "blend_coefficient",
+      "fold_index": 0,
+      "stage_row_counts": {
+        "parameter_fit": 0,
+        "selection_fit": 0,
+        "selection_score": 0,
+        "final_refit": 0,
+        "coefficient_fit": 6385,
+        "scored_prediction": 1600
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R03",
+      "branch_id": "blend_coefficient",
+      "fold_index": 1,
+      "stage_row_counts": {
+        "parameter_fit": 0,
+        "selection_fit": 0,
+        "selection_score": 0,
+        "final_refit": 0,
+        "coefficient_fit": 6385,
+        "scored_prediction": 1600
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R03",
+      "branch_id": "blend_coefficient",
+      "fold_index": 2,
+      "stage_row_counts": {
+        "parameter_fit": 0,
+        "selection_fit": 0,
+        "selection_score": 0,
+        "final_refit": 0,
+        "coefficient_fit": 6385,
+        "scored_prediction": 1600
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R03",
+      "branch_id": "blend_coefficient",
+      "fold_index": 3,
+      "stage_row_counts": {
+        "parameter_fit": 0,
+        "selection_fit": 0,
+        "selection_score": 0,
+        "final_refit": 0,
+        "coefficient_fit": 6390,
+        "scored_prediction": 1595
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R03",
+      "branch_id": "blend_coefficient",
+      "fold_index": 4,
+      "stage_row_counts": {
+        "parameter_fit": 0,
+        "selection_fit": 0,
+        "selection_score": 0,
+        "final_refit": 0,
+        "coefficient_fit": 6395,
+        "scored_prediction": 1590
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R04",
+      "branch_id": "descriptor",
+      "fold_index": 0,
+      "stage_row_counts": {
+        "parameter_fit": 5586,
+        "selection_fit": 0,
+        "selection_score": 799,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 1997
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R04",
+      "branch_id": "descriptor",
+      "fold_index": 1,
+      "stage_row_counts": {
+        "parameter_fit": 5586,
+        "selection_fit": 0,
+        "selection_score": 799,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 1997
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R04",
+      "branch_id": "descriptor",
+      "fold_index": 2,
+      "stage_row_counts": {
+        "parameter_fit": 5586,
+        "selection_fit": 0,
+        "selection_score": 799,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 1997
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R04",
+      "branch_id": "descriptor",
+      "fold_index": 3,
+      "stage_row_counts": {
+        "parameter_fit": 5591,
+        "selection_fit": 0,
+        "selection_score": 799,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 1997
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R04",
+      "branch_id": "descriptor",
+      "fold_index": 4,
+      "stage_row_counts": {
+        "parameter_fit": 5595,
+        "selection_fit": 0,
+        "selection_score": 800,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 1997
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R04",
+      "branch_id": "language",
+      "fold_index": 0,
+      "stage_row_counts": {
+        "parameter_fit": 5586,
+        "selection_fit": 0,
+        "selection_score": 799,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 1997
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R04",
+      "branch_id": "language",
+      "fold_index": 1,
+      "stage_row_counts": {
+        "parameter_fit": 5586,
+        "selection_fit": 0,
+        "selection_score": 799,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 1997
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R04",
+      "branch_id": "language",
+      "fold_index": 2,
+      "stage_row_counts": {
+        "parameter_fit": 5586,
+        "selection_fit": 0,
+        "selection_score": 799,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 1997
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R04",
+      "branch_id": "language",
+      "fold_index": 3,
+      "stage_row_counts": {
+        "parameter_fit": 5591,
+        "selection_fit": 0,
+        "selection_score": 799,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 1997
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R04",
+      "branch_id": "language",
+      "fold_index": 4,
+      "stage_row_counts": {
+        "parameter_fit": 5595,
+        "selection_fit": 0,
+        "selection_score": 800,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 1997
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R04",
+      "branch_id": "geometry",
+      "fold_index": 0,
+      "stage_row_counts": {
+        "parameter_fit": 5586,
+        "selection_fit": 0,
+        "selection_score": 799,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 1997
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R04",
+      "branch_id": "geometry",
+      "fold_index": 1,
+      "stage_row_counts": {
+        "parameter_fit": 5586,
+        "selection_fit": 0,
+        "selection_score": 799,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 1997
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R04",
+      "branch_id": "geometry",
+      "fold_index": 2,
+      "stage_row_counts": {
+        "parameter_fit": 5586,
+        "selection_fit": 0,
+        "selection_score": 799,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 1997
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R04",
+      "branch_id": "geometry",
+      "fold_index": 3,
+      "stage_row_counts": {
+        "parameter_fit": 5591,
+        "selection_fit": 0,
+        "selection_score": 799,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 1997
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R04",
+      "branch_id": "geometry",
+      "fold_index": 4,
+      "stage_row_counts": {
+        "parameter_fit": 5595,
+        "selection_fit": 0,
+        "selection_score": 800,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 1997
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R04",
+      "branch_id": "fusion_head",
+      "fold_index": 0,
+      "stage_row_counts": {
+        "parameter_fit": 5586,
+        "selection_fit": 0,
+        "selection_score": 0,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 1997
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R04",
+      "branch_id": "fusion_head",
+      "fold_index": 1,
+      "stage_row_counts": {
+        "parameter_fit": 5586,
+        "selection_fit": 0,
+        "selection_score": 0,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 1997
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R04",
+      "branch_id": "fusion_head",
+      "fold_index": 2,
+      "stage_row_counts": {
+        "parameter_fit": 5586,
+        "selection_fit": 0,
+        "selection_score": 0,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 1997
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R04",
+      "branch_id": "fusion_head",
+      "fold_index": 3,
+      "stage_row_counts": {
+        "parameter_fit": 5591,
+        "selection_fit": 0,
+        "selection_score": 0,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 1997
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R04",
+      "branch_id": "fusion_head",
+      "fold_index": 4,
+      "stage_row_counts": {
+        "parameter_fit": 5595,
+        "selection_fit": 0,
+        "selection_score": 0,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 1997
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R04",
+      "branch_id": "blend_coefficient",
+      "fold_index": 0,
+      "stage_row_counts": {
+        "parameter_fit": 0,
+        "selection_fit": 0,
+        "selection_score": 0,
+        "final_refit": 0,
+        "coefficient_fit": 7985,
+        "scored_prediction": 1997
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R05",
+      "branch_id": "descriptor",
+      "fold_index": 1,
+      "stage_row_counts": {
+        "parameter_fit": 6860,
+        "selection_fit": 0,
+        "selection_score": 1958,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 980
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R05",
+      "branch_id": "descriptor",
+      "fold_index": 2,
+      "stage_row_counts": {
+        "parameter_fit": 6858,
+        "selection_fit": 0,
+        "selection_score": 1960,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 980
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R05",
+      "branch_id": "descriptor",
+      "fold_index": 3,
+      "stage_row_counts": {
+        "parameter_fit": 6859,
+        "selection_fit": 0,
+        "selection_score": 1959,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 980
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R05",
+      "branch_id": "descriptor",
+      "fold_index": 4,
+      "stage_row_counts": {
+        "parameter_fit": 6858,
+        "selection_fit": 0,
+        "selection_score": 1960,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 980
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R05",
+      "branch_id": "descriptor",
+      "fold_index": 5,
+      "stage_row_counts": {
+        "parameter_fit": 6858,
+        "selection_fit": 0,
+        "selection_score": 1960,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 980
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R05",
+      "branch_id": "language",
+      "fold_index": 1,
+      "stage_row_counts": {
+        "parameter_fit": 6860,
+        "selection_fit": 0,
+        "selection_score": 1958,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 980
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R05",
+      "branch_id": "language",
+      "fold_index": 2,
+      "stage_row_counts": {
+        "parameter_fit": 6858,
+        "selection_fit": 0,
+        "selection_score": 1960,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 980
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R05",
+      "branch_id": "language",
+      "fold_index": 3,
+      "stage_row_counts": {
+        "parameter_fit": 6859,
+        "selection_fit": 0,
+        "selection_score": 1959,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 980
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R05",
+      "branch_id": "language",
+      "fold_index": 4,
+      "stage_row_counts": {
+        "parameter_fit": 6858,
+        "selection_fit": 0,
+        "selection_score": 1960,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 980
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R05",
+      "branch_id": "language",
+      "fold_index": 5,
+      "stage_row_counts": {
+        "parameter_fit": 6858,
+        "selection_fit": 0,
+        "selection_score": 1960,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 980
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R05",
+      "branch_id": "geometry",
+      "fold_index": 1,
+      "stage_row_counts": {
+        "parameter_fit": 6860,
+        "selection_fit": 0,
+        "selection_score": 1958,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 980
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R05",
+      "branch_id": "geometry",
+      "fold_index": 2,
+      "stage_row_counts": {
+        "parameter_fit": 6858,
+        "selection_fit": 0,
+        "selection_score": 1960,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 980
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R05",
+      "branch_id": "geometry",
+      "fold_index": 3,
+      "stage_row_counts": {
+        "parameter_fit": 6859,
+        "selection_fit": 0,
+        "selection_score": 1959,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 980
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R05",
+      "branch_id": "geometry",
+      "fold_index": 4,
+      "stage_row_counts": {
+        "parameter_fit": 6858,
+        "selection_fit": 0,
+        "selection_score": 1960,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 980
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R05",
+      "branch_id": "geometry",
+      "fold_index": 5,
+      "stage_row_counts": {
+        "parameter_fit": 6858,
+        "selection_fit": 0,
+        "selection_score": 1960,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 980
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R05",
+      "branch_id": "fusion_head",
+      "fold_index": 1,
+      "stage_row_counts": {
+        "parameter_fit": 6860,
+        "selection_fit": 0,
+        "selection_score": 0,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 980
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R05",
+      "branch_id": "fusion_head",
+      "fold_index": 2,
+      "stage_row_counts": {
+        "parameter_fit": 6858,
+        "selection_fit": 0,
+        "selection_score": 0,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 980
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R05",
+      "branch_id": "fusion_head",
+      "fold_index": 3,
+      "stage_row_counts": {
+        "parameter_fit": 6859,
+        "selection_fit": 0,
+        "selection_score": 0,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 980
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R05",
+      "branch_id": "fusion_head",
+      "fold_index": 4,
+      "stage_row_counts": {
+        "parameter_fit": 6858,
+        "selection_fit": 0,
+        "selection_score": 0,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 980
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R05",
+      "branch_id": "fusion_head",
+      "fold_index": 5,
+      "stage_row_counts": {
+        "parameter_fit": 6858,
+        "selection_fit": 0,
+        "selection_score": 0,
+        "final_refit": 0,
+        "coefficient_fit": 0,
+        "scored_prediction": 980
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R05",
+      "branch_id": "blend_coefficient",
+      "fold_index": 1,
+      "stage_row_counts": {
+        "parameter_fit": 0,
+        "selection_fit": 0,
+        "selection_score": 0,
+        "final_refit": 0,
+        "coefficient_fit": 1958,
+        "scored_prediction": 980
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R05",
+      "branch_id": "blend_coefficient",
+      "fold_index": 2,
+      "stage_row_counts": {
+        "parameter_fit": 0,
+        "selection_fit": 0,
+        "selection_score": 0,
+        "final_refit": 0,
+        "coefficient_fit": 1960,
+        "scored_prediction": 980
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R05",
+      "branch_id": "blend_coefficient",
+      "fold_index": 3,
+      "stage_row_counts": {
+        "parameter_fit": 0,
+        "selection_fit": 0,
+        "selection_score": 0,
+        "final_refit": 0,
+        "coefficient_fit": 1959,
+        "scored_prediction": 980
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R05",
+      "branch_id": "blend_coefficient",
+      "fold_index": 4,
+      "stage_row_counts": {
+        "parameter_fit": 0,
+        "selection_fit": 0,
+        "selection_score": 0,
+        "final_refit": 0,
+        "coefficient_fit": 1960,
+        "scored_prediction": 980
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R05",
+      "branch_id": "blend_coefficient",
+      "fold_index": 5,
+      "stage_row_counts": {
+        "parameter_fit": 0,
+        "selection_fit": 0,
+        "selection_score": 0,
+        "final_refit": 0,
+        "coefficient_fit": 1960,
+        "scored_prediction": 980
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R09",
+      "branch_id": "descriptor",
+      "fold_index": 0,
+      "stage_row_counts": {
+        "parameter_fit": 0,
+        "selection_fit": 14351,
+        "selection_score": 3586,
+        "final_refit": 17937,
+        "coefficient_fit": 0,
+        "scored_prediction": 1282
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R09",
+      "branch_id": "language",
+      "fold_index": 0,
+      "stage_row_counts": {
+        "parameter_fit": 0,
+        "selection_fit": 14351,
+        "selection_score": 3586,
+        "final_refit": 17937,
+        "coefficient_fit": 0,
+        "scored_prediction": 1282
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R09",
+      "branch_id": "geometry",
+      "fold_index": 0,
+      "stage_row_counts": {
+        "parameter_fit": 0,
+        "selection_fit": 14351,
+        "selection_score": 3586,
+        "final_refit": 17937,
+        "coefficient_fit": 0,
+        "scored_prediction": 1282
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R09",
+      "branch_id": "fusion_head",
+      "fold_index": 0,
+      "stage_row_counts": {
+        "parameter_fit": 0,
+        "selection_fit": 0,
+        "selection_score": 0,
+        "final_refit": 17937,
+        "coefficient_fit": 0,
+        "scored_prediction": 1282
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    },
+    {
+      "evaluation_id": "R09",
+      "branch_id": "blend_coefficient",
+      "fold_index": 0,
+      "stage_row_counts": {
+        "parameter_fit": 0,
+        "selection_fit": 0,
+        "selection_score": 0,
+        "final_refit": 0,
+        "coefficient_fit": 17937,
+        "scored_prediction": 1282
+      },
+      "scored_columns": [
+        "record_id",
+        "smiles"
+      ],
+      "nested_selection_units": 0,
+      "scored_overlap_policy": "zero_for_all_training_stages"
+    }
+  ]
+}

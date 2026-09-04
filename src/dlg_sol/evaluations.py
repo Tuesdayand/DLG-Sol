@@ -19,6 +19,8 @@ class EvaluationSpec:
     outer_folds: int | None
     prediction_aggregation: str
     coefficient_policy: str
+    selection_label_access: str
+    sensitivity_status: str | None = None
 
 
 def _validate(specs: tuple[EvaluationSpec, ...]) -> None:
@@ -38,7 +40,7 @@ def _validate(specs: tuple[EvaluationSpec, ...]) -> None:
 
 def load_evaluation_registry(path: str | Path = DEFAULT_REGISTRY) -> tuple[EvaluationSpec, ...]:
     payload = json.loads(Path(path).read_text(encoding="utf-8"))
-    if payload.get("schema_version") != 1:
+    if payload.get("schema_version") != 2:
         raise ValueError("unsupported evaluation-registry schema")
     specs = tuple(EvaluationSpec(**record) for record in payload["evaluations"])
     _validate(specs)

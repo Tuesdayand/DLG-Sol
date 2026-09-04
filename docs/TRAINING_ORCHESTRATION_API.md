@@ -13,3 +13,5 @@ The training orchestration Gate connects the evaluation registry and label firew
 `dlg_sol.training.validate_oof_predictions` requires one finite prediction per expected OOF record. `dlg_sol.training.aggregate_member_predictions` requires the same complete member set for every scored record and returns the arithmetic mean in first-seen record order.
 
 This Gate does not acquire benchmark data, construct dataset-specific split files, or expose row-level predictions. Callers must obtain permitted source data and convert each recorded split into the explicit fit, selection, and label-free scored tables required by the API.
+
+This API is a strict disjoint-role primitive. It does not by itself reproduce historical stage transitions in which a validation row later enters a final refit, nor the disclosed R02 global-preselection exception. Those evaluation-by-branch rules are recorded in `configs/training_role_contracts.json`. Their label-safe implementation is documented in `TRAINING_ROLE_MATERIALIZER_API.md`.

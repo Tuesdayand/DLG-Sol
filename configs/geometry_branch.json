@@ -51,5 +51,94 @@
     "learning_rate": 0.0004369919050718778,
     "weight_decay": 3.0088421993504876e-06,
     "representation": "graph_embedding_plus_19_auxiliary_features"
+  },
+  "execution_profiles": {
+    "R01": {
+      "mode": "fixed_transferred_parameters_with_checkpoint_selection",
+      "selected_trial": 2,
+      "candidate_count": 1,
+      "seed_base": 260705,
+      "fold_seed_multiplier": 1,
+      "maximum_epochs": 160,
+      "patience": 24,
+      "auxiliary_transform": "fit_partition_quantile_0.001_0.999_then_zscore",
+      "parameters": {
+        "hidden_dim": 256,
+        "num_layers": 4,
+        "dropout": 0.05,
+        "batch_size": 64,
+        "lr": 0.0004369919050718778,
+        "weight_decay": 0.0000030088421993504876,
+        "pool": "mean_aux"
+      }
+    },
+    "R02": {
+      "mode": "frozen_global_selected_settings_then_outer_refit",
+      "selected_trial": 0,
+      "candidate_count": 1,
+      "best_epoch": 19,
+      "seed_base": 260722,
+      "fold_seed_multiplier": 1,
+      "auxiliary_transform": "none",
+      "parameters": {
+        "hidden_dim": 256,
+        "num_layers": 4,
+        "dropout": 0.1,
+        "batch_size": 96,
+        "lr": 0.0013511660496878,
+        "weight_decay": 0.000003399822313471729,
+        "pool": "mean"
+      }
+    },
+    "R03": {
+      "mode": "four_candidate_fold_local_selection",
+      "candidate_count": 4,
+      "seed_base": 260722,
+      "fold_seed_multiplier": 100,
+      "maximum_epochs": 140,
+      "patience": 20,
+      "auxiliary_transform": "none"
+    },
+    "R04": {
+      "mode": "reuse_r03_same_fold_model",
+      "auxiliary_transform": "none"
+    },
+    "R05": {
+      "mode": "fixed_transferred_parameters_with_checkpoint_selection",
+      "selected_trial": 0,
+      "candidate_count": 1,
+      "seed_base": 260715,
+      "fold_seed_multiplier": 1,
+      "maximum_epochs": 160,
+      "patience": 24,
+      "auxiliary_transform": "none",
+      "parameters": {
+        "hidden_dim": 256,
+        "num_layers": 4,
+        "dropout": 0.05,
+        "batch_size": 64,
+        "lr": 0.0004369919050718778,
+        "weight_decay": 0.0000030088421993504876,
+        "pool": "mean_aux"
+      }
+    },
+    "R09": {
+      "mode": "reuse_r02_frozen_settings_full_refit",
+      "selected_trial": 0,
+      "candidate_count": 1,
+      "best_epoch": 19,
+      "seed_base": 260722,
+      "fold_seed_multiplier": 0,
+      "auxiliary_transform": "none",
+      "parameters": {
+        "hidden_dim": 256,
+        "num_layers": 4,
+        "dropout": 0.1,
+        "batch_size": 96,
+        "lr": 0.0013511660496878,
+        "weight_decay": 0.000003399822313471729,
+        "pool": "mean"
+      }
+    }
   }
 }

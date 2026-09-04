@@ -56,5 +56,37 @@
       "auxiliary_weight": 0.0,
       "auxiliary_targets": []
     }
+  },
+  "execution_profiles": {
+    "R01": {
+      "mode": "fold_local_checkpoint_selection",
+      "seed_base": 260723,
+      "fold_seed_multiplier": 100
+    },
+    "R02": {
+      "mode": "frozen_global_selected_epoch_then_outer_refit",
+      "selected_epoch": 14,
+      "seed_base": 260722,
+      "fold_seed_multiplier": 0
+    },
+    "R03": {
+      "mode": "fold_local_checkpoint_selection",
+      "seed_base": 260762,
+      "fold_seed_multiplier": 100
+    },
+    "R04": {
+      "mode": "reuse_r03_same_fold_model"
+    },
+    "R05": {
+      "mode": "reported_split_checkpoint_selection",
+      "seed_base": 260701,
+      "fold_seed_multiplier": 0
+    },
+    "R09": {
+      "mode": "reuse_r02_frozen_epoch_full_refit",
+      "selected_epoch": 14,
+      "seed_base": 260722,
+      "fold_seed_multiplier": 0
+    }
   }
 }

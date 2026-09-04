@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "gate": "training_execution_recipe_b2",
+  "status": "PASS",
+  "model_identity": "aug2_head4",
+  "verification_scope": "unit-level execution recipes and ComPlat global-preselection reconstruction",
+  "row_level_inputs_redistributed": false,
+  "recipe_sha256": "403832ae774a95ac88d579416a9a535ece05e6764e88eed965d886ef8b2588fa",
+  "training_role_contract_sha256": "363745bc78ffbaf6f61c8e388106176e3dd49166ece6109f1622206947d61798",
+  "implementation_sha256": {
+    "src/dlg_sol/workflow/execution.py": "ea510f66c76222f3bdfcff80101154d6e33148391ad614eba059b8c96a43501c",
+    "tests/test_training_execution_recipes.py": "e225731caf8f2d57f47eaa0a2fa35e808a4004c62e532cb00c1376d6f0701e1f"
+  },
+  "configuration_reference_sha256": {
+    "configs/aqsoldbc_candidate_grid.json": "de41b71c3fd43e31a8b0d316cd872c47ec5f65496dc565bc975866a2a218e435",
+    "configs/chemberta_variants.json": "5da44079d8149146943affe7baabc548762b30e5f021284e30965bc1ab4a681a",
+    "configs/dataset_adapters.json": "a8a70cdbff399df1b69961398ecf01f239e87bb24a6e7a65fb91ad22cda8a803",
+    "configs/descriptor_protocols.json": "8de5a0473e7f3eedf3903307ed7d465b77bd7ed7a8a64f67ab6fce2f2efb61ad",
+    "configs/evaluations.json": "0ef8ff21a1eead9d39599c38b39854ef69320f0409762cb0a7b1c6d541ae9885",
+    "configs/fusion_ensemble.json": "972abc783836bba1fbfca7ac9d1fa902e6f164661070128803d988d1f5e84360",
+    "configs/geometry_branch.json": "a6adb057450353ff9d021850101185cffb343675d787e13e3e0fedc92518b9bf"
+  },
+  "recipe_count": 30,
+  "referenced_training_units": 126,
+  "row_contract_counts_or_hashes_duplicated": false,
+  "all_configuration_references_resolved": true,
+  "all_recipe_stages_match_training_role_contract": true,
+  "complat_global_preselection_reconstruction": {
+    "source_logical_path": "data/final_data/final_unique_train.csv",
+    "source_bytes": 2814578,
+    "source_sha256": "8f57b8e7ecf640f861f35bb17ff61b7b9c0592aa675ef8a186a429a4b6fab00f",
+    "source_rows": 17937,
+    "rdkit": "2023.09.6",
+    "pandas": "2.2.3",
+    "scikit_learn": "1.6.1",
+    "historical_metadata_sha256": "0aae89572f42f37ae4201b8b48a55886786c6b79758cc7a88c2fcbf7f38f0de1",
+    "selection_fit": {
+      "rows": 14351,
+      "record_id_sha256": "3bac17bf2fbe92b263fe9ddad8d8cbd865ec8077a3ae3d8a79575b68217a37e3",
+      "historical_membership_mismatches": 0
+    },
+    "selection_score": {
+      "rows": 3586,
+      "record_id_sha256": "6f63362f7cd7433dbd1cbb79993a4ec6ab8b06c581493515ffa645eaf5c89f3d",
+      "historical_membership_mismatches": 0
+    },
+    "all_r02_r09_representation_contracts_match": true,
+    "contracts_checked": 18
+  },
+  "r02_primary_selection_mode": "frozen_global_preselection",
+  "r02_fold_local_reselection_is_primary": false,
+  "single_command_six_evaluation_orchestration_claimed": false,
+  "historical_weight_or_metric_identity_claimed": false
+}

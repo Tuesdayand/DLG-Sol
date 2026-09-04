@@ -149,6 +149,43 @@ def fit_chemberta_variant(config, fit_smiles, fit_labels, selection_smiles, sele
     return LanguageFitResult(model, best_epoch, best_rmse, tuple(history), auxiliary_scaler)
 
 
+def fit_chemberta_fixed_epochs(config, fit_smiles, fit_labels, epochs, device):
+    if not isinstance(config, ChemBertaVariant) or config.task != "logS":
+        raise ValueError("fixed-epoch ChemBERTa refit requires the final single-task variant")
+    values = tuple(str(value) for value in fit_smiles)
+    labels = _finite_vector(fit_labels, "fit labels")
+    if len(values) != len(labels) or int(epochs) <= 0:
+        raise ValueError("fixed-epoch ChemBERTa refit received invalid rows or epochs")
+    torch.manual_seed(config.seed)
+    np.random.seed(config.seed)
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed_all(config.seed)
+    tokenizer = load_chemberta_tokenizer(config)
+    dataset = ChemBertaDataset(values, tokenizer, config.max_length, config.randomized_smiles_per_molecule, labels)
+    loader = DataLoader(dataset, batch_size=config.batch_size, shuffle=True, num_workers=2, pin_memory=True)
+    model = build_chemberta_model(config).to(device)
+    no_decay = {"bias", "LayerNorm.weight"}
+    parameters = [
+        {"params": [parameter for name, parameter in model.named_parameters() if not any(term in name for term in no_decay)], "weight_decay": config.weight_decay},
+        {"params": [parameter for name, parameter in model.named_parameters() if any(term in name for term in no_decay)], "weight_decay": 0.0},
+    ]
+    optimizer = AdamW(parameters, lr=config.learning_rate)
+    total_steps = len(loader) * int(epochs)
+    scheduler = get_cosine_schedule_with_warmup(optimizer, int(total_steps * config.warmup_ratio), total_steps)
+    criterion = nn.MSELoss()
+    for _ in range(int(epochs)):
+        model.train()
+        for batch in loader:
+            optimizer.zero_grad()
+            prediction = model(batch["input_ids"].to(device), batch["attention_mask"].to(device))
+            loss = criterion(prediction, batch["label"].to(device))
+            loss.backward()
+            nn.utils.clip_grad_norm_(model.parameters(), config.gradient_clip_norm)
+            optimizer.step()
+            scheduler.step()
+    return model
+
+
 def predict_chemberta(model, config, scored_smiles, device):
     values = tuple(str(value) for value in scored_smiles)
     tokenizer = load_chemberta_tokenizer(config)

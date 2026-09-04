@@ -104,111 +104,111 @@ R01,AqSolDBc development OOF,8047,mordred__ecfp__knn,Mordred,ECFP,k-nearest neig
 R01,AqSolDBc development OOF,8047,ecfp__three_d_gnn__rf,ECFP,3D-MPNN,random forest,1.0523501237557034,0.7440379525921803,0.006555410392896675,0.80702,True
 R01,AqSolDBc development OOF,8047,ecfp__three_d_gnn__xgb,ECFP,3D-MPNN,XGBoost,1.0820787704019594,0.7827713540082019,-0.0015310106002982453,0.80702,True
 R01,AqSolDBc development OOF,8047,ecfp__three_d_gnn__knn,ECFP,3D-MPNN,k-nearest neighbours,1.0859892350559759,0.7624713596593031,0.10909174730001371,0.80702,True
-R02,ComPlat nested OOF,17937,mordred__ecfp__rf,Mordred,ECFP,random forest,0.9473238014497184,0.6263231029445364,-0.0022994605539151604,0.879214,True
-R02,ComPlat nested OOF,17937,chemberta__three_d_gnn__rf,ChemBERTa,3D-MPNN,random forest,0.9493719372562563,0.6244111905980319,-0.0021066003985680706,0.879214,True
-R02,ComPlat nested OOF,17937,chemberta__brics_gnn__rf,ChemBERTa,BRICS-subgroup GNN,random forest,0.9515260117450421,0.6211180206905379,-0.0011829142256800206,0.879214,True
-R02,ComPlat nested OOF,17937,chemberta__three_d_gnn__ridge,ChemBERTa,3D-MPNN,ridge regression,0.9521030130959314,0.6323495796385505,-0.00039686066065041,0.879214,True
-R02,ComPlat nested OOF,17937,chemberta__atom_gnn__rf,ChemBERTa,atom-level 2D GNN,random forest,0.9539219748302774,0.6267319771685309,0.0004764727929051736,0.879214,True
-R02,ComPlat nested OOF,17937,chemberta__murcko_gnn__rf,ChemBERTa,Murcko-subgroup GNN,random forest,0.9561549591652945,0.6304812545425896,0.0026638713875006517,0.879214,True
-R02,ComPlat nested OOF,17937,mordred__chemberta__rf,Mordred,ChemBERTa,random forest,0.9600229756753993,0.6371738481726421,0.002043766698532549,0.879214,True
-R02,ComPlat nested OOF,17937,mordred__three_d_gnn__rf,Mordred,3D-MPNN,random forest,0.9624258005266157,0.6161447877011761,-0.006409770804673926,0.879214,True
-R02,ComPlat nested OOF,17937,chemberta__three_d_gnn__xgb,ChemBERTa,3D-MPNN,XGBoost,0.9634911343886072,0.6417513185925171,0.0002604013193945487,0.879214,True
-R02,ComPlat nested OOF,17937,mordred__three_d_gnn__xgb,Mordred,3D-MPNN,XGBoost,0.9668962336805078,0.6340001041684268,-0.003724749852870039,0.879214,True
-R02,ComPlat nested OOF,17937,mordred__ecfp__mlp,Mordred,ECFP,multilayer perceptron,0.9678391393032321,0.6422892067524177,0.02756099735610568,0.879214,True
-R02,ComPlat nested OOF,17937,chemberta__atom_gnn__ridge,ChemBERTa,atom-level 2D GNN,ridge regression,0.9705708312548313,0.6446874063034774,0.0023310842552932195,0.879214,True
-R02,ComPlat nested OOF,17937,mordred__atom_gnn__rf,Mordred,atom-level 2D GNN,random forest,0.9711763541194453,0.6367869790269906,-0.002428130957764246,0.879214,True
-R02,ComPlat nested OOF,17937,chemberta__three_d_gnn__mlp,ChemBERTa,3D-MPNN,multilayer perceptron,0.9712475657519546,0.6400746433049724,0.004463796759361037,0.879214,True
-R02,ComPlat nested OOF,17937,ecfp__chemberta__rf,ECFP,ChemBERTa,random forest,0.9713198438550097,0.6476032151852475,0.0025208298706529864,0.879214,True
-R02,ComPlat nested OOF,17937,chemberta__brics_gnn__xgb,ChemBERTa,BRICS-subgroup GNN,XGBoost,0.9721049617923399,0.647595662655428,0.002370469731449515,0.879214,True
-R02,ComPlat nested OOF,17937,chemberta__brics_gnn__ridge,ChemBERTa,BRICS-subgroup GNN,ridge regression,0.9728406279121027,0.6453697813086597,-0.0014414242258111586,0.879214,True
-R02,ComPlat nested OOF,17937,mordred__chemberta__ridge,Mordred,ChemBERTa,ridge regression,0.9741886742527576,0.6513652539752014,0.0005833477147036983,0.879214,True
-R02,ComPlat nested OOF,17937,chemberta__murcko_gnn__ridge,ChemBERTa,Murcko-subgroup GNN,ridge regression,0.9749079651829123,0.6515263535764357,0.0027530466068116516,0.879214,True
-R02,ComPlat nested OOF,17937,chemberta__murcko_gnn__xgb,ChemBERTa,Murcko-subgroup GNN,XGBoost,0.9756910699358086,0.6544642153832163,0.003906359028563865,0.879214,True
-R02,ComPlat nested OOF,17937,mordred__three_d_gnn__mlp,Mordred,3D-MPNN,multilayer perceptron,0.9761605172737179,0.6283646835014017,0.007138491373649587,0.879214,True
-R02,ComPlat nested OOF,17937,mordred__atom_gnn__mlp,Mordred,atom-level 2D GNN,multilayer perceptron,0.9765386641177207,0.650260398087458,0.02553218035733852,0.879214,True
-R02,ComPlat nested OOF,17937,chemberta__atom_gnn__xgb,ChemBERTa,atom-level 2D GNN,XGBoost,0.9766408503234856,0.6508012746546156,0.0062204257627384825,0.879214,True
-R02,ComPlat nested OOF,17937,ecfp__chemberta__ridge,ECFP,ChemBERTa,ridge regression,0.9775441173972298,0.6545619956157804,0.002046768564534212,0.879214,True
-R02,ComPlat nested OOF,17937,mordred__three_d_gnn__ridge,Mordred,3D-MPNN,ridge regression,0.9790040692872385,0.6580395546172172,-0.0044741310475736856,0.879214,True
-R02,ComPlat nested OOF,17937,mordred__chemberta__mlp,Mordred,ChemBERTa,multilayer perceptron,0.9805185317840941,0.6513159769710722,0.005340626925859183,0.879214,True
-R02,ComPlat nested OOF,17937,ecfp__chemberta__mlp,ECFP,ChemBERTa,multilayer perceptron,0.9832244302276553,0.6626259427591854,0.00026333562928828263,0.879214,True
-R02,ComPlat nested OOF,17937,chemberta__three_d_gnn__knn,ChemBERTa,3D-MPNN,k-nearest neighbours,0.9835232140844709,0.6719975409769499,-0.03323821380888616,0.879214,True
-R02,ComPlat nested OOF,17937,brics_gnn__three_d_gnn__rf,BRICS-subgroup GNN,3D-MPNN,random forest,0.98472358337364,0.6468877816470459,-0.009496688341115677,0.879214,True
-R02,ComPlat nested OOF,17937,chemberta__atom_gnn__mlp,ChemBERTa,atom-level 2D GNN,multilayer perceptron,0.9884584106925206,0.6655637874667951,-0.010935322829844012,0.879214,True
-R02,ComPlat nested OOF,17937,chemberta__brics_gnn__knn,ChemBERTa,BRICS-subgroup GNN,k-nearest neighbours,0.9887911649131266,0.672319474536791,0.008543807575942681,0.879214,True
-R02,ComPlat nested OOF,17937,mordred__brics_gnn__rf,Mordred,BRICS-subgroup GNN,random forest,0.9888320188869703,0.6474882824664884,-0.0023073551247088683,0.879214,True
-R02,ComPlat nested OOF,17937,mordred__murcko_gnn__mlp,Mordred,Murcko-subgroup GNN,multilayer perceptron,0.990208425075619,0.6566643782684916,0.011210664356583482,0.879214,True
-R02,ComPlat nested OOF,17937,mordred__chemberta__xgb,Mordred,ChemBERTa,XGBoost,0.9905943631994761,0.6697792646297546,0.001296811839784248,0.879214,True
-R02,ComPlat nested OOF,17937,chemberta__atom_gnn__knn,ChemBERTa,atom-level 2D GNN,k-nearest neighbours,0.9910583401305602,0.6738675817406268,0.013138586455380356,0.879214,True
-R02,ComPlat nested OOF,17937,chemberta__murcko_gnn__knn,ChemBERTa,Murcko-subgroup GNN,k-nearest neighbours,0.9923233634262418,0.6765770118066475,0.01309043678196531,0.879214,True
-R02,ComPlat nested OOF,17937,chemberta__murcko_gnn__mlp,ChemBERTa,Murcko-subgroup GNN,multilayer perceptron,0.9928718940412695,0.6704406902705157,0.000498306507152234,0.879214,True
-R02,ComPlat nested OOF,17937,murcko_gnn__three_d_gnn__rf,Murcko-subgroup GNN,3D-MPNN,random forest,0.9947783790502392,0.6500639114865933,-0.0050304637036243886,0.879214,True
-R02,ComPlat nested OOF,17937,ecfp__chemberta__xgb,ECFP,ChemBERTa,XGBoost,0.9950160341569253,0.6756549001219387,0.0001347625435828195,0.879214,True
-R02,ComPlat nested OOF,17937,mordred__ecfp__ridge,Mordred,ECFP,ridge regression,0.995432361872405,0.6821929216106423,0.002236771182829809,0.879214,True
-R02,ComPlat nested OOF,17937,chemberta__brics_gnn__mlp,ChemBERTa,BRICS-subgroup GNN,multilayer perceptron,0.9956832034702845,0.664986990620915,-0.006316172026795308,0.879214,True
-R02,ComPlat nested OOF,17937,atom_gnn__brics_gnn__rf,atom-level 2D GNN,BRICS-subgroup GNN,random forest,0.997233117309257,0.6616589531011089,-0.004071395809390859,0.879214,True
-R02,ComPlat nested OOF,17937,mordred__atom_gnn__ridge,Mordred,atom-level 2D GNN,ridge regression,0.9991784599477006,0.6783823426116423,-0.00320963324765732,0.879214,True
-R02,ComPlat nested OOF,17937,murcko_gnn__three_d_gnn__mlp,Murcko-subgroup GNN,3D-MPNN,multilayer perceptron,0.9994273788658748,0.6613001617448894,0.015961870569772982,0.879214,True
-R02,ComPlat nested OOF,17937,mordred__brics_gnn__mlp,Mordred,BRICS-subgroup GNN,multilayer perceptron,1.001501819511734,0.659558396929204,-0.03117895616605733,0.879214,True
-R02,ComPlat nested OOF,17937,brics_gnn__three_d_gnn__xgb,BRICS-subgroup GNN,3D-MPNN,XGBoost,1.0021852794907298,0.6746633442009662,-3.901492194402608e-05,0.879214,True
-R02,ComPlat nested OOF,17937,atom_gnn__murcko_gnn__rf,atom-level 2D GNN,Murcko-subgroup GNN,random forest,1.0029414186624215,0.6646965940203055,0.0007341869478788503,0.879214,True
-R02,ComPlat nested OOF,17937,ecfp__brics_gnn__rf,ECFP,BRICS-subgroup GNN,random forest,1.0036013075959904,0.6589422259174459,-0.003612520962431276,0.879214,True
-R02,ComPlat nested OOF,17937,mordred__atom_gnn__knn,Mordred,atom-level 2D GNN,k-nearest neighbours,1.0047586878043315,0.6852530595074126,0.035520662214285695,0.879214,True
-R02,ComPlat nested OOF,17937,mordred__ecfp__xgb,Mordred,ECFP,XGBoost,1.006119895605351,0.6977400308381602,0.0011434745464503546,0.879214,True
-R02,ComPlat nested OOF,17937,mordred__chemberta__knn,Mordred,ChemBERTa,k-nearest neighbours,1.0070817598777684,0.6920968320988695,0.03220170190986435,0.879214,True
-R02,ComPlat nested OOF,17937,brics_gnn__three_d_gnn__ridge,BRICS-subgroup GNN,3D-MPNN,ridge regression,1.0070916793304507,0.6813820400741356,-0.005445848500432768,0.879214,True
-R02,ComPlat nested OOF,17937,atom_gnn__brics_gnn__xgb,atom-level 2D GNN,BRICS-subgroup GNN,XGBoost,1.0072867114024595,0.6872731935197091,0.0017640664155778557,0.879214,True
-R02,ComPlat nested OOF,17937,mordred__atom_gnn__xgb,Mordred,atom-level 2D GNN,XGBoost,1.008036159185108,0.6921678514167235,0.0001264549656313835,0.879214,True
-R02,ComPlat nested OOF,17937,mordred__murcko_gnn__rf,Mordred,Murcko-subgroup GNN,random forest,1.0100551214886977,0.6634088360665459,-0.000902317363335673,0.879214,True
-R02,ComPlat nested OOF,17937,atom_gnn__brics_gnn__knn,atom-level 2D GNN,BRICS-subgroup GNN,k-nearest neighbours,1.0120164136003842,0.6792753970117996,-0.001519186892049453,0.879214,True
-R02,ComPlat nested OOF,17937,mordred__brics_gnn__knn,Mordred,BRICS-subgroup GNN,k-nearest neighbours,1.0121067003313353,0.6858665594839554,0.020526667606548504,0.879214,True
-R02,ComPlat nested OOF,17937,murcko_gnn__three_d_gnn__xgb,Murcko-subgroup GNN,3D-MPNN,XGBoost,1.013538488568569,0.680892885028948,0.0020009671531894973,0.879214,True
-R02,ComPlat nested OOF,17937,murcko_gnn__three_d_gnn__ridge,Murcko-subgroup GNN,3D-MPNN,ridge regression,1.0139685487217198,0.688155881669271,-0.0032228422707671314,0.879214,True
-R02,ComPlat nested OOF,17937,ecfp__chemberta__knn,ECFP,ChemBERTa,k-nearest neighbours,1.0151590450111816,0.7007613746110747,0.03199448053314818,0.879214,True
-R02,ComPlat nested OOF,17937,atom_gnn__brics_gnn__ridge,atom-level 2D GNN,BRICS-subgroup GNN,ridge regression,1.0156317091897933,0.6886056878729839,-0.0008392795975036865,0.879214,True
-R02,ComPlat nested OOF,17937,mordred__brics_gnn__ridge,Mordred,BRICS-subgroup GNN,ridge regression,1.016070964236382,0.6798774421626774,-0.0012699942864605822,0.879214,True
-R02,ComPlat nested OOF,17937,mordred__murcko_gnn__knn,Mordred,Murcko-subgroup GNN,k-nearest neighbours,1.0167774838208101,0.6864346978075946,0.022055659785697367,0.879214,True
-R02,ComPlat nested OOF,17937,mordred__murcko_gnn__ridge,Mordred,Murcko-subgroup GNN,ridge regression,1.0168646319749426,0.6910687440749178,-0.0005671649767127275,0.879214,True
-R02,ComPlat nested OOF,17937,mordred__brics_gnn__xgb,Mordred,BRICS-subgroup GNN,XGBoost,1.0187321249925596,0.6999723080807716,0.0005305074193231848,0.879214,True
-R02,ComPlat nested OOF,17937,atom_gnn__murcko_gnn__xgb,atom-level 2D GNN,Murcko-subgroup GNN,XGBoost,1.0193078495924688,0.6965603879623672,0.003002075805230534,0.879214,True
-R02,ComPlat nested OOF,17937,atom_gnn__murcko_gnn__ridge,atom-level 2D GNN,Murcko-subgroup GNN,ridge regression,1.0200504842356908,0.69561935813231,0.001500831466070327,0.879214,True
-R02,ComPlat nested OOF,17937,atom_gnn__murcko_gnn__knn,atom-level 2D GNN,Murcko-subgroup GNN,k-nearest neighbours,1.0211774259780475,0.6846379909055446,0.007780086484718633,0.879214,True
-R02,ComPlat nested OOF,17937,ecfp__brics_gnn__ridge,ECFP,BRICS-subgroup GNN,ridge regression,1.0242119597851442,0.6943007652310502,0.0015604321905155177,0.879214,True
-R02,ComPlat nested OOF,17937,ecfp__brics_gnn__mlp,ECFP,BRICS-subgroup GNN,multilayer perceptron,1.0257140745102928,0.6861399952684961,0.01382098879783882,0.879214,True
-R02,ComPlat nested OOF,17937,brics_gnn__three_d_gnn__mlp,BRICS-subgroup GNN,3D-MPNN,multilayer perceptron,1.0287867768496022,0.6765313162034269,0.006727920896623993,0.879214,True
-R02,ComPlat nested OOF,17937,mordred__three_d_gnn__knn,Mordred,3D-MPNN,k-nearest neighbours,1.0297815094546525,0.6984322545173259,0.002896489765024408,0.879214,True
-R02,ComPlat nested OOF,17937,ecfp__murcko_gnn__mlp,ECFP,Murcko-subgroup GNN,multilayer perceptron,1.031086556932191,0.6952553784346805,0.0007867315747005038,0.879214,True
-R02,ComPlat nested OOF,17937,atom_gnn__murcko_gnn__mlp,atom-level 2D GNN,Murcko-subgroup GNN,multilayer perceptron,1.0314101620157885,0.7013700443401117,0.010204719020560346,0.879214,True
-R02,ComPlat nested OOF,17937,ecfp__brics_gnn__knn,ECFP,BRICS-subgroup GNN,k-nearest neighbours,1.0314212121590414,0.6929771368829073,0.013211990493211636,0.879214,True
-R02,ComPlat nested OOF,17937,ecfp__murcko_gnn__rf,ECFP,Murcko-subgroup GNN,random forest,1.0324113827428267,0.6773737093391805,-0.0019251374938104272,0.879214,True
-R02,ComPlat nested OOF,17937,brics_gnn__three_d_gnn__knn,BRICS-subgroup GNN,3D-MPNN,k-nearest neighbours,1.0335888331936938,0.6997424160987873,-0.07646759833195045,0.879214,True
-R02,ComPlat nested OOF,17937,murcko_gnn__three_d_gnn__knn,Murcko-subgroup GNN,3D-MPNN,k-nearest neighbours,1.036080946471556,0.6986788499192788,-0.05946556598554216,0.879214,True
-R02,ComPlat nested OOF,17937,brics_gnn__murcko_gnn__knn,BRICS-subgroup GNN,Murcko-subgroup GNN,k-nearest neighbours,1.0367821112347044,0.6938634541018447,-0.009011965135077953,0.879214,True
-R02,ComPlat nested OOF,17937,mordred__murcko_gnn__xgb,Mordred,Murcko-subgroup GNN,XGBoost,1.0374234213472735,0.7127119024119208,-0.0003408429069758073,0.879214,True
-R02,ComPlat nested OOF,17937,brics_gnn__murcko_gnn__rf,BRICS-subgroup GNN,Murcko-subgroup GNN,random forest,1.0382532726758062,0.6919111889941563,-0.007615580715566742,0.879214,True
-R02,ComPlat nested OOF,17937,ecfp__murcko_gnn__ridge,ECFP,Murcko-subgroup GNN,ridge regression,1.039512442730722,0.7051263408111256,0.0027704008102979343,0.879214,True
-R02,ComPlat nested OOF,17937,ecfp__atom_gnn__mlp,ECFP,atom-level 2D GNN,multilayer perceptron,1.0430885239184304,0.7036045952790487,0.02305424138040171,0.879214,True
-R02,ComPlat nested OOF,17937,ecfp__atom_gnn__rf,ECFP,atom-level 2D GNN,random forest,1.0467424705452952,0.688871855869712,0.008690253891946928,0.879214,True
-R02,ComPlat nested OOF,17937,ecfp__brics_gnn__xgb,ECFP,BRICS-subgroup GNN,XGBoost,1.0497084863769142,0.7249026578761649,0.0013488705276283564,0.879214,True
-R02,ComPlat nested OOF,17937,brics_gnn__murcko_gnn__xgb,BRICS-subgroup GNN,Murcko-subgroup GNN,XGBoost,1.0512832106975927,0.7222660198746056,-0.0019788068335619075,0.879214,True
-R02,ComPlat nested OOF,17937,ecfp__murcko_gnn__knn,ECFP,Murcko-subgroup GNN,k-nearest neighbours,1.0513889636661775,0.7092397932240759,0.019309095083958585,0.879214,True
-R02,ComPlat nested OOF,17937,brics_gnn__murcko_gnn__ridge,BRICS-subgroup GNN,Murcko-subgroup GNN,ridge regression,1.0518236526466955,0.7198455489910092,-0.0026809301887274544,0.879214,True
-R02,ComPlat nested OOF,17937,atom_gnn__three_d_gnn__rf,atom-level 2D GNN,3D-MPNN,random forest,1.057360723540862,0.70108381850902,-0.019444053324074617,0.879214,True
-R02,ComPlat nested OOF,17937,ecfp__atom_gnn__knn,ECFP,atom-level 2D GNN,k-nearest neighbours,1.0584040940120745,0.7018089001535274,0.07341457247321029,0.879214,True
-R02,ComPlat nested OOF,17937,ecfp__atom_gnn__ridge,ECFP,atom-level 2D GNN,ridge regression,1.0617305003685757,0.7211246028037956,-0.0013499014512854167,0.879214,True
-R02,ComPlat nested OOF,17937,atom_gnn__three_d_gnn__mlp,atom-level 2D GNN,3D-MPNN,multilayer perceptron,1.0635331230658351,0.7147025778107459,0.021472594590068627,0.879214,True
-R02,ComPlat nested OOF,17937,atom_gnn__three_d_gnn__ridge,atom-level 2D GNN,3D-MPNN,ridge regression,1.0726508198988016,0.7361990398810389,-0.010693096655960268,0.879214,True
-R02,ComPlat nested OOF,17937,atom_gnn__three_d_gnn__xgb,atom-level 2D GNN,3D-MPNN,XGBoost,1.0738728385049559,0.7260256835256926,-0.00358944677870045,0.879214,True
-R02,ComPlat nested OOF,17937,ecfp__murcko_gnn__xgb,ECFP,Murcko-subgroup GNN,XGBoost,1.0747418821294596,0.7419775540834577,0.0026974828622501,0.879214,True
-R02,ComPlat nested OOF,17937,mordred__ecfp__knn,Mordred,ECFP,k-nearest neighbours,1.0765628767483135,0.7432049379249193,0.047265259299750124,0.879214,True
-R02,ComPlat nested OOF,17937,brics_gnn__murcko_gnn__mlp,BRICS-subgroup GNN,Murcko-subgroup GNN,multilayer perceptron,1.0818671467317895,0.7319983770941961,0.0009861697108840936,0.879214,True
-R02,ComPlat nested OOF,17937,atom_gnn__three_d_gnn__knn,atom-level 2D GNN,3D-MPNN,k-nearest neighbours,1.088204750981419,0.7387042440667909,-0.0820757323947092,0.879214,True
-R02,ComPlat nested OOF,17937,ecfp__atom_gnn__xgb,ECFP,atom-level 2D GNN,XGBoost,1.098438482495408,0.7607604240025007,0.004079528808281425,0.879214,True
-R02,ComPlat nested OOF,17937,ecfp__three_d_gnn__mlp,ECFP,3D-MPNN,multilayer perceptron,1.1114672400587224,0.7518047984319842,-0.00405896570567304,0.879214,True
-R02,ComPlat nested OOF,17937,atom_gnn__brics_gnn__mlp,atom-level 2D GNN,BRICS-subgroup GNN,multilayer perceptron,1.122372589018686,0.7697482726581395,0.1202856553722366,0.879214,True
-R02,ComPlat nested OOF,17937,ecfp__three_d_gnn__ridge,ECFP,3D-MPNN,ridge regression,1.147966003229083,0.803399436312783,-0.004015659298386818,0.879214,True
-R02,ComPlat nested OOF,17937,ecfp__three_d_gnn__rf,ECFP,3D-MPNN,random forest,1.2101295237477656,0.8319563923932252,0.021458416457641894,0.879214,True
-R02,ComPlat nested OOF,17937,ecfp__three_d_gnn__knn,ECFP,3D-MPNN,k-nearest neighbours,1.2898573336347772,0.8895709009873324,0.07725385590933141,0.879214,True
-R02,ComPlat nested OOF,17937,ecfp__three_d_gnn__xgb,ECFP,3D-MPNN,XGBoost,1.2997259998346764,0.9296780462721542,-0.004812800387558109,0.879214,True
+R02,ComPlat OOF after global preselection,17937,mordred__ecfp__rf,Mordred,ECFP,random forest,0.9473238014497184,0.6263231029445364,-0.0022994605539151604,0.879214,True
+R02,ComPlat OOF after global preselection,17937,chemberta__three_d_gnn__rf,ChemBERTa,3D-MPNN,random forest,0.9493719372562563,0.6244111905980319,-0.0021066003985680706,0.879214,True
+R02,ComPlat OOF after global preselection,17937,chemberta__brics_gnn__rf,ChemBERTa,BRICS-subgroup GNN,random forest,0.9515260117450421,0.6211180206905379,-0.0011829142256800206,0.879214,True
+R02,ComPlat OOF after global preselection,17937,chemberta__three_d_gnn__ridge,ChemBERTa,3D-MPNN,ridge regression,0.9521030130959314,0.6323495796385505,-0.00039686066065041,0.879214,True
+R02,ComPlat OOF after global preselection,17937,chemberta__atom_gnn__rf,ChemBERTa,atom-level 2D GNN,random forest,0.9539219748302774,0.6267319771685309,0.0004764727929051736,0.879214,True
+R02,ComPlat OOF after global preselection,17937,chemberta__murcko_gnn__rf,ChemBERTa,Murcko-subgroup GNN,random forest,0.9561549591652945,0.6304812545425896,0.0026638713875006517,0.879214,True
+R02,ComPlat OOF after global preselection,17937,mordred__chemberta__rf,Mordred,ChemBERTa,random forest,0.9600229756753993,0.6371738481726421,0.002043766698532549,0.879214,True
+R02,ComPlat OOF after global preselection,17937,mordred__three_d_gnn__rf,Mordred,3D-MPNN,random forest,0.9624258005266157,0.6161447877011761,-0.006409770804673926,0.879214,True
+R02,ComPlat OOF after global preselection,17937,chemberta__three_d_gnn__xgb,ChemBERTa,3D-MPNN,XGBoost,0.9634911343886072,0.6417513185925171,0.0002604013193945487,0.879214,True
+R02,ComPlat OOF after global preselection,17937,mordred__three_d_gnn__xgb,Mordred,3D-MPNN,XGBoost,0.9668962336805078,0.6340001041684268,-0.003724749852870039,0.879214,True
+R02,ComPlat OOF after global preselection,17937,mordred__ecfp__mlp,Mordred,ECFP,multilayer perceptron,0.9678391393032321,0.6422892067524177,0.02756099735610568,0.879214,True
+R02,ComPlat OOF after global preselection,17937,chemberta__atom_gnn__ridge,ChemBERTa,atom-level 2D GNN,ridge regression,0.9705708312548313,0.6446874063034774,0.0023310842552932195,0.879214,True
+R02,ComPlat OOF after global preselection,17937,mordred__atom_gnn__rf,Mordred,atom-level 2D GNN,random forest,0.9711763541194453,0.6367869790269906,-0.002428130957764246,0.879214,True
+R02,ComPlat OOF after global preselection,17937,chemberta__three_d_gnn__mlp,ChemBERTa,3D-MPNN,multilayer perceptron,0.9712475657519546,0.6400746433049724,0.004463796759361037,0.879214,True
+R02,ComPlat OOF after global preselection,17937,ecfp__chemberta__rf,ECFP,ChemBERTa,random forest,0.9713198438550097,0.6476032151852475,0.0025208298706529864,0.879214,True
+R02,ComPlat OOF after global preselection,17937,chemberta__brics_gnn__xgb,ChemBERTa,BRICS-subgroup GNN,XGBoost,0.9721049617923399,0.647595662655428,0.002370469731449515,0.879214,True
+R02,ComPlat OOF after global preselection,17937,chemberta__brics_gnn__ridge,ChemBERTa,BRICS-subgroup GNN,ridge regression,0.9728406279121027,0.6453697813086597,-0.0014414242258111586,0.879214,True
+R02,ComPlat OOF after global preselection,17937,mordred__chemberta__ridge,Mordred,ChemBERTa,ridge regression,0.9741886742527576,0.6513652539752014,0.0005833477147036983,0.879214,True
+R02,ComPlat OOF after global preselection,17937,chemberta__murcko_gnn__ridge,ChemBERTa,Murcko-subgroup GNN,ridge regression,0.9749079651829123,0.6515263535764357,0.0027530466068116516,0.879214,True
+R02,ComPlat OOF after global preselection,17937,chemberta__murcko_gnn__xgb,ChemBERTa,Murcko-subgroup GNN,XGBoost,0.9756910699358086,0.6544642153832163,0.003906359028563865,0.879214,True
+R02,ComPlat OOF after global preselection,17937,mordred__three_d_gnn__mlp,Mordred,3D-MPNN,multilayer perceptron,0.9761605172737179,0.6283646835014017,0.007138491373649587,0.879214,True
+R02,ComPlat OOF after global preselection,17937,mordred__atom_gnn__mlp,Mordred,atom-level 2D GNN,multilayer perceptron,0.9765386641177207,0.650260398087458,0.02553218035733852,0.879214,True
+R02,ComPlat OOF after global preselection,17937,chemberta__atom_gnn__xgb,ChemBERTa,atom-level 2D GNN,XGBoost,0.9766408503234856,0.6508012746546156,0.0062204257627384825,0.879214,True
+R02,ComPlat OOF after global preselection,17937,ecfp__chemberta__ridge,ECFP,ChemBERTa,ridge regression,0.9775441173972298,0.6545619956157804,0.002046768564534212,0.879214,True
+R02,ComPlat OOF after global preselection,17937,mordred__three_d_gnn__ridge,Mordred,3D-MPNN,ridge regression,0.9790040692872385,0.6580395546172172,-0.0044741310475736856,0.879214,True
+R02,ComPlat OOF after global preselection,17937,mordred__chemberta__mlp,Mordred,ChemBERTa,multilayer perceptron,0.9805185317840941,0.6513159769710722,0.005340626925859183,0.879214,True
+R02,ComPlat OOF after global preselection,17937,ecfp__chemberta__mlp,ECFP,ChemBERTa,multilayer perceptron,0.9832244302276553,0.6626259427591854,0.00026333562928828263,0.879214,True
+R02,ComPlat OOF after global preselection,17937,chemberta__three_d_gnn__knn,ChemBERTa,3D-MPNN,k-nearest neighbours,0.9835232140844709,0.6719975409769499,-0.03323821380888616,0.879214,True
+R02,ComPlat OOF after global preselection,17937,brics_gnn__three_d_gnn__rf,BRICS-subgroup GNN,3D-MPNN,random forest,0.98472358337364,0.6468877816470459,-0.009496688341115677,0.879214,True
+R02,ComPlat OOF after global preselection,17937,chemberta__atom_gnn__mlp,ChemBERTa,atom-level 2D GNN,multilayer perceptron,0.9884584106925206,0.6655637874667951,-0.010935322829844012,0.879214,True
+R02,ComPlat OOF after global preselection,17937,chemberta__brics_gnn__knn,ChemBERTa,BRICS-subgroup GNN,k-nearest neighbours,0.9887911649131266,0.672319474536791,0.008543807575942681,0.879214,True
+R02,ComPlat OOF after global preselection,17937,mordred__brics_gnn__rf,Mordred,BRICS-subgroup GNN,random forest,0.9888320188869703,0.6474882824664884,-0.0023073551247088683,0.879214,True
+R02,ComPlat OOF after global preselection,17937,mordred__murcko_gnn__mlp,Mordred,Murcko-subgroup GNN,multilayer perceptron,0.990208425075619,0.6566643782684916,0.011210664356583482,0.879214,True
+R02,ComPlat OOF after global preselection,17937,mordred__chemberta__xgb,Mordred,ChemBERTa,XGBoost,0.9905943631994761,0.6697792646297546,0.001296811839784248,0.879214,True
+R02,ComPlat OOF after global preselection,17937,chemberta__atom_gnn__knn,ChemBERTa,atom-level 2D GNN,k-nearest neighbours,0.9910583401305602,0.6738675817406268,0.013138586455380356,0.879214,True
+R02,ComPlat OOF after global preselection,17937,chemberta__murcko_gnn__knn,ChemBERTa,Murcko-subgroup GNN,k-nearest neighbours,0.9923233634262418,0.6765770118066475,0.01309043678196531,0.879214,True
+R02,ComPlat OOF after global preselection,17937,chemberta__murcko_gnn__mlp,ChemBERTa,Murcko-subgroup GNN,multilayer perceptron,0.9928718940412695,0.6704406902705157,0.000498306507152234,0.879214,True
+R02,ComPlat OOF after global preselection,17937,murcko_gnn__three_d_gnn__rf,Murcko-subgroup GNN,3D-MPNN,random forest,0.9947783790502392,0.6500639114865933,-0.0050304637036243886,0.879214,True
+R02,ComPlat OOF after global preselection,17937,ecfp__chemberta__xgb,ECFP,ChemBERTa,XGBoost,0.9950160341569253,0.6756549001219387,0.0001347625435828195,0.879214,True
+R02,ComPlat OOF after global preselection,17937,mordred__ecfp__ridge,Mordred,ECFP,ridge regression,0.995432361872405,0.6821929216106423,0.002236771182829809,0.879214,True
+R02,ComPlat OOF after global preselection,17937,chemberta__brics_gnn__mlp,ChemBERTa,BRICS-subgroup GNN,multilayer perceptron,0.9956832034702845,0.664986990620915,-0.006316172026795308,0.879214,True
+R02,ComPlat OOF after global preselection,17937,atom_gnn__brics_gnn__rf,atom-level 2D GNN,BRICS-subgroup GNN,random forest,0.997233117309257,0.6616589531011089,-0.004071395809390859,0.879214,True
+R02,ComPlat OOF after global preselection,17937,mordred__atom_gnn__ridge,Mordred,atom-level 2D GNN,ridge regression,0.9991784599477006,0.6783823426116423,-0.00320963324765732,0.879214,True
+R02,ComPlat OOF after global preselection,17937,murcko_gnn__three_d_gnn__mlp,Murcko-subgroup GNN,3D-MPNN,multilayer perceptron,0.9994273788658748,0.6613001617448894,0.015961870569772982,0.879214,True
+R02,ComPlat OOF after global preselection,17937,mordred__brics_gnn__mlp,Mordred,BRICS-subgroup GNN,multilayer perceptron,1.001501819511734,0.659558396929204,-0.03117895616605733,0.879214,True
+R02,ComPlat OOF after global preselection,17937,brics_gnn__three_d_gnn__xgb,BRICS-subgroup GNN,3D-MPNN,XGBoost,1.0021852794907298,0.6746633442009662,-3.901492194402608e-05,0.879214,True
+R02,ComPlat OOF after global preselection,17937,atom_gnn__murcko_gnn__rf,atom-level 2D GNN,Murcko-subgroup GNN,random forest,1.0029414186624215,0.6646965940203055,0.0007341869478788503,0.879214,True
+R02,ComPlat OOF after global preselection,17937,ecfp__brics_gnn__rf,ECFP,BRICS-subgroup GNN,random forest,1.0036013075959904,0.6589422259174459,-0.003612520962431276,0.879214,True
+R02,ComPlat OOF after global preselection,17937,mordred__atom_gnn__knn,Mordred,atom-level 2D GNN,k-nearest neighbours,1.0047586878043315,0.6852530595074126,0.035520662214285695,0.879214,True
+R02,ComPlat OOF after global preselection,17937,mordred__ecfp__xgb,Mordred,ECFP,XGBoost,1.006119895605351,0.6977400308381602,0.0011434745464503546,0.879214,True
+R02,ComPlat OOF after global preselection,17937,mordred__chemberta__knn,Mordred,ChemBERTa,k-nearest neighbours,1.0070817598777684,0.6920968320988695,0.03220170190986435,0.879214,True
+R02,ComPlat OOF after global preselection,17937,brics_gnn__three_d_gnn__ridge,BRICS-subgroup GNN,3D-MPNN,ridge regression,1.0070916793304507,0.6813820400741356,-0.005445848500432768,0.879214,True
+R02,ComPlat OOF after global preselection,17937,atom_gnn__brics_gnn__xgb,atom-level 2D GNN,BRICS-subgroup GNN,XGBoost,1.0072867114024595,0.6872731935197091,0.0017640664155778557,0.879214,True
+R02,ComPlat OOF after global preselection,17937,mordred__atom_gnn__xgb,Mordred,atom-level 2D GNN,XGBoost,1.008036159185108,0.6921678514167235,0.0001264549656313835,0.879214,True
+R02,ComPlat OOF after global preselection,17937,mordred__murcko_gnn__rf,Mordred,Murcko-subgroup GNN,random forest,1.0100551214886977,0.6634088360665459,-0.000902317363335673,0.879214,True
+R02,ComPlat OOF after global preselection,17937,atom_gnn__brics_gnn__knn,atom-level 2D GNN,BRICS-subgroup GNN,k-nearest neighbours,1.0120164136003842,0.6792753970117996,-0.001519186892049453,0.879214,True
+R02,ComPlat OOF after global preselection,17937,mordred__brics_gnn__knn,Mordred,BRICS-subgroup GNN,k-nearest neighbours,1.0121067003313353,0.6858665594839554,0.020526667606548504,0.879214,True
+R02,ComPlat OOF after global preselection,17937,murcko_gnn__three_d_gnn__xgb,Murcko-subgroup GNN,3D-MPNN,XGBoost,1.013538488568569,0.680892885028948,0.0020009671531894973,0.879214,True
+R02,ComPlat OOF after global preselection,17937,murcko_gnn__three_d_gnn__ridge,Murcko-subgroup GNN,3D-MPNN,ridge regression,1.0139685487217198,0.688155881669271,-0.0032228422707671314,0.879214,True
+R02,ComPlat OOF after global preselection,17937,ecfp__chemberta__knn,ECFP,ChemBERTa,k-nearest neighbours,1.0151590450111816,0.7007613746110747,0.03199448053314818,0.879214,True
+R02,ComPlat OOF after global preselection,17937,atom_gnn__brics_gnn__ridge,atom-level 2D GNN,BRICS-subgroup GNN,ridge regression,1.0156317091897933,0.6886056878729839,-0.0008392795975036865,0.879214,True
+R02,ComPlat OOF after global preselection,17937,mordred__brics_gnn__ridge,Mordred,BRICS-subgroup GNN,ridge regression,1.016070964236382,0.6798774421626774,-0.0012699942864605822,0.879214,True
+R02,ComPlat OOF after global preselection,17937,mordred__murcko_gnn__knn,Mordred,Murcko-subgroup GNN,k-nearest neighbours,1.0167774838208101,0.6864346978075946,0.022055659785697367,0.879214,True
+R02,ComPlat OOF after global preselection,17937,mordred__murcko_gnn__ridge,Mordred,Murcko-subgroup GNN,ridge regression,1.0168646319749426,0.6910687440749178,-0.0005671649767127275,0.879214,True
+R02,ComPlat OOF after global preselection,17937,mordred__brics_gnn__xgb,Mordred,BRICS-subgroup GNN,XGBoost,1.0187321249925596,0.6999723080807716,0.0005305074193231848,0.879214,True
+R02,ComPlat OOF after global preselection,17937,atom_gnn__murcko_gnn__xgb,atom-level 2D GNN,Murcko-subgroup GNN,XGBoost,1.0193078495924688,0.6965603879623672,0.003002075805230534,0.879214,True
+R02,ComPlat OOF after global preselection,17937,atom_gnn__murcko_gnn__ridge,atom-level 2D GNN,Murcko-subgroup GNN,ridge regression,1.0200504842356908,0.69561935813231,0.001500831466070327,0.879214,True
+R02,ComPlat OOF after global preselection,17937,atom_gnn__murcko_gnn__knn,atom-level 2D GNN,Murcko-subgroup GNN,k-nearest neighbours,1.0211774259780475,0.6846379909055446,0.007780086484718633,0.879214,True
+R02,ComPlat OOF after global preselection,17937,ecfp__brics_gnn__ridge,ECFP,BRICS-subgroup GNN,ridge regression,1.0242119597851442,0.6943007652310502,0.0015604321905155177,0.879214,True
+R02,ComPlat OOF after global preselection,17937,ecfp__brics_gnn__mlp,ECFP,BRICS-subgroup GNN,multilayer perceptron,1.0257140745102928,0.6861399952684961,0.01382098879783882,0.879214,True
+R02,ComPlat OOF after global preselection,17937,brics_gnn__three_d_gnn__mlp,BRICS-subgroup GNN,3D-MPNN,multilayer perceptron,1.0287867768496022,0.6765313162034269,0.006727920896623993,0.879214,True
+R02,ComPlat OOF after global preselection,17937,mordred__three_d_gnn__knn,Mordred,3D-MPNN,k-nearest neighbours,1.0297815094546525,0.6984322545173259,0.002896489765024408,0.879214,True
+R02,ComPlat OOF after global preselection,17937,ecfp__murcko_gnn__mlp,ECFP,Murcko-subgroup GNN,multilayer perceptron,1.031086556932191,0.6952553784346805,0.0007867315747005038,0.879214,True
+R02,ComPlat OOF after global preselection,17937,atom_gnn__murcko_gnn__mlp,atom-level 2D GNN,Murcko-subgroup GNN,multilayer perceptron,1.0314101620157885,0.7013700443401117,0.010204719020560346,0.879214,True
+R02,ComPlat OOF after global preselection,17937,ecfp__brics_gnn__knn,ECFP,BRICS-subgroup GNN,k-nearest neighbours,1.0314212121590414,0.6929771368829073,0.013211990493211636,0.879214,True
+R02,ComPlat OOF after global preselection,17937,ecfp__murcko_gnn__rf,ECFP,Murcko-subgroup GNN,random forest,1.0324113827428267,0.6773737093391805,-0.0019251374938104272,0.879214,True
+R02,ComPlat OOF after global preselection,17937,brics_gnn__three_d_gnn__knn,BRICS-subgroup GNN,3D-MPNN,k-nearest neighbours,1.0335888331936938,0.6997424160987873,-0.07646759833195045,0.879214,True
+R02,ComPlat OOF after global preselection,17937,murcko_gnn__three_d_gnn__knn,Murcko-subgroup GNN,3D-MPNN,k-nearest neighbours,1.036080946471556,0.6986788499192788,-0.05946556598554216,0.879214,True
+R02,ComPlat OOF after global preselection,17937,brics_gnn__murcko_gnn__knn,BRICS-subgroup GNN,Murcko-subgroup GNN,k-nearest neighbours,1.0367821112347044,0.6938634541018447,-0.009011965135077953,0.879214,True
+R02,ComPlat OOF after global preselection,17937,mordred__murcko_gnn__xgb,Mordred,Murcko-subgroup GNN,XGBoost,1.0374234213472735,0.7127119024119208,-0.0003408429069758073,0.879214,True
+R02,ComPlat OOF after global preselection,17937,brics_gnn__murcko_gnn__rf,BRICS-subgroup GNN,Murcko-subgroup GNN,random forest,1.0382532726758062,0.6919111889941563,-0.007615580715566742,0.879214,True
+R02,ComPlat OOF after global preselection,17937,ecfp__murcko_gnn__ridge,ECFP,Murcko-subgroup GNN,ridge regression,1.039512442730722,0.7051263408111256,0.0027704008102979343,0.879214,True
+R02,ComPlat OOF after global preselection,17937,ecfp__atom_gnn__mlp,ECFP,atom-level 2D GNN,multilayer perceptron,1.0430885239184304,0.7036045952790487,0.02305424138040171,0.879214,True
+R02,ComPlat OOF after global preselection,17937,ecfp__atom_gnn__rf,ECFP,atom-level 2D GNN,random forest,1.0467424705452952,0.688871855869712,0.008690253891946928,0.879214,True
+R02,ComPlat OOF after global preselection,17937,ecfp__brics_gnn__xgb,ECFP,BRICS-subgroup GNN,XGBoost,1.0497084863769142,0.7249026578761649,0.0013488705276283564,0.879214,True
+R02,ComPlat OOF after global preselection,17937,brics_gnn__murcko_gnn__xgb,BRICS-subgroup GNN,Murcko-subgroup GNN,XGBoost,1.0512832106975927,0.7222660198746056,-0.0019788068335619075,0.879214,True
+R02,ComPlat OOF after global preselection,17937,ecfp__murcko_gnn__knn,ECFP,Murcko-subgroup GNN,k-nearest neighbours,1.0513889636661775,0.7092397932240759,0.019309095083958585,0.879214,True
+R02,ComPlat OOF after global preselection,17937,brics_gnn__murcko_gnn__ridge,BRICS-subgroup GNN,Murcko-subgroup GNN,ridge regression,1.0518236526466955,0.7198455489910092,-0.0026809301887274544,0.879214,True
+R02,ComPlat OOF after global preselection,17937,atom_gnn__three_d_gnn__rf,atom-level 2D GNN,3D-MPNN,random forest,1.057360723540862,0.70108381850902,-0.019444053324074617,0.879214,True
+R02,ComPlat OOF after global preselection,17937,ecfp__atom_gnn__knn,ECFP,atom-level 2D GNN,k-nearest neighbours,1.0584040940120745,0.7018089001535274,0.07341457247321029,0.879214,True
+R02,ComPlat OOF after global preselection,17937,ecfp__atom_gnn__ridge,ECFP,atom-level 2D GNN,ridge regression,1.0617305003685757,0.7211246028037956,-0.0013499014512854167,0.879214,True
+R02,ComPlat OOF after global preselection,17937,atom_gnn__three_d_gnn__mlp,atom-level 2D GNN,3D-MPNN,multilayer perceptron,1.0635331230658351,0.7147025778107459,0.021472594590068627,0.879214,True
+R02,ComPlat OOF after global preselection,17937,atom_gnn__three_d_gnn__ridge,atom-level 2D GNN,3D-MPNN,ridge regression,1.0726508198988016,0.7361990398810389,-0.010693096655960268,0.879214,True
+R02,ComPlat OOF after global preselection,17937,atom_gnn__three_d_gnn__xgb,atom-level 2D GNN,3D-MPNN,XGBoost,1.0738728385049559,0.7260256835256926,-0.00358944677870045,0.879214,True
+R02,ComPlat OOF after global preselection,17937,ecfp__murcko_gnn__xgb,ECFP,Murcko-subgroup GNN,XGBoost,1.0747418821294596,0.7419775540834577,0.0026974828622501,0.879214,True
+R02,ComPlat OOF after global preselection,17937,mordred__ecfp__knn,Mordred,ECFP,k-nearest neighbours,1.0765628767483135,0.7432049379249193,0.047265259299750124,0.879214,True
+R02,ComPlat OOF after global preselection,17937,brics_gnn__murcko_gnn__mlp,BRICS-subgroup GNN,Murcko-subgroup GNN,multilayer perceptron,1.0818671467317895,0.7319983770941961,0.0009861697108840936,0.879214,True
+R02,ComPlat OOF after global preselection,17937,atom_gnn__three_d_gnn__knn,atom-level 2D GNN,3D-MPNN,k-nearest neighbours,1.088204750981419,0.7387042440667909,-0.0820757323947092,0.879214,True
+R02,ComPlat OOF after global preselection,17937,ecfp__atom_gnn__xgb,ECFP,atom-level 2D GNN,XGBoost,1.098438482495408,0.7607604240025007,0.004079528808281425,0.879214,True
+R02,ComPlat OOF after global preselection,17937,ecfp__three_d_gnn__mlp,ECFP,3D-MPNN,multilayer perceptron,1.1114672400587224,0.7518047984319842,-0.00405896570567304,0.879214,True
+R02,ComPlat OOF after global preselection,17937,atom_gnn__brics_gnn__mlp,atom-level 2D GNN,BRICS-subgroup GNN,multilayer perceptron,1.122372589018686,0.7697482726581395,0.1202856553722366,0.879214,True
+R02,ComPlat OOF after global preselection,17937,ecfp__three_d_gnn__ridge,ECFP,3D-MPNN,ridge regression,1.147966003229083,0.803399436312783,-0.004015659298386818,0.879214,True
+R02,ComPlat OOF after global preselection,17937,ecfp__three_d_gnn__rf,ECFP,3D-MPNN,random forest,1.2101295237477656,0.8319563923932252,0.021458416457641894,0.879214,True
+R02,ComPlat OOF after global preselection,17937,ecfp__three_d_gnn__knn,ECFP,3D-MPNN,k-nearest neighbours,1.2898573336347772,0.8895709009873324,0.07725385590933141,0.879214,True
+R02,ComPlat OOF after global preselection,17937,ecfp__three_d_gnn__xgb,ECFP,3D-MPNN,XGBoost,1.2997259998346764,0.9296780462721542,-0.004812800387558109,0.879214,True
 R03,TDC OOF,7985,atom_gnn__brics_gnn__rf,atom-level 2D GNN,BRICS-subgroup GNN,random forest,0.9962682751500259,0.6545918291406877,0.001653474160424388,0.986334,True
 R03,TDC OOF,7985,mordred__brics_gnn__rf,Mordred,BRICS-subgroup GNN,random forest,0.9975961833685024,0.664074584934378,0.00424374095257895,0.986334,True
 R03,TDC OOF,7985,atom_gnn__brics_gnn__knn,atom-level 2D GNN,BRICS-subgroup GNN,k-nearest neighbours,1.0018364635848098,0.6635146971798163,0.024014565894162603,0.986334,True

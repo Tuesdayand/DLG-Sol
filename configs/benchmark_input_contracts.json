@@ -1,0 +1,130 @@
+{
+  "schema_version": 1,
+  "network_default": "deny",
+  "redistribution_status": "not_bundled_local_use_only",
+  "files": {
+    "molecules": {
+      "path": "molecules.csv",
+      "columns": ["record_id", "smiles"]
+    },
+    "labels": {
+      "path": "labels.csv",
+      "columns": ["record_id", "logS"]
+    },
+    "partitions": {
+      "path": "partitions.csv",
+      "columns": ["record_id", "fold_index", "role"]
+    },
+    "derivation": {
+      "path": "derivation.json"
+    }
+  },
+  "evaluation_contracts": [
+    {
+      "evaluation_id": "R01",
+      "dataset_id": "aqsoldbc",
+      "upstream_source_id": "llompart_aqsoldbc_dataset",
+      "fold_indices": [0, 1, 2, 3, 4],
+      "required_roles": ["fit", "reserved", "scored"],
+      "scored_assignment": "one_held_out_prediction",
+      "expected_scored_rows": 8047
+    },
+    {
+      "evaluation_id": "R02",
+      "dataset_id": "complat",
+      "upstream_source_id": "complat",
+      "fold_indices": [0, 1, 2, 3, 4],
+      "required_roles": ["fit", "scored"],
+      "scored_assignment": "one_held_out_prediction",
+      "expected_scored_rows": 17937
+    },
+    {
+      "evaluation_id": "R03",
+      "dataset_id": "tdc",
+      "upstream_source_id": "tdc_dataset",
+      "fold_indices": [0, 1, 2, 3, 4],
+      "required_roles": ["fit", "reserved", "scored"],
+      "scored_assignment": "one_held_out_prediction",
+      "expected_scored_rows": 7985
+    },
+    {
+      "evaluation_id": "R04",
+      "dataset_id": "tdc",
+      "upstream_source_id": "tdc_dataset",
+      "fold_indices": [0, 1, 2, 3, 4],
+      "required_roles": ["fit", "reserved", "scored"],
+      "scored_assignment": "same_rows_in_every_fold",
+      "expected_scored_rows": 1997
+    },
+    {
+      "evaluation_id": "R05",
+      "dataset_id": "jchem",
+      "upstream_source_id": "jchem_dataset",
+      "fold_indices": [1, 2, 3, 4, 5],
+      "required_roles": ["fit", "coefficient", "scored"],
+      "scored_assignment": "same_rows_in_every_fold",
+      "expected_scored_rows": 980
+    },
+    {
+      "evaluation_id": "R09",
+      "dataset_id": "complat",
+      "upstream_source_id": "complat",
+      "fold_indices": [0],
+      "required_roles": ["fit", "scored"],
+      "scored_assignment": "single_full_refit",
+      "expected_scored_rows": 1282
+    }
+  ],
+  "source_evidence": {
+    "llompart_aqsoldbc_dataset": {
+      "status": "pinned_dataverse_object_verified",
+      "objects": [
+        {
+          "path": "AqSolDBc.tab (file id 569036; original CSV download)",
+          "bytes": 2333803,
+          "sha256": "d41e512b43d66d838c8d3644df6ea99d37e0b60ee7705f0f1631da4d37011fc1"
+        }
+      ]
+    },
+    "complat": {
+      "status": "pinned_repository_objects_verified",
+      "objects": [
+        {
+          "path": "data/final_data/final_unique_train.csv",
+          "bytes": 2814578,
+          "sha256": "8f57b8e7ecf640f861f35bb17ff61b7b9c0592aa675ef8a186a429a4b6fab00f"
+        },
+        {
+          "path": "data/final_data/final_unique_test.csv",
+          "bytes": 138236,
+          "sha256": "5a34e2ab090fbabd48cea483f8d554e2cde33767b5a0acba9eb1c4f45395134a"
+        }
+      ]
+    },
+    "tdc_dataset": {
+      "status": "pinned_historical_runtime_exports_verified",
+      "objects": [
+        {
+          "path": "TDC_AqSol_benchmark_train_val.csv",
+          "bytes": 334137,
+          "sha256": "6a93ef8265f03950a29e916a8e8a4878f9c3f6324bfe4e02cbf50493b0843d39"
+        },
+        {
+          "path": "TDC_AqSol_benchmark_test.csv",
+          "bytes": 98645,
+          "sha256": "f04dc12b97a5f3ee219e008f0eeadecf92beae88d429ff88e78faa3e47186b72"
+        }
+      ]
+    },
+    "jchem_dataset": {
+      "status": "pinned_repository_objects_verified",
+      "objects": [
+        {
+          "path": "dataset.xlsx",
+          "bytes": 3132459,
+          "sha256": "416375f45fb58806a67b7124f5ab40b54faa50f329669338244c579fad6f4af1"
+        }
+      ]
+    }
+  }
+}

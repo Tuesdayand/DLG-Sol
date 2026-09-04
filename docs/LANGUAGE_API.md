@@ -10,6 +10,8 @@ Gate L1 exports three molecular-language encoder contracts evaluated during deve
 
 Only the second variant, single-task fine-tuning with two randomized training SMILES per molecule, supplies the final `aug2_head4` neural component. The multitask and canonical single-task variants are preserved as development candidates and are not final DLG-Sol members. All three initialize from `seyonec/ChemBERTa-zinc-base-v1`, fine-tune every encoder layer, tokenize to 256 positions, and use a masked mean over non-padding final-layer states. Inference always uses the canonical SMILES and produces one 768-dimensional embedding per molecule. The exact settings and their scopes are machine-readable in `configs/chemberta_variants.json`.
 
+The same file records evaluation-specific execution profiles. R01, R03, and R05 select a checkpoint within their declared development partition. R02 uses the frozen ComPlat development selection of 14 epochs for each outer-fold refit, and R09 transfers that epoch count to its full-training refit. R04 reuses the corresponding R03 encoder. `scripts/train_language_unit.py` accepts a materialized language unit and writes label-free predictions, embeddings, model state, selection information, and a run manifest. `--seed-offset` creates an explicitly distinct replication.
+
 The historical records did not preserve the immutable revision identifier of the initial pretrained repository. The identifier is known, and each resulting fine-tuned checkpoint is hash-audited internally, but the release does not claim bitwise reproducibility of the original pretrained download. Fine-tuned checkpoints are not included in this gate.
 
 ## Randomized-SMILES variant

@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "gate": "v1c_result_regeneration",
+  "status": "PASS",
+  "audit_date": "2026-09-04",
+  "fresh_six_evaluation_retraining_claimed": false,
+  "required_artefacts": [
+    {
+      "role": "metric and paired-bootstrap parity",
+      "path": "results/verified_manifests/core_module_parity.json",
+      "sha256": "e95bdf760482d6be4d913f8239c8093bc1da7ef51a2b2bd3668d5d89d73c1f3c"
+    },
+    {
+      "role": "six-evaluation assembly and scoring parity",
+      "path": "results/verified_manifests/evaluation_runner_parity.json",
+      "sha256": "450189d859f2f80f2639ec86f6f45ed39a8a68c3d7290f2a6ad0200d3f3c944e"
+    },
+    {
+      "role": "Table 2 regeneration",
+      "path": "results/verified_manifests/table_2_regeneration.json",
+      "sha256": "9d54fa90d2ef063bd1134b9882c1f22e3e2895b9974c2d8c43d9817bb527e72f"
+    },
+    {
+      "role": "Figure 2 regeneration",
+      "path": "results/verified_manifests/figure_2_regeneration.json",
+      "sha256": "921342e5e00de3eeb0088b0d822a4ba5e7068f38a84dd60cfda7215909256ac2"
+    },
+    {
+      "role": "machine-readable Supplementary table registry",
+      "path": "configs/machine_readable_tables.json",
+      "sha256": "b47753817428f3fc41a005ac200fc20e1747f5fbabf309a97eee43d4549cdc9e"
+    },
+    {
+      "role": "clean-environment analysis smoke",
+      "path": "results/verified_manifests/clean_environment_smoke.json",
+      "sha256": "962599fc17d34aac7e1e4301445233ea145685decf3ecb60ce1b0ddbdfcb95f2"
+    }
+  ],
+  "machine_readable_supplementary_tables": 7,
+  "table_2_regeneration_status": "PASS",
+  "figure_2_regeneration_status": "PASS",
+  "metric_parity_maximum_absolute_difference": 0.0,
+  "bootstrap_parity_maximum_absolute_difference": 0.0,
+  "public_result_regeneration_scope_complete": true
+}

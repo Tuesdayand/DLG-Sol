@@ -11,10 +11,10 @@
       "automatic_download": false
     },
     {
-      "source_id": "aqsoldbc_derivative",
-      "url": "https://github.com/mcsorkun/AqSolDB",
-      "revision": "8e02b548fd9a78778ff89a5aa9a460d1a289cc3a",
-      "licence_status": "derivative_lineage_package_pending",
+      "source_id": "llompart_aqsoldbc_dataset",
+      "url": "https://doi.org/10.57745/CZVZIA",
+      "revision": "2.0",
+      "licence_status": "etalab_2_0",
       "acquisition_mode": "user_supplied_local_package",
       "automatic_download": false
     },
@@ -22,7 +22,7 @@
       "source_id": "complat",
       "url": "https://github.com/ComPlat/water-solubility-prediction",
       "revision": "d4feda24b4bcb9efee9953605ba56af0e52dba4d",
-      "licence_status": "no_repository_licence_identified",
+      "licence_status": "readme_declares_mit_no_license_file_dataset_rights_not_established",
       "acquisition_mode": "user_supplied_local_package",
       "automatic_download": false
     },
@@ -38,7 +38,7 @@
       "source_id": "jchem_dataset",
       "url": "https://github.com/nadinulrich/log_Sw_prediction",
       "revision": "3da09dc96acde6c5c51d784307559067864ca779",
-      "licence_status": "dataset_specific_review_pending",
+      "licence_status": "repository_mit_dataset_included_no_separate_data_notice",
       "acquisition_mode": "user_supplied_local_package",
       "automatic_download": false
     },
@@ -46,13 +46,15 @@
       "source_id": "chemberta_zinc_base_v1",
       "url": "https://huggingface.co/seyonec/ChemBERTa-zinc-base-v1",
       "revision": "761d6a18cf99db371e0b43baf3e2d21b3e865a20",
+      "revision_role": "revision observed at the provenance audit; not an identifier recorded by the historical training run",
+      "revision_used_in_historical_run": null,
       "licence_status": "no_explicit_licence_in_retrieved_metadata",
       "acquisition_mode": "identifier_only_no_bundled_weights",
       "automatic_download": false
     }
   ],
   "evaluation_source_map": {
-    "R01": "aqsoldbc_derivative",
+    "R01": "llompart_aqsoldbc_dataset",
     "R02": "complat",
     "R03": "tdc_dataset",
     "R04": "tdc_dataset",

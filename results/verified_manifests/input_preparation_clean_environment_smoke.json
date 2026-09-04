@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "gate": "benchmark_input_preparation_v1a3",
+  "status": "PASS",
+  "environment": {
+    "numpy": "1.26.4",
+    "pandas": "2.2.3",
+    "scikit_learn": "1.6.1",
+    "openpyxl": "3.1.5",
+    "rdkit": "2026.03.1"
+  },
+  "tests_discovered": 6,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "pinned_source_execution": {
+    "R02": "PASS",
+    "R05": "PASS",
+    "R09": "PASS"
+  },
+  "generated_output_hashes_match_recipes": true
+}

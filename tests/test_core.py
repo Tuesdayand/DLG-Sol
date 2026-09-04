@@ -30,6 +30,9 @@ class EvaluationRegistryTests(unittest.TestCase):
         self.assertEqual([spec.evaluation_id for spec in specs], ["R01", "R02", "R03", "R04", "R05", "R09"])
         self.assertEqual(sum(spec.expected_rows for spec in specs), 38228)
         self.assertEqual(registry_by_id()["R01"].coefficient_policy, "prespecified 0.5 in every outer fold")
+        r02 = registry_by_id()["R02"]
+        self.assertEqual(r02.display_name, "ComPlat OOF after global preselection")
+        self.assertIn("not nested", r02.selection_label_access)
 
 
 class LabelFirewallTests(unittest.TestCase):

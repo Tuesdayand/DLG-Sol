@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "gate": "training_branch_execution_b3",
+  "status": "PASS",
+  "scope": "user-local JCheM split-1 descriptor integration using a pinned historical raw-descriptor cache plus static contracts for all four branch entry points",
+  "model_identity": "aug2_head4",
+  "entry_points": [
+    "scripts/train_descriptor_unit.py",
+    "scripts/train_language_unit.py",
+    "scripts/train_geometry_unit.py",
+    "scripts/train_fusion_unit.py"
+  ],
+  "input_boundary": {
+    "required_primary_input": "materialized training-unit directory",
+    "original_benchmark_table_accepted_by_branch_cli": false,
+    "scored_labels_permitted": false,
+    "run_manifest_required": true
+  },
+  "user_local_descriptor_integration": {
+    "evaluation_id": "R05",
+    "fold_index": 1,
+    "benchmark_rows": 9798,
+    "parameter_fit_rows": 6860,
+    "selection_score_rows": 1958,
+    "scored_prediction_rows": 980,
+    "scored_prediction_columns": [
+      "record_id",
+      "smiles"
+    ],
+    "raw_descriptor_columns": 1613,
+    "descriptor_recomputation_exercised": false,
+    "retained_descriptor_columns": 571,
+    "selected_trial": 3,
+    "recorded_selected_trial": 3,
+    "prediction_rows": 980,
+    "prediction_columns": [
+      "record_id",
+      "prediction"
+    ],
+    "all_predictions_finite": true,
+    "scored_labels_accessed": false,
+    "historical_weight_identity_claimed": false,
+    "historical_metric_identity_claimed": false,
+    "source_workbook_sha256": "416375f45fb58806a67b7124f5ab40b54faa50f329669338244c579fad6f4af1",
+    "raw_descriptor_cache_sha256": "29a7a0b889811080728eb932a74e04eeadea94d8bd7593d82466c3ec1436feb8",
+    "input_package_manifest_sha256": "602b7f0d4d16cd7986602c77bbc0aaa236189a05e610d069088fb438163764ba",
+    "materialization_manifest_sha256": "d74a848c9eeb99e5145ec8f6916c2fc4ccf122946c7caaaae68e06662132de63",
+    "run_manifest_sha256": "3e6febb4ee04daa2f24e55d06f9b08c4d1d6f9ae6777532134ff254eeb1f8dac",
+    "prediction_file_sha256": "633c3aad502efaece7badec0c060eea4d244072597ca0ab4751397e2fa632d20",
+    "runtime": {
+      "numpy": "2.4.4",
+      "pandas": "3.0.2",
+      "scikit_learn": "1.8.0",
+      "xgboost": "3.2.0",
+      "rdkit": "2026.03.1"
+    }
+  },
+  "redistributed_row_level_inputs": false,
+  "redistributed_predictions": false,
+  "complete_six_evaluation_fresh_training_claimed": false
+}

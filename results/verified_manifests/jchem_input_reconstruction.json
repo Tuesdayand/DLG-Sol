@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "gate": "jchem_input_reconstruction_v1a3",
+  "status": "PASS",
+  "row_level_inputs_redistributed": false,
+  "source": {
+    "revision": "3da09dc96acde6c5c51d784307559067864ca779",
+    "rows": 9800,
+    "bytes": 3132459,
+    "sha256": "416375f45fb58806a67b7124f5ab40b54faa50f329669338244c579fad6f4af1"
+  },
+  "recipe_sha256": "66825dd97ac60439fe63c77ac58b8e254ed53537ba1ecd0bb522d2521856215b",
+  "generated_files": {
+    "molecules.csv": {
+      "rows": 9798,
+      "sha256": "a516f75ec67b18a5fd0dcc165e512a4435bd5fd888ef72980731f94922942d06"
+    },
+    "labels.csv": {
+      "rows": 9798,
+      "sha256": "b409a952df03ca40eb52da60512a9bcb5d999a2466cc8476ff017cbabecde23c"
+    },
+    "partitions.csv": {
+      "rows": 48990,
+      "sha256": "fb24b2913aa8df83fb12fbe7e4775661e83e258392c995cc83487dcea5633d41"
+    }
+  },
+  "historical_identity": {
+    "valid_rows": 9798,
+    "invalid_source_rows": [8340, 8483],
+    "record_id_order_exact": true,
+    "canonical_smiles_exact": true,
+    "role_assignment_mismatches": 0,
+    "role_assignments_checked": 48990,
+    "fixed_test_rows": 980,
+    "fixed_test_membership_equal_across_five_splits": true,
+    "maximum_test_label_rounding_delta": 0.0050000000000003375
+  },
+  "canonicalization_version_check": {
+    "pinned_reconstruction_version": "RDKit 2026.03.1",
+    "older_comparison_version": "RDKit 2023.09.6",
+    "canonical_smiles_differences": 3,
+    "historical_output_reproduced_by_pinned_input_environment": true
+  }
+}

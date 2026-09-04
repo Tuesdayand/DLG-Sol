@@ -25,7 +25,7 @@ ETKDG and force-field results can vary across RDKit versions and platforms. The 
 
 `DistanceAware3DMPNN` first maps node and edge features to a common hidden dimension. Every layer constructs a message from the receiving node, sending node, and encoded edge, sums incoming messages, applies a residual node update with SiLU activations, and uses layer normalization. Global mean pooling and an embedding head produce one conformer representation. Representations and predictions are averaged arithmetically over retained conformers for each molecule.
 
-The recorded search space contains two to four message-passing layers, hidden dimensions from 96 to 256, five dropout choices, three batch-size choices, log-uniform learning-rate and weight-decay ranges, and either the graph embedding alone or its concatenation with the 19 auxiliary features. Selection-partition RMSE is the checkpoint criterion. Dataset-specific candidate counts and transferred settings are preserved by their training adapters rather than being falsely represented as one universal checkpoint.
+The recorded search space contains two to four message-passing layers, hidden dimensions from 96 to 256, five dropout choices, three batch-size choices, log-uniform learning-rate and weight-decay ranges, and either the graph embedding alone or its concatenation with the 19 auxiliary features. Selection-partition RMSE is the checkpoint criterion. Dataset-specific execution profiles are stored in `configs/geometry_branch.json`: R01 and R05 use the transferred development setting with local checkpoint selection, R02/R09 use the frozen ComPlat setting for 19 epochs, and R03 searches four fold-local candidates. R04 reuses its corresponding R03 model.
 
 ## Public API
 
@@ -50,6 +50,8 @@ Most archived checkpoints contain their model parameters. A legacy checkpoint th
 Graph construction accepts molecular structure, a record identifier, configuration, and seed offset; it has no experimental-label argument. `predict_geometry` rejects scored graph objects that contain a `y` attribute. Fit and selection labels enter only through `fit_geometry_model`, and selection RMSE is used only during development-side checkpoint selection.
 
 `GeometryBuildResult` reports parse, embedding, and graph failures explicitly. Gate G1 does not silently impute failed scored rows. Training-derived fallback construction and language–geometry fusion are handled at later release gates so that their provenance can be audited separately.
+
+`scripts/train_geometry_unit.py` is the unit-level execution entry point. It accepts only a materialized geometry unit and writes a label-free prediction file, complete molecule-level embeddings, conformer status, fitted state, selection record, and run manifest. For R01, the recorded fit-partition-only auxiliary-feature clipping and standardization are also fitted and stored. `--seed-offset` is reserved for explicitly distinct replications.
 
 ## Redistribution boundary
 

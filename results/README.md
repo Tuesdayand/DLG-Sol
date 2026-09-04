@@ -25,3 +25,17 @@ This directory contains compact article-level outputs and manifests connecting p
 `verified_manifests/evaluation_runner_parity.json` records six-evaluation coefficient reconstruction, row-level prediction assembly, metric, and paired-bootstrap parity from provenance-checked local packages without redistributing their contents.
 
 `verified_manifests/evaluation_runner_clean_environment_smoke.json` records the isolated pinned-environment execution of the complete cross-branch and evaluation-runner test suite plus release-validator counterexamples.
+
+`verified_manifests/training_role_contract_parity.json` binds the 126-unit historical training-role contract to source metadata and implementation hashes. It records the non-nested R02 global-preselection exception separately from the zero-overlap final-fitting and coefficient boundaries and does not redistribute row-level inputs.
+
+`verified_manifests/training_role_materialization_parity.json` records successful materialization of all 126 audited units and 20 nested R01 descriptor-selection units from validated local input packages. It confirms that all stage row identities match the contract, every scored view is physically label-free, and the R04/R09 cross-evaluation coefficient dependencies resolve to complete R03/R02 OOF populations.
+
+`verified_manifests/branch_execution_integration.json` records the branch-command contract and one actual user-local JCheM descriptor integration run. The run used the pinned historical raw-descriptor cache, rather than recomputing Mordred values from SMILES, then reproduced the recorded split-1 feature count and selected trial and emitted 980 finite label-free predictions. No molecular rows, predictions, fitted models, or private paths are redistributed in the manifest.
+
+`verified_manifests/training_execution_recipe_parity.json` binds 30 unit-level branch recipes to all 126 audited training-role units without duplicating row counts or hashes. It also records exact reconstruction of the ComPlat 14,351/3,586 global-preselection membership from the pinned original training file under RDKit 2023.09.6.
+
+`verified_manifests/external_adapter_provenance_audit.json` records the identity check of 18 historical files and four repository revisions used to trace the PNNL, Ali XGB-125D, Bhattacharya--Roy, and Consensus GNN comparison evidence. The third-party files and study-specific adapter wrappers are not redistributed.
+
+`verified_manifests/redistribution_decision_audit.json` records the source-by-source and asset-class distribution review. Molecular rows, experimental labels, source-linked predictions, embeddings, conformers, graph caches, and checkpoints remain excluded. Compact aggregate results, configuration records, and original DLG-Sol code remain included.
+
+`verified_manifests/v1c_result_regeneration_audit.json` binds the public metric, paired-bootstrap, Table 2, Figure 2, machine-readable Supplementary table, and clean-environment analysis artefacts. It does not claim fresh six-evaluation retraining.

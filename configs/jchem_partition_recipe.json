@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "source": {
+    "source_id": "jchem_dataset",
+    "revision": "3da09dc96acde6c5c51d784307559067864ca779",
+    "locator": "dataset.xlsx",
+    "bytes": 3132459,
+    "sha256": "416375f45fb58806a67b7124f5ab40b54faa50f329669338244c579fad6f4af1",
+    "dataset_sheet": "dataset_split",
+    "prediction_sheet": "predictions_test_set",
+    "source_rows": 9800,
+    "valid_rows": 9798,
+    "invalid_source_rows": [8340, 8483],
+    "prediction_rows": 981,
+    "valid_prediction_rows": 980
+  },
+  "partition": {
+    "fold_indices": [1, 2, 3, 4, 5],
+    "source_columns": ["Split1", "Split2", "Split3", "Split4", "Split5"],
+    "role_map": {"Train": "fit", "Val": "coefficient", "Test": "scored"},
+    "expected_role_counts": {
+      "1": {"fit": 6860, "coefficient": 1958, "scored": 980},
+      "2": {"fit": 6858, "coefficient": 1960, "scored": 980},
+      "3": {"fit": 6859, "coefficient": 1959, "scored": 980},
+      "4": {"fit": 6858, "coefficient": 1960, "scored": 980},
+      "5": {"fit": 6858, "coefficient": 1960, "scored": 980}
+    }
+  },
+  "label_policy": {
+    "development": "log Sw dataset used",
+    "scored": "SExp from predictions_test_set",
+    "reason": "the released prediction sheet rounds the fixed test labels to two decimals and is the matched-row basis for the reported comparison",
+    "maximum_allowed_absolute_rounding_delta": 0.0050001
+  },
+  "expected_output": {
+    "assignment_sha256": "824a3cfe7e0685fafaaf704e2b4405fca1c7751f286bd7b27968e525e053e2f1",
+    "molecules_sha256": "a516f75ec67b18a5fd0dcc165e512a4435bd5fd888ef72980731f94922942d06",
+    "labels_sha256": "b409a952df03ca40eb52da60512a9bcb5d999a2466cc8476ff017cbabecde23c",
+    "partitions_sha256": "fb24b2913aa8df83fb12fbe7e4775661e83e258392c995cc83487dcea5633d41"
+  }
+}

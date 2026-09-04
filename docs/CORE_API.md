@@ -7,6 +7,8 @@ The first canonical code-export gate contains four small modules under `src/dlg_
 - `blend.py` fits or applies one scalar convex coefficient with the neural prediction weighted by `alpha`;
 - `metrics.py` computes RMSE, MAE, prediction-minus-observation bias, and paired molecular-row bootstrap intervals for an RMSE difference.
 
+The evaluation registry also records selection-label provenance. R02 is explicitly identified as ComPlat OOF after one global Train/Val preselection rather than as nested OOF. The more detailed stage and row-assignment contract is documented in `TRAINING_ROLE_CONTRACT.md`.
+
 The fixed blend is
 
 ```text

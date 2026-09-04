@@ -1,0 +1,288 @@
+{
+  "schema_version": 1,
+  "model_identity": "aug2_head4",
+  "status": "AUDITED_EXECUTION_RECIPES",
+  "training_role_contract": {
+    "path": "configs/training_role_contracts.json",
+    "reference_method": "evaluation_id_branch_id_and_all_declared_folds",
+    "duplicates_row_counts_or_hashes": false
+  },
+  "output_contract": {
+    "prediction_columns": ["record_id", "prediction"],
+    "scored_labels_permitted": false,
+    "run_manifest_required": true,
+    "private_absolute_paths_permitted": false,
+    "historical_weight_identity_claimed": false,
+    "historical_metric_identity_claimed": false
+  },
+  "scope": {
+    "unit_level_branch_execution": true,
+    "single_command_six_evaluation_orchestration": false,
+    "automatic_data_acquisition": false,
+    "gpu_cluster_scheduling": false,
+    "fresh_training_is_protocol_reproduction": true
+  },
+  "evaluations": {
+    "R01": {
+      "descriptor": {
+        "unit_reference": {"evaluation_id": "R01", "branch_id": "descriptor", "folds": "all_declared"},
+        "execution_type": "train_new",
+        "selection_mode": "nested_inner_cv",
+        "input_stages": ["selection_fit", "selection_score", "final_refit", "scored_prediction"],
+        "configuration_refs": ["configs/descriptor_protocols.json#/protocols/aqsoldbc", "configs/aqsoldbc_candidate_grid.json"],
+        "output_kind": "component_prediction"
+      },
+      "language": {
+        "unit_reference": {"evaluation_id": "R01", "branch_id": "language", "folds": "all_declared"},
+        "execution_type": "train_new",
+        "selection_mode": "unit_selection_checkpoint",
+        "input_stages": ["parameter_fit", "selection_score", "scored_prediction"],
+        "configuration_refs": ["configs/chemberta_variants.json#/variants/randomized_single_task"],
+        "output_kind": "prediction_and_embedding"
+      },
+      "geometry": {
+        "unit_reference": {"evaluation_id": "R01", "branch_id": "geometry", "folds": "all_declared"},
+        "execution_type": "train_new",
+        "selection_mode": "unit_selection_checkpoint",
+        "input_stages": ["parameter_fit", "selection_score", "scored_prediction"],
+        "configuration_refs": ["configs/geometry_branch.json"],
+        "output_kind": "prediction_and_embedding"
+      },
+      "fusion_head": {
+        "unit_reference": {"evaluation_id": "R01", "branch_id": "fusion_head", "folds": "all_declared"},
+        "execution_type": "train_new",
+        "selection_mode": "frozen_four_head_schedule",
+        "input_stages": ["parameter_fit", "scored_prediction"],
+        "configuration_refs": ["configs/fusion_ensemble.json"],
+        "output_kind": "four_member_and_mean_prediction"
+      },
+      "blend_coefficient": {
+        "unit_reference": {"evaluation_id": "R01", "branch_id": "blend_coefficient", "folds": "all_declared"},
+        "execution_type": "use_prespecified_coefficient",
+        "selection_mode": "prespecified_alpha_0.5",
+        "input_stages": ["scored_prediction"],
+        "configuration_refs": ["configs/evaluations.json", "configs/dataset_adapters.json"],
+        "output_kind": "fixed_blend_prediction"
+      }
+    },
+    "R02": {
+      "descriptor": {
+        "unit_reference": {"evaluation_id": "R02", "branch_id": "descriptor", "folds": "all_declared"},
+        "execution_type": "train_new",
+        "selection_mode": "frozen_global_preselection",
+        "input_stages": ["selection_fit", "selection_score", "final_refit", "scored_prediction"],
+        "configuration_refs": ["configs/descriptor_protocols.json#/protocols/complat"],
+        "output_kind": "component_prediction"
+      },
+      "language": {
+        "unit_reference": {"evaluation_id": "R02", "branch_id": "language", "folds": "all_declared"},
+        "execution_type": "train_new",
+        "selection_mode": "frozen_global_preselection",
+        "input_stages": ["selection_fit", "selection_score", "final_refit", "scored_prediction"],
+        "configuration_refs": ["configs/chemberta_variants.json#/variants/randomized_single_task"],
+        "output_kind": "prediction_and_embedding"
+      },
+      "geometry": {
+        "unit_reference": {"evaluation_id": "R02", "branch_id": "geometry", "folds": "all_declared"},
+        "execution_type": "train_new",
+        "selection_mode": "frozen_global_preselection",
+        "input_stages": ["selection_fit", "selection_score", "final_refit", "scored_prediction"],
+        "configuration_refs": ["configs/geometry_branch.json"],
+        "output_kind": "prediction_and_embedding"
+      },
+      "fusion_head": {
+        "unit_reference": {"evaluation_id": "R02", "branch_id": "fusion_head", "folds": "all_declared"},
+        "execution_type": "train_new",
+        "selection_mode": "frozen_four_head_schedule",
+        "input_stages": ["parameter_fit", "scored_prediction"],
+        "configuration_refs": ["configs/fusion_ensemble.json"],
+        "output_kind": "four_member_and_mean_prediction"
+      },
+      "blend_coefficient": {
+        "unit_reference": {"evaluation_id": "R02", "branch_id": "blend_coefficient", "folds": "all_declared"},
+        "execution_type": "fit_cross_fitted_coefficient",
+        "selection_mode": "other_four_oof_folds",
+        "input_stages": ["coefficient_fit", "scored_prediction"],
+        "configuration_refs": ["configs/evaluations.json", "configs/dataset_adapters.json"],
+        "output_kind": "fixed_blend_prediction"
+      }
+    },
+    "R03": {
+      "descriptor": {
+        "unit_reference": {"evaluation_id": "R03", "branch_id": "descriptor", "folds": "all_declared"},
+        "execution_type": "train_new",
+        "selection_mode": "fold_train_only_selection",
+        "input_stages": ["parameter_fit", "selection_score", "scored_prediction"],
+        "configuration_refs": ["configs/descriptor_protocols.json#/protocols/tdc"],
+        "output_kind": "component_prediction"
+      },
+      "language": {
+        "unit_reference": {"evaluation_id": "R03", "branch_id": "language", "folds": "all_declared"},
+        "execution_type": "train_new",
+        "selection_mode": "fold_train_only_selection",
+        "input_stages": ["parameter_fit", "selection_score", "scored_prediction"],
+        "configuration_refs": ["configs/chemberta_variants.json#/variants/randomized_single_task"],
+        "output_kind": "prediction_and_embedding"
+      },
+      "geometry": {
+        "unit_reference": {"evaluation_id": "R03", "branch_id": "geometry", "folds": "all_declared"},
+        "execution_type": "train_new",
+        "selection_mode": "fold_train_only_selection",
+        "input_stages": ["parameter_fit", "selection_score", "scored_prediction"],
+        "configuration_refs": ["configs/geometry_branch.json"],
+        "output_kind": "prediction_and_embedding"
+      },
+      "fusion_head": {
+        "unit_reference": {"evaluation_id": "R03", "branch_id": "fusion_head", "folds": "all_declared"},
+        "execution_type": "train_new",
+        "selection_mode": "frozen_four_head_schedule",
+        "input_stages": ["parameter_fit", "scored_prediction"],
+        "configuration_refs": ["configs/fusion_ensemble.json"],
+        "output_kind": "four_member_and_mean_prediction"
+      },
+      "blend_coefficient": {
+        "unit_reference": {"evaluation_id": "R03", "branch_id": "blend_coefficient", "folds": "all_declared"},
+        "execution_type": "fit_cross_fitted_coefficient",
+        "selection_mode": "other_four_oof_folds",
+        "input_stages": ["coefficient_fit", "scored_prediction"],
+        "configuration_refs": ["configs/evaluations.json", "configs/dataset_adapters.json"],
+        "output_kind": "fixed_blend_prediction"
+      }
+    },
+    "R04": {
+      "descriptor": {
+        "unit_reference": {"evaluation_id": "R04", "branch_id": "descriptor", "folds": "all_declared"},
+        "execution_type": "reuse_companion_model",
+        "selection_mode": "reuse_r03_split_model",
+        "input_stages": ["parameter_fit", "selection_score", "scored_prediction"],
+        "configuration_refs": ["configs/descriptor_protocols.json#/protocols/tdc"],
+        "dependency": {"evaluation_id": "R03", "branch_id": "descriptor", "fold_mapping": "same_fold"},
+        "output_kind": "component_prediction"
+      },
+      "language": {
+        "unit_reference": {"evaluation_id": "R04", "branch_id": "language", "folds": "all_declared"},
+        "execution_type": "reuse_companion_model",
+        "selection_mode": "reuse_r03_split_model",
+        "input_stages": ["parameter_fit", "selection_score", "scored_prediction"],
+        "configuration_refs": ["configs/chemberta_variants.json#/variants/randomized_single_task"],
+        "dependency": {"evaluation_id": "R03", "branch_id": "language", "fold_mapping": "same_fold"},
+        "output_kind": "prediction_and_embedding"
+      },
+      "geometry": {
+        "unit_reference": {"evaluation_id": "R04", "branch_id": "geometry", "folds": "all_declared"},
+        "execution_type": "reuse_companion_model",
+        "selection_mode": "reuse_r03_split_model",
+        "input_stages": ["parameter_fit", "selection_score", "scored_prediction"],
+        "configuration_refs": ["configs/geometry_branch.json"],
+        "dependency": {"evaluation_id": "R03", "branch_id": "geometry", "fold_mapping": "same_fold"},
+        "output_kind": "prediction_and_embedding"
+      },
+      "fusion_head": {
+        "unit_reference": {"evaluation_id": "R04", "branch_id": "fusion_head", "folds": "all_declared"},
+        "execution_type": "reuse_companion_model",
+        "selection_mode": "reuse_r03_split_model",
+        "input_stages": ["parameter_fit", "scored_prediction"],
+        "configuration_refs": ["configs/fusion_ensemble.json"],
+        "dependency": {"evaluation_id": "R03", "branch_id": "fusion_head", "fold_mapping": "same_fold"},
+        "output_kind": "four_member_and_mean_prediction"
+      },
+      "blend_coefficient": {
+        "unit_reference": {"evaluation_id": "R04", "branch_id": "blend_coefficient", "folds": "all_declared"},
+        "execution_type": "fit_from_companion_oof",
+        "selection_mode": "complete_r03_oof",
+        "input_stages": ["coefficient_fit", "scored_prediction"],
+        "configuration_refs": ["configs/evaluations.json", "configs/dataset_adapters.json"],
+        "dependency": {"evaluation_id": "R03", "branch_id": "blend_coefficient", "fold_mapping": "complete_oof"},
+        "output_kind": "fixed_blend_prediction"
+      }
+    },
+    "R05": {
+      "descriptor": {
+        "unit_reference": {"evaluation_id": "R05", "branch_id": "descriptor", "folds": "all_declared"},
+        "execution_type": "train_new",
+        "selection_mode": "reported_split_validation",
+        "input_stages": ["parameter_fit", "selection_score", "scored_prediction"],
+        "configuration_refs": ["configs/descriptor_protocols.json#/protocols/jchem"],
+        "output_kind": "component_prediction"
+      },
+      "language": {
+        "unit_reference": {"evaluation_id": "R05", "branch_id": "language", "folds": "all_declared"},
+        "execution_type": "train_new",
+        "selection_mode": "reported_split_validation",
+        "input_stages": ["parameter_fit", "selection_score", "scored_prediction"],
+        "configuration_refs": ["configs/chemberta_variants.json#/variants/randomized_single_task"],
+        "output_kind": "prediction_and_embedding"
+      },
+      "geometry": {
+        "unit_reference": {"evaluation_id": "R05", "branch_id": "geometry", "folds": "all_declared"},
+        "execution_type": "train_new",
+        "selection_mode": "reported_split_validation",
+        "input_stages": ["parameter_fit", "selection_score", "scored_prediction"],
+        "configuration_refs": ["configs/geometry_branch.json"],
+        "output_kind": "prediction_and_embedding"
+      },
+      "fusion_head": {
+        "unit_reference": {"evaluation_id": "R05", "branch_id": "fusion_head", "folds": "all_declared"},
+        "execution_type": "train_new",
+        "selection_mode": "frozen_four_head_schedule",
+        "input_stages": ["parameter_fit", "scored_prediction"],
+        "configuration_refs": ["configs/fusion_ensemble.json"],
+        "output_kind": "four_member_and_mean_prediction"
+      },
+      "blend_coefficient": {
+        "unit_reference": {"evaluation_id": "R05", "branch_id": "blend_coefficient", "folds": "all_declared"},
+        "execution_type": "fit_within_reported_split",
+        "selection_mode": "same_split_validation_predictions",
+        "input_stages": ["coefficient_fit", "scored_prediction"],
+        "configuration_refs": ["configs/evaluations.json", "configs/dataset_adapters.json"],
+        "output_kind": "fixed_blend_prediction"
+      }
+    },
+    "R09": {
+      "descriptor": {
+        "unit_reference": {"evaluation_id": "R09", "branch_id": "descriptor", "folds": "all_declared"},
+        "execution_type": "final_refit",
+        "selection_mode": "reuse_r02_frozen_global_preselection",
+        "input_stages": ["selection_fit", "selection_score", "final_refit", "scored_prediction"],
+        "configuration_refs": ["configs/descriptor_protocols.json#/protocols/complat"],
+        "dependency": {"evaluation_id": "R02", "branch_id": "descriptor", "fold_mapping": "selected_settings"},
+        "output_kind": "component_prediction"
+      },
+      "language": {
+        "unit_reference": {"evaluation_id": "R09", "branch_id": "language", "folds": "all_declared"},
+        "execution_type": "final_refit",
+        "selection_mode": "reuse_r02_frozen_global_preselection",
+        "input_stages": ["selection_fit", "selection_score", "final_refit", "scored_prediction"],
+        "configuration_refs": ["configs/chemberta_variants.json#/variants/randomized_single_task"],
+        "dependency": {"evaluation_id": "R02", "branch_id": "language", "fold_mapping": "selected_settings"},
+        "output_kind": "prediction_and_embedding"
+      },
+      "geometry": {
+        "unit_reference": {"evaluation_id": "R09", "branch_id": "geometry", "folds": "all_declared"},
+        "execution_type": "final_refit",
+        "selection_mode": "reuse_r02_frozen_global_preselection",
+        "input_stages": ["selection_fit", "selection_score", "final_refit", "scored_prediction"],
+        "configuration_refs": ["configs/geometry_branch.json"],
+        "dependency": {"evaluation_id": "R02", "branch_id": "geometry", "fold_mapping": "selected_settings"},
+        "output_kind": "prediction_and_embedding"
+      },
+      "fusion_head": {
+        "unit_reference": {"evaluation_id": "R09", "branch_id": "fusion_head", "folds": "all_declared"},
+        "execution_type": "final_refit",
+        "selection_mode": "frozen_four_head_schedule",
+        "input_stages": ["final_refit", "scored_prediction"],
+        "configuration_refs": ["configs/fusion_ensemble.json"],
+        "output_kind": "four_member_and_mean_prediction"
+      },
+      "blend_coefficient": {
+        "unit_reference": {"evaluation_id": "R09", "branch_id": "blend_coefficient", "folds": "all_declared"},
+        "execution_type": "fit_from_companion_oof",
+        "selection_mode": "complete_r02_oof",
+        "input_stages": ["coefficient_fit", "scored_prediction"],
+        "configuration_refs": ["configs/evaluations.json", "configs/dataset_adapters.json"],
+        "dependency": {"evaluation_id": "R02", "branch_id": "blend_coefficient", "fold_mapping": "complete_oof"},
+        "output_kind": "fixed_blend_prediction"
+      }
+    }
+  }
+}

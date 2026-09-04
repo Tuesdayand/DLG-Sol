@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "gate": "external_adapter_provenance_p1",
+  "status": "PASS",
+  "audit_date": "2026-09-04",
+  "families": 4,
+  "model_records": 5,
+  "historical_files_checked": 18,
+  "historical_files_found": 18,
+  "hash_mismatches": 0,
+  "repository_revisions_checked": 4,
+  "repository_revision_mismatches": 0,
+  "execution_environments_recorded": 4,
+  "table_2_external_models_covered": [
+    "pnnl_gnn:none",
+    "ali_xgb125:none",
+    "bhattacharya_roy:interaction",
+    "ulrich_consensus_adaptation:retrained",
+    "ulrich_consensus:released"
+  ],
+  "additional_control_covered": "bhattacharya_roy:no_interaction",
+  "evidence_class_mismatches": 0,
+  "third_party_source_bundled": false,
+  "study_adapter_wrapper_bundled": false,
+  "row_level_prediction_bundled": false,
+  "private_paths_recorded": false
+}

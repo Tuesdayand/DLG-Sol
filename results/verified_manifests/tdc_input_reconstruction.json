@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "gate": "tdc_input_reconstruction_v1a4",
+  "status": "PASS",
+  "row_level_inputs_redistributed": false,
+  "source": {
+    "revision": "c310c35f27e3f506411018ac43d97b8ba23ca652",
+    "train_val": {
+      "rows": 7985,
+      "bytes": 334137,
+      "sha256": "6a93ef8265f03950a29e916a8e8a4878f9c3f6324bfe4e02cbf50493b0843d39"
+    },
+    "test": {
+      "rows": 1997,
+      "bytes": 98645,
+      "sha256": "f04dc12b97a5f3ee219e008f0eeadecf92beae88d429ff88e78faa3e47186b72"
+    },
+    "historical_runtime_export_identity": {
+      "train_raw_smiles_exact": true,
+      "test_raw_smiles_exact": true,
+      "maximum_absolute_target_difference": 0.0,
+      "train_record_id_order_exact": true,
+      "test_record_id_order_exact": true
+    }
+  },
+  "recipe_sha256": "a48e800a2a27531763e54f47fe1dcb4f6af1dcbf0646471a586f72969366e184",
+  "evaluations": {
+    "R03": {
+      "molecule_rows": 9982,
+      "partition_rows": 49910,
+      "generated_files": {
+        "molecules.csv": {
+          "rows": 9982,
+          "sha256": "b5b2dad6637d8e89193ce537f9d55fa2c3c84a3fd81e3a037d8bcbd0b6949eef"
+        },
+        "labels.csv": {
+          "rows": 9982,
+          "sha256": "0ec176e131b46b3fbfea9a0c29e868b13112325f55d3fefc8c7a15e2c4ceeaca"
+        },
+        "partitions.csv": {
+          "rows": 49910,
+          "sha256": "007788b7be1ea4dde5556ab62b893bd2926cbe0edcb094885062c54d369b3339"
+        }
+      },
+      "historical_identity": {
+        "train_canonical_smiles_exact": true,
+        "test_canonical_smiles_exact": true,
+        "native_role_assignment_mismatches": 0,
+        "native_role_assignments_checked": 49910,
+        "locked_scored_rows": 7985,
+        "locked_scored_record_id_exact": true,
+        "locked_scored_fold_mismatches": 0,
+        "locked_scored_canonical_smiles_exact": true,
+        "locked_scored_maximum_absolute_target_difference": 0.0
+      }
+    },
+    "R04": {
+      "molecule_rows": 9982,
+      "partition_rows": 49910,
+      "generated_files": {
+        "molecules.csv": {
+          "rows": 9982,
+          "sha256": "b5b2dad6637d8e89193ce537f9d55fa2c3c84a3fd81e3a037d8bcbd0b6949eef"
+        },
+        "labels.csv": {
+          "rows": 9982,
+          "sha256": "0ec176e131b46b3fbfea9a0c29e868b13112325f55d3fefc8c7a15e2c4ceeaca"
+        },
+        "partitions.csv": {
+          "rows": 49910,
+          "sha256": "b8bae932254bc50e03a2b991ac54f8f0ced5cbd00664befbe29e9aafc18c1cea"
+        }
+      },
+      "historical_identity": {
+        "train_canonical_smiles_exact": true,
+        "test_canonical_smiles_exact": true,
+        "native_role_assignment_mismatches": 0,
+        "native_role_assignments_checked": 49910,
+        "locked_scored_rows": 1997,
+        "locked_scored_record_id_order_exact": true,
+        "locked_scored_maximum_absolute_target_difference": 0.0,
+        "scored_repetitions_per_test_row": 5
+      }
+    }
+  },
+  "canonicalization_version_boundary": {
+    "pinned_reconstruction_version": "RDKit 2023.09.6",
+    "later_comparison_version": "RDKit 2026.03.1",
+    "later_version_train_canonical_differences": 80,
+    "later_version_test_canonical_differences_including_parse_failures": 11,
+    "later_version_test_parse_failures": 2,
+    "historical_output_reproduced_by_pinned_tdc_environment": true
+  }
+}
