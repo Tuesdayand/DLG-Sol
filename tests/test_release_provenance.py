@@ -55,6 +55,43 @@ class ReleaseProvenanceTests(unittest.TestCase):
         changed["derived_asset_classes"][1]["bundled"] = True
         self.assertTrue(validate_provenance_contract(external, changed, table))
 
+    def test_article_table_2_matches_locked_contract(self):
+        contract = json.loads(
+            (ROOT / "configs/article_table_2_contract.json").read_text(encoding="utf-8")
+        )
+        table = pd.read_csv(ROOT / "results/table_2_absolute_rmse.csv", keep_default_na=False)
+        indexed = table.set_index(["model_id", "variant", "panel"], drop=False)
+        self.assertEqual(len(table), 36)
+        for model in contract["models"]:
+            for panel in (record["id"] for record in contract["panels"]):
+                key = (model["model_id"], model["variant"], panel)
+                row = indexed.loc[key]
+                self.assertEqual(row["model_label"], model["model_label"])
+                self.assertEqual(row["evidence_class"], model["evidence_class"])
+                expected = model["display_rmse"][panel]
+                self.assertEqual(bool(row["available"]), expected is not None)
+                if expected is not None:
+                    self.assertEqual(f"{float(row['absolute_rmse']):.3f}", expected)
+
+    def test_bhattacharya_roy_primary_and_sensitivity_roles(self):
+        source = pd.read_csv(
+            ROOT / "supplementary/machine_readable/external_comparator_metrics_31_rows.csv"
+        )
+        additive = source[
+            source.model_id.eq("bhattacharya_roy")
+            & source.variant.eq("no_interaction")
+        ]
+        interaction = source[
+            source.model_id.eq("bhattacharya_roy")
+            & source.variant.eq("interaction")
+        ]
+        self.assertEqual(set(additive.main_table2_comparison), {True})
+        self.assertEqual(set(interaction.main_table2_comparison), {False})
+        self.assertEqual(set(additive.evidence_type), {"independently retrained architecture adaptation"})
+        self.assertEqual(set(interaction.evidence_type), {"prespecified architecture sensitivity"})
+        self.assertTrue(additive.delta_rmse_ci99_low.notna().all())
+        self.assertTrue(interaction.delta_rmse_ci99_low.notna().all())
+
 
 if __name__ == "__main__":
     unittest.main()

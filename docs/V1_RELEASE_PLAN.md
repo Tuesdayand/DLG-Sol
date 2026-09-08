@@ -43,19 +43,19 @@ Status: complete for the public aggregate and configuration-level outputs. This 
 
 ## Gate V1-D: GitHub release
 
-Status: release metadata complete. Publication of the user-controlled `v1.0.0` tag and GitHub Release is the remaining external action.
+Status: `v1.0.0` was published on GitHub. Version `v1.0.1` is the manuscript-concordance patch that corrects the primary Bhattacharya--Roy variant identity, synchronizes the machine-readable Supplementary package, and strengthens article-output validation.
 
-- update `CITATION.cff` to version 1.0.0 and the final release date;
+- update `CITATION.cff` to the patch version and final release date;
 - update README, data-access documentation, release checklist, and reproducibility scope from development to released status;
 - make the validator emit `PUBLIC_RELEASE_READY=YES` only when all v1.0 gates pass;
-- create and push a signed or annotated `v1.0.0` tag;
-- create and publish a GitHub Release for the `v1.0.0` tag;
+- create and push an annotated patch-release tag without moving the existing `v1.0.0` tag;
+- create and publish a GitHub Release for the patch tag;
 - retain the GitHub repository and versioned release URL in the manuscript availability statement.
 
-Version 1.0 uses GitHub as its public code and version-release location. A separate archival DOI is not required by the project release policy. The article DOI may be added to `CITATION.cff` after journal publication.
+Version 1.0 uses GitHub as its public code and version-release location. A permanent software-archive identifier may be added to `CITATION.cff` and the manuscript if one is assigned. The article DOI may be added after journal publication.
 
 ## Definition of ready
 
 Version 1.0 is ready when a user with lawful access to the required inputs can follow the public documentation and execute the supported unit-level branch workflow without private paths, undisclosed internal files, or scored-label leakage. Readiness does not imply one-command production orchestration or a completed fresh run of all six evaluations. Excluded third-party material must be explicitly identified with acquisition and licence boundaries. The release manifest, public-text hygiene scan, unit tests, required descriptor integration test, and clean-environment validation must all pass.
 
-`GITHUB_RELEASE_PACKAGE_READY=YES` means that technical, provenance, result-regeneration, citation-metadata, and GitHub-only release-policy checks have passed. `PUBLIC_RELEASE_READY=YES` identifies the validated v1.0 package intended for the `v1.0.0` GitHub tag and Release. Publication of those two external GitHub objects is checked separately from the file-integrity validator.
+`GITHUB_RELEASE_PACKAGE_READY=YES` means that technical, provenance, result-regeneration, and citation-metadata checks have passed. `PUBLIC_RELEASE_READY=YES` identifies the validated package intended for the version recorded in `CITATION.cff`. Publication of the tag and GitHub Release is checked separately from the file-integrity validator.

@@ -2,7 +2,7 @@
   "schema_version": 1,
   "gate": "external_adapter_provenance_p1",
   "status": "PASS",
-  "audit_date": "2026-09-04",
+  "audit_date": "2026-09-09",
   "families": 4,
   "model_records": 5,
   "historical_files_checked": 18,
@@ -14,11 +14,11 @@
   "table_2_external_models_covered": [
     "pnnl_gnn:none",
     "ali_xgb125:none",
-    "bhattacharya_roy:interaction",
+    "bhattacharya_roy:no_interaction",
     "ulrich_consensus_adaptation:retrained",
     "ulrich_consensus:released"
   ],
-  "additional_control_covered": "bhattacharya_roy:no_interaction",
+  "additional_sensitivity_covered": "bhattacharya_roy:interaction",
   "evidence_class_mismatches": 0,
   "third_party_source_bundled": false,
   "study_adapter_wrapper_bundled": false,

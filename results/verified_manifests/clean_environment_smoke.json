@@ -1,6 +1,7 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "test": "fresh virtual-environment regeneration on a temporary repository copy",
+  "audit_date": "2026-09-09",
   "environment": {
     "python": "3.13.11",
     "numpy": "2.4.4",
@@ -9,13 +10,13 @@
     "python-pptx": "1.0.2"
   },
   "commands": [
-    "python scripts/validate_release.py",
     "python scripts/build_table_2.py",
     "python scripts/render_chemical_subgroup_figure.py"
   ],
   "deterministic_checks": {
-    "results/table_2_absolute_rmse.csv": "7a114ec5cd28f7370837886ea873c6850e26ca76879834a0e4bc5564ad75df45",
+    "results/table_2_absolute_rmse.csv": "f7a6bdc74186885da0d9c0b13de170dbdc9fac799804edd12cfa1a570b94ce2e",
     "figures/generated/figure_2_chemical_subgroup_gain.png": "e73e52ad06cb9accad8170239752a4ed05cd770a7679c7384fc0e2e2d3cb9c4a"
   },
+  "article_table_2_contract_checked": true,
   "status": "PASS"
 }

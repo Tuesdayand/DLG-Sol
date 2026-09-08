@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "policy": {
+    "isolated_environments_required": true,
+    "install_all_requirement_files_together": false,
+    "reason": "The recorded workflows use incompatible chemistry-toolkit and numerical-library versions."
+  },
+  "environments": [
+    {
+      "id": "integrity",
+      "requirements": null,
+      "python_constraint": ">=3.9",
+      "version_basis": "public compatibility floor",
+      "purpose": "release-manifest and public-text validation"
+    },
+    {
+      "id": "analysis",
+      "requirements": "analysis-requirements.txt",
+      "python_constraint": ">=3.11",
+      "version_basis": "public supported environment",
+      "purpose": "article-level table and figure regeneration"
+    },
+    {
+      "id": "descriptor",
+      "requirements": "descriptor-requirements.txt",
+      "python_constraint": "==3.9.*",
+      "version_basis": "recorded historical modelling environment",
+      "purpose": "Mordred calculation and descriptor-model workflows"
+    },
+    {
+      "id": "input_preparation",
+      "requirements": "input-preparation-requirements.txt",
+      "recommended_python": "3.11",
+      "historical_python_recorded": false,
+      "purpose": "general benchmark input preparation with RDKit 2026.3.1"
+    },
+    {
+      "id": "tdc_input_preparation",
+      "requirements": "tdc-input-preparation-requirements.txt",
+      "recommended_python": "3.11",
+      "historical_python_recorded": false,
+      "purpose": "TDC input reconstruction with RDKit 2023.09.6"
+    },
+    {
+      "id": "training_role_materialization",
+      "requirements": "training-role-materialization-requirements.txt",
+      "recommended_python": "3.11",
+      "historical_python_recorded": false,
+      "purpose": "label-safe training-role materialization"
+    },
+    {
+      "id": "language",
+      "requirements": "language-requirements.txt",
+      "recommended_python": "3.11",
+      "historical_python_recorded": false,
+      "purpose": "ChemBERTa fine-tuning and embedding extraction"
+    },
+    {
+      "id": "geometry",
+      "requirements": "geometry-requirements.txt",
+      "recommended_python": "3.11",
+      "historical_python_recorded": false,
+      "purpose": "3D graph construction, model training, and inference"
+    },
+    {
+      "id": "fusion",
+      "requirements": "fusion-requirements.txt",
+      "recommended_python": "3.11",
+      "historical_python_recorded": false,
+      "purpose": "four-head residual-fusion training and inference"
+    },
+    {
+      "id": "release_test",
+      "requirements": "release-test-requirements.txt",
+      "recommended_python": "3.11",
+      "historical_python_recorded": false,
+      "purpose": "cross-branch public compatibility testing, not a historical unified training environment"
+    }
+  ]
+}

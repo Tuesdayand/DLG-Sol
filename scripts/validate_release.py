@@ -13,6 +13,8 @@ ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "release_manifest.json"
 TABLE_SPEC = ROOT / "configs" / "machine_readable_tables.json"
 TABLE_DIR = ROOT / "supplementary" / "machine_readable"
+ARTICLE_TABLE_2_CONTRACT = ROOT / "configs" / "article_table_2_contract.json"
+ENVIRONMENT_SPEC = ROOT / "environment" / "environments.json"
 EVALUATION_REGISTRY = ROOT / "configs" / "evaluations.json"
 CORE_PARITY = ROOT / "results" / "verified_manifests" / "core_module_parity.json"
 DESCRIPTOR_PROTOCOLS = ROOT / "configs" / "descriptor_protocols.json"
@@ -124,8 +126,8 @@ def validate_release_policy(errors: list[str]) -> None:
         errors.append("MIT copyright attribution is missing")
     citation = (ROOT / "CITATION.cff").read_text(encoding="utf-8")
     required_citation_lines = {
-        "version: 1.0.0",
-        "date-released: 2026-09-04",
+        "version: 1.0.1",
+        "date-released: 2026-09-09",
         'repository-code: "https://github.com/Tuesdayand/DLG-Sol"',
     }
     if not required_citation_lines.issubset(set(citation.splitlines())):
@@ -134,8 +136,15 @@ def validate_release_policy(errors: list[str]) -> None:
         (ROOT / relative).read_text(encoding="utf-8")
         for relative in ("README.md", "data/README.md", "THIRD_PARTY_NOTICES.md", "docs/V1_RELEASE_PLAN.md")
     ).lower()
-    if "pre-release" in public_text or "archival repository doi" in public_text or "archival doi assigned" in public_text:
-        errors.append("obsolete pre-release or archival-DOI requirement remains")
+    obsolete_release_phrases = (
+        "pre-release",
+        "archival repository doi",
+        "archival doi assigned",
+        "does not require a separate archival doi",
+        "github-only release policy",
+    )
+    if any(phrase in public_text for phrase in obsolete_release_phrases):
+        errors.append("obsolete pre-release, GitHub-only, or archival-identifier policy remains")
 
 
 def validate_tables(errors: list[str]) -> None:
@@ -159,6 +168,123 @@ def validate_tables(errors: list[str]) -> None:
             errors.append(f"column-count mismatch: {name}")
         if rows != expected["rows"]:
             errors.append(f"row-count mismatch: {name}")
+
+    required_columns = {
+        "external_comparator_metrics_31_rows.csv": {
+            "delta_rmse_ci95_low",
+            "delta_rmse_ci95_high",
+            "delta_rmse_ci99_low",
+            "delta_rmse_ci99_high",
+            "significance_tier",
+            "main_table2_comparison",
+        },
+        "main_evaluation_effects_12_rows.csv": {
+            "ci95_low",
+            "ci95_high",
+            "ci99_low",
+            "ci99_high",
+            "star",
+        },
+    }
+    for name, expected_columns in required_columns.items():
+        path = TABLE_DIR / name
+        if not path.is_file():
+            continue
+        with path.open(newline="", encoding="utf-8-sig") as handle:
+            header = set(next(csv.reader(handle), []))
+        missing = expected_columns - header
+        if missing:
+            errors.append(f"confidence-interval or article-mapping columns missing from {name}: {sorted(missing)}")
+
+
+def validate_article_table_2(errors: list[str]) -> None:
+    contract = json.loads(ARTICLE_TABLE_2_CONTRACT.read_text(encoding="utf-8"))
+    if contract.get("schema_version") != 1 or contract.get("article_table") != "Table 2":
+        errors.append("unsupported Article Table 2 contract")
+        return
+    panels = contract.get("panels", [])
+    models = contract.get("models", [])
+    panel_ids = [record.get("id") for record in panels]
+    if panel_ids != ["R01", "R02", "R03", "R04", "R05", "R09"]:
+        errors.append("Article Table 2 panel order mismatch")
+    if len(models) != 6 or models[0].get("model_id") != "dlg_sol":
+        errors.append("Article Table 2 model contract mismatch")
+        return
+
+    with TABLE_2.open(encoding="utf-8", newline="") as handle:
+        output_rows = list(csv.DictReader(handle))
+    by_key = {(row.get("model_id"), row.get("variant"), row.get("panel")): row for row in output_rows}
+    if len(output_rows) != 36 or len(by_key) != 36:
+        errors.append("Article Table 2 output row identity mismatch")
+        return
+
+    expected_primary_source_rows: set[tuple[str, str, str]] = set()
+    for model in models:
+        for panel in panel_ids:
+            key = (model.get("model_id"), model.get("variant"), panel)
+            row = by_key.get(key)
+            if row is None:
+                errors.append(f"Article Table 2 row missing: {key}")
+                continue
+            for field in ("model_label", "evidence_class"):
+                if row.get(field) != model.get(field):
+                    errors.append(f"Article Table 2 {field} mismatch: {key}")
+            expected_display = model.get("display_rmse", {}).get(panel)
+            available = row.get("available") == "True"
+            if available != (expected_display is not None):
+                errors.append(f"Article Table 2 availability mismatch: {key}")
+            if available and f"{float(row['absolute_rmse']):.3f}" != expected_display:
+                errors.append(f"Article Table 2 displayed RMSE mismatch: {key}")
+            if model.get("model_id") != "dlg_sol" and available:
+                expected_primary_source_rows.add((model.get("source_model_id"), model.get("source_variant"), panel))
+                if not row.get("delta_rmse_ci99_low") or not row.get("delta_rmse_ci99_high"):
+                    errors.append(f"Article Table 2 99% CI missing: {key}")
+
+    source_path = TABLE_DIR / "external_comparator_metrics_31_rows.csv"
+    with source_path.open(encoding="utf-8", newline="") as handle:
+        source_rows = list(csv.DictReader(handle))
+    marked_primary = {
+        (row.get("model_id"), row.get("variant"), row.get("evaluation_id"))
+        for row in source_rows
+        if row.get("main_table2_comparison") == "True"
+    }
+    if marked_primary != expected_primary_source_rows:
+        errors.append("machine-readable Article Table 2 membership differs from the locked contract")
+    if any(
+        row.get("model_id") == "bhattacharya_roy"
+        and row.get("variant") == "interaction"
+        and row.get("main_table2_comparison") == "True"
+        for row in source_rows
+    ):
+        errors.append("Bhattacharya--Roy interaction sensitivity is incorrectly marked as a primary comparator")
+
+
+def validate_environment_spec(errors: list[str]) -> None:
+    payload = json.loads(ENVIRONMENT_SPEC.read_text(encoding="utf-8"))
+    policy = payload.get("policy", {})
+    if payload.get("schema_version") != 1 or policy.get("isolated_environments_required") is not True or policy.get("install_all_requirement_files_together") is not False:
+        errors.append("environment-isolation policy is incomplete")
+    records = payload.get("environments", [])
+    required_ids = {
+        "integrity",
+        "analysis",
+        "descriptor",
+        "input_preparation",
+        "tdc_input_preparation",
+        "training_role_materialization",
+        "language",
+        "geometry",
+        "fusion",
+        "release_test",
+    }
+    if {record.get("id") for record in records} != required_ids:
+        errors.append("machine-readable environment coverage mismatch")
+    for record in records:
+        requirement = record.get("requirements")
+        if requirement and not (ROOT / "environment" / requirement).is_file():
+            errors.append(f"environment requirement file missing: {requirement}")
+        if not record.get("python_constraint") and not record.get("recommended_python"):
+            errors.append(f"Python version declaration missing: {record.get('id')}")
 
 
 def validate_evaluation_registry(errors: list[str]) -> None:
@@ -1220,12 +1346,12 @@ def validate_release_provenance(errors: list[str]) -> None:
         errors.append("excluded third-party or model-asset directory is present")
 
     v1c = json.loads(V1C_RESULT_REGENERATION_AUDIT.read_text(encoding="utf-8"))
-    if v1c.get("status") != "PASS" or v1c.get("public_result_regeneration_scope_complete") is not True or v1c.get("fresh_six_evaluation_retraining_claimed") is not False:
+    if v1c.get("status") != "PASS" or v1c.get("public_result_regeneration_scope_complete") is not True or v1c.get("fresh_six_evaluation_retraining_claimed") is not False or v1c.get("article_table_2_contract_status") != "PASS":
         errors.append("V1-C result-regeneration status mismatch")
-    if v1c.get("machine_readable_supplementary_tables") != 7 or v1c.get("metric_parity_maximum_absolute_difference") != 0.0 or v1c.get("bootstrap_parity_maximum_absolute_difference") != 0.0:
+    if v1c.get("machine_readable_supplementary_tables") != 9 or v1c.get("metric_parity_maximum_absolute_difference") != 0.0 or v1c.get("bootstrap_parity_maximum_absolute_difference") != 0.0:
         errors.append("V1-C result-regeneration evidence mismatch")
     required_artefacts = v1c.get("required_artefacts", [])
-    if len(required_artefacts) != 6:
+    if len(required_artefacts) != 7:
         errors.append("V1-C required-artefact coverage mismatch")
     for artefact in required_artefacts:
         path = ROOT / artefact.get("path", "")
@@ -1258,6 +1384,8 @@ def main() -> int:
     validate_manifest(errors)
     validate_release_policy(errors)
     validate_tables(errors)
+    validate_article_table_2(errors)
+    validate_environment_spec(errors)
     validate_evaluation_registry(errors)
     validate_core_parity(errors)
     validate_descriptor_branch(errors)

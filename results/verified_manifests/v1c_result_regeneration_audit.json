@@ -1,8 +1,8 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "gate": "v1c_result_regeneration",
   "status": "PASS",
-  "audit_date": "2026-09-04",
+  "audit_date": "2026-09-09",
   "fresh_six_evaluation_retraining_claimed": false,
   "required_artefacts": [
     {
@@ -16,29 +16,35 @@
       "sha256": "450189d859f2f80f2639ec86f6f45ed39a8a68c3d7290f2a6ad0200d3f3c944e"
     },
     {
-      "role": "Table 2 regeneration",
+      "role": "Article Table 2 regeneration and manuscript contract",
       "path": "results/verified_manifests/table_2_regeneration.json",
-      "sha256": "9d54fa90d2ef063bd1134b9882c1f22e3e2895b9974c2d8c43d9817bb527e72f"
+      "sha256": "e8caeb95a454b2c3eac3dc95f3d6f6687c82693d704f1cb5d6d9ed5684ff4b8d"
     },
     {
-      "role": "Figure 2 regeneration",
+      "role": "chemical-subgroup figure regeneration",
       "path": "results/verified_manifests/figure_2_regeneration.json",
-      "sha256": "921342e5e00de3eeb0088b0d822a4ba5e7068f38a84dd60cfda7215909256ac2"
+      "sha256": "3d3ece29c3de15750fb47597f9ac092475d5e9b3e3c1494c10ec27860ca67b95"
     },
     {
       "role": "machine-readable Supplementary table registry",
       "path": "configs/machine_readable_tables.json",
-      "sha256": "b47753817428f3fc41a005ac200fc20e1747f5fbabf309a97eee43d4549cdc9e"
+      "sha256": "051215f02e93b4f2bea351df3495bc6b8a6e208d93f30efed9b5b1a2879cc3cc"
+    },
+    {
+      "role": "machine-readable environment matrix",
+      "path": "environment/environments.json",
+      "sha256": "8af9734d1330444fe725d0154aecb13541bcdd9011a0fa5d43e39c93c085441a"
     },
     {
       "role": "clean-environment analysis smoke",
       "path": "results/verified_manifests/clean_environment_smoke.json",
-      "sha256": "962599fc17d34aac7e1e4301445233ea145685decf3ecb60ce1b0ddbdfcb95f2"
+      "sha256": "8b88c14e561243e7bc95adc5d201809d26555e12eb41d234fbbc3435d30f653e"
     }
   ],
-  "machine_readable_supplementary_tables": 7,
+  "machine_readable_supplementary_tables": 9,
   "table_2_regeneration_status": "PASS",
   "figure_2_regeneration_status": "PASS",
+  "article_table_2_contract_status": "PASS",
   "metric_parity_maximum_absolute_difference": 0.0,
   "bootstrap_parity_maximum_absolute_difference": 0.0,
   "public_result_regeneration_scope_complete": true

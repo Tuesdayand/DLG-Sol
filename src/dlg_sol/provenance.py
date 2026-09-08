@@ -7,9 +7,12 @@ EXPECTED_FAMILIES = {"pnnl_gnn", "ali_xgb125", "bhattacharya_roy", "consensus_gn
 EXPECTED_TABLE_RECORDS = {
     ("pnnl_gnn", "none"): "independently retrained adaptation",
     ("ali_xgb125", "none"): "split-adapted schema/settings; ComPlat same-split reproduction",
-    ("bhattacharya_roy", "interaction"): "independently retrained adaptation",
+    ("bhattacharya_roy", "no_interaction"): "independently retrained adaptation",
     ("ulrich_consensus_adaptation", "retrained"): "independently retrained official-code adaptation",
     ("ulrich_consensus", "released"): "authors' released predictions",
+}
+EXPECTED_ADDITIONAL_RECORDS = {
+    ("bhattacharya_roy", "interaction"): "prespecified architecture sensitivity",
 }
 EXPECTED_REDISTRIBUTION_SOURCES = {
     "llompart_aqsoldbc_dataset",
@@ -84,6 +87,9 @@ def validate_provenance_contract(
     for key, expected in EXPECTED_TABLE_RECORDS.items():
         if observed_records.get(key) != expected:
             errors.append(f"external comparator evidence class mismatch: {key[0]}:{key[1]}")
+    for key, expected in EXPECTED_ADDITIONAL_RECORDS.items():
+        if observed_records.get(key) != expected:
+            errors.append(f"external comparator sensitivity class mismatch: {key[0]}:{key[1]}")
     observed_table = {
         (str(row["model_id"]), str(row["variant"])): str(row["evidence_class"])
         for row in table_records

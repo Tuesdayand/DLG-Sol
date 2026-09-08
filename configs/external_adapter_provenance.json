@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "audit_date": "2026-09-04",
+  "audit_date": "2026-09-09",
   "policy": "Source files are identified by revision, logical path, byte size, and SHA-256. Third-party source, study-local adaptation wrappers, row-level predictions, and contracts are not bundled.",
   "families": [
     {
@@ -129,15 +129,15 @@
           "model_id": "bhattacharya_roy",
           "variant": "interaction",
           "evaluations": ["R01", "R02", "R03", "R04", "R05", "R09"],
-          "evidence_class": "independently retrained adaptation",
-          "permitted_interpretation": "primary split-matched architecture adaptation; source-domain performance not reproduced"
+          "evidence_class": "prespecified architecture sensitivity",
+          "permitted_interpretation": "sensitivity analysis only; source-domain performance not reproduced"
         },
         {
           "model_id": "bhattacharya_roy",
           "variant": "no_interaction",
           "evaluations": ["R01", "R02", "R03", "R04", "R05", "R09"],
-          "evidence_class": "prespecified architecture control",
-          "permitted_interpretation": "control only; source-domain performance not reproduced"
+          "evidence_class": "independently retrained adaptation",
+          "permitted_interpretation": "primary additive split-matched architecture adaptation; source-domain performance not reproduced"
         }
       ],
       "execution_environment": {

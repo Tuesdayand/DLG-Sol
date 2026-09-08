@@ -1,5 +1,7 @@
 # Environments
 
+Create separate environments for the workflows below. Do not install every requirements file into one environment: the pinned RDKit, NumPy, and pandas versions intentionally differ. `environments.json` provides the machine-readable Python and requirements-file mapping. A `recommended_python` entry identifies the public execution target when the exact historical Python version was not recorded; it is not a claim about the original training interpreter.
+
 The integrity validator uses only the Python standard library and supports Python 3.9 or newer.
 
 The canonical core tests use NumPy and pandas from `analysis-requirements.txt` and require Python 3.11 or newer.
@@ -20,7 +22,7 @@ The language–geometry fusion branch uses `fusion-requirements.txt`. It pins th
 
 Use `release-test-requirements.txt` to run the complete cross-branch test suite without optional-dependency skips. It combines the descriptor, language, and geometry requirement files; it is a validation environment rather than a claim that every reported workflow was trained in one environment.
 
-The full modelling release will provide separate locked environments for:
+The v1.0 reproducibility package provides separate locked or stage-specific environments for:
 
 - dataset-specific DLG-Sol orchestration workflows;
 - TensorFlow/DeepChem Consensus-GNN adaptation;

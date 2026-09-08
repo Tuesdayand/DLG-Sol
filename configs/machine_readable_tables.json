@@ -1,33 +1,15 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
+  "naming_policy": "Content-based file names are stable across Supplementary table renumbering.",
   "tables": {
-    "supplementary_note_s03_descriptor_preprocessing_record.csv": {
-      "rows": 4,
-      "columns": 8
-    },
-    "table_s06_external_comparator_metrics_and_paired_ci_31_rows.csv": {
-      "rows": 31,
-      "columns": 21
-    },
-    "table_s10_single_representation_grid_all_185_rows.csv": {
-      "rows": 185,
-      "columns": 9
-    },
-    "table_s11_pair_representation_grid_all_315_rows.csv": {
-      "rows": 315,
-      "columns": 12
-    },
-    "table_s13_chemical_subgroup_delta_mae_all_96_rows.csv": {
-      "rows": 96,
-      "columns": 20
-    },
-    "table_s13_chemical_subgroup_delta_rmse_all_96_rows.csv": {
-      "rows": 96,
-      "columns": 20
-    },
-    "table_s18_key_seed_record.csv": {
-      "rows": 6,
-      "columns": 2
-    }
+    "chemical_subgroup_delta_mae_96_rows.csv": {"rows": 96, "columns": 20},
+    "chemical_subgroup_delta_rmse_96_rows.csv": {"rows": 96, "columns": 20},
+    "descriptor_preprocessing_record.csv": {"rows": 4, "columns": 8},
+    "external_comparator_metrics_31_rows.csv": {"rows": 31, "columns": 25},
+    "main_evaluation_effects_12_rows.csv": {"rows": 12, "columns": 12},
+    "molprop_source_reproduction_summary.csv": {"rows": 2, "columns": 12},
+    "pair_representation_grid_315_rows.csv": {"rows": 315, "columns": 12},
+    "seed_registry.csv": {"rows": 7, "columns": 2},
+    "single_representation_grid_185_rows.csv": {"rows": 185, "columns": 9}
   }
 }

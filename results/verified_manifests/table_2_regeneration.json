@@ -1,25 +1,33 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "table": "Article Table 2 absolute matched-row RMSE comparison",
   "source": {
-    "path": "supplementary/machine_readable/table_s06_external_comparator_metrics_and_paired_ci_31_rows.csv",
-    "sha256": "567480164261b1b5935bce847bb03d92f4ea8eea743fc9c337d842a3f439e66e",
+    "path": "supplementary/machine_readable/external_comparator_metrics_31_rows.csv",
+    "sha256": "c1d09691b08e8e9675774a3f086de855a3bd955a56f994239f06bd6923c2329b",
     "rows": 31
+  },
+  "article_contract": {
+    "path": "configs/article_table_2_contract.json",
+    "sha256": "eea8fa097637f91a1b2148ac717cafcb876075c4e92c57b3d368b358200e7227",
+    "display_precision": 3,
+    "primary_bhattacharya_roy_variant": "no_interaction",
+    "interaction_variant_role": "prespecified architecture sensitivity"
   },
   "generator": {
     "path": "scripts/build_table_2.py",
-    "sha256": "5f7d480ddf3b3413d863114104ef388e21b85f32505381742f24c2f438027d08"
+    "sha256": "78924ad5a689b877599fc21291a89f48b90223f12bc08dcb3793c44fcb4566f3"
   },
   "output": {
     "path": "results/table_2_absolute_rmse.csv",
-    "sha256": "7a114ec5cd28f7370837886ea873c6850e26ca76879834a0e4bc5564ad75df45",
+    "sha256": "f7a6bdc74186885da0d9c0b13de170dbdc9fac799804edd12cfa1a570b94ce2e",
     "rows": 36,
-    "columns": 16
+    "columns": 19
   },
-  "manuscript_artifact_comparison": {
-    "locked_internal_source_sha256": "c471c751f0323c587ef44d3acd68ceaa60efe62bccc8339b7f44d9e2c615bcd2",
-    "comparison": "The internal-only source_file column was removed; all remaining 16 columns and all 36 rows are equal with numeric tolerance 1e-14.",
-    "value_parity": true
+  "article_concordance": {
+    "model_and_panel_rows_checked": 36,
+    "displayed_rmse_values_match": true,
+    "primary_source_membership_matches": true,
+    "ninety_nine_percent_intervals_included": true
   },
   "status": "PASS"
 }

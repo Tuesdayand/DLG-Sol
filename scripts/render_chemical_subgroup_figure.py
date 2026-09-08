@@ -18,7 +18,7 @@ SOURCE = (
     ROOT
     / "supplementary"
     / "machine_readable"
-    / "table_s13_chemical_subgroup_delta_rmse_all_96_rows.csv"
+    / "chemical_subgroup_delta_rmse_96_rows.csv"
 )
 OUTPUT_DIR = ROOT / "figures" / "generated"
 PPTX = OUTPUT_DIR / "figure_2_chemical_subgroup_gain_editable.pptx"
@@ -259,7 +259,7 @@ def build_ppt():
     prs.core_properties.comments = (
         "All cells, labels, borders, separators, and colour-bar steps are editable. "
         "Source: supplementary/machine_readable/"
-        "table_s13_chemical_subgroup_delta_rmse_all_96_rows.csv. "
+        "chemical_subgroup_delta_rmse_96_rows.csv. "
         f"Symmetric colour range: {-vmax:.8f} to {vmax:.8f}."
     )
     prs.save(PPTX)

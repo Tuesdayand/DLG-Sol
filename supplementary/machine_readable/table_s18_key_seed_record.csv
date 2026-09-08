@@ -1,7 +1,0 @@
-workflow,seed_record
-AqSolDBc repaired descriptor,outer refits 260717;260727;260737;260740;260747; paired bootstrap 20260821
-TDC descriptor,base 260722 with deterministic fold/trial offsets
-ComPlat descriptor,base 260722 with deterministic fit offsets
-JCheM descriptor,base 260725 with deterministic split/trial offsets
-chemical-subgroup complementarity,base 20260823; XGB=base+1000*panel_index+10*level_index; neural=XGB+1
-external comparator paired bootstrap,20260822; 10000 resamples

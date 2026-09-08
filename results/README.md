@@ -2,7 +2,7 @@
 
 This directory contains compact article-level outputs and manifests connecting public scripts and inputs to article tables and figures. Large checkpoints and third-party row-level data are not stored here.
 
-`table_2_absolute_rmse.csv` is rebuilt from the public 31-row external-comparator summary by `scripts/build_table_2.py`.
+`table_2_absolute_rmse.csv` is rebuilt from the public 31-row external-comparator summary by `scripts/build_table_2.py`. The generator reads `configs/article_table_2_contract.json`, which locks the final comparator variants, labels, panel order, displayed RMSE values, and Article Table 2 membership.
 
 `verified_manifests/core_module_parity.json` records a six-evaluation full-row parity check for the canonical metrics, paired bootstrap, and fixed-blend application without redistributing the row-level inputs.
 

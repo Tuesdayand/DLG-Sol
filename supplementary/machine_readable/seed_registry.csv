@@ -1,0 +1,8 @@
+workflow,seed_record
+DLG-Sol fusion heads,base seeds 260901;260902;260903;260904; fold rule base+100000*fold
+AqSolDBc repaired descriptor,outer refits 260717;260727;260737;260740;260747; paired bootstrap 20260821
+TDC/ComPlat/JCheM descriptors,base seeds 260722;260722;260725 with deterministic fold/split/trial offsets
+chemical-subgroup complementarity,base 20260823; XGB=base+1000*panel_index+10*level_index; neural=XGB+1
+external-comparator paired bootstrap,base 20260822; 10000 molecular-row resamples
+ComPlat selection-and-tuning sensitivity,inner split 260928+outer_fold; paired bootstrap 20260904
+MolPROP source reproduction audit,source reconstruction seed 123; trial and checkpoint hashes retained in the audit artefacts

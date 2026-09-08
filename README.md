@@ -6,11 +6,15 @@ DLG-Sol combines a Mordred/XGBoost descriptor model with a neural model derived 
 
 ## Repository status
 
-This repository contains the **v1.0 reproducibility package**. It includes verified machine-readable Supplementary summaries, release-integrity checks, the six-evaluation registry, label-firewall checks, fixed blending, article-level scoring metrics, the canonical Mordred/XGBoost descriptor branch, the ChemBERTa language encoder, the explicit-polar-hydrogen distance-aware three-dimensional graph branch, the canonical `aug2_head4` language–geometry branch, evaluation-specific adapter contracts, a validated benchmark-input package schema, a provenance-checked local-package evaluation runner, a historical training-role audit, a label-safe stage materializer, audited unit-level execution recipes, and branch-level training commands. Row-level benchmark data, historical model checkpoints, automatic data acquisition, and third-party source code are not included.
+This repository contains the **v1.0.1 reproducibility package**. It includes verified machine-readable Supplementary summaries, release-integrity checks, the six-evaluation registry, label-firewall checks, fixed blending, article-level scoring metrics, the canonical Mordred/XGBoost descriptor branch, the ChemBERTa language encoder, the explicit-polar-hydrogen distance-aware three-dimensional graph branch, the canonical `aug2_head4` language–geometry branch, evaluation-specific adapter contracts, a validated benchmark-input package schema, a provenance-checked local-package evaluation runner, a historical training-role audit, a label-safe stage materializer, audited unit-level execution recipes, and branch-level training commands. Row-level benchmark data, historical model checkpoints, automatic data acquisition, and third-party source code are not included.
 
 The package provides a documented, executable path from lawfully obtained user-supplied benchmark data through DLG-Sol training, prediction, fixed blending, scoring, and regeneration of the reported public outputs. Raw third-party benchmark rows, third-party source trees, and model weights without clear redistribution permission are not bundled. Their provenance, access conditions, and required local-package schemas are documented instead.
 
-The technical package has completed its input, training-workflow, result-regeneration, provenance, and release-metadata gates. Versioned source releases are provided through GitHub. The project does not require a separate archival DOI for v1.0. The release criteria are documented in `docs/V1_RELEASE_PLAN.md`.
+The technical package has completed its input, training-workflow, result-regeneration, provenance, and release-metadata gates. Versioned source releases are provided through GitHub. A permanent archival identifier can be added to the citation metadata if one is assigned. The release criteria are documented in `docs/V1_RELEASE_PLAN.md`.
+
+## Environment isolation
+
+Do not install all requirement files into one environment. Several workflows intentionally pin different RDKit, NumPy, pandas, and Python versions. Use the workflow-specific files and machine-readable mapping in `environment/environments.json`; `environment/release-test-requirements.txt` is a public compatibility-test environment, not a claim that all historical models were trained in one environment.
 
 ## Canonical core modules
 
@@ -48,9 +52,11 @@ The directory `supplementary/machine_readable/` contains:
 
 - dataset-specific descriptor preprocessing records;
 - external-comparator metrics and paired confidence intervals;
+- DLG-Sol-versus-component effects with 95% and 99% confidence intervals;
 - complete single- and pair-representation grid summaries;
 - chemical-subgroup RMSE and MAE analyses;
-- key random-seed records.
+- key random-seed records;
+- the MolPROP source-reproduction audit summary.
 
 These files contain aggregate or configuration-level results and do not contain molecular structures or row-level experimental labels.
 
@@ -95,7 +101,7 @@ See `docs/REPRODUCIBILITY_SCOPE.md` for the exact reproducibility claims and the
 
 ## Citation
 
-Citation metadata for version 1.0.0 are provided in `CITATION.cff`. The article DOI may be added after journal publication.
+Citation metadata for version 1.0.1 are provided in `CITATION.cff`. A software archive identifier and the article DOI may be added when assigned.
 
 ## License
 

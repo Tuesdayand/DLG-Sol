@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "article_table": "Table 2",
+  "display_precision": 3,
+  "panels": [
+    {"id": "R01", "label": "AqSolDBc OOF", "n": 8047},
+    {"id": "R02", "label": "ComPlat OOF", "n": 17937},
+    {"id": "R03", "label": "TDC OOF", "n": 7985},
+    {"id": "R04", "label": "TDC supplied test", "n": 1997},
+    {"id": "R05", "label": "JCheM supplied test", "n": 980},
+    {"id": "R09", "label": "ComPlat supplied test", "n": 1282}
+  ],
+  "models": [
+    {
+      "table_order": 1,
+      "source_model_id": "dlg_sol",
+      "source_variant": "none",
+      "model_id": "dlg_sol",
+      "variant": "none",
+      "model_label": "DLG-Sol",
+      "evidence_class": "this work",
+      "display_rmse": {"R01": "0.807", "R02": "0.879", "R03": "0.986", "R04": "1.002", "R05": "0.614", "R09": "0.560"}
+    },
+    {
+      "table_order": 2,
+      "source_model_id": "pnnl_gnn",
+      "source_variant": "none",
+      "model_id": "pnnl_gnn",
+      "variant": "none",
+      "model_label": "PNNL GNN",
+      "evidence_class": "independently retrained adaptation",
+      "display_rmse": {"R01": "0.908", "R02": "1.032", "R03": "1.141", "R04": "1.105", "R05": "0.700", "R09": "0.616"}
+    },
+    {
+      "table_order": 3,
+      "source_model_id": "ali_xgb125",
+      "source_variant": "none",
+      "model_id": "ali_xgb125",
+      "variant": "none",
+      "model_label": "Ali XGB-125D",
+      "evidence_class": "split-adapted schema/settings; ComPlat same-split reproduction",
+      "display_rmse": {"R01": "0.846", "R02": "0.927", "R03": "0.980", "R04": "1.037", "R05": "0.658", "R09": "0.554"}
+    },
+    {
+      "table_order": 4,
+      "source_model_id": "bhattacharya_roy",
+      "source_variant": "no_interaction",
+      "model_id": "bhattacharya_roy",
+      "variant": "no_interaction",
+      "model_label": "Bhattacharya--Roy additive MLP--GNN",
+      "evidence_class": "independently retrained adaptation",
+      "display_rmse": {"R01": "1.064", "R02": "1.162", "R03": "1.241", "R04": "1.111", "R05": "0.718", "R09": "0.627"}
+    },
+    {
+      "table_order": 5,
+      "source_model_id": "consensus_gnn_retrained",
+      "source_variant": "retrained_adaptation",
+      "model_id": "ulrich_consensus_adaptation",
+      "variant": "retrained",
+      "model_label": "Consensus GNN",
+      "evidence_class": "independently retrained official-code adaptation",
+      "display_rmse": {"R01": "1.154", "R02": "1.331", "R03": "1.685", "R04": "1.800", "R05": "0.810", "R09": "0.824"}
+    },
+    {
+      "table_order": 6,
+      "source_model_id": "consensus_gnn_author",
+      "source_variant": "released",
+      "model_id": "ulrich_consensus",
+      "variant": "released",
+      "model_label": "Consensus GNN",
+      "evidence_class": "authors' released predictions",
+      "display_rmse": {"R01": null, "R02": null, "R03": null, "R04": null, "R05": "0.657", "R09": null}
+    }
+  ]
+}

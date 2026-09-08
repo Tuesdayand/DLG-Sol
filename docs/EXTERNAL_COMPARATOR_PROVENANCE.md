@@ -11,8 +11,8 @@ The article distinguishes model identity from evidence strength. An authors' rel
 | PNNL GNN | R01, R02, R03, R04, R05, R09 | Independently retrained adaptation | Split-matched architecture comparison; the original study population was not identifiable |
 | Ali XGB-125D | R01, R03, R04, R05 | Schema-and-setting adaptation | Paired implementation comparison, not source-study replication |
 | Ali XGB-125D | R02, R09 | Same-split reproduction | Paired but not independent evidence because the ComPlat lineage is shared |
-| Bhattacharya--Roy interaction model | R01, R02, R03, R04, R05, R09 | Independently retrained adaptation | Primary split-matched adaptation; source-domain performance was not reproduced |
-| Bhattacharya--Roy no-interaction model | R01, R02, R03, R04, R05, R09 | Prespecified architecture control | Control only; not a source-domain reproduction |
+| Bhattacharya--Roy additive MLP--GNN | R01, R02, R03, R04, R05, R09 | Independently retrained adaptation | Primary split-matched architecture adaptation; source-domain performance was not reproduced |
+| Bhattacharya--Roy interaction-augmented MLP--GNN | R01, R02, R03, R04, R05, R09 | Prespecified architecture sensitivity | Sensitivity analysis only; not a source-domain reproduction |
 | Consensus GNN | R01, R02, R03, R04, R05, R09 | Independently retrained official-code adaptation | Split-matched adaptation, not the authors' released checkpoints |
 | Consensus GNN | R05 | Authors' released predictions | Direct same-row comparison on the authors' 980-row test |
 
