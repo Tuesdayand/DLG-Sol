@@ -15,8 +15,8 @@ SOURCE = (
     / "machine_readable"
     / "external_comparator_metrics_31_rows.csv"
 )
-CONTRACT = ROOT / "configs" / "article_table_2_contract.json"
-OUTPUT = ROOT / "results" / "table_2_absolute_rmse.csv"
+CONTRACT = ROOT / "configs" / "article_table_4_contract.json"
+OUTPUT = ROOT / "results" / "table_4_absolute_rmse.csv"
 
 COLUMNS = [
     "table_order",
@@ -51,8 +51,8 @@ def consistent_reference(source: pd.DataFrame, panel: str, column: str) -> float
 def main() -> None:
     source = pd.read_csv(SOURCE)
     contract = json.loads(CONTRACT.read_text(encoding="utf-8"))
-    if contract.get("schema_version") != 1 or contract.get("article_table") != "Table 2":
-        raise ValueError("unsupported article Table 2 contract")
+    if contract.get("schema_version") != 1 or contract.get("article_table") != "Table 4":
+        raise ValueError("unsupported article Table 4 contract")
     panels = [record["id"] for record in contract["panels"]]
     panel_labels = {record["id"]: record["label"] for record in contract["panels"]}
     expected_n = {record["id"]: int(record["n"]) for record in contract["panels"]}

@@ -5,11 +5,15 @@
     "chemical_subgroup_delta_mae_96_rows.csv": {"rows": 96, "columns": 20},
     "chemical_subgroup_delta_rmse_96_rows.csv": {"rows": 96, "columns": 20},
     "descriptor_preprocessing_record.csv": {"rows": 4, "columns": 8},
+    "developmental_focused_tuning_metrics.csv": {"rows": 96, "columns": 37},
+    "developmental_pair_representation_screen_metrics.csv": {"rows": 840, "columns": 35},
+    "developmental_single_representation_screen_metrics.csv": {"rows": 280, "columns": 35},
     "external_comparator_metrics_31_rows.csv": {"rows": 31, "columns": 25},
-    "main_evaluation_effects_12_rows.csv": {"rows": 12, "columns": 12},
+    "main_evaluation_effects_12_rows.csv": {"rows": 12, "columns": 15},
     "molprop_source_reproduction_summary.csv": {"rows": 2, "columns": 12},
     "pair_representation_grid_315_rows.csv": {"rows": 315, "columns": 12},
     "seed_registry.csv": {"rows": 7, "columns": 2},
-    "single_representation_grid_185_rows.csv": {"rows": 185, "columns": 9}
+    "single_representation_grid_185_rows.csv": {"rows": 185, "columns": 9},
+    "source_paper_benchmark_context.csv": {"rows": 18, "columns": 9}
   }
 }

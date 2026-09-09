@@ -6,7 +6,7 @@ DLG-Sol combines a Mordred/XGBoost descriptor model with a neural model derived 
 
 ## Repository status
 
-This repository contains the **v1.0.1 reproducibility package**. It includes verified machine-readable Supplementary summaries, release-integrity checks, the six-evaluation registry, label-firewall checks, fixed blending, article-level scoring metrics, the canonical Mordred/XGBoost descriptor branch, the ChemBERTa language encoder, the explicit-polar-hydrogen distance-aware three-dimensional graph branch, the canonical `aug2_head4` language–geometry branch, evaluation-specific adapter contracts, a validated benchmark-input package schema, a provenance-checked local-package evaluation runner, a historical training-role audit, a label-safe stage materializer, audited unit-level execution recipes, and branch-level training commands. Row-level benchmark data, historical model checkpoints, automatic data acquisition, and third-party source code are not included.
+This repository contains the **v1.0.2 reproducibility package**. It includes verified machine-readable Supplementary summaries, release-integrity checks, the six-evaluation registry, label-firewall checks, fixed blending, article-level scoring metrics, the canonical Mordred/XGBoost descriptor branch, the ChemBERTa language encoder, the explicit-polar-hydrogen distance-aware three-dimensional graph branch, the canonical `aug2_head4` language–geometry branch, evaluation-specific adapter contracts, a validated benchmark-input package schema, a provenance-checked local-package evaluation runner, a historical training-role audit, a label-safe stage materializer, audited unit-level execution recipes, and branch-level training commands. Row-level benchmark data, historical model checkpoints, automatic data acquisition, and third-party source code are not included.
 
 The package provides a documented, executable path from lawfully obtained user-supplied benchmark data through DLG-Sol training, prediction, fixed blending, scoring, and regeneration of the reported public outputs. Raw third-party benchmark rows, third-party source trees, and model weights without clear redistribution permission are not bundled. Their provenance, access conditions, and required local-package schemas are documented instead.
 
@@ -83,13 +83,13 @@ python scripts/render_chemical_subgroup_figure.py
 
 The generator writes PDF, PNG, and editable PPTX files to `figures/generated/`.
 
-## Regenerate Table 2 data
+## Regenerate Article Table 4 data
 
 ```bash
-python scripts/build_table_2.py
+python scripts/build_table_4.py
 ```
 
-The command creates `results/table_2_absolute_rmse.csv` from the public 31-row external-comparator summary. No row-level molecular data are required.
+The command creates `results/table_4_absolute_rmse.csv` from the public 31-row external-comparator summary. No row-level molecular data are required. Article Table 3 source-paper context is supplied in `supplementary/machine_readable/source_paper_benchmark_context.csv`, and Article Table 2 component effects are supplied in `supplementary/machine_readable/main_evaluation_effects_12_rows.csv`.
 
 ## Data access
 

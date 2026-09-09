@@ -1,0 +1,33 @@
+{
+  "schema_version": 2,
+  "table": "Article Table 4 absolute matched-row RMSE comparison",
+  "source": {
+    "path": "supplementary/machine_readable/external_comparator_metrics_31_rows.csv",
+    "sha256": "3086984d291b79b6f3585a946844fd6616592a42418e48c6795cfa0ac7656c0f",
+    "rows": 31
+  },
+  "article_contract": {
+    "path": "configs/article_table_4_contract.json",
+    "sha256": "f43cc7b76eb3dc4470901a7d1b2258a8e5385fbb83305ac3cb7413763237aaaa",
+    "display_precision": 3,
+    "primary_bhattacharya_roy_variant": "no_interaction",
+    "interaction_variant_role": "prespecified architecture sensitivity"
+  },
+  "generator": {
+    "path": "scripts/build_table_4.py",
+    "sha256": "d18d76efcf86a7107deb95b834ed39d09c99aa498139f4e769625281231c17ff"
+  },
+  "output": {
+    "path": "results/table_4_absolute_rmse.csv",
+    "sha256": "e3fc0ad0e82d7e9f3030dcc5e05c6e00bd2e253accc16ff169455bf6b3f667f4",
+    "rows": 30,
+    "columns": 19
+  },
+  "article_concordance": {
+    "model_and_panel_rows_checked": 30,
+    "displayed_rmse_values_match": true,
+    "primary_source_membership_matches": true,
+    "ninety_nine_percent_intervals_included": true
+  },
+  "status": "PASS"
+}

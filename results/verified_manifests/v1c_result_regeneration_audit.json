@@ -16,9 +16,14 @@
       "sha256": "450189d859f2f80f2639ec86f6f45ed39a8a68c3d7290f2a6ad0200d3f3c944e"
     },
     {
-      "role": "Article Table 2 regeneration and manuscript contract",
-      "path": "results/verified_manifests/table_2_regeneration.json",
-      "sha256": "e8caeb95a454b2c3eac3dc95f3d6f6687c82693d704f1cb5d6d9ed5684ff4b8d"
+      "role": "Article Table 3 source-paper context and manuscript contract",
+      "path": "results/verified_manifests/table_3_source_context_audit.json",
+      "sha256": "268d92f9ce83746a1d0510d31dc0463fbb7055480651d9969c2d0015f2fa6606"
+    },
+    {
+      "role": "Article Table 4 regeneration and manuscript contract",
+      "path": "results/verified_manifests/table_4_regeneration.json",
+      "sha256": "663e48afd0e4307fc3950932bab818d8e357a6abf3a2539906bd6c4a0f9f5b47"
     },
     {
       "role": "chemical-subgroup figure regeneration",
@@ -28,7 +33,7 @@
     {
       "role": "machine-readable Supplementary table registry",
       "path": "configs/machine_readable_tables.json",
-      "sha256": "051215f02e93b4f2bea351df3495bc6b8a6e208d93f30efed9b5b1a2879cc3cc"
+      "sha256": "cb88842497539f9e2f6e1bd9526d5541ef93bd00972b4bab9a789035bb7edf7d"
     },
     {
       "role": "machine-readable environment matrix",
@@ -38,13 +43,15 @@
     {
       "role": "clean-environment analysis smoke",
       "path": "results/verified_manifests/clean_environment_smoke.json",
-      "sha256": "8b88c14e561243e7bc95adc5d201809d26555e12eb41d234fbbc3435d30f653e"
+      "sha256": "d5dda5c11eda5f27211b92abc9de50fe9c2bd90556d981c202880df611750a91"
     }
   ],
-  "machine_readable_supplementary_tables": 9,
-  "table_2_regeneration_status": "PASS",
+  "machine_readable_supplementary_tables": 13,
+  "table_3_source_context_status": "PASS",
+  "table_4_regeneration_status": "PASS",
   "figure_2_regeneration_status": "PASS",
-  "article_table_2_contract_status": "PASS",
+  "article_table_3_contract_status": "PASS",
+  "article_table_4_contract_status": "PASS",
   "metric_parity_maximum_absolute_difference": 0.0,
   "bootstrap_parity_maximum_absolute_difference": 0.0,
   "public_result_regeneration_scope_complete": true

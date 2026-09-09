@@ -4,12 +4,17 @@ from typing import Any, Iterable, Mapping
 
 
 EXPECTED_FAMILIES = {"pnnl_gnn", "ali_xgb125", "bhattacharya_roy", "consensus_gnn"}
-EXPECTED_TABLE_RECORDS = {
+EXPECTED_COMPARATOR_RECORDS = {
     ("pnnl_gnn", "none"): "independently retrained adaptation",
     ("ali_xgb125", "none"): "split-adapted schema/settings; ComPlat same-split reproduction",
     ("bhattacharya_roy", "no_interaction"): "independently retrained adaptation",
     ("ulrich_consensus_adaptation", "retrained"): "independently retrained official-code adaptation",
     ("ulrich_consensus", "released"): "authors' released predictions",
+}
+EXPECTED_TABLE_4_RECORDS = {
+    key: value
+    for key, value in EXPECTED_COMPARATOR_RECORDS.items()
+    if key != ("ulrich_consensus", "released")
 }
 EXPECTED_ADDITIONAL_RECORDS = {
     ("bhattacharya_roy", "interaction"): "prespecified architecture sensitivity",
@@ -84,7 +89,7 @@ def validate_provenance_contract(
             observed_records[key] = record.get("evidence_class")
     if len(evidence_file_ids) != 18 or len(set(evidence_file_ids)) != 18:
         errors.append("external comparator evidence-file coverage mismatch")
-    for key, expected in EXPECTED_TABLE_RECORDS.items():
+    for key, expected in EXPECTED_COMPARATOR_RECORDS.items():
         if observed_records.get(key) != expected:
             errors.append(f"external comparator evidence class mismatch: {key[0]}:{key[1]}")
     for key, expected in EXPECTED_ADDITIONAL_RECORDS.items():
@@ -95,8 +100,8 @@ def validate_provenance_contract(
         for row in table_records
         if str(row.get("model_id")) != "dlg_sol"
     }
-    if observed_table != EXPECTED_TABLE_RECORDS:
-        errors.append("Table 2 external comparator provenance mismatch")
+    if observed_table != EXPECTED_TABLE_4_RECORDS:
+        errors.append("Table 4 external comparator provenance mismatch")
 
     sources = redistribution.get("sources", [])
     by_source = {item.get("source_id"): item for item in sources}

@@ -13,7 +13,8 @@ ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "release_manifest.json"
 TABLE_SPEC = ROOT / "configs" / "machine_readable_tables.json"
 TABLE_DIR = ROOT / "supplementary" / "machine_readable"
-ARTICLE_TABLE_2_CONTRACT = ROOT / "configs" / "article_table_2_contract.json"
+ARTICLE_TABLE_3_CONTRACT = ROOT / "configs" / "article_table_3_contract.json"
+ARTICLE_TABLE_4_CONTRACT = ROOT / "configs" / "article_table_4_contract.json"
 ENVIRONMENT_SPEC = ROOT / "environment" / "environments.json"
 EVALUATION_REGISTRY = ROOT / "configs" / "evaluations.json"
 CORE_PARITY = ROOT / "results" / "verified_manifests" / "core_module_parity.json"
@@ -60,7 +61,9 @@ REDISTRIBUTION_DECISIONS = ROOT / "configs" / "redistribution_decisions.json"
 EXTERNAL_ADAPTER_PROVENANCE_AUDIT = ROOT / "results" / "verified_manifests" / "external_adapter_provenance_audit.json"
 REDISTRIBUTION_DECISION_AUDIT = ROOT / "results" / "verified_manifests" / "redistribution_decision_audit.json"
 V1C_RESULT_REGENERATION_AUDIT = ROOT / "results" / "verified_manifests" / "v1c_result_regeneration_audit.json"
-TABLE_2 = ROOT / "results" / "table_2_absolute_rmse.csv"
+TABLE_3_SOURCE_CONTEXT_AUDIT = ROOT / "results" / "verified_manifests" / "table_3_source_context_audit.json"
+TABLE_3_SOURCE_CONTEXT = TABLE_DIR / "source_paper_benchmark_context.csv"
+TABLE_4 = ROOT / "results" / "table_4_absolute_rmse.csv"
 LICENSE_FILE = ROOT / "LICENSE"
 
 sys.path.insert(0, str(ROOT / "src"))
@@ -126,7 +129,7 @@ def validate_release_policy(errors: list[str]) -> None:
         errors.append("MIT copyright attribution is missing")
     citation = (ROOT / "CITATION.cff").read_text(encoding="utf-8")
     required_citation_lines = {
-        "version: 1.0.1",
+        "version: 1.0.2",
         "date-released: 2026-09-09",
         'repository-code: "https://github.com/Tuesdayand/DLG-Sol"',
     }
@@ -176,9 +179,12 @@ def validate_tables(errors: list[str]) -> None:
             "delta_rmse_ci99_low",
             "delta_rmse_ci99_high",
             "significance_tier",
-            "main_table2_comparison",
+            "main_table3_comparison",
         },
         "main_evaluation_effects_12_rows.csv": {
+            "dlg_sol_mae",
+            "component_mae",
+            "delta_mae",
             "ci95_low",
             "ci95_high",
             "ci99_low",
@@ -197,25 +203,89 @@ def validate_tables(errors: list[str]) -> None:
             errors.append(f"confidence-interval or article-mapping columns missing from {name}: {sorted(missing)}")
 
 
-def validate_article_table_2(errors: list[str]) -> None:
-    contract = json.loads(ARTICLE_TABLE_2_CONTRACT.read_text(encoding="utf-8"))
-    if contract.get("schema_version") != 1 or contract.get("article_table") != "Table 2":
-        errors.append("unsupported Article Table 2 contract")
+def validate_article_table_3(errors: list[str]) -> None:
+    contract = json.loads(ARTICLE_TABLE_3_CONTRACT.read_text(encoding="utf-8"))
+    if contract.get("schema_version") != 1 or contract.get("article_table") != "Table 3":
+        errors.append("unsupported Article Table 3 contract")
+        return
+    if contract.get("source") != TABLE_3_SOURCE_CONTEXT.relative_to(ROOT).as_posix():
+        errors.append("Article Table 3 source path mismatch")
+    with TABLE_3_SOURCE_CONTEXT.open(encoding="utf-8", newline="") as handle:
+        source_rows = list(csv.DictReader(handle))
+    by_id = {row.get("context_id"): row for row in source_rows}
+    expected = contract.get("rows", [])
+    expected_ids = [row.get("context_id") for row in expected]
+    panel_ids = [context_id for panel in contract.get("panels", []) for context_id in panel.get("context_ids", [])]
+    source_ids = [row.get("context_id") for row in source_rows]
+    if len(source_rows) != 18 or len(by_id) != 18 or expected_ids != panel_ids or source_ids != expected_ids:
+        errors.append("Article Table 3 source-context membership or order mismatch")
+        return
+
+    benchmark_by_id = {
+        context_id: panel.get("benchmark")
+        for panel in contract.get("panels", [])
+        for context_id in panel.get("context_ids", [])
+    }
+
+    def displayed(value: str, template: str) -> str:
+        plain = template.strip("()")
+        decimals = len(plain.partition(".")[2])
+        rendered = f"{float(value):.{decimals}f}"
+        return f"({rendered})" if template.startswith("(") else rendered
+
+    for spec in expected:
+        context_id = spec.get("context_id")
+        row = by_id.get(context_id)
+        if row is None:
+            errors.append(f"Article Table 3 source-context row missing: {context_id}")
+            continue
+        if row.get("benchmark") != benchmark_by_id.get(context_id):
+            errors.append(f"Article Table 3 benchmark mismatch: {context_id}")
+        if row.get("model_or_method") != spec.get("model_or_method") or int(row.get("n", 0)) != spec.get("n"):
+            errors.append(f"Article Table 3 model or n mismatch: {context_id}")
+        if displayed(row.get("rmse", ""), spec.get("main_rmse", "")) != spec.get("main_rmse"):
+            errors.append(f"Article Table 3 main-text RMSE mismatch: {context_id}")
+        if displayed(row.get("rmse", ""), spec.get("supplementary_rmse", "")) != spec.get("supplementary_rmse"):
+            errors.append(f"Article Table 3 Supplementary RMSE mismatch: {context_id}")
+        expected_mae = spec.get("supplementary_mae")
+        if expected_mae is None:
+            if row.get("mae") or not row.get("mae_status", "").startswith("not_reported"):
+                errors.append(f"Article Table 3 MAE availability mismatch: {context_id}")
+        elif displayed(row.get("mae", ""), expected_mae) != expected_mae:
+            errors.append(f"Article Table 3 Supplementary MAE mismatch: {context_id}")
+    for context_id, expected_scope in contract.get("required_qualifiers", {}).items():
+        if by_id.get(context_id, {}).get("comparison_scope") != expected_scope:
+            errors.append(f"Article Table 3 evidence qualifier mismatch: {context_id}")
+    audit = json.loads(TABLE_3_SOURCE_CONTEXT_AUDIT.read_text(encoding="utf-8"))
+    if audit.get("status") != "PASS":
+        errors.append("Article Table 3 source-context audit status mismatch")
+    audit_source = audit.get("source", {})
+    audit_contract = audit.get("article_contract", {})
+    if audit_source.get("path") != TABLE_3_SOURCE_CONTEXT.relative_to(ROOT).as_posix() or audit_source.get("sha256") != sha256(TABLE_3_SOURCE_CONTEXT):
+        errors.append("Article Table 3 source-context audit source identity mismatch")
+    if audit_contract.get("path") != ARTICLE_TABLE_3_CONTRACT.relative_to(ROOT).as_posix() or audit_contract.get("sha256") != sha256(ARTICLE_TABLE_3_CONTRACT):
+        errors.append("Article Table 3 source-context audit contract identity mismatch")
+
+
+def validate_article_table_4(errors: list[str]) -> None:
+    contract = json.loads(ARTICLE_TABLE_4_CONTRACT.read_text(encoding="utf-8"))
+    if contract.get("schema_version") != 1 or contract.get("article_table") != "Table 4":
+        errors.append("unsupported Article Table 4 contract")
         return
     panels = contract.get("panels", [])
     models = contract.get("models", [])
     panel_ids = [record.get("id") for record in panels]
     if panel_ids != ["R01", "R02", "R03", "R04", "R05", "R09"]:
-        errors.append("Article Table 2 panel order mismatch")
-    if len(models) != 6 or models[0].get("model_id") != "dlg_sol":
-        errors.append("Article Table 2 model contract mismatch")
+        errors.append("Article Table 4 panel order mismatch")
+    if len(models) != 5 or models[0].get("model_id") != "dlg_sol":
+        errors.append("Article Table 4 model contract mismatch")
         return
 
-    with TABLE_2.open(encoding="utf-8", newline="") as handle:
+    with TABLE_4.open(encoding="utf-8", newline="") as handle:
         output_rows = list(csv.DictReader(handle))
     by_key = {(row.get("model_id"), row.get("variant"), row.get("panel")): row for row in output_rows}
-    if len(output_rows) != 36 or len(by_key) != 36:
-        errors.append("Article Table 2 output row identity mismatch")
+    if len(output_rows) != 30 or len(by_key) != 30:
+        errors.append("Article Table 4 output row identity mismatch")
         return
 
     expected_primary_source_rows: set[tuple[str, str, str]] = set()
@@ -224,36 +294,37 @@ def validate_article_table_2(errors: list[str]) -> None:
             key = (model.get("model_id"), model.get("variant"), panel)
             row = by_key.get(key)
             if row is None:
-                errors.append(f"Article Table 2 row missing: {key}")
+                errors.append(f"Article Table 4 row missing: {key}")
                 continue
             for field in ("model_label", "evidence_class"):
                 if row.get(field) != model.get(field):
-                    errors.append(f"Article Table 2 {field} mismatch: {key}")
+                    errors.append(f"Article Table 4 {field} mismatch: {key}")
             expected_display = model.get("display_rmse", {}).get(panel)
             available = row.get("available") == "True"
             if available != (expected_display is not None):
-                errors.append(f"Article Table 2 availability mismatch: {key}")
+                errors.append(f"Article Table 4 availability mismatch: {key}")
             if available and f"{float(row['absolute_rmse']):.3f}" != expected_display:
-                errors.append(f"Article Table 2 displayed RMSE mismatch: {key}")
+                errors.append(f"Article Table 4 displayed RMSE mismatch: {key}")
             if model.get("model_id") != "dlg_sol" and available:
                 expected_primary_source_rows.add((model.get("source_model_id"), model.get("source_variant"), panel))
                 if not row.get("delta_rmse_ci99_low") or not row.get("delta_rmse_ci99_high"):
-                    errors.append(f"Article Table 2 99% CI missing: {key}")
+                    errors.append(f"Article Table 4 99% CI missing: {key}")
 
     source_path = TABLE_DIR / "external_comparator_metrics_31_rows.csv"
     with source_path.open(encoding="utf-8", newline="") as handle:
         source_rows = list(csv.DictReader(handle))
-    marked_primary = {
+    marked_main_text = {
         (row.get("model_id"), row.get("variant"), row.get("evaluation_id"))
         for row in source_rows
-        if row.get("main_table2_comparison") == "True"
+        if row.get("main_table3_comparison") == "True"
     }
-    if marked_primary != expected_primary_source_rows:
-        errors.append("machine-readable Article Table 2 membership differs from the locked contract")
+    legacy_released_prediction = {("consensus_gnn_author", "released", "R05")}
+    if marked_main_text != expected_primary_source_rows | legacy_released_prediction:
+        errors.append("legacy machine-readable main-text membership differs from Article Tables 3--4")
     if any(
         row.get("model_id") == "bhattacharya_roy"
         and row.get("variant") == "interaction"
-        and row.get("main_table2_comparison") == "True"
+        and row.get("main_table3_comparison") == "True"
         for row in source_rows
     ):
         errors.append("Bhattacharya--Roy interaction sensitivity is incorrectly marked as a primary comparator")
@@ -1285,7 +1356,7 @@ def validate_branch_execution(errors: list[str]) -> None:
 def validate_release_provenance(errors: list[str]) -> None:
     external_adapter = json.loads(EXTERNAL_ADAPTER_PROVENANCE.read_text(encoding="utf-8"))
     redistribution = json.loads(REDISTRIBUTION_DECISIONS.read_text(encoding="utf-8"))
-    with TABLE_2.open(encoding="utf-8", newline="") as handle:
+    with TABLE_4.open(encoding="utf-8", newline="") as handle:
         table_records = list(csv.DictReader(handle))
     errors.extend(validate_provenance_contract(external_adapter, redistribution, table_records))
 
@@ -1321,6 +1392,15 @@ def validate_release_provenance(errors: list[str]) -> None:
     }
     if any(external_audit.get(key) != value for key, value in expected_external.items()):
         errors.append("external-adapter provenance audit mismatch")
+    expected_main_text_external = {
+        "pnnl_gnn:none",
+        "ali_xgb125:none",
+        "bhattacharya_roy:no_interaction",
+        "ulrich_consensus_adaptation:retrained",
+        "ulrich_consensus:released",
+    }
+    if set(external_audit.get("main_text_external_models_covered", [])) != expected_main_text_external:
+        errors.append("external-adapter main-text model coverage mismatch")
 
     redistribution_audit = json.loads(REDISTRIBUTION_DECISION_AUDIT.read_text(encoding="utf-8"))
     expected_redistribution = {
@@ -1346,12 +1426,20 @@ def validate_release_provenance(errors: list[str]) -> None:
         errors.append("excluded third-party or model-asset directory is present")
 
     v1c = json.loads(V1C_RESULT_REGENERATION_AUDIT.read_text(encoding="utf-8"))
-    if v1c.get("status") != "PASS" or v1c.get("public_result_regeneration_scope_complete") is not True or v1c.get("fresh_six_evaluation_retraining_claimed") is not False or v1c.get("article_table_2_contract_status") != "PASS":
+    if (
+        v1c.get("status") != "PASS"
+        or v1c.get("public_result_regeneration_scope_complete") is not True
+        or v1c.get("fresh_six_evaluation_retraining_claimed") is not False
+        or v1c.get("table_3_source_context_status") != "PASS"
+        or v1c.get("table_4_regeneration_status") != "PASS"
+        or v1c.get("article_table_3_contract_status") != "PASS"
+        or v1c.get("article_table_4_contract_status") != "PASS"
+    ):
         errors.append("V1-C result-regeneration status mismatch")
-    if v1c.get("machine_readable_supplementary_tables") != 9 or v1c.get("metric_parity_maximum_absolute_difference") != 0.0 or v1c.get("bootstrap_parity_maximum_absolute_difference") != 0.0:
+    if v1c.get("machine_readable_supplementary_tables") != 13 or v1c.get("metric_parity_maximum_absolute_difference") != 0.0 or v1c.get("bootstrap_parity_maximum_absolute_difference") != 0.0:
         errors.append("V1-C result-regeneration evidence mismatch")
     required_artefacts = v1c.get("required_artefacts", [])
-    if len(required_artefacts) != 7:
+    if len(required_artefacts) != 8:
         errors.append("V1-C required-artefact coverage mismatch")
     for artefact in required_artefacts:
         path = ROOT / artefact.get("path", "")
@@ -1384,7 +1472,8 @@ def main() -> int:
     validate_manifest(errors)
     validate_release_policy(errors)
     validate_tables(errors)
-    validate_article_table_2(errors)
+    validate_article_table_3(errors)
+    validate_article_table_4(errors)
     validate_environment_spec(errors)
     validate_evaluation_registry(errors)
     validate_core_parity(errors)

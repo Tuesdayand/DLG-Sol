@@ -2,7 +2,7 @@
 
 This directory contains compact article-level outputs and manifests connecting public scripts and inputs to article tables and figures. Large checkpoints and third-party row-level data are not stored here.
 
-`table_2_absolute_rmse.csv` is rebuilt from the public 31-row external-comparator summary by `scripts/build_table_2.py`. The generator reads `configs/article_table_2_contract.json`, which locks the final comparator variants, labels, panel order, displayed RMSE values, and Article Table 2 membership.
+`table_4_absolute_rmse.csv` is rebuilt from the public 31-row external-comparator summary by `scripts/build_table_4.py`. The generator reads `configs/article_table_4_contract.json`, which locks the final comparator variants, labels, panel order, displayed RMSE values, and Article Table 4 membership. Article Table 3 source-paper context and Article Table 2 component effects are supplied separately in `supplementary/machine_readable/source_paper_benchmark_context.csv` and `supplementary/machine_readable/main_evaluation_effects_12_rows.csv`, respectively.
 
 `verified_manifests/core_module_parity.json` records a six-evaluation full-row parity check for the canonical metrics, paired bootstrap, and fixed-blend application without redistributing the row-level inputs.
 
@@ -38,4 +38,4 @@ This directory contains compact article-level outputs and manifests connecting p
 
 `verified_manifests/redistribution_decision_audit.json` records the source-by-source and asset-class distribution review. Molecular rows, experimental labels, source-linked predictions, embeddings, conformers, graph caches, and checkpoints remain excluded. Compact aggregate results, configuration records, and original DLG-Sol code remain included.
 
-`verified_manifests/v1c_result_regeneration_audit.json` binds the public metric, paired-bootstrap, Table 2, Figure 2, machine-readable Supplementary table, and clean-environment analysis artefacts. It does not claim fresh six-evaluation retraining.
+`verified_manifests/v1c_result_regeneration_audit.json` binds the Article Table 3 source-context audit, Article Table 4 regeneration, public metric and paired-bootstrap results, Figure 2, machine-readable Supplementary tables, and clean-environment analysis artefacts. It does not claim fresh six-evaluation retraining.

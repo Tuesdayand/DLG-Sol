@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "article_table": "Table 3",
+  "source": "supplementary/machine_readable/source_paper_benchmark_context.csv",
+  "panels": [
+    {"benchmark": "ComPlat test", "context_ids": ["C01", "C02", "C03", "C04", "C05", "C06", "C07", "C08", "C09", "C10", "C11", "C12", "C13"]},
+    {"benchmark": "JCheM test", "context_ids": ["C14", "C15", "C16", "C17", "C18"]}
+  ],
+  "rows": [
+    {"context_id": "C01", "model_or_method": "ANN", "n": 1294, "main_rmse": "0.71", "supplementary_rmse": "0.71", "supplementary_mae": null},
+    {"context_id": "C02", "model_or_method": "ANN", "n": 1291, "main_rmse": "0.62", "supplementary_rmse": "0.62", "supplementary_mae": null},
+    {"context_id": "C03", "model_or_method": "ANN", "n": 1294, "main_rmse": "0.59", "supplementary_rmse": "0.59", "supplementary_mae": "0.68"},
+    {"context_id": "C04", "model_or_method": "MLR", "n": 1290, "main_rmse": "0.87", "supplementary_rmse": "0.87", "supplementary_mae": "0.68"},
+    {"context_id": "C05", "model_or_method": "MLR", "n": 1294, "main_rmse": "0.63", "supplementary_rmse": "0.63", "supplementary_mae": "0.52"},
+    {"context_id": "C06", "model_or_method": "SVM", "n": 1290, "main_rmse": "0.60", "supplementary_rmse": "0.60", "supplementary_mae": "0.43"},
+    {"context_id": "C07", "model_or_method": "MLR", "n": 1290, "main_rmse": "0.94", "supplementary_rmse": "0.94", "supplementary_mae": "0.72"},
+    {"context_id": "C08", "model_or_method": "MLR", "n": 1290, "main_rmse": "1.15", "supplementary_rmse": "1.15", "supplementary_mae": "0.93"},
+    {"context_id": "C09", "model_or_method": "ANN", "n": 1297, "main_rmse": "0.65", "supplementary_rmse": "0.65", "supplementary_mae": null},
+    {"context_id": "C10", "model_or_method": "Consensus", "n": 1290, "main_rmse": "(0.53)", "supplementary_rmse": "(0.53)", "supplementary_mae": "(0.39)"},
+    {"context_id": "C11", "model_or_method": "Consensus", "n": 1290, "main_rmse": "0.73", "supplementary_rmse": "0.73", "supplementary_mae": "0.54"},
+    {"context_id": "C12", "model_or_method": "XGB-298", "n": 1282, "main_rmse": "0.55", "supplementary_rmse": "0.55", "supplementary_mae": "0.40"},
+    {"context_id": "C13", "model_or_method": "DLG-Sol", "n": 1282, "main_rmse": "0.5599", "supplementary_rmse": "0.5599", "supplementary_mae": "0.4092"},
+    {"context_id": "C14", "model_or_method": "Consensus GNN", "n": 980, "main_rmse": "0.657", "supplementary_rmse": "0.6571", "supplementary_mae": "0.4745"},
+    {"context_id": "C15", "model_or_method": "EPI Suite", "n": 934, "main_rmse": "1.386", "supplementary_rmse": "1.386", "supplementary_mae": null},
+    {"context_id": "C16", "model_or_method": "OCHEM", "n": 980, "main_rmse": "0.703", "supplementary_rmse": "0.703", "supplementary_mae": null},
+    {"context_id": "C17", "model_or_method": "ACD GALAS", "n": 980, "main_rmse": "0.845", "supplementary_rmse": "0.845", "supplementary_mae": null},
+    {"context_id": "C18", "model_or_method": "DLG-Sol", "n": 980, "main_rmse": "0.6144", "supplementary_rmse": "0.6144", "supplementary_mae": "0.4193"}
+  ],
+  "required_qualifiers": {
+    "C10": "historical_context_overlap_affected",
+    "C14": "direct_same_row_paired_comparison",
+    "C16": "historical_context_no_row_predictions_source_flagged_training_test_overlap",
+    "C18": "direct_same_row_paired_comparison_with_released_consensus"
+  }
+}

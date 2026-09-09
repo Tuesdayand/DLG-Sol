@@ -1,0 +1,19 @@
+context_id,benchmark,model_or_method,source_or_evidence,n,rmse,mae,mae_status,comparison_scope
+C01,ComPlat test,ANN,Huuskonen et al. source-paper point estimate,1294,0.71,,not_reported,historical_context
+C02,ComPlat test,ANN,Tetko et al. source-paper point estimate,1291,0.62,,not_reported,historical_context
+C03,ComPlat test,ANN,Yan and Gasteiger source-paper point estimate,1294,0.59,0.68,source_reported,historical_context
+C04,ComPlat test,MLR,Delaney source-paper point estimate,1290,0.87,0.68,source_reported,historical_context
+C05,ComPlat test,MLR,Hou et al. source-paper point estimate,1294,0.63,0.52,source_reported,historical_context
+C06,ComPlat test,SVM,Schroeter et al. source-paper point estimate,1290,0.60,0.43,source_reported,historical_context
+C07,ComPlat test,MLR,Ali et al. 2012 source-paper point estimate,1290,0.94,0.72,source_reported,historical_context
+C08,ComPlat test,MLR,Daina et al. source-paper point estimate,1290,1.15,0.93,source_reported,historical_context
+C09,ComPlat test,ANN,Bjerrum and Sattarov source-paper point estimate,1297,0.65,,not_reported,historical_context
+C10,ComPlat test,Consensus,Sorkun and Koelman overlap-affected source-paper point estimate,1290,0.53,0.39,source_reported_parenthesized,historical_context_overlap_affected
+C11,ComPlat test,Consensus,Ali et al. overlap-corrected rework,1290,0.73,0.54,source_reported,historical_context
+C12,ComPlat test,XGB-298,Ali et al. source-study model,1282,0.55,0.40,source_reported,historical_context
+C13,ComPlat test,DLG-Sol,This work,1282,0.5599356767828995,0.4091726386110643,recomputed_from_this_work_predictions,historical_context_same_standardized_rows_as_source_study
+C14,JCheM test,Consensus GNN,Ulrich et al. source-study model and released predictions,980,0.657101,0.474511,recomputed_from_authors_released_predictions,direct_same_row_paired_comparison
+C15,JCheM test,EPI Suite,Ulrich et al. source-paper point estimate,934,1.386,,not_reported,historical_context_fewer_rows
+C16,JCheM test,OCHEM,Ulrich et al. source-paper point estimate; source authors noted test-set chemicals in the model training set,980,0.703,,not_reported,historical_context_no_row_predictions_source_flagged_training_test_overlap
+C17,JCheM test,ACD GALAS,Ulrich et al. source-paper point estimate,980,0.845,,not_reported,historical_context_no_row_predictions
+C18,JCheM test,DLG-Sol,This work,980,0.6143625076600107,0.4192679746296734,recomputed_from_this_work_predictions,direct_same_row_paired_comparison_with_released_consensus

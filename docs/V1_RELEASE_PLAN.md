@@ -37,13 +37,13 @@ Version 1.0 does not require one command that automatically retrains all six eva
 Status: complete for the public aggregate and configuration-level outputs. This status does not claim fresh six-evaluation retraining.
 
 - reproduce RMSE, MAE, and paired-bootstrap comparisons from generated predictions;
-- regenerate Table 2, the chemical-subgroup figure, and all machine-readable Supplementary tables supported by public inputs;
+- validate Article Table 3 source-paper context, regenerate Article Table 4 and the chemical-subgroup figure, and expose all machine-readable Supplementary tables supported by public inputs;
 - record expected numerical tolerances for fresh training separately from exact deterministic transformations;
 - execute full and reduced smoke tests in pinned environments.
 
 ## Gate V1-D: GitHub release
 
-Status: `v1.0.0` was published on GitHub. Version `v1.0.1` is the manuscript-concordance patch that corrects the primary Bhattacharya--Roy variant identity, synchronizes the machine-readable Supplementary package, and strengthens article-output validation.
+Status: `v1.0.0` and the manuscript-concordance patch `v1.0.1` were published on GitHub. Version `v1.0.2` synchronizes the restructured Article Tables 3--4, adds the developmental-screen and source-paper-context data, and restores MAE fields in the component-effect table.
 
 - update `CITATION.cff` to the patch version and final release date;
 - update README, data-access documentation, release checklist, and reproducibility scope from development to released status;

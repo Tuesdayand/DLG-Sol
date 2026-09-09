@@ -2,7 +2,7 @@ cff-version: 1.2.0
 message: "If you use this software or its accompanying results, please cite the DLG-Sol article."
 title: "DLG-Sol: descriptor, molecular-language, and three-dimensional representations for aqueous-solubility prediction"
 type: software
-version: 1.0.1
+version: 1.0.2
 date-released: 2026-09-09
 license: MIT
 authors:

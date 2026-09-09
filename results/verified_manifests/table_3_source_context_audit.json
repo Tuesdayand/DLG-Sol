@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "table": "Article Table 3 source-paper benchmark context",
+  "source": {
+    "path": "supplementary/machine_readable/source_paper_benchmark_context.csv",
+    "sha256": "b75bc59a78dfa6c6cfa7e39f3dd37137369ddea66c1479d163834109d4cb8bbb",
+    "rows": 18,
+    "columns": 9
+  },
+  "article_contract": {
+    "path": "configs/article_table_3_contract.json",
+    "sha256": "762d58ffd91c0aa2140382b2b1ac63f7cd599f897fd768cd03f2402b3178823d",
+    "complat_rows": 13,
+    "jchem_rows": 5
+  },
+  "article_concordance": {
+    "ordered_context_rows_checked": 18,
+    "displayed_rmse_values_match": true,
+    "supplementary_mae_availability_matches": true,
+    "released_consensus_same_row_class_retained": true,
+    "sorkun_overlap_qualification_retained": true,
+    "ochem_training_test_overlap_qualification_retained": true
+  },
+  "status": "PASS"
+}

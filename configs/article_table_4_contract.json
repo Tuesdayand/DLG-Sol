@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "article_table": "Table 2",
+  "article_table": "Table 4",
   "display_precision": 3,
   "panels": [
     {"id": "R01", "label": "AqSolDBc OOF", "n": 8047},
@@ -60,16 +60,6 @@
       "model_label": "Consensus GNN",
       "evidence_class": "independently retrained official-code adaptation",
       "display_rmse": {"R01": "1.154", "R02": "1.331", "R03": "1.685", "R04": "1.800", "R05": "0.810", "R09": "0.824"}
-    },
-    {
-      "table_order": 6,
-      "source_model_id": "consensus_gnn_author",
-      "source_variant": "released",
-      "model_id": "ulrich_consensus",
-      "variant": "released",
-      "model_label": "Consensus GNN",
-      "evidence_class": "authors' released predictions",
-      "display_rmse": {"R01": null, "R02": null, "R03": null, "R04": null, "R05": "0.657", "R09": null}
     }
   ]
 }

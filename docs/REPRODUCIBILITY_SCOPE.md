@@ -14,7 +14,7 @@ The v1.0 release will provide an executable workflow for users who lawfully obta
 4. dataset-specific failure handling and label-access boundaries;
 5. legally redistributable or independently implemented external-comparator adapters;
 6. RMSE, MAE, and paired-bootstrap scoring;
-7. regeneration of the main figures, Table 2, and machine-readable Supplementary tables;
+7. validation of Article Table 3 source-paper context, regeneration of Article Table 4 and the main figures, and machine-readable Supplementary tables underlying Article Table 2;
 8. pinned environments, tests, release-integrity validation, and a versioned GitHub release record.
 
 Fresh training under the recorded protocol is a protocol reproduction, not a promise of bitwise-identical historical weights. Users will not need redistributed historical checkpoints to execute the v1.0 workflow.

@@ -34,9 +34,9 @@
 - [x] Branch-level training command-line entry points and required descriptor integration run completed
 - [x] External-adapter file provenance audited
 - [x] Dataset-specific row-level redistribution decisions completed
-- [x] Clean-environment reproduction executed for the current summary-data, code, Figure 2, and Table 2 scope
+- [x] Clean-environment reproduction executed for the current summary-data, code, Figure 2, and Article Table 4 scope
 - [x] Chemical-subgroup figure regeneration executed from public inputs
-- [x] Table 2 regeneration executed from public inputs
+- [x] Article Table 3 source-context contract validated and Article Table 4 regenerated from public inputs
 - [x] Public repository URL assigned
 - [x] Versioned GitHub release published; permanent software-archive identifier remains optional pending submission-policy confirmation
 - [x] Manuscript availability statement updated

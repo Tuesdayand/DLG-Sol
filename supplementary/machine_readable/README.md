@@ -15,11 +15,15 @@ This directory uses content-based file names so that files remain unambiguous if
 
 ## Files
 
-- `main_evaluation_effects_12_rows.csv`: the 12 DLG-Sol-versus-component effects underlying Article Table 3, with 95% and 99% confidence intervals.
-- `external_comparator_metrics_31_rows.csv`: external-comparator RMSE, MAE, bias, 95% and 99% paired intervals, evidence class, and Article Table 2 membership.
+- `main_evaluation_effects_12_rows.csv`: the 12 DLG-Sol-versus-component effects underlying Article Table 2, with RMSE and MAE point estimates and 95% and 99% RMSE confidence intervals.
+- `source_paper_benchmark_context.csv`: the 18 source-paper context rows underlying Article Table 3 and Supplementary Table S20, including available RMSE and MAE values and evidence qualifications.
+- `external_comparator_metrics_31_rows.csv`: external-comparator RMSE, MAE, bias, 95% and 99% paired intervals, and evidence class. The legacy `main_table3_comparison` field marks the 25 main-text contrasts retained across current Article Tables 3--4; its name is preserved for schema stability.
 - `descriptor_preprocessing_record.csv`: dataset-specific descriptor filtering and retained-feature counts.
 - `single_representation_grid_185_rows.csv`: complete available single-representation grid.
 - `pair_representation_grid_315_rows.csv`: complete representation-pair grid.
+- `developmental_single_representation_screen_metrics.csv`: complete 35-candidate developmental single-representation screen across the recorded validation and development panels.
+- `developmental_pair_representation_screen_metrics.csv`: complete 105-candidate developmental pair-representation screen across the recorded validation and development panels.
+- `developmental_focused_tuning_metrics.csv`: focused 12-candidate developmental tuning records for the selected representation pair.
 - `chemical_subgroup_delta_rmse_96_rows.csv`: all 96 subgroup RMSE comparisons.
 - `chemical_subgroup_delta_mae_96_rows.csv`: all 96 subgroup MAE comparisons.
 - `seed_registry.csv`: compact seed summary.

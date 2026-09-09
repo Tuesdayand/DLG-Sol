@@ -10,13 +10,14 @@
     "python-pptx": "1.0.2"
   },
   "commands": [
-    "python scripts/build_table_2.py",
+    "python scripts/build_table_4.py",
     "python scripts/render_chemical_subgroup_figure.py"
   ],
   "deterministic_checks": {
-    "results/table_2_absolute_rmse.csv": "f7a6bdc74186885da0d9c0b13de170dbdc9fac799804edd12cfa1a570b94ce2e",
+    "results/table_4_absolute_rmse.csv": "e3fc0ad0e82d7e9f3030dcc5e05c6e00bd2e253accc16ff169455bf6b3f667f4",
     "figures/generated/figure_2_chemical_subgroup_gain.png": "e73e52ad06cb9accad8170239752a4ed05cd770a7679c7384fc0e2e2d3cb9c4a"
   },
-  "article_table_2_contract_checked": true,
+  "article_table_3_source_context_contract_checked": true,
+  "article_table_4_contract_checked": true,
   "status": "PASS"
 }

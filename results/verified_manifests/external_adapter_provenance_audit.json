@@ -11,7 +11,7 @@
   "repository_revisions_checked": 4,
   "repository_revision_mismatches": 0,
   "execution_environments_recorded": 4,
-  "table_2_external_models_covered": [
+  "main_text_external_models_covered": [
     "pnnl_gnn:none",
     "ali_xgb125:none",
     "bhattacharya_roy:no_interaction",
