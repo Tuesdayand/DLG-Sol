@@ -1,12 +1,12 @@
 # DLG-Sol
 
-Code and machine-readable results supporting **“DLG-Sol: Integrating descriptor, molecular-language, and three-dimensional representations for aqueous-solubility prediction.”**
+Code and machine-readable results supporting **“DLG-Sol: A descriptor–language–geometry model using fixed prediction-level blending for aqueous-solubility prediction.”**
 
 DLG-Sol combines a Mordred/XGBoost descriptor model with a neural model derived from ChemBERTa and a distance-aware three-dimensional message-passing representation. The final prediction uses one molecule-independent blend coefficient within each fitted fold, split, or evaluation model.
 
 ## Repository status
 
-This repository contains the **v1.0.2 reproducibility package**. It includes verified machine-readable Supplementary summaries, release-integrity checks, the six-evaluation registry, label-firewall checks, fixed blending, article-level scoring metrics, the canonical Mordred/XGBoost descriptor branch, the ChemBERTa language encoder, the explicit-polar-hydrogen distance-aware three-dimensional graph branch, the canonical `aug2_head4` language–geometry branch, evaluation-specific adapter contracts, a validated benchmark-input package schema, a provenance-checked local-package evaluation runner, a historical training-role audit, a label-safe stage materializer, audited unit-level execution recipes, and branch-level training commands. Row-level benchmark data, historical model checkpoints, automatic data acquisition, and third-party source code are not included.
+This repository contains the **v1.0.3 reproducibility package**. It includes verified machine-readable Supplementary summaries, release-integrity checks, the six-evaluation registry, label-firewall checks, fixed blending, article-level scoring metrics, the canonical Mordred/XGBoost descriptor branch, the ChemBERTa language encoder, the explicit-polar-hydrogen distance-aware three-dimensional graph branch, the canonical `aug2_head4` language–geometry branch, evaluation-specific adapter contracts, a validated benchmark-input package schema, a provenance-checked local-package evaluation runner, a historical training-role audit, a label-safe stage materializer, audited unit-level execution recipes, and branch-level training commands. Row-level benchmark data, historical model checkpoints, automatic data acquisition, and third-party source code are not included.
 
 The package provides a documented, executable path from lawfully obtained user-supplied benchmark data through DLG-Sol training, prediction, fixed blending, scoring, and regeneration of the reported public outputs. Raw third-party benchmark rows, third-party source trees, and model weights without clear redistribution permission are not bundled. Their provenance, access conditions, and required local-package schemas are documented instead.
 
@@ -101,7 +101,7 @@ See `docs/REPRODUCIBILITY_SCOPE.md` for the exact reproducibility claims and the
 
 ## Citation
 
-Citation metadata for version 1.0.1 are provided in `CITATION.cff`. A software archive identifier and the article DOI may be added when assigned.
+Citation metadata for version 1.0.3 are provided in `CITATION.cff`. A software archive identifier and the article DOI may be added when assigned.
 
 ## License
 

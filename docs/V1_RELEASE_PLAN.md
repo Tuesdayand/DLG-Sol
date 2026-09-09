@@ -43,7 +43,7 @@ Status: complete for the public aggregate and configuration-level outputs. This 
 
 ## Gate V1-D: GitHub release
 
-Status: `v1.0.0` and the manuscript-concordance patch `v1.0.1` were published on GitHub. Version `v1.0.2` synchronizes the restructured Article Tables 3--4, adds the developmental-screen and source-paper-context data, and restores MAE fields in the component-effect table.
+Status: `v1.0.0` and manuscript-concordance patches `v1.0.1` and `v1.0.2` were published on GitHub. Version `v1.0.3` aligns the repository and citation metadata with the final descriptor--language--geometry article title.
 
 - update `CITATION.cff` to the patch version and final release date;
 - update README, data-access documentation, release checklist, and reproducibility scope from development to released status;

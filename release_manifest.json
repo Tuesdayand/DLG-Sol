@@ -11,16 +11,16 @@
       "sha256": "6c7dad98d1c751c25f846f5b7229f5cc324e9372d2edd5b003d81db6e0e47c34"
     },
     "CITATION.cff": {
-      "bytes": 500,
-      "sha256": "066e355c4e13027c25c731c2143daf8550cb322f2b40bbd03a8556f9bdb8026a"
+      "bytes": 509,
+      "sha256": "b83578f6293a15bdc21d28f4977fd0c4d1b8633b00c8d8e85b6be3a40b21cb33"
     },
     "LICENSE": {
       "bytes": 1086,
       "sha256": "f0c3a7b69ebdc6dc675bb5763e57c0032dc2bae094ad9887503b0c38f21c1603"
     },
     "README.md": {
-      "bytes": 8897,
-      "sha256": "e1f8152bba6e523d637c6c254dc9e41836ea7c9f085542f470a2fdfb4c05350b"
+      "bytes": 8894,
+      "sha256": "f44948fee99351b586d91ffebd3f9b86a40b090316a5629ea2284c6a7567b95e"
     },
     "THIRD_PARTY_NOTICES.md": {
       "bytes": 3684,
@@ -166,6 +166,10 @@
       "bytes": 1313,
       "sha256": "aa139c5570df9b5a3daa9cfb4e24121dbfef09eea6d2b6aa9732e01c8de6786a"
     },
+    "docs/RELEASE_NOTES_v1.0.3.md": {
+      "bytes": 571,
+      "sha256": "18070a35a0d4ba6aec8788fb9bf005c39f91c7ba57fcf0b6ec320e89482635eb"
+    },
     "docs/REPRODUCIBILITY_SCOPE.md": {
       "bytes": 6778,
       "sha256": "0276293eb41d09de906eeee51089b8ae68792723dd1acf817da353b1020ec77e"
@@ -187,8 +191,8 @@
       "sha256": "db60c8a7f7d15d71946d238afc72b77ce9d0a9817ffe7d489522f94ec3313b6d"
     },
     "docs/V1_RELEASE_PLAN.md": {
-      "bytes": 5270,
-      "sha256": "c8e67d99d542098734c900a11c051243ed7b736bfb6184b9c963605bc91a8732"
+      "bytes": 5219,
+      "sha256": "9ed243f9dafa0b45a727d5024d1800693131d2cbf81f4789baf8f60245bc4e02"
     },
     "environment/README.md": {
       "bytes": 3834,
@@ -444,7 +448,7 @@
     },
     "scripts/validate_release.py": {
       "bytes": 96229,
-      "sha256": "9161b258126dce2a361e4d32fc673fd94e89f42edb2859524f7b3c8bf5073c10"
+      "sha256": "03358bfd366648f9516ff06f533e1aaabc6066c6053d2c3c1027d107f4c1d692"
     },
     "src/dlg_sol/__init__.py": {
       "bytes": 1633,

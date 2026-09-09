@@ -129,8 +129,8 @@ def validate_release_policy(errors: list[str]) -> None:
         errors.append("MIT copyright attribution is missing")
     citation = (ROOT / "CITATION.cff").read_text(encoding="utf-8")
     required_citation_lines = {
-        "version: 1.0.2",
-        "date-released: 2026-09-09",
+        "version: 1.0.3",
+        "date-released: 2026-09-10",
         'repository-code: "https://github.com/Tuesdayand/DLG-Sol"',
     }
     if not required_citation_lines.issubset(set(citation.splitlines())):
