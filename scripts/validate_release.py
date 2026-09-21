@@ -320,6 +320,40 @@ def validate_article_table_3(errors: list[str]) -> None:
         errors.append("Article Table 3 source-context audit contract identity mismatch")
 
 
+def article_table_4_stars(contract: dict, source_rows: list[dict]) -> dict[str, str]:
+    """Derive DLG-Sol annotations using only the four displayed comparators."""
+    expected = {
+        ("pnnl_gnn", "none"), ("ali_xgb125", "none"),
+        ("bhattacharya_roy", "no_interaction"),
+        ("consensus_gnn_retrained", "retrained_adaptation"),
+    }
+    models = [model for model in contract["models"] if model["model_id"] != "dlg_sol"]
+    identities = {(model["source_model_id"], model["source_variant"]) for model in models}
+    if len(models) != 4 or identities != expected:
+        raise ValueError("annotation requires the four displayed comparator identities")
+    stars = {}
+    for panel in contract["panels"]:
+        intervals = []
+        for model_id, variant in sorted(identities):
+            matches = [row for row in source_rows if
+                       (row.get("model_id"), row.get("variant"), row.get("evaluation_id"))
+                       == (model_id, variant, panel["id"])]
+            if len(matches) != 1:
+                raise ValueError(f"annotation source row missing or duplicated: {panel['id']} {model_id}")
+            row = matches[0]
+            if int(row["n"]) != panel["n"]:
+                raise ValueError("annotation sample count mismatch")
+            bounds = [float(row[f"delta_rmse_ci{level}_{end}"])
+                      for level in (95, 99) for end in ("low", "high")]
+            low95, high95, low99, high99 = bounds
+            if not all(math.isfinite(value) for value in bounds) or not low99 <= low95 <= high95 <= high99:
+                raise ValueError("annotation confidence intervals are invalid")
+            intervals.append((high95, high99))
+        stars[panel["id"]] = ("***" if all(high99 < 0 for _, high99 in intervals)
+                              else "**" if all(high95 < 0 for high95, _ in intervals) else "")
+    return stars
+
+
 def validate_article_table_4(errors: list[str]) -> None:
     contract = json.loads(ARTICLE_TABLE_4_CONTRACT.read_text(encoding="utf-8"))
     if contract.get("schema_version") != 1 or contract.get("article_table") != "Table 4":
@@ -366,6 +400,17 @@ def validate_article_table_4(errors: list[str]) -> None:
     source_path = TABLE_DIR / "external_comparator_metrics_31_rows.csv"
     with source_path.open(encoding="utf-8", newline="") as handle:
         source_rows = list(csv.DictReader(handle))
+    annotation = contract.get("significance_annotation", {})
+    if (annotation.get("scope") != "all_four_displayed_external_models"
+            or annotation.get("difference") != "DLG-Sol minus comparator"
+            or annotation.get("double_asterisk_confidence_level") != 0.95
+            or annotation.get("triple_asterisk_confidence_level") != 0.99):
+        errors.append("Article Table 4 annotation scope or confidence levels mismatch")
+    try:
+        if article_table_4_stars(contract, source_rows) != annotation.get("display_stars"):
+            errors.append("Article Table 4 displayed asterisks differ from the four-comparator intervals")
+    except (KeyError, TypeError, ValueError) as exc:
+        errors.append(f"Article Table 4 annotation invalid: {exc}")
     marked_main_text = {
         (row.get("model_id"), row.get("variant"), row.get("evaluation_id"))
         for row in source_rows

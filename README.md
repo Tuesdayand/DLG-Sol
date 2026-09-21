@@ -10,6 +10,8 @@ The study examines how much combining the two models improves prediction over ea
 
 This is the **v1.0.4 reproducibility package**, aligned with the revised manuscript. It includes machine-readable Supplementary summaries, release-integrity checks, the six-evaluation registry, label-firewall checks, fixed blending, article-level scoring metrics, the Mordred/XGBoost descriptor model, the ChemBERTa language encoder, the explicit-polar-hydrogen distance-aware 3D-MPNN, the `aug2_head4` language–geometry model, evaluation-specific data contracts, benchmark-input validation, and training and evaluation commands. Row-level benchmark data, historical model checkpoints, automatic data acquisition, and third-party source code are not included.
 
+The [manuscript alignment record](docs/MANUSCRIPT_ALIGNMENT.md) identifies the 22 September 2026 manuscript/SI snapshot and explains the Table 4 comparison scope and TDC partition terminology.
+
 The package provides a documented, executable path from lawfully obtained user-supplied benchmark data through DLG-Sol training, prediction, fixed blending, scoring, and regeneration of the reported public outputs. Raw third-party benchmark rows, third-party source trees, and model weights without clear redistribution permission are not bundled. Their provenance, access conditions, and required local-package schemas are documented instead.
 
 The technical package has completed its input, training-workflow, result-regeneration, provenance, and release-metadata gates. Versioned source releases are provided through GitHub. A permanent archival identifier can be added to the citation metadata if one is assigned. The release criteria are documented in `docs/V1_RELEASE_PLAN.md`.

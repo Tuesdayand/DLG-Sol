@@ -1,6 +1,7 @@
 {
   "schema_version": 3,
-  "test": "fresh analysis virtual environment and independent repository-copy regeneration",
+  "test": "isolated analysis virtual environment and independent repository-copy regeneration",
+  "environment_provenance": "The analysis environment installed during initial v1.0.4 preparation was reused for this final verification; no fresh installation is claimed for this rerun.",
   "audit_date": "2026-09-22",
   "release_version": "1.0.4",
   "environment": {

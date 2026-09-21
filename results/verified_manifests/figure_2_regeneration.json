@@ -15,7 +15,7 @@
   "outputs": {
     "pdf": {
       "path": "figures/generated/figure_2_chemical_subgroup_gain.pdf",
-      "sha256": "f5a86b3e075d8594281dfaf0e3e1987c8434c427ef250439d5b832f6ce42879c"
+      "sha256": "7fbf4de18ad6b2bda56719ecf68e62fc87e9dc93afa3646dc40b85de9f67a1a6"
     },
     "png": {
       "path": "figures/generated/figure_2_chemical_subgroup_gain.png",
@@ -23,7 +23,7 @@
     },
     "editable_pptx": {
       "path": "figures/generated/figure_2_chemical_subgroup_gain_editable.pptx",
-      "sha256": "5eb2344b5307ef8a814c82208d8256ab587f4d0040be7b295b819fc44a55a549"
+      "sha256": "256af3f30bfde1548c3705e788da8b673ee884b89ed1895288c897a408748312"
     }
   },
   "environment": {

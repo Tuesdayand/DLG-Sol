@@ -45,4 +45,6 @@ This directory uses content-based file names so that files remain unambiguous if
 
 For Article Table 3, the released Consensus GNN RMSE is shown as 0.6571 (recomputed from released predictions); its original source-paper report was 0.657. The source CSV values are unchanged. Article Table 4 contains independently retrained models and does not substitute their results for the released predictions. SI tables may also contain narrative or provenance information not represented by a single CSV.
 
+The asterisks on a DLG-Sol value in Article Table 4 refer to all four external models displayed in that evaluation column. `***` requires all four DLG-Sol-minus-comparator 99% confidence intervals to lie below zero; `**` requires all four 95% intervals to lie below zero when the 99% condition is not met. An unmarked value can still have individual contrasts whose intervals exclude zero. The JCheM value remains `0.614***`: its comparison with the original authors' released Consensus GNN predictions is separate and is not included in this four-model annotation. The annotation contract is `configs/article_table_4_contract.json`.
+
 Row-level matched predictions and raw benchmark data are not included under the completed dataset-specific redistribution review and documented user-supplied-data policy.

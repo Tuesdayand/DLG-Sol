@@ -2,6 +2,13 @@
   "schema_version": 1,
   "article_table": "Table 4",
   "display_precision": 3,
+  "significance_annotation": {
+    "scope": "all_four_displayed_external_models",
+    "difference": "DLG-Sol minus comparator",
+    "double_asterisk_confidence_level": 0.95,
+    "triple_asterisk_confidence_level": 0.99,
+    "display_stars": {"R01": "***", "R02": "***", "R03": "", "R04": "***", "R05": "***", "R09": ""}
+  },
   "panels": [
     {"id": "R01", "label": "AqSolDBc OOF", "n": 8047},
     {"id": "R02", "label": "ComPlat OOF", "n": 17937},

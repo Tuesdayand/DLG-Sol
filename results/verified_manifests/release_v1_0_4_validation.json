@@ -6,7 +6,7 @@
   "scope": "manuscript alignment, software regression tests, aggregate-data validation and public-output regeneration",
   "base_commit": "0b598c0a8245e27f0a30ab0d549102da7c2f1a41",
   "tests": {
-    "run": 139,
+    "run": 146,
     "failures": 0,
     "errors": 0,
     "skipped": 0,
@@ -26,13 +26,15 @@
     "network_model_downloads": false,
     "gpu_used": false
   },
-  "fresh_analysis_environment": {
+  "analysis_environment": {
     "python": "3.13.11",
     "numpy": "2.4.4",
     "pandas": "3.0.2",
     "matplotlib": "3.10.9",
     "python-pptx": "1.0.2"
   },
+  "analysis_environment_freshly_installed_for_this_rerun": false,
+  "analysis_environment_origin": "isolated environment installed during initial v1.0.4 preparation",
   "all_manuscript_csvs_byte_identical": 14,
   "previous_csvs_byte_identical": 13,
   "added_csv": "molecule_specific_weighting_14_rows.csv",
@@ -41,17 +43,28 @@
   "fresh_six_evaluation_retraining_performed": false,
   "new_benchmarks_added": false,
   "row_level_data_redistributed": false,
+  "manuscript_revision_date": "2026-09-22",
+  "manuscript_alignment": {
+    "original_aqsoldb_methods_attribution_present": true,
+    "table4_caption_scope": "all four displayed external models; released authors predictions separate",
+    "table4_stars_match_manuscript": true,
+    "table4_annotation_contract_sha256": "fa0c0688bdbdfd8a30dd3673fc84a8c30f1865263ecbcf086526374bb789adba",
+    "tdc_supplied_partition": "scaffold train/test",
+    "tdc_internal_partition": "five logS-stratified OOF folds; ten quantile bins; 12.5% internal validation",
+    "tdc_recipe_unchanged": true,
+    "software_link_in_checked_manuscript": "v1.0.3"
+  },
   "manuscript_snapshot": {
-    "main_dlg_sol_scientific_reports_20260920.tex": "0f1e19ffb7874c15e46160b2d6cfa6928b4b4c0dd8f024f677b2b71afe4504b1",
-    "main_dlg_sol_scientific_reports_20260920.pdf": "04de0e82acba3a3efdae1cf7e18d0d404d0f65b7e18eb4b2218f5ffcdebbdd39",
-    "supplementary_information_scientific_reports_20260920.tex": "75ff44485e659fd5148325ce178c2b28123d35b09d8f745e8288041c16d188d2",
-    "supplementary_information_scientific_reports_20260920.pdf": "8ab52536c687c4ea84bc24cbe811bc3916d330f827fd0be8aa285d009506b371"
+    "main_dlg_sol_scientific_reports_20260920.tex": "8a040536e1ae06696402c38261efb342325557f06193503a7fcb662809a43e9b",
+    "main_dlg_sol_scientific_reports_20260920.pdf": "7dd39802615b8a1983a5753005c678e6326491cbcc54522ff42d575a7069c461",
+    "supplementary_information_scientific_reports_20260920.tex": "6b62963e0f188257a2adacce394336e3f7da5eb196ed33c65b5488a2cfdcfce0",
+    "supplementary_information_scientific_reports_20260920.pdf": "a104ea459e385f2e597560ff8b009418980152ef3694cea34d652ad83f60f7c6"
   },
   "outputs": {
     "results/table_4_absolute_rmse.csv": "e3fc0ad0e82d7e9f3030dcc5e05c6e00bd2e253accc16ff169455bf6b3f667f4",
-    "figures/generated/figure_2_chemical_subgroup_gain.pdf": "f5a86b3e075d8594281dfaf0e3e1987c8434c427ef250439d5b832f6ce42879c",
+    "figures/generated/figure_2_chemical_subgroup_gain.pdf": "7fbf4de18ad6b2bda56719ecf68e62fc87e9dc93afa3646dc40b85de9f67a1a6",
     "figures/generated/figure_2_chemical_subgroup_gain.png": "3065e369bc5b4cf5dbc37dbcdad5f57cf77f681937bdaaf91f5289aaeba33db3",
-    "figures/generated/figure_2_chemical_subgroup_gain_editable.pptx": "5eb2344b5307ef8a814c82208d8256ab587f4d0040be7b295b819fc44a55a549"
+    "figures/generated/figure_2_chemical_subgroup_gain_editable.pptx": "256af3f30bfde1548c3705e788da8b673ee884b89ed1895288c897a408748312"
   },
   "publication": "Publication is a separate maintainer action; this validation record does not attest to a remote tag or GitHub Release."
 }

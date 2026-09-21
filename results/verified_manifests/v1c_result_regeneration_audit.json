@@ -28,7 +28,7 @@
     {
       "role": "chemical-subgroup figure regeneration",
       "path": "results/verified_manifests/figure_2_regeneration.json",
-      "sha256": "973abc9dd084cc5a74c12665df175d7983b8453bd857d1f174c7f583393e43d1"
+      "sha256": "bf6ee03f34145b29b1ecab64dd06ea59a1d835b16cd365ceb10036990c8f7cc3"
     },
     {
       "role": "machine-readable Supplementary table registry",
@@ -43,7 +43,7 @@
     {
       "role": "clean-environment analysis smoke",
       "path": "results/verified_manifests/clean_environment_smoke.json",
-      "sha256": "2ac8ae33547ba70fd79635f8227aed25f1bf27ca8dfb3f0cec32e07ca8bcf11b"
+      "sha256": "4cf2bb6a721dfc500061d2c0c2ead3be1b5b3e5cde6f581e8d02c0cbe1a1a786"
     }
   ],
   "machine_readable_supplementary_tables": 14,

@@ -73,6 +73,59 @@ class WeightingSummaryTests(unittest.TestCase):
         self.assertTrue(self.check_rows(change))
 
 
+class TableFourAnnotationTests(unittest.TestCase):
+    def setUp(self):
+        self.contract = json.loads(VALIDATOR.ARTICLE_TABLE_4_CONTRACT.read_text())
+        with (ROOT / "supplementary/machine_readable/external_comparator_metrics_31_rows.csv").open(newline="") as handle:
+            self.rows = list(csv.DictReader(handle))
+
+    def test_current_annotations_match_all_four_comparators(self):
+        self.assertEqual(VALIDATOR.article_table_4_stars(self.contract, self.rows),
+                         self.contract["significance_annotation"]["display_stars"])
+        errors = []
+        VALIDATOR.validate_article_table_4(errors)
+        self.assertEqual(errors, [])
+
+    def test_released_consensus_is_not_part_of_jchem_annotation(self):
+        released = next(row for row in self.rows if row["model_id"] == "consensus_gnn_author")
+        self.assertGreater(float(released["delta_rmse_ci99_high"]), 0)
+        self.assertEqual(VALIDATOR.article_table_4_stars(self.contract, self.rows)["R05"], "***")
+        self.rows.remove(released)
+        self.assertEqual(VALIDATOR.article_table_4_stars(self.contract, self.rows)["R05"], "***")
+
+    def test_released_consensus_cannot_replace_retrained_model(self):
+        self.contract["models"][-1].update(source_model_id="consensus_gnn_author", source_variant="released")
+        with self.assertRaises(ValueError):
+            VALIDATOR.article_table_4_stars(self.contract, self.rows)
+
+    def test_missing_or_duplicate_comparator_is_rejected(self):
+        for rows in (self.rows[1:], self.rows + [self.rows[0]]):
+            with self.subTest(rows=len(rows)), self.assertRaises(ValueError):
+                VALIDATOR.article_table_4_stars(self.contract, rows)
+
+    def test_zero_upper_bound_requires_lower_confidence_annotation(self):
+        self.rows[0]["delta_rmse_ci99_high"] = "0"
+        self.assertEqual(VALIDATOR.article_table_4_stars(self.contract, self.rows)["R01"], "**")
+        self.rows[0]["delta_rmse_ci95_high"] = "0"
+        self.assertEqual(VALIDATOR.article_table_4_stars(self.contract, self.rows)["R01"], "")
+
+    def test_nonfinite_or_reversed_intervals_are_rejected(self):
+        for value in ("nan", "inf", "-1"):
+            with self.subTest(value=value), self.assertRaises(ValueError):
+                self.rows[0]["delta_rmse_ci99_high"] = value
+                VALIDATOR.article_table_4_stars(self.contract, self.rows)
+
+    def test_incorrect_jchem_display_annotation_is_rejected(self):
+        self.contract["significance_annotation"]["display_stars"]["R05"] = "**"
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "contract.json"
+            path.write_text(json.dumps(self.contract))
+            errors = []
+            with patch.object(VALIDATOR, "ARTICLE_TABLE_4_CONTRACT", path):
+                VALIDATOR.validate_article_table_4(errors)
+            self.assertTrue(any("asterisks" in error for error in errors), errors)
+
+
 class ReleaseMetadataTests(unittest.TestCase):
     def test_title_and_version_match(self):
         errors = []

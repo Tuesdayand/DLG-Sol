@@ -89,7 +89,11 @@ python scripts/prepare_jchem_input.py \
 
 Run this preparer in the separate environment defined by `environment/input-preparation-requirements.txt`. RDKit 2026.03.1 is pinned because three stereochemical canonical-SMILES strings differ from RDKit 2023.09.6 and the later version reproduces the historical R05 metadata exactly. The preparer excludes the same two unparsable source rows, maps the released `Split1`–`Split5` values to `fit`, `coefficient`, and `scored`, and verifies that all five splits use the same 980 test structures. For these scored rows only, it uses the two-decimal `SExp` values from `predictions_test_set`, matching the row-level labels used for the authors' released Consensus GNN comparison. Development labels retain the full precision in `dataset_split`.
 
-The R03 and R04 packages require the exact two-column TDC runtime exports used in the reported experiments:
+The R03 and R04 packages require the exact two-column TDC runtime exports used in the reported experiments.
+
+The supplied TDC ADMET Benchmark Group train/test partition is scaffold-based (7,985 training/validation rows and 1,997 test rows). The five internal OOF folds are target-stratified, not scaffold splits. They use ten logS quantile bins and seed 260722. Within each outer-training partition, 12.5% of the rows are reserved for validation using the same target bins and seed 260722 plus the zero-based fold index. These internal partitions never include the supplied test rows. The executable recipe is `configs/tdc_partition_recipe.json`; the manuscript clarification does not change it.
+
+Prepare the R03 input package with:
 
 ```bash
 python scripts/prepare_tdc_input.py \
