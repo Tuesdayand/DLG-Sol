@@ -4,6 +4,7 @@ from __future__ import annotations
 import csv
 import hashlib
 import json
+import math
 import re
 import sys
 from pathlib import Path
@@ -110,6 +111,13 @@ def validate_manifest(errors: list[str]) -> None:
     payload = json.loads(MANIFEST.read_text(encoding="utf-8"))
     if payload.get("release_stage") != "V1_REPRODUCIBILITY_PACKAGE_RELEASE":
         errors.append("release stage does not match the selected v1.0 reproducibility scope")
+    actual = {
+        path.relative_to(ROOT).as_posix() for path in ROOT.rglob("*")
+        if path.is_file() and path != MANIFEST
+        and not any(part in {".git", "__pycache__"} for part in path.relative_to(ROOT).parts)
+    }
+    if actual != set(payload["files"]):
+        errors.append("release manifest file membership mismatch")
     for relative, expected in payload["files"].items():
         path = ROOT / relative
         if not path.is_file():
@@ -129,8 +137,9 @@ def validate_release_policy(errors: list[str]) -> None:
         errors.append("MIT copyright attribution is missing")
     citation = (ROOT / "CITATION.cff").read_text(encoding="utf-8")
     required_citation_lines = {
-        "version: 1.0.3",
-        "date-released: 2026-09-10",
+        "version: 1.0.4",
+        "date-released: 2026-09-22",
+        'title: "DLG-Sol combines molecular descriptors with language and three-dimensional embeddings for aqueous solubility prediction"',
         'repository-code: "https://github.com/Tuesdayand/DLG-Sol"',
     }
     if not required_citation_lines.issubset(set(citation.splitlines())):
@@ -201,6 +210,50 @@ def validate_tables(errors: list[str]) -> None:
         missing = expected_columns - header
         if missing:
             errors.append(f"confidence-interval or article-mapping columns missing from {name}: {sorted(missing)}")
+
+
+def validate_weighting_summary(errors: list[str]) -> None:
+    path = TABLE_DIR / "molecule_specific_weighting_14_rows.csv"
+    if not path.is_file():
+        errors.append("molecule-specific weighting summary is missing")
+        return
+    with path.open(encoding="utf-8", newline="") as handle:
+        reader = csv.DictReader(handle)
+        required = {"panel", "n", "fixed_rmse", "policy", "gate_rmse", "delta_rmse",
+                    "bootstrap_mean_delta_rmse", "ci95_low", "ci95_high", "n_boot", "seed"}
+        if set(reader.fieldnames or []) != required:
+            errors.append("weighting summary column schema mismatch")
+            return
+        rows = list(reader)
+    panels = {"AqSolDBc_oof": 8047, "ComPlat_oof": 17937, "TDC_oof": 7985,
+              "TDC_official": 1997, "JCheM_official": 980, "ComPlat_official": 1282,
+              "Biogen": 2153}
+    policies = {"cluster_soft", "pca_continuous"}
+    observed = [(row["panel"], row["policy"]) for row in rows]
+    if len(rows) != 14 or set(observed) != {(p, g) for p in panels for g in policies}:
+        errors.append("weighting summary panel/policy membership mismatch")
+        return
+    with (TABLE_DIR / "main_evaluation_effects_12_rows.csv").open(encoding="utf-8", newline="") as handle:
+        components = list(csv.DictReader(handle))
+    panel_to_id = {"AqSolDBc_oof": "R01", "ComPlat_oof": "R02", "TDC_oof": "R03",
+                   "TDC_official": "R04", "JCheM_official": "R05", "ComPlat_official": "R09"}
+    for row in rows:
+        try:
+            values = {key: float(row[key]) for key in required - {"panel", "policy"}}
+            if not all(math.isfinite(v) for v in values.values()):
+                raise ValueError("nonfinite value")
+            if int(row["n"]) != panels[row["panel"]] or int(row["n_boot"]) != 10000 or int(row["seed"]) <= 0:
+                raise ValueError("sample count or bootstrap settings")
+            if not math.isclose(values["gate_rmse"] - values["fixed_rmse"], values["delta_rmse"], rel_tol=0, abs_tol=1e-12):
+                raise ValueError("gate-minus-fixed difference")
+            if values["fixed_rmse"] < 0 or values["gate_rmse"] < 0 or values["ci95_low"] > values["ci95_high"]:
+                raise ValueError("RMSE or interval bounds")
+            if row["panel"] in panel_to_id:
+                reference = [r for r in components if r["evaluation_id"] == panel_to_id[row["panel"]]]
+                if len(reference) != 2 or any(not math.isclose(values["fixed_rmse"], float(r["dlg_sol_rmse"]), rel_tol=0, abs_tol=1e-12) for r in reference):
+                    raise ValueError("fixed RMSE differs from component comparison")
+        except (KeyError, ValueError, TypeError) as exc:
+            errors.append(f"invalid weighting row {row['panel']}:{row['policy']}: {exc}")
 
 
 def validate_article_table_3(errors: list[str]) -> None:
@@ -1436,7 +1489,7 @@ def validate_release_provenance(errors: list[str]) -> None:
         or v1c.get("article_table_4_contract_status") != "PASS"
     ):
         errors.append("V1-C result-regeneration status mismatch")
-    if v1c.get("machine_readable_supplementary_tables") != 13 or v1c.get("metric_parity_maximum_absolute_difference") != 0.0 or v1c.get("bootstrap_parity_maximum_absolute_difference") != 0.0:
+    if v1c.get("machine_readable_supplementary_tables") != 14 or v1c.get("metric_parity_maximum_absolute_difference") != 0.0 or v1c.get("bootstrap_parity_maximum_absolute_difference") != 0.0:
         errors.append("V1-C result-regeneration evidence mismatch")
     required_artefacts = v1c.get("required_artefacts", [])
     if len(required_artefacts) != 8:
@@ -1472,6 +1525,7 @@ def main() -> int:
     validate_manifest(errors)
     validate_release_policy(errors)
     validate_tables(errors)
+    validate_weighting_summary(errors)
     validate_article_table_3(errors)
     validate_article_table_4(errors)
     validate_environment_spec(errors)

@@ -2,7 +2,7 @@
   "schema_version": 2,
   "gate": "v1c_result_regeneration",
   "status": "PASS",
-  "audit_date": "2026-09-09",
+  "audit_date": "2026-09-22",
   "fresh_six_evaluation_retraining_claimed": false,
   "required_artefacts": [
     {
@@ -18,7 +18,7 @@
     {
       "role": "Article Table 3 source-paper context and manuscript contract",
       "path": "results/verified_manifests/table_3_source_context_audit.json",
-      "sha256": "268d92f9ce83746a1d0510d31dc0463fbb7055480651d9969c2d0015f2fa6606"
+      "sha256": "b9345622c0afdc37b8a668b99574a8f6149a4c1c45e5c24cac41779fe9041f50"
     },
     {
       "role": "Article Table 4 regeneration and manuscript contract",
@@ -28,12 +28,12 @@
     {
       "role": "chemical-subgroup figure regeneration",
       "path": "results/verified_manifests/figure_2_regeneration.json",
-      "sha256": "3d3ece29c3de15750fb47597f9ac092475d5e9b3e3c1494c10ec27860ca67b95"
+      "sha256": "973abc9dd084cc5a74c12665df175d7983b8453bd857d1f174c7f583393e43d1"
     },
     {
       "role": "machine-readable Supplementary table registry",
       "path": "configs/machine_readable_tables.json",
-      "sha256": "cb88842497539f9e2f6e1bd9526d5541ef93bd00972b4bab9a789035bb7edf7d"
+      "sha256": "2b898d70e868be8a92e566e630f32d00d9ee921801e73e1acb4d1e8b2800137e"
     },
     {
       "role": "machine-readable environment matrix",
@@ -43,10 +43,10 @@
     {
       "role": "clean-environment analysis smoke",
       "path": "results/verified_manifests/clean_environment_smoke.json",
-      "sha256": "d5dda5c11eda5f27211b92abc9de50fe9c2bd90556d981c202880df611750a91"
+      "sha256": "2ac8ae33547ba70fd79635f8227aed25f1bf27ca8dfb3f0cec32e07ca8bcf11b"
     }
   ],
-  "machine_readable_supplementary_tables": 13,
+  "machine_readable_supplementary_tables": 14,
   "table_3_source_context_status": "PASS",
   "table_4_regeneration_status": "PASS",
   "figure_2_regeneration_status": "PASS",
@@ -54,5 +54,7 @@
   "article_table_4_contract_status": "PASS",
   "metric_parity_maximum_absolute_difference": 0.0,
   "bootstrap_parity_maximum_absolute_difference": 0.0,
-  "public_result_regeneration_scope_complete": true
+  "public_result_regeneration_scope_complete": true,
+  "release_version": "1.0.4",
+  "parity_evidence_basis": "Historical row-level metric/bootstrap and assembly parity records are retained unchanged from v1.0.3; public table/figure regeneration and patch tests were rerun for v1.0.4. No fresh six-evaluation training or row-level re-scoring was performed for this patch."
 }

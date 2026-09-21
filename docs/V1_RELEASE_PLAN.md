@@ -43,7 +43,7 @@ Status: complete for the public aggregate and configuration-level outputs. This 
 
 ## Gate V1-D: GitHub release
 
-Status: `v1.0.0` and manuscript-concordance patches `v1.0.1` and `v1.0.2` were published on GitHub. Version `v1.0.3` aligns the repository and citation metadata with the final descriptor--language--geometry article title.
+Status: versions `v1.0.0` through `v1.0.3` are the preceding releases. Version `v1.0.4` aligns the package with the revised manuscript title, figure layout, SI mapping, and weighting-result supplement. Publication of the new tag and GitHub Release is a separate maintainer action; local package validation does not establish that publication has occurred.
 
 - update `CITATION.cff` to the patch version and final release date;
 - update README, data-access documentation, release checklist, and reproducibility scope from development to released status;

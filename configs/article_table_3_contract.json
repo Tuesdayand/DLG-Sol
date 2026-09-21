@@ -20,7 +20,7 @@
     {"context_id": "C11", "model_or_method": "Consensus", "n": 1290, "main_rmse": "0.73", "supplementary_rmse": "0.73", "supplementary_mae": "0.54"},
     {"context_id": "C12", "model_or_method": "XGB-298", "n": 1282, "main_rmse": "0.55", "supplementary_rmse": "0.55", "supplementary_mae": "0.40"},
     {"context_id": "C13", "model_or_method": "DLG-Sol", "n": 1282, "main_rmse": "0.5599", "supplementary_rmse": "0.5599", "supplementary_mae": "0.4092"},
-    {"context_id": "C14", "model_or_method": "Consensus GNN", "n": 980, "main_rmse": "0.657", "supplementary_rmse": "0.6571", "supplementary_mae": "0.4745"},
+    {"context_id": "C14", "model_or_method": "Consensus GNN", "n": 980, "main_rmse": "0.6571", "supplementary_rmse": "0.6571", "supplementary_mae": "0.4745"},
     {"context_id": "C15", "model_or_method": "EPI Suite", "n": 934, "main_rmse": "1.386", "supplementary_rmse": "1.386", "supplementary_mae": null},
     {"context_id": "C16", "model_or_method": "OCHEM", "n": 980, "main_rmse": "0.703", "supplementary_rmse": "0.703", "supplementary_mae": null},
     {"context_id": "C17", "model_or_method": "ACD GALAS", "n": 980, "main_rmse": "0.845", "supplementary_rmse": "0.845", "supplementary_mae": null},

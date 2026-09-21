@@ -1,5 +1,9 @@
 # Release checklist
 
+## Historical v1.0.0–v1.0.3 preparation
+
+The checks below record the earlier releases. They do not claim that v1.0.4 has been pushed or published. Current patch validation is recorded separately in `results/verified_manifests/release_v1_0_4_validation.json`; publication and manuscript-link updates remain maintainer actions.
+
 - [x] Separate clean-export directory created
 - [x] Machine-readable summary tables copied from the verified Supplementary package
 - [x] Upstream repositories and evaluated revisions recorded

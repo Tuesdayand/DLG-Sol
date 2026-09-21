@@ -9,7 +9,7 @@
   },
   "article_contract": {
     "path": "configs/article_table_3_contract.json",
-    "sha256": "762d58ffd91c0aa2140382b2b1ac63f7cd599f897fd768cd03f2402b3178823d",
+    "sha256": "ea15013c5607fc936e335b294a192507e16ae414e69591f89f06fe0a426dbee7",
     "complat_rows": 13,
     "jchem_rows": 5
   },
@@ -19,7 +19,11 @@
     "supplementary_mae_availability_matches": true,
     "released_consensus_same_row_class_retained": true,
     "sorkun_overlap_qualification_retained": true,
-    "ochem_training_test_overlap_qualification_retained": true
+    "ochem_training_test_overlap_qualification_retained": true,
+    "released_consensus_display": "0.6571",
+    "original_source_paper_report": "0.657"
   },
-  "status": "PASS"
+  "status": "PASS",
+  "audit_date": "2026-09-22",
+  "release_version": "1.0.4"
 }

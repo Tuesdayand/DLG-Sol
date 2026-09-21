@@ -2,6 +2,8 @@
 
 This directory contains compact article-level outputs and manifests connecting public scripts and inputs to article tables and figures. Large checkpoints and third-party row-level data are not stored here.
 
+`verified_manifests/release_v1_0_4_validation.json` records the checks rerun for the manuscript-alignment patch: 139 software tests, agreement of all 14 public CSV files with the manuscript package, preservation of the 13 previously released CSV files, and public table/figure regeneration. The analysis environment was freshly installed; the full software test suite used an existing modelling environment. Earlier row-level parity and training records below remain historical evidence, not newly repeated experiments.
+
 `table_4_absolute_rmse.csv` is rebuilt from the public 31-row external-comparator summary by `scripts/build_table_4.py`. The generator reads `configs/article_table_4_contract.json`, which locks the final comparator variants, labels, panel order, displayed RMSE values, and Article Table 4 membership. Article Table 3 source-paper context and Article Table 2 component effects are supplied separately in `supplementary/machine_readable/source_paper_benchmark_context.csv` and `supplementary/machine_readable/main_evaluation_effects_12_rows.csv`, respectively.
 
 `verified_manifests/core_module_parity.json` records a six-evaluation full-row parity check for the canonical metrics, paired bootstrap, and fixed-blend application without redistributing the row-level inputs.

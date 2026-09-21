@@ -65,7 +65,7 @@ The ChemBERTa and 3D-MPNN commands derive the recorded dataset- and fold-specifi
 
 The primary R02 workflow is `frozen_global_preselection`. It is not fold-local reselection. The pinned original ComPlat training file is grouped by RDKit 2023.09.6 InChIKey, group-mean logS is stratified with the recorded quantile rule, and `StratifiedShuffleSplit` with random state 260525 reconstructs 14,351 selection-fit rows and 3,586 selection-score rows.
 
-The Gate B2 audit regenerated this split from the pinned 17,937-row source. Both record-ID hashes matched the training-role contract, and membership matched the historical Train/Val metadata with zero discrepancies. The separate fold-local reselection result is a sensitivity analysis rather than the primary R02 workflow; it is reported in Supplementary Note S7 and Supplementary Table S19.
+The Gate B2 audit regenerated this split from the pinned 17,937-row source. Both record-ID hashes matched the training-role contract, and membership matched the historical Train/Val metadata with zero discrepancies. The separate fold-local reselection result is a sensitivity analysis rather than the primary R02 workflow; it is reported in the SI section "ComPlat selection sensitivity" and Supplementary Table S6.
 
 Future branch entry points must reject an R02 primary run that requests fold-local reselection unless an explicit non-primary sensitivity mode is implemented and clearly labelled. Every run manifest must record `selection_mode`.
 

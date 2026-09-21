@@ -1,12 +1,14 @@
 # DLG-Sol
 
-Code and machine-readable results supporting **“DLG-Sol: A descriptor–language–geometry model using fixed prediction-level blending for aqueous-solubility prediction.”**
+Code and machine-readable results supporting **“DLG-Sol combines molecular descriptors with language and three-dimensional embeddings for aqueous solubility prediction.”**
 
 DLG-Sol combines a Mordred/XGBoost descriptor model with a neural model derived from ChemBERTa and a distance-aware three-dimensional message-passing representation. The final prediction uses one molecule-independent blend coefficient within each fitted fold, split, or evaluation model.
 
+The study examines how much combining the two models improves prediction over each component, how the gains vary across datasets and molecular subgroups, and which errors remain after blending. Fixed prediction-level blending is the combination method used to investigate these questions, not a newly introduced ensemble method.
+
 ## Repository status
 
-This repository contains the **v1.0.3 reproducibility package**. It includes verified machine-readable Supplementary summaries, release-integrity checks, the six-evaluation registry, label-firewall checks, fixed blending, article-level scoring metrics, the canonical Mordred/XGBoost descriptor branch, the ChemBERTa language encoder, the explicit-polar-hydrogen distance-aware three-dimensional graph branch, the canonical `aug2_head4` language–geometry branch, evaluation-specific adapter contracts, a validated benchmark-input package schema, a provenance-checked local-package evaluation runner, a historical training-role audit, a label-safe stage materializer, audited unit-level execution recipes, and branch-level training commands. Row-level benchmark data, historical model checkpoints, automatic data acquisition, and third-party source code are not included.
+This is the **v1.0.4 reproducibility package**, aligned with the revised manuscript. It includes machine-readable Supplementary summaries, release-integrity checks, the six-evaluation registry, label-firewall checks, fixed blending, article-level scoring metrics, the Mordred/XGBoost descriptor model, the ChemBERTa language encoder, the explicit-polar-hydrogen distance-aware 3D-MPNN, the `aug2_head4` language–geometry model, evaluation-specific data contracts, benchmark-input validation, and training and evaluation commands. Row-level benchmark data, historical model checkpoints, automatic data acquisition, and third-party source code are not included.
 
 The package provides a documented, executable path from lawfully obtained user-supplied benchmark data through DLG-Sol training, prediction, fixed blending, scoring, and regeneration of the reported public outputs. Raw third-party benchmark rows, third-party source trees, and model weights without clear redistribution permission are not bundled. Their provenance, access conditions, and required local-package schemas are documented instead.
 
@@ -55,10 +57,13 @@ The directory `supplementary/machine_readable/` contains:
 - DLG-Sol-versus-component effects with 95% and 99% confidence intervals;
 - complete single- and pair-representation grid summaries;
 - chemical-subgroup RMSE and MAE analyses;
+- fixed-weight versus molecule-specific blending results for the six primary evaluations and the supplementary Biogen panel;
 - key random-seed records;
 - the MolPROP source-reproduction audit summary.
 
 These files contain aggregate or configuration-level results and do not contain molecular structures or row-level experimental labels.
+
+The 14 CSV files and their article/SI mappings are listed in `supplementary/machine_readable/README.md`. The weighting results have the opposite difference convention to the component comparisons: `delta_rmse` is molecule-specific gate minus fixed blend, so negative values favour the gate. Biogen remains supplementary; it is not a seventh primary evaluation. No additional benchmark evaluations are introduced in v1.0.4.
 
 ## Validate the snapshot
 
@@ -101,7 +106,7 @@ See `docs/REPRODUCIBILITY_SCOPE.md` for the exact reproducibility claims and the
 
 ## Citation
 
-Citation metadata for version 1.0.3 are provided in `CITATION.cff`. A software archive identifier and the article DOI may be added when assigned.
+Citation metadata for version 1.0.4 are provided in `CITATION.cff`. A software archive identifier and the article DOI may be added when assigned. Changes from v1.0.3 are documented in `docs/RELEASE_NOTES_v1.0.4.md`.
 
 ## License
 

@@ -47,8 +47,9 @@ CELL_H = 0.43
 CELL_W = 0.84
 GRID_H = CELL_H * 16
 GRID_W = CELL_W * 6
-PANEL_A_X = 3.20
-PANEL_B_X = 8.72
+LABEL_GAP_INCREASE = 0.40  # cm; retain canvas, cell sizes, and numerical inputs
+PANEL_A_X = 3.20 + LABEL_GAP_INCREASE
+PANEL_B_X = 8.72 + LABEL_GAP_INCREASE
 
 
 def rgb(hex_value: str) -> RGBColor:
@@ -145,13 +146,13 @@ def build_ppt():
              "DLG-Sol gain across prespecified chemical subgroups",
              0.25, 0.18, 16.90, 0.48, 12, True)
     add_text(slide, "delta_definition",
-             "ΔRMSE = RMSE(DLG-Sol) − RMSE(component); negative values favor DLG-Sol",
+             "ΔRMSE = RMSE(DLG-Sol) − RMSE(component); negative values favour DLG-Sol",
              0.25, 0.67, 16.90, 0.32, 7.4, False, "4B5563")
 
     add_text(slide, "row_header_axis", "Chemical axis",
-             0.10, 1.06, 1.45, 0.28, 7.0, True, "4B5563", PP_ALIGN.LEFT)
+             0.10, 1.06, 1.45 + LABEL_GAP_INCREASE, 0.28, 7.0, True, "4B5563", PP_ALIGN.LEFT)
     add_text(slide, "row_header_level", "Subgroup",
-             1.76, 1.06, 1.30, 0.28, 7.0, True, "4B5563", PP_ALIGN.RIGHT)
+             1.76 + LABEL_GAP_INCREASE, 1.06, 1.30, 0.28, 7.0, True, "4B5563", PP_ALIGN.RIGHT)
 
     row_cursor = 0
     group_boundaries = []
@@ -159,15 +160,15 @@ def build_ppt():
         n_levels = len(levels)
         group_y = GRID_Y + row_cursor * CELL_H
         add_rect(slide, f"axis_band_{gidx+1}", 0.14, group_y,
-                 3.00, n_levels * CELL_H,
+                 3.00 + LABEL_GAP_INCREASE, n_levels * CELL_H,
                  "F8FAFC" if gidx % 2 == 0 else "FFFFFF", "FFFFFF", 0)
         add_text(slide, f"axis_name_{gidx+1}", axis_name,
-                 0.10, group_y, 1.45, n_levels * CELL_H,
+                 0.10, group_y, 1.45 + LABEL_GAP_INCREASE, n_levels * CELL_H,
                  6.8, True, "1F2937", PP_ALIGN.LEFT)
         for lidx, level in enumerate(levels):
             y = group_y + lidx * CELL_H
             add_text(slide, f"axis_{gidx+1}_level_{lidx+1}", level,
-                     1.76, y, 1.30, CELL_H, 6.6, False,
+                     1.76 + LABEL_GAP_INCREASE, y, 1.30, CELL_H, 6.6, False,
                      "374151", PP_ALIGN.RIGHT)
         row_cursor += n_levels
         if row_cursor < 16:
@@ -216,7 +217,7 @@ def build_ppt():
                      1.26, 0.56, 6.0, False, "1F2937",
                      PP_ALIGN.RIGHT, rotation=315)
 
-    cbar_x = 14.25
+    cbar_x = 14.25 + LABEL_GAP_INCREASE
     cbar_y = 2.05
     cbar_w = 0.34
     cbar_h = 4.95
@@ -246,11 +247,11 @@ def build_ppt():
                  cbar_x + cbar_w + 0.12, y - 0.16, 0.60, 0.32,
                  6.8, False, "374151", PP_ALIGN.LEFT)
     add_text(slide, "colorbar_label", "ΔRMSE",
-             14.02, 1.62, 1.10, 0.32, 8.2, True, "111827", PP_ALIGN.LEFT)
+             14.02 + LABEL_GAP_INCREASE, 1.62, 1.10, 0.32, 8.2, True, "111827", PP_ALIGN.LEFT)
     add_text(slide, "colorbar_high_label", "DLG-Sol\nhigher",
-             15.55, 2.00, 1.35, 0.58, 6.5, False, "374151", PP_ALIGN.LEFT)
+             15.55 + LABEL_GAP_INCREASE, 2.00, 1.35, 0.58, 6.5, False, "374151", PP_ALIGN.LEFT)
     add_text(slide, "colorbar_low_label", "DLG-Sol\nlower",
-             15.55, 6.48, 1.35, 0.58, 6.5, False, "374151", PP_ALIGN.LEFT)
+             15.55 + LABEL_GAP_INCREASE, 6.48, 1.35, 0.58, 6.5, False, "374151", PP_ALIGN.LEFT)
 
     prs.core_properties.title = "Figure 2 — DLG-Sol gain across chemical subgroups"
     prs.core_properties.subject = "Editable two-panel heatmap with 192 native PowerPoint cells"
@@ -281,20 +282,23 @@ def build_preview(vmax):
             "DLG-Sol gain across prespecified chemical subgroups",
             ha="center", va="center", fontsize=12, fontweight="bold", color="#1F2937")
     ax.text(SLIDE_W / 2, 0.82,
-            "ΔRMSE = RMSE(DLG-Sol) − RMSE(component); negative values favor DLG-Sol",
+            "ΔRMSE = RMSE(DLG-Sol) − RMSE(component); negative values favour DLG-Sol",
             ha="center", va="center", fontsize=7.4, color="#4B5563")
 
     cursor = 0
+    label_pairs = []
     for gidx, (axis_name, levels) in enumerate(AXIS_GROUPS):
         gy = GRID_Y + cursor * CELL_H
         gh = len(levels) * CELL_H
         if gidx % 2 == 0:
-            ax.add_patch(plt.Rectangle((0.14, gy), 3.0, gh, color="#F8FAFC", ec="none"))
-        ax.text(0.10, gy + gh / 2, axis_name, ha="left", va="center",
-                fontsize=6.2, fontweight="bold", color="#1F2937", linespacing=0.9)
+            ax.add_patch(plt.Rectangle((0.14, gy), 3.0 + LABEL_GAP_INCREASE,
+                                      gh, color="#F8FAFC", ec="none"))
+        name = ax.text(0.18, gy + gh / 2, axis_name, ha="left", va="center",
+                       fontsize=7.0, fontweight="bold", color="#1F2937", linespacing=0.9)
         for lidx, level in enumerate(levels):
-            ax.text(3.02, gy + (lidx + 0.5) * CELL_H, level,
-                    ha="right", va="center", fontsize=6.2, color="#374151")
+            label = ax.text(3.02 + LABEL_GAP_INCREASE, gy + (lidx + 0.5) * CELL_H,
+                            level, ha="right", va="center", fontsize=6.6, color="#374151")
+            label_pairs.append((name, label))
         cursor += len(levels)
 
     for letter, comp, title, px in [
@@ -323,15 +327,26 @@ def build_preview(vmax):
                     color="#1F2937", linespacing=0.85)
 
     sm = plt.cm.ScalarMappable(norm=norm, cmap=cmap)
-    cax = fig.add_axes([14.25 / SLIDE_W, (SLIDE_H - 7.0) / SLIDE_H,
+    cax = fig.add_axes([(14.25 + LABEL_GAP_INCREASE) / SLIDE_W, (SLIDE_H - 7.0) / SLIDE_H,
                         0.34 / SLIDE_W, 4.95 / SLIDE_H])
     cb = fig.colorbar(sm, cax=cax)
     cb.ax.tick_params(labelsize=6)
-    ax.text(14.02, 1.84, "ΔRMSE", ha="left", fontsize=8.2, fontweight="bold")
-    ax.text(15.55, 2.05, "DLG-Sol\nhigher", ha="left", va="top",
+    ax.text(14.02 + LABEL_GAP_INCREASE, 1.84, "ΔRMSE", ha="left", fontsize=8.2, fontweight="bold")
+    ax.text(15.55 + LABEL_GAP_INCREASE, 2.05, "DLG-Sol\nhigher", ha="left", va="top",
             fontsize=6.5, color="#374151", linespacing=0.9)
-    ax.text(15.55, 6.55, "DLG-Sol\nlower", ha="left", va="top",
+    ax.text(15.55 + LABEL_GAP_INCREASE, 6.55, "DLG-Sol\nlower", ha="left", va="top",
             fontsize=6.5, color="#374151", linespacing=0.9)
+    fig.canvas.draw()
+    renderer = fig.canvas.get_renderer()
+    gaps = [(label.get_window_extent(renderer).x0 - name.get_window_extent(renderer).x1)
+            * 72 / fig.dpi for name, label in label_pairs]
+    if min(gaps) < 4.0:
+        raise ValueError(f"Axis/subgroup label gap below 4 pt: {min(gaps):.2f}")
+    for text in ax.texts:
+        bounds = text.get_window_extent(renderer)
+        if bounds.x0 < 0 or bounds.x1 > fig.bbox.width:
+            raise ValueError(f"Figure text exceeds horizontal canvas bounds: {text.get_text()}")
+    print(f"Minimum axis-name/subgroup-label gap: {min(gaps):.2f} pt")
     fig.savefig(PREVIEW, facecolor="white")
     fig.savefig(PDF, facecolor="white")
     plt.close(fig)

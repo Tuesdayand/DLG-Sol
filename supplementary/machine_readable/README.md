@@ -12,6 +12,7 @@ This directory uses content-based file names so that files remain unambiguous if
 - The 16 subgroups are levels of seven separately analysed chemical axes, not a Cartesian partition.
 - `sparse_n_lt_100` identifies the four evaluation-by-subgroup rows with fewer than 100 molecules.
 - MolPROP rows document a source-reproduction audit and are not manuscript performance comparisons.
+- Weighting comparisons use gate-minus-fixed RMSE differences; negative values favour molecule-specific weighting. Their 95% intervals use 10,000 paired bootstrap resamples. The two Biogen rows are supplementary and are not part of the six primary evaluations.
 
 ## Files
 
@@ -28,5 +29,20 @@ This directory uses content-based file names so that files remain unambiguous if
 - `chemical_subgroup_delta_mae_96_rows.csv`: all 96 subgroup MAE comparisons.
 - `seed_registry.csv`: compact seed summary.
 - `molprop_source_reproduction_summary.csv`: source-reproduction audit summary for MolPROP.
+- `molecule_specific_weighting_14_rows.csv`: Supplementary Table S18; two molecule-specific weighting comparisons for each of the six primary evaluations and the supplementary Biogen panel. `policy=cluster_soft` identifies the K=5 cluster-soft gate and `policy=pca_continuous` identifies PCA-linear gating. `fixed_rmse` and `gate_rmse` are point estimates; `delta_rmse` is gate minus fixed, whereas `bootstrap_mean_delta_rmse` is the bootstrap mean difference. The original numerical precision, `n_boot`, and seeds are retained.
+
+## Current manuscript mapping
+
+| Manuscript item | Public source |
+| --- | --- |
+| Article Table 2; SI Tables S4–S5 | `main_evaluation_effects_12_rows.csv`; evaluation and data-provenance documentation |
+| Article Table 3; SI Table S20 | `source_paper_benchmark_context.csv` |
+| Article Table 4; SI Table S12 | `external_comparator_metrics_31_rows.csv` |
+| Article Figure 2; SI Table S17 | `chemical_subgroup_delta_rmse_96_rows.csv` |
+| SI Tables S15–S16 | `single_representation_grid_185_rows.csv`; `pair_representation_grid_315_rows.csv` |
+| SI Table S18 | `molecule_specific_weighting_14_rows.csv` |
+| SI Table S19 | the three `developmental_*_metrics.csv` files |
+
+For Article Table 3, the released Consensus GNN RMSE is shown as 0.6571 (recomputed from released predictions); its original source-paper report was 0.657. The source CSV values are unchanged. Article Table 4 contains independently retrained models and does not substitute their results for the released predictions. SI tables may also contain narrative or provenance information not represented by a single CSV.
 
 Row-level matched predictions and raw benchmark data are not included under the completed dataset-specific redistribution review and documented user-supplied-data policy.
