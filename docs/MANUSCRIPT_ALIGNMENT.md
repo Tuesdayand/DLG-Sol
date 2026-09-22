@@ -1,6 +1,6 @@
 # Manuscript and Supplementary Information alignment
 
-The DLG-Sol reproducibility package provides the code and numerical results for **DLG-Sol combines molecular descriptors with language and three-dimensional embeddings for aqueous solubility prediction**. Version 1.0.5 clarifies the documentation without changing the modelling implementation, configurations, or numerical results from v1.0.4.
+The DLG-Sol reproducibility package provides the code and numerical results for **DLG-Sol: Combining descriptor-based and language–3D models for aqueous solubility prediction**. Version 1.0.5 clarifies the documentation without changing the modelling implementation, configurations, or numerical results from v1.0.4.
 
 ## Manuscript files checked for v1.0.5
 

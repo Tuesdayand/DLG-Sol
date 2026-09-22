@@ -11,16 +11,16 @@
       "sha256": "6c7dad98d1c751c25f846f5b7229f5cc324e9372d2edd5b003d81db6e0e47c34"
     },
     "CITATION.cff": {
-      "bytes": 507,
-      "sha256": "83f56cd60d6dfa6065c5eda92e59c521e7ba15defac05c4df1df3442ded90de5"
+      "bytes": 482,
+      "sha256": "2ba833b2eaa3c262e6d4bcf178b0ea5bb97199286400cd183a67fa8defec027a"
     },
     "LICENSE": {
       "bytes": 1086,
       "sha256": "f0c3a7b69ebdc6dc675bb5763e57c0032dc2bae094ad9887503b0c38f21c1603"
     },
     "README.md": {
-      "bytes": 10144,
-      "sha256": "a75110902d7765ec54e0c4543b1b3d654b56112fe7c71d4f8984310c7088393d"
+      "bytes": 10119,
+      "sha256": "8970e7e9b230cb28e34249268ddb55c021644259f83c44644fbf1527d7355d3a"
     },
     "THIRD_PARTY_NOTICES.md": {
       "bytes": 3684,
@@ -155,8 +155,8 @@
       "sha256": "2e16720f864965e910a0f6c12f973cd7ad2f042606a90f9becd90814ec56d083"
     },
     "docs/MANUSCRIPT_ALIGNMENT.md": {
-      "bytes": 5655,
-      "sha256": "41e22b2edb35a2129dfac62cbcbd2e2abc6d1e9c51409c000a342ee9a31c8dcc"
+      "bytes": 5630,
+      "sha256": "c8602a4d4f9bacd5baec285967eaacc5e0c4c0959cbb35756657bb47f7edaa58"
     },
     "docs/RELEASE_CHECKLIST.md": {
       "bytes": 3873,
@@ -467,8 +467,8 @@
       "sha256": "d13ebfb83e40c81c6566ec9069bffd8b0b49f31590eda8b829a4e61a1962b573"
     },
     "scripts/validate_release.py": {
-      "bytes": 102254,
-      "sha256": "e975f9cd2b44b9838ec0d64e39b37c7b015b64c270c924519186d4e76c96f0be"
+      "bytes": 102229,
+      "sha256": "8963bfafde9795a83aea670d25d0595b39bb965af093db8e845af6c90a9fee97"
     },
     "src/dlg_sol/__init__.py": {
       "bytes": 1633,

@@ -139,7 +139,7 @@ def validate_release_policy(errors: list[str]) -> None:
     required_citation_lines = {
         "version: 1.0.5",
         "date-released: 2026-09-22",
-        'title: "DLG-Sol combines molecular descriptors with language and three-dimensional embeddings for aqueous solubility prediction"',
+        'title: "DLG-Sol: Combining descriptor-based and language–3D models for aqueous solubility prediction"',
         'repository-code: "https://github.com/Tuesdayand/DLG-Sol"',
     }
     if not required_citation_lines.issubset(set(citation.splitlines())):

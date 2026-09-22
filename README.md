@@ -1,6 +1,6 @@
 # DLG-Sol
 
-Code and machine-readable results supporting **“DLG-Sol combines molecular descriptors with language and three-dimensional embeddings for aqueous solubility prediction.”**
+Code and machine-readable results supporting **“DLG-Sol: Combining descriptor-based and language–3D models for aqueous solubility prediction.”**
 
 DLG-Sol combines a Mordred/XGBoost descriptor model with a neural model derived from ChemBERTa and a distance-aware three-dimensional message-passing representation. The final prediction uses one molecule-independent blend coefficient within each fitted fold, split, or evaluation model.
 
