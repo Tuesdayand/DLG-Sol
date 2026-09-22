@@ -12,15 +12,15 @@
     },
     "CITATION.cff": {
       "bytes": 507,
-      "sha256": "a3ba3666e2536634dd5007d3b6edccd2dc263e096661f0a1a657dc68cffa67c6"
+      "sha256": "83f56cd60d6dfa6065c5eda92e59c521e7ba15defac05c4df1df3442ded90de5"
     },
     "LICENSE": {
       "bytes": 1086,
       "sha256": "f0c3a7b69ebdc6dc675bb5763e57c0032dc2bae094ad9887503b0c38f21c1603"
     },
     "README.md": {
-      "bytes": 9825,
-      "sha256": "da2990fa1e268f41517f5fd084bdc370d53007b9ad58c731fce5e3dc238e1ce0"
+      "bytes": 10144,
+      "sha256": "a75110902d7765ec54e0c4543b1b3d654b56112fe7c71d4f8984310c7088393d"
     },
     "THIRD_PARTY_NOTICES.md": {
       "bytes": 3684,
@@ -155,8 +155,8 @@
       "sha256": "2e16720f864965e910a0f6c12f973cd7ad2f042606a90f9becd90814ec56d083"
     },
     "docs/MANUSCRIPT_ALIGNMENT.md": {
-      "bytes": 2480,
-      "sha256": "180b295b5279d77bb8c20e4cff34db223cacefab99a569185ca36dad0893bb26"
+      "bytes": 5655,
+      "sha256": "41e22b2edb35a2129dfac62cbcbd2e2abc6d1e9c51409c000a342ee9a31c8dcc"
     },
     "docs/RELEASE_CHECKLIST.md": {
       "bytes": 3873,
@@ -175,8 +175,12 @@
       "sha256": "18070a35a0d4ba6aec8788fb9bf005c39f91c7ba57fcf0b6ec320e89482635eb"
     },
     "docs/RELEASE_NOTES_v1.0.4.md": {
-      "bytes": 2693,
-      "sha256": "b384eb449fee1953de059b4f9bddac24c56b35e8363ffcc3437c916debc195d9"
+      "bytes": 3429,
+      "sha256": "8468991cec0ee227826bc4e6d773c10fec92d21c3dfff429f509c378aab98e53"
+    },
+    "docs/RELEASE_NOTES_v1.0.5.md": {
+      "bytes": 1949,
+      "sha256": "9748862909104c7cc027d98bf8f3e37f6fc0ae86b256905f9703c88a6b62c660"
     },
     "docs/REPRODUCIBILITY_SCOPE.md": {
       "bytes": 7160,
@@ -370,6 +374,10 @@
       "bytes": 3283,
       "sha256": "e59a4813e710f1dc7e4bbe8ee11b8823f90cbf0093d2758bc706d8b84f8a8aca"
     },
+    "results/verified_manifests/release_v1_0_5_validation.json": {
+      "bytes": 20021,
+      "sha256": "e5a7771672f4967ee667dcd2f6e31a61838eb93d2b283a6895171fb43415bb94"
+    },
     "results/verified_manifests/table_3_source_context_audit.json": {
       "bytes": 1014,
       "sha256": "b9345622c0afdc37b8a668b99574a8f6149a4c1c45e5c24cac41779fe9041f50"
@@ -460,7 +468,7 @@
     },
     "scripts/validate_release.py": {
       "bytes": 102254,
-      "sha256": "14c33b1ed03ab0bc6e550b5512a5d15f8a53f2f144af587cc034ec8ff7bf8084"
+      "sha256": "e975f9cd2b44b9838ec0d64e39b37c7b015b64c270c924519186d4e76c96f0be"
     },
     "src/dlg_sol/__init__.py": {
       "bytes": 1633,
@@ -695,8 +703,8 @@
       "sha256": "613e4ec69818a520210695a642c50c152bf2dc6ad3e828274d3b15525de37a89"
     },
     "supplementary/machine_readable/README.md": {
-      "bytes": 5669,
-      "sha256": "156a4e8090045331298671a9ce91f4af1414b697d7bfea795fd6abdcb381088b"
+      "bytes": 6105,
+      "sha256": "333b57aee3ca44c4a63da124d7e59b23f58056f6abc48d93c44ac90cd502fefb"
     },
     "supplementary/machine_readable/chemical_subgroup_delta_mae_96_rows.csv": {
       "bytes": 30539,
@@ -813,6 +821,10 @@
     "tests/test_release_v1_0_4.py": {
       "bytes": 7407,
       "sha256": "a12ed6ae813b2daba9b0c1ef8cccc2e00d172b5eba3bc6e43b5976219b3bd590"
+    },
+    "tests/test_release_v1_0_5.py": {
+      "bytes": 3226,
+      "sha256": "8014e0b87b7fd3aaa618a643c1e7b97863315517c7f6692dc86accc0db19bcc2"
     },
     "tests/test_tdc_preparation.py": {
       "bytes": 2259,

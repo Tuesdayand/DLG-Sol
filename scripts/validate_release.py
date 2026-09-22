@@ -137,7 +137,7 @@ def validate_release_policy(errors: list[str]) -> None:
         errors.append("MIT copyright attribution is missing")
     citation = (ROOT / "CITATION.cff").read_text(encoding="utf-8")
     required_citation_lines = {
-        "version: 1.0.4",
+        "version: 1.0.5",
         "date-released: 2026-09-22",
         'title: "DLG-Sol combines molecular descriptors with language and three-dimensional embeddings for aqueous solubility prediction"',
         'repository-code: "https://github.com/Tuesdayand/DLG-Sol"',

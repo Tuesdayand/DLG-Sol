@@ -8,9 +8,9 @@ The study examines how much combining the two models improves prediction over ea
 
 ## Repository status
 
-This is the **v1.0.4 reproducibility package**, aligned with the revised manuscript. It includes machine-readable Supplementary summaries, release-integrity checks, the six-evaluation registry, label-firewall checks, fixed blending, article-level scoring metrics, the Mordred/XGBoost descriptor model, the ChemBERTa language encoder, the explicit-polar-hydrogen distance-aware 3D-MPNN, the `aug2_head4` language–geometry model, evaluation-specific data contracts, benchmark-input validation, and training and evaluation commands. Row-level benchmark data, historical model checkpoints, automatic data acquisition, and third-party source code are not included.
+This is **v1.0.5** of the DLG-Sol reproducibility package. It clarifies documentation and updates release metadata; the modelling implementation, configurations, and numerical results are unchanged from v1.0.4. The package includes machine-readable Supplementary summaries, release-integrity checks, the six-evaluation registry, label-firewall checks, fixed blending, article-level scoring metrics, the Mordred/XGBoost descriptor model, the ChemBERTa language encoder, the explicit-polar-hydrogen distance-aware 3D-MPNN, the `aug2_head4` language–geometry model, evaluation-specific data contracts, benchmark-input validation, and training and evaluation commands. Row-level benchmark data, historical model checkpoints, automatic data acquisition, and third-party source code are not included.
 
-The [manuscript alignment record](docs/MANUSCRIPT_ALIGNMENT.md) identifies the 22 September 2026 manuscript/SI snapshot and explains the Table 4 comparison scope and TDC partition terminology.
+The [manuscript alignment record](docs/MANUSCRIPT_ALIGNMENT.md) distinguishes the historical v1.0.4 checks from the manuscript/SI files checked during v1.0.5 preparation. File hashes identify those specific source snapshots; they do not certify that every later manuscript statement, citation, or table symbol is unchanged.
 
 The package provides a documented, executable path from lawfully obtained user-supplied benchmark data through DLG-Sol training, prediction, fixed blending, scoring, and regeneration of the reported public outputs. Raw third-party benchmark rows, third-party source trees, and model weights without clear redistribution permission are not bundled. Their provenance, access conditions, and required local-package schemas are documented instead.
 
@@ -65,7 +65,7 @@ The directory `supplementary/machine_readable/` contains:
 
 These files contain aggregate or configuration-level results and do not contain molecular structures or row-level experimental labels.
 
-The 14 CSV files and their article/SI mappings are listed in `supplementary/machine_readable/README.md`. The weighting results have the opposite difference convention to the component comparisons: `delta_rmse` is molecule-specific gate minus fixed blend, so negative values favour the gate. Biogen remains supplementary; it is not a seventh primary evaluation. No additional benchmark evaluations are introduced in v1.0.4.
+The 14 CSV files and their article/SI mappings are listed in `supplementary/machine_readable/README.md`. The weighting results have the opposite difference convention to the component comparisons: `delta_rmse` is molecule-specific gate minus fixed blend, so negative values favour the gate. Biogen remains supplementary; it is not a seventh primary evaluation. No additional benchmark evaluations are introduced in v1.0.5.
 
 ## Validate the snapshot
 
@@ -108,7 +108,7 @@ See `docs/REPRODUCIBILITY_SCOPE.md` for the exact reproducibility claims and the
 
 ## Citation
 
-Citation metadata for version 1.0.4 are provided in `CITATION.cff`. A software archive identifier and the article DOI may be added when assigned. Changes from v1.0.3 are documented in `docs/RELEASE_NOTES_v1.0.4.md`.
+Citation metadata for version 1.0.5 are provided in `CITATION.cff`. A software archive identifier and the article DOI may be added when assigned. Changes from v1.0.4 are documented in `docs/RELEASE_NOTES_v1.0.5.md`; the historical v1.0.4 notes are retained separately.
 
 ## License
 
